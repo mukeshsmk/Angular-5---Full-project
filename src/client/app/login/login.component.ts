@@ -13,13 +13,13 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['login.component.css']
 })
 export class LoginComponent { 
- 
+ public _token:any;
   user = {
     email:'',
     password:'',
    }
    isLoginError : boolean = false;
-
+   infoMessage = '';
    loginForm : FormGroup;
 
   constructor( private formBuilder: FormBuilder, private http: HttpClient) { 
@@ -33,8 +33,15 @@ onSubmit() {
     this.http.post<{success: object}>('http://10.0.0.3:8080/api/login',this.user)
     .subscribe((response)=>{
       console.log('Success ',JSON.stringify(response));
-      localStorage.setItem('access_token', JSON.stringify(response.success));
-      
+      this._token = response.success;
+      localStorage.setItem('access_token', JSON.stringify(this._token.token ));
+      // localStorage.setItem('access_token', JSON.stringify(response.success));
+      this.infoMessage = 'Login Success!';
+      setTimeout(() => {
+        console.log('hide');
+        this.infoMessage = '';
+      }, 5000);
+
     },  (err : HttpErrorResponse)=>{
       this.isLoginError = true;
       

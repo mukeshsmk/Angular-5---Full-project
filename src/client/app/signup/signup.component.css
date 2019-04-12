@@ -97,3 +97,9 @@ form[_ngcontent-c5] {
 .margin-top-0{
   margin-top:0px;
 }
+.success{
+  margin: 20px auto;
+  width: 100%;
+  color: #6c35a8;
+  font-size: 18px;
+}

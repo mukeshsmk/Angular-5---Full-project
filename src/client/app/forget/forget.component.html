@@ -1,5 +1,5 @@
 
-<form (ngSubmit)="onSubmit(forgetForm)" #registerForm="ngForm">
+<form (ngSubmit)="onSubmit(forgetForm)" #forgetForm="ngForm">
   <div class="container">
     <h1>Forget password</h1>
  
@@ -13,8 +13,12 @@
         Email must be a valid email address
       </p>
     </div>
+    <p class="error-box margin-top-0" *ngIf="isEmailError">
+        Email address is incorrect
+     </p>
 
-    <button type="submit" class="registerbtn">Send</button> 
+    <!-- <button type="submit" class="registerbtn">Send</button>  -->
+    <button type="submit" [disabled]="!forgetForm.valid" class="login">Send</button> 
   </div>
   
 </form>

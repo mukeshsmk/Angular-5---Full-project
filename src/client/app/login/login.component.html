@@ -1,5 +1,6 @@
  <form (ngSubmit)="onSubmit(loginForm)" #registerForm="ngForm">
   <div class="container">
+  
     <h1>Login</h1>
    
     
@@ -31,11 +32,16 @@
     <p *ngIf="isLoginError" class="error-box margin-top-0">
       Incorrect username or password
     </p>
-    
+
     <button type="submit" [disabled]="!registerForm.valid" class="login">Login</button>   <button type="submit" [routerLink]="['/signup']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" class="signup">Sign up</button>
   </div>
   
   <div class="container signin forget">
     <a class="forgetpassword" [routerLink]="['/forget']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Forget Password?</a>
   </div>
+
+  <div class="success">
+      <span *ngIf="infoMessage.length > 0">{{ infoMessage }}</span>
+  </div>
+
 </form> 

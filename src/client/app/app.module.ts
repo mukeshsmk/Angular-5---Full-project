@@ -16,6 +16,7 @@ import { ForgetModule } from './forget/forget.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
+import { ResetPasswordModule } from './resetpassword/resetpassword.module';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { CoreModule } from './core/core.module';
     ForgetModule,
     ReactiveFormsModule,
     FormsModule,
+    ResetPasswordModule,
     SharedModule.forRoot(),
     /**
      * In order to start the Service Worker in Production located at "/ngsw-worker.js"

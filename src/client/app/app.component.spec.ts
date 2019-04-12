@@ -20,6 +20,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ForgetComponent } from './forget/forget.component';
 import { ToolbarComponent } from './core/toolbar/toolbar.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
+import { ResetPasswordComponent } from './resetpassword/resetpassword.component';
 
 export function main() {
 
@@ -30,14 +31,15 @@ export function main() {
       { path: 'about', component: AboutComponent },
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
-      { path: 'forget', component: ForgetComponent }
+      { path: 'forget', component: ForgetComponent },
+      { path: 'resetpassword', component: ResetPasswordComponent }
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [FormsModule, RouterTestingModule.withRoutes(config)],
         declarations: [TestComponent, ToolbarComponent,
           NavbarComponent, AppComponent, ForgetComponent,
-          HomeComponent, LoginComponent, SignupComponent, AboutComponent],
+          HomeComponent, LoginComponent, SignupComponent,ResetPasswordComponent, AboutComponent],
         providers: [
           { provide: APP_BASE_HREF, useValue: '/' }
         ]
