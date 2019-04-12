@@ -1,10 +1,18 @@
 
-<form action="/action_page.php">
+<form (ngSubmit)="onSubmit(forgetForm)" #registerForm="ngForm">
   <div class="container">
     <h1>Forget password</h1>
  
     <label for="email"><b>Email</b></label>
-    <input type="email" placeholder="Enter Email" name="email" required>  
+    <input type="text" placeholder="Enter Email" [(ngModel)]='user.email' #email='ngModel' name='email' required email>
+    <div *ngIf='email.invalid && (email.dirty || email.touched)'>
+      <p class="error-box margin-top-0" *ngIf="email.hasError('required')">
+        Email is Required
+      </p>
+      <p class="error-box margin-top-0" *ngIf="email.errors.email">
+        Email must be a valid email address
+      </p>
+    </div>
 
     <button type="submit" class="registerbtn">Send</button> 
   </div>

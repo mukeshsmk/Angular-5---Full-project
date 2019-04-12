@@ -14,15 +14,18 @@
     </div>
 
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" [(ngModel)]='user.email' #email='ngModel' name='email' required minlength="6">
+    <input type="text" placeholder="Enter Email" [(ngModel)]='user.email' #email='ngModel' name='email' required email>
     <div *ngIf='email.invalid && (email.dirty || email.touched)'>
       <p class="error-box margin-top-0" *ngIf="email.hasError('required')">
         Email is Required
       </p>
-      <p class="error-box margin-top-0" *ngIf="email.hasError('minlength')">
-       Minimum 6 Characters are Required
+      <p class="error-box margin-top-0" *ngIf="email.errors.email">
+        Email must be a valid email address
       </p>
     </div>
+    <p class="error-box margin-top-0" *ngIf="duplicateEmail">
+      {{ duplicateEmail }}
+     </p>
 
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter password" [(ngModel)]='user.password' #password='ngModel' name='password' required minlength="6">
@@ -36,18 +39,29 @@
     </div>
 
 
-    <label for="c_password"><b>Confirm Password</b></label>
-    <input type="c_password" placeholder="Enter password" [(ngModel)]='user.c_password' #c_password='ngModel' name='c_password' required minlength="6">
-    <div *ngIf='c_password.invalid && (password.dirty || password.touched)'>
-      <p class="error-box margin-top-0" *ngIf="c_password.hasError('required')">
+    <label for="confirm_password"><b>Password</b></label>
+    <input type="confirm_password" placeholder="Enter confirm_password" [(ngModel)]='user.confirm_password' #confirm_password='ngModel' name='confirm_password' required minlength="6">
+    <div *ngIf='confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)'>
+      <p class="error-box margin-top-0" *ngIf="confirm_password.hasError('required')">
+        confirm_password is Required
+      </p>    
+    </div>
+    <p class="error-box margin-top-0" *ngIf="notSame">
+     {{ notSame }}
+    </p>
+
+    <!-- <label for="confirm_password"><b>Confirm Password</b></label>
+    <input type="confirm_password" placeholder="Enter confirm password" [(ngModel)]='user.confirm_password' #confirm_password='ngModel' name='confirm_password' required minlength="6">
+    <div *ngIf='confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)'>
+      <p class="error-box margin-top-0" *ngIf="confirm_password.hasError('required')">
         Password is Required
       </p>
-      <p class="error-box margin-top-0" *ngIf="c_password.hasError('minlength')">
+      <p class="error-box margin-top-0" *ngIf="confirm_password.hasError('minlength')">
        Minimum 6 Characters are Required
       </p>
-    </div>
+    </div> -->
 
-    
+   
     <button type="submit" class="registerbtn" name="submit" [disabled]="!registerForm.valid">Register</button> <button type="button" [routerLink]="['/login']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" class="login">Login</button>
   
   </div>

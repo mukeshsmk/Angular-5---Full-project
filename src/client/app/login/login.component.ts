@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { HttpClient } from '@angular/common/http';
 import { map } from "rxjs/operators";
+import { HttpErrorResponse } from '@angular/common/http';
 /**
  * This class represents the lazy loaded AboutComponent.
  */
@@ -17,6 +18,7 @@ export class LoginComponent {
     email:'',
     password:'',
    }
+   isLoginError : boolean = false;
 
    loginForm : FormGroup;
 
@@ -28,14 +30,24 @@ onSubmit() {
 
 
   if(this.user){
-    this.http.post('http://10.0.0.3:8080/api/login',this.user)
-    .subscribe(data => {
-      let resp = JSON.stringify(data);
-      console.log(resp)
-  })
-
+    this.http.post<{success: object}>('http://10.0.0.3:8080/api/login',this.user)
+    .subscribe((response)=>{
+      console.log('Success ',JSON.stringify(response));
+      localStorage.setItem('access_token', JSON.stringify(response.success));
+      
+    },  (err : HttpErrorResponse)=>{
+      this.isLoginError = true;
+      
+      setTimeout(() => {
+        console.log('hide');
+        this.isLoginError = false;
+      }, 5000);
+    });
+     
+   
+  }
+  
   console.log(this.user)
+  }
 
-}
-}
 }

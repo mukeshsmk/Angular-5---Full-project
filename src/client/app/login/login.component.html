@@ -4,13 +4,16 @@
    
     
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" [(ngModel)]='user.email' #email='ngModel' name='email' required minlength="6">
+    <input type="text" placeholder="Enter Email" [(ngModel)]='user.email' #email='ngModel' name='email' required email>
     <div *ngIf='email.invalid && (email.dirty || email.touched)'>
       <p class="error-box margin-top-0" *ngIf="email.hasError('required')">
         Email is Required
       </p>
-      <p class="error-box margin-top-0" *ngIf="email.hasError('minlength')">
-       Minimum 6 Characters are Required
+      <p class="error-box margin-top-0" *ngIf="email.errors.email">
+        Email must be a valid email address
+      </p>
+      <p class="error-box margin-top-0" *ngIf="submitted && email.errors">
+         email address incorrect
       </p>
     </div>
 
@@ -25,6 +28,10 @@
       </p>
     </div>
 
+    <p *ngIf="isLoginError" class="error-box margin-top-0">
+      Incorrect username or password
+    </p>
+    
     <button type="submit" [disabled]="!registerForm.valid" class="login">Login</button>   <button type="submit" [routerLink]="['/signup']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" class="signup">Sign up</button>
   </div>
   

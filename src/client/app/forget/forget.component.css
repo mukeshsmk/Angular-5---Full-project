@@ -88,3 +88,9 @@ form[_ngcontent-c5] {
   background-color: transparent;
   padding: 0 25px;
 }
+.error-box{
+  color: #b80000;
+}
+.margin-top-0{
+  margin-top:0px;
+}
