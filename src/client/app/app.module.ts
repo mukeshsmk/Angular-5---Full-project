@@ -4,18 +4,33 @@ import { APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
+
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
+// import { RegistrationService } from './service/registration.service';
 import { AboutModule } from './about/about.module';
+import { LoginModule } from './login/login.module';
+import { SignupModule } from './signup/signup.module';
+import { ForgetModule } from './forget/forget.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 
 
 @NgModule({
-  imports: [BrowserModule, CoreModule,
-    HttpClientModule, AppRoutingModule,
-    AboutModule, HomeModule,
+  imports: [
+    BrowserModule,
+    CoreModule,
+     HttpClientModule,
+    AppRoutingModule,
+    AboutModule,
+    HomeModule,
+    SignupModule,
+    LoginModule,
+    ForgetModule,
+    ReactiveFormsModule,
+    FormsModule,
     SharedModule.forRoot(),
     /**
      * In order to start the Service Worker in Production located at "/ngsw-worker.js"

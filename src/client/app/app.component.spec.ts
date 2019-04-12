@@ -15,6 +15,9 @@ import {
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { ForgetComponent } from './forget/forget.component';
 import { ToolbarComponent } from './core/toolbar/toolbar.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
 
@@ -24,14 +27,17 @@ export function main() {
 
     const config: Route[] = [
       { path: '', component: HomeComponent },
-      { path: 'about', component: AboutComponent }
+      { path: 'about', component: AboutComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'signup', component: SignupComponent },
+      { path: 'forget', component: ForgetComponent }
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [FormsModule, RouterTestingModule.withRoutes(config)],
         declarations: [TestComponent, ToolbarComponent,
-          NavbarComponent, AppComponent,
-          HomeComponent, AboutComponent],
+          NavbarComponent, AppComponent, ForgetComponent,
+          HomeComponent, LoginComponent, SignupComponent, AboutComponent],
         providers: [
           { provide: APP_BASE_HREF, useValue: '/' }
         ]

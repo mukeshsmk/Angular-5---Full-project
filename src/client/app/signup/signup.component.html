@@ -1,0 +1,55 @@
+<form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
+  <div class="container">
+    <h1>Signup</h1>
+   
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Enter Name" [(ngModel)]='user.name' #name='ngModel' name='name' required minlength="6">
+    <div *ngIf='name.invalid && (name.dirty || name.touched)'>
+      <p class="error-box margin-top-0" *ngIf="name.hasError('required')">
+        UserName is Required
+      </p>
+      <p class="error-box margin-top-0" *ngIf="name.hasError('minlength')">
+       Minimum 6 Characters are Required
+      </p>
+    </div>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" [(ngModel)]='user.email' #email='ngModel' name='email' required minlength="6">
+    <div *ngIf='email.invalid && (email.dirty || email.touched)'>
+      <p class="error-box margin-top-0" *ngIf="email.hasError('required')">
+        Email is Required
+      </p>
+      <p class="error-box margin-top-0" *ngIf="email.hasError('minlength')">
+       Minimum 6 Characters are Required
+      </p>
+    </div>
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter password" [(ngModel)]='user.password' #password='ngModel' name='password' required minlength="6">
+    <div *ngIf='password.invalid && (password.dirty || password.touched)'>
+      <p class="error-box margin-top-0" *ngIf="password.hasError('required')">
+        Password is Required
+      </p>
+      <p class="error-box margin-top-0" *ngIf="password.hasError('minlength')">
+       Minimum 6 Characters are Required
+      </p>
+    </div>
+
+
+    <label for="c_password"><b>Confirm Password</b></label>
+    <input type="c_password" placeholder="Enter password" [(ngModel)]='user.c_password' #c_password='ngModel' name='c_password' required minlength="6">
+    <div *ngIf='c_password.invalid && (password.dirty || password.touched)'>
+      <p class="error-box margin-top-0" *ngIf="c_password.hasError('required')">
+        Password is Required
+      </p>
+      <p class="error-box margin-top-0" *ngIf="c_password.hasError('minlength')">
+       Minimum 6 Characters are Required
+      </p>
+    </div>
+
+    
+    <button type="submit" class="registerbtn" name="submit" [disabled]="!registerForm.valid">Register</button> <button type="button" [routerLink]="['/login']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" class="login">Login</button>
+  
+  </div>
+  
+</form>
