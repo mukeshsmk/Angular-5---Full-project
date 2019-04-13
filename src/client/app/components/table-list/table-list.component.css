@@ -1,0 +1,56 @@
+.glyphicon-edit{
+    color: #0747A6;
+    font-size: 15px;
+    margin: 0 22px;
+}
+table.dataTable thead .sorting:after {
+  opacity: 0.2;
+  content: "\e150";
+}
+table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  display: block;
+  font-family: 'Glyphicons Halflings';
+  opacity: 0.5;
+}
+table thead th .glyphicon-sort {
+  vertical-align: bottom; 
+   border-bottom:none;
+}
+.table td .glyphicon-sort, .table th glyphicon-sort {
+  padding: .75rem;
+  vertical-align: top;
+  border-top: none;
+}
+.sorting{
+  color:#ddd;
+}
+
+.glyphicon-sort{
+  color: #dadada;
+  font-size: 14px;
+  margin: 0 5px 5px 0px;
+}
+.glyphicon-sort-by-attributes{
+  color: #dadada;
+  font-size: 14px;
+  margin: 0 5px 5px 0px;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  color: #333340;
+  font-size: 14px;
+  border-bottom: 2px solid #dee2e6;
+}
+
+
+input[type=checkbox] {
+  border: 1px solid #106cc8;
+  font-size: 14px;
+  height: 20px;
+  outline: none;
+  padding: 8px;
+}

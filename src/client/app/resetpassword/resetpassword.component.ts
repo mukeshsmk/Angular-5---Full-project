@@ -14,12 +14,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ResetPasswordComponent {
 
   user = {
-    email:'',
+    password:'',
+    password_confirmation:'',
+    token:''
    }
    public validationErr:any;
 
    public notSame : any;
-
+   public _token:any;
    resetpasswordForm : FormGroup;
    isEmailError : boolean = false;
    constructor( private formBuilder: FormBuilder, private http: HttpClient) { 
@@ -27,24 +29,28 @@ export class ResetPasswordComponent {
   }
 
   onSubmit() {
-//   if(this.user){
-//     this.http.post<{success: object}>('http://10.0.0.3:8080/api/password/email',this.user)
-//     .subscribe((response)=>{
-//       console.log('Success ',JSON.stringify(response));
-//       this._token = response.success;
-//       localStorage.setItem('access_token', JSON.stringify(this._token.token ));    
+  if(this.user){
 
-//     },  (err : HttpErrorResponse)=>{
-//       this.isEmailError = true;
+    this.user.token =  localStorage.getItem('reset_password_token'); 
+    this.http.post<{success: object}>('http://10.0.0.3:8080/api/password/reset',this.user)
+    .subscribe((response)=>{
+      console.log('Success ',JSON.stringify(response));
+      this._token = response.success;
+      localStorage.setItem('reset_password_token', JSON.stringify(this._token.token ));    
+
+    },  (err : HttpErrorResponse)=>{ 
+      this.isEmailError = true;
       
-//       setTimeout(() => {
-//         console.log('hide');
-//         this.isEmailError = false;
-//       }, 5000);
-//     });
+      setTimeout(() => {
+        console.log('hide');
+        this.isEmailError = false;
+      }, 5000);
+    });
      
 
-//   }
-
+  }
+else{
+  console.log(this.user);
+}
 }
 }

@@ -69,3 +69,7 @@ button {
 button:hover {
   background-color: #28739e;
 }
+[_nghost-c1] {
+  display: block;
+  padding: 0px !important;
+}

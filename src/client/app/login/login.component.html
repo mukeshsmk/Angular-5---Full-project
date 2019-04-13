@@ -1,47 +1,51 @@
- <form (ngSubmit)="onSubmit(loginForm)" #registerForm="ngForm">
-  <div class="container">
-  
-    <h1>Login</h1>
-   
-    
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" [(ngModel)]='user.email' #email='ngModel' name='email' required email>
-    <div *ngIf='email.invalid && (email.dirty || email.touched)'>
-      <p class="error-box margin-top-0" *ngIf="email.hasError('required')">
-        Email is Required
-      </p>
-      <p class="error-box margin-top-0" *ngIf="email.errors.email">
-        Email must be a valid email address
-      </p>
-      <p class="error-box margin-top-0" *ngIf="submitted && email.errors">
-         email address incorrect
-      </p>
-    </div>
 
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter password" [(ngModel)]='user.password' #password='ngModel' name='password' required minlength="6">
-    <div *ngIf='password.invalid && (password.dirty || password.touched)'>
-      <p class="error-box margin-top-0" *ngIf="password.hasError('required')">
-        Password is Required
-      </p>
-      <p class="error-box margin-top-0" *ngIf="password.hasError('minlength')">
-       Minimum 6 Characters are Required
-      </p>
-    </div>
+<div class="bg_img"> 
+  <div class="login_container" >
+      <div class="login_box">
+        <img src="https://app-retail-gjaya79.c9users.io/final/assets/images/logo-dark.png" class="modal-img" style="margin: 10px 0;;height: 60px">
+        <form (ngSubmit)="onSubmit(loginForm)" #registerForm="ngForm">
+            <div class="container">
+              <br>
+              <input type="text" placeholder="Email" [(ngModel)]='user.email' #email='ngModel' name='email' required email>
+              <div *ngIf='email.invalid && (email.dirty || email.touched)'>
+                <p class="error-box margin-top-0" *ngIf="email.hasError('required')">
+                  Email is Required
+                </p>
+                <p class="error-box margin-top-0" *ngIf="email.errors.email">
+                  Email must be a valid email address
+                </p>
+                <p class="error-box margin-top-0" *ngIf="submitted && email.errors"> 
+                   email address incorrect
+                </p>
+              </div>
+          
+              <br>
 
-    <p *ngIf="isLoginError" class="error-box margin-top-0">
-      Incorrect username or password
-    </p>
+              <input type="password" placeholder="Password" [(ngModel)]='user.password' #password='ngModel' name='password' required minlength="6">
+              <div *ngIf='password.invalid && (password.dirty || password.touched)'>
+                <p class="error-box margin-top-0" *ngIf="password.hasError('required')">
+                  Password is Required
+                </p>
+                <p class="error-box margin-top-0" *ngIf="password.hasError('minlength')">
+                 Minimum 6 Characters are Required
+                </p>
+              </div>
+          
+              <p *ngIf="isLoginError" class="error-box margin-top-0">
+                Incorrect username or password
+              </p>
+          
+              <br>
 
-    <button type="submit" [disabled]="!registerForm.valid" class="login">Login</button>   <button type="submit" [routerLink]="['/signup']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" class="signup">Sign up</button>
+              <button type="submit" [disabled]="!registerForm.valid" class="login">Sign in</button>  
+            </div>
+            
+          
+            <!-- <div class="success">
+                <span *ngIf="infoMessage.length > 0">{{ infoMessage }}</span>
+            </div> -->
+          
+          </form> 
+      </div>
+    </div> 
   </div>
-  
-  <div class="container signin forget">
-    <a class="forgetpassword" [routerLink]="['/forget']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Forget Password?</a>
-  </div>
-
-  <div class="success">
-      <span *ngIf="infoMessage.length > 0">{{ infoMessage }}</span>
-  </div>
-
-</form> 

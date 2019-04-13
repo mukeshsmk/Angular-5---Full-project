@@ -30,8 +30,8 @@ export class ForgetComponent {
     .subscribe((response)=>{
       console.log('Success ',JSON.stringify(response));
       this._token = response.success;
-      localStorage.setItem('access_token', JSON.stringify(this._token.token ));    
-
+      localStorage.setItem('reset_password_token', JSON.stringify(this._token.token )); 
+      
     },  (err : HttpErrorResponse)=>{
       this.isEmailError = true;
       
