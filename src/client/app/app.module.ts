@@ -20,7 +20,7 @@ import { ResetPasswordModule } from './resetpassword/resetpassword.module';
 import { SidebarModule } from './components/sidebar/sidebar.module';
 import { TableListModule } from './components/table-list/table-list.module';
 import { HeaderModule } from './components/header/header.module';
-
+ 
 @NgModule({
   imports: [
     BrowserModule,

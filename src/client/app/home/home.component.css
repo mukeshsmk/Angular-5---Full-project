@@ -17,3 +17,8 @@ ul {
 .headerComponent{
   margin-top:55px
 }
+.mainComponent{
+  float:left;
+  margin-left: 85px;
+  width: calc( 100% - 85px);
+}
