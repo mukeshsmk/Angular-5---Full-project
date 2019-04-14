@@ -5,7 +5,7 @@ import { TableListComponent } from './table-list.component';
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: '', component: TableListComponent }
+      { path: 'table-list', component: TableListComponent }
     ])
   ],
   exports: [RouterModule]

@@ -4,11 +4,11 @@ import { Component, OnInit } from '@angular/core';
  */
 @Component({
   moduleId: module.id,
-  selector: 'sd-sidebar',
-  templateUrl: 'sidebar.component.html',
-  styleUrls: ['sidebar.component.css']
+  selector: 'sd-header',
+  templateUrl: 'header.component.html',
+  styleUrls: ['header.component.css']
 })
-export class SidebarComponent implements OnInit {
+export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {

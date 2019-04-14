@@ -19,6 +19,7 @@ import { CoreModule } from './core/core.module';
 import { ResetPasswordModule } from './resetpassword/resetpassword.module';
 import { SidebarModule } from './components/sidebar/sidebar.module';
 import { TableListModule } from './components/table-list/table-list.module';
+import { HeaderModule } from './components/header/header.module';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { TableListModule } from './components/table-list/table-list.module';
     ResetPasswordModule,
     SidebarModule,
     TableListModule,
+    HeaderModule,
     SharedModule.forRoot(),
     /**
      * In order to start the Service Worker in Production located at "/ngsw-worker.js"
