@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 // import { RegistrationService } from './service/registration.service';
 import { AboutModule } from './about/about.module';
 import { LoginModule } from './login/login.module';
