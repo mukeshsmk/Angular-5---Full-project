@@ -11,8 +11,8 @@ import { TabsComponent } from '../tab/tabs.component';
   styleUrls: ['table-list.component.css']
 })
 export class TableListComponent {
-  @ViewChild(TabsComponent) tabsComponent;
-  @ViewChild('personDetails') persondetailsTemplate;
+  @ViewChild(TabsComponent) tabsComponent:any;
+  @ViewChild('personDetails') persondetailsTemplate:any;
   opportunityList = [
     {
       "id": 1,
@@ -128,9 +128,11 @@ export class TableListComponent {
     }
   ]
   
-  viewPersondetails(data){
+  viewPersondetails(data:any){
     console.log(this.persondetailsTemplate)
     this.tabsComponent.openTab(data.name, this.persondetailsTemplate, data, true);
   }
+
+  
   //https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fpeople%2Fperson-edit.component.ts
 }

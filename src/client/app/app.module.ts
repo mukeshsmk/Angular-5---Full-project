@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
+import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
-
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 // import { RegistrationService } from './service/registration.service';
 import { AboutModule } from './about/about.module';
 import { LoginModule } from './login/login.module';
@@ -20,6 +20,9 @@ import { ResetPasswordModule } from './resetpassword/resetpassword.module';
 import { SidebarModule } from './components/sidebar/sidebar.module';
 import { TableListModule } from './components/table-list/table-list.module';
 import { HeaderModule } from './components/header/header.module';
+import { ModalModule } from './components/modal/modal.module'
+
+// import { MDBBootstrapModule, } from 'angular-bootstrap-md';
  
 @NgModule({
   imports: [
@@ -38,6 +41,7 @@ import { HeaderModule } from './components/header/header.module';
     SidebarModule,
     TableListModule,
     HeaderModule,
+    ModalModule,
     SharedModule.forRoot(),
     /**
      * In order to start the Service Worker in Production located at "/ngsw-worker.js"
@@ -47,6 +51,7 @@ import { HeaderModule } from './components/header/header.module';
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: String('<%= BUILD_TYPE %>') === 'prod' })
   ],
   declarations: [AppComponent],
+  schemas:[NO_ERRORS_SCHEMA],
   providers: [{
     provide: APP_BASE_HREF,
     useValue: '<%= APP_BASE %>'

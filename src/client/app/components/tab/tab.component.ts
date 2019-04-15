@@ -13,6 +13,8 @@ import { Component, Input } from '@angular/core';
     .pane{
       padding: 1em;
     }
+    
+ 
   `
   ],
   template: `

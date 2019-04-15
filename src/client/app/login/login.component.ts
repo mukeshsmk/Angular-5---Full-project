@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { map } from "rxjs/operators";
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
+
 /**
  * This class represents the lazy loaded AboutComponent.
  */
@@ -22,7 +24,7 @@ export class LoginComponent {
    infoMessage = '';
    loginForm : FormGroup;
 
-  constructor( private formBuilder: FormBuilder, private http: HttpClient) { 
+  constructor( private formBuilder: FormBuilder, private http: HttpClient, private route: ActivatedRoute,private router: Router,) { 
 
 }
 
@@ -30,17 +32,20 @@ onSubmit() {
 
 
   if(this.user){
-    this.http.post<{success: object}>('http://10.0.0.3:8080/api/login',this.user)
+   
+    this.http.post<{success: object}>('http://10.0.0.2:8080/api/login',this.user)
     .subscribe((response)=>{
       console.log('Success ',JSON.stringify(response));
       this._token = response.success;
       localStorage.setItem('access_token', JSON.stringify(this._token.token ));
       // localStorage.setItem('access_token', JSON.stringify(response.success));
       this.infoMessage = 'Login Success!';
+      this.router.navigate(['/home']);
       setTimeout(() => {
         console.log('hide');
         this.infoMessage = '';
       }, 5000);
+      
 
     },  (err : HttpErrorResponse)=>{
       this.isLoginError = true;

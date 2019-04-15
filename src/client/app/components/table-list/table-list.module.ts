@@ -5,7 +5,7 @@ import { TabsComponent } from '../tab/tabs.component';
 import { TabComponent } from '../tab/tab.component';
 import { DynamicTabsDirective } from '../tab/dynamic-tabs.directive';
 import { CommonModule } from '@angular/common';
-import { UserdetailsComponent } from '../user-details/userDetails.component';
+import { UserdetailsComponent } from '../user-details/userdetails.component';
 
 @NgModule({
   imports: [TableListRoutingModule,CommonModule],

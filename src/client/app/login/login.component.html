@@ -4,7 +4,7 @@
       <div class="login_box">
         <img src="https://app-retail-gjaya79.c9users.io/final/assets/images/logo-dark.png" class="modal-img" style="margin: 10px 0;;height: 60px">
         <form (ngSubmit)="onSubmit(loginForm)" #registerForm="ngForm">
-            <div class="container">
+            <div>
               <br>
               <input type="text" placeholder="Email" [(ngModel)]='user.email' #email='ngModel' name='email' required email>
               <div *ngIf='email.invalid && (email.dirty || email.touched)'>
