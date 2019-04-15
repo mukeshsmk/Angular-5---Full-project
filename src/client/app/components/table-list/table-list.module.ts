@@ -6,10 +6,11 @@ import { TabComponent } from '../tab/tab.component';
 import { DynamicTabsDirective } from '../tab/dynamic-tabs.directive';
 import { CommonModule } from '@angular/common';
 import { UserdetailsComponent } from '../user-details/userdetails.component';
+import { OpportunityComponent } from '../opportunity/opportunity.component'; 
 
 @NgModule({
   imports: [TableListRoutingModule,CommonModule],
-  declarations: [TableListComponent,TabsComponent,TabComponent,DynamicTabsDirective,UserdetailsComponent],
+  declarations: [TableListComponent,TabsComponent,TabComponent,DynamicTabsDirective,UserdetailsComponent,OpportunityComponent],
   exports: [TableListComponent],
   entryComponents: [TabComponent]
 })
