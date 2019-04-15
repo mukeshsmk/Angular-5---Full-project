@@ -1,275 +1,155 @@
 <div class="container-fluid">
-    <div class="col-md-12">
-      <div class="btn-group btn-breadcrumb">
-        <button href="#" color-index="0" class="color-btn btn btn-success">New
-        </button><button href="#" color-index="1" class="color-btn btn showData workingID btn-success" sfid="702"
-          type="workingModal" data-toggle="modal" data-target="#workingModal702">Working</button>
-        <button href="#" color-index="2" class="color-btn btn showData workingID btn-success" type="appointmentModal"
-          data-toggle="modal" data-target="#appointmentModal702">Appointment</button>
-        <button href="#" color-index="3" class="color-btn btn showDataNon workingID btn-success" type="quotationModal"
-          data-toggle="modal" data-target="#quotationModal702">Quotation</button>
-        <button href="#" color-index="4" class="color-btn btn showData workingID btn-success" type="negotiationModal"
-          data-toggle="modal" data-target="#negotiationModal702">Negotiation</button>
-        <button href="#" color-index="5" class="color-btn btn showDataNon saveAllModal btn-info" typem="Finalize"
-          sfid="702">Finalize</button>
-        <button href="#" color-index="6" class="color-btn btn showData workingID btn-info" type="closedLostModal"
-          data-toggle="modal" data-target="#closedLostModal702">Closed Lost</button>
-        <button href="#" color-index="6" class="color-btn btn showData workingID btn-info" type="closedWonModal"
-          data-toggle="modal" data-target="#closedWonModal702">Closed Won</button>
-        <button href="#" color-index="7" class="color-btn btn showDataNon workingID btn-info" type="duplicateModal"
-          data-toggle="modal" data-target="#duplicateModal702">Duplicate</button>
-        <button href="#" color-index="8" class="color-btn btn showDataNon workingID btn-info" type="convertedModal"
-          data-toggle="modal" data-target="#convertedModal702">Converted</button>
-      </div>
-      <br><br>
-  
+  <div class="col-md-12">
+    <div class="btn-group btn-breadcrumb">
+      <button href="#" color-index="0" class="color-btn btn btn-success">New
+      </button><button href="#" color-index="1" class="color-btn btn showData workingID btn-success" sfid="702"
+        type="workingModal" data-toggle="modal" data-target="#workingModal702">Working</button>
+      <button href="#" color-index="2" class="color-btn btn showData workingID btn-success" type="appointmentModal"
+        data-toggle="modal" data-target="#appointmentModal702">Appointment</button>
+      <button href="#" color-index="3" class="color-btn btn showDataNon workingID btn-success" type="quotationModal"
+        data-toggle="modal" data-target="#quotationModal702">Quotation</button>
+      <button href="#" color-index="4" class="color-btn btn showData workingID btn-success" type="negotiationModal"
+        data-toggle="modal" data-target="#negotiationModal702">Negotiation</button>
+      <button href="#" color-index="5" class="color-btn btn showDataNon saveAllModal btn-info" typem="Finalize"
+        sfid="702">Finalize</button>
+      <button href="#" color-index="6" class="color-btn btn showData workingID btn-info" type="closedLostModal"
+        data-toggle="modal" data-target="#closedLostModal702">Closed Lost</button>
+      <button href="#" color-index="6" class="color-btn btn showData workingID btn-info" type="closedWonModal"
+        data-toggle="modal" data-target="#closedWonModal702">Closed Won</button>
+      <button href="#" color-index="7" class="color-btn btn showDataNon workingID btn-info" type="duplicateModal"
+        data-toggle="modal" data-target="#duplicateModal702">Duplicate</button>
+      <button href="#" color-index="8" class="color-btn btn showDataNon workingID btn-info" type="convertedModal"
+        data-toggle="modal" data-target="#convertedModal702">Converted</button>
     </div>
+    <br><br>
+
   </div>
-  
-  
-  <div class="container-fluid">
+</div>
+
+<section>
+  <div class="row">
     <div class="col-md-8">
-        <section>
-            <div class="container">
-              <div class="row">
-                <div class="col-md-8 offset-md-2">
-                  <div class="bd-example" data-example-id="">
-                    <div id="accordion" role="tablist" aria-multiselectable="true">
-                      <div class="card">
-                        <div class="card-header" role="tab" id="headingOne">
-                          <div class="mb-0">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false"
-                              aria-controls="collapseOne" class="collapsed">
-                              <i class="fa fa-angle-down" aria-hidden="true"></i>
-                              <p>Lead Information</p>
-                            </a>
-          
-                          </div>
-                        </div>
-          
-                        <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false"
-                          style="">
-                          <div class="card-block">
-                              <div class="row-fluid">
-                                                       
-                                  <div class="col-sm-6">
-                                      <div class="form-group">
-                                        <strong>First Name :</strong>
-                                        <span data-toggle="tooltip" title="" data-original-title="xxxx"><span pattern="[a-zA-Z\sàèéìòù]+" name="first_name__c" dropname="text" type="text" inlinetext="xxxx" class=" form-control-static inlineEditEnb">xxxx</span></span>
-                                      </div>
-                                      <div class="form-group">	
-                                        <label>Email :</label>
-                                        <span pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email__c" dropname="email" type="email" inlinetext="xxxx@gmail.com" class=" form-control-static inlineEditEnb">xxxx@gmail.com</span>								</div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                       <div class="form-group">
-                                        <strong>Last Name:</strong>
-                                        <span pattern="[a-zA-Z\sàèéìòù]+" name="last_name__c" dropname="text" type="text" inlinetext="R" class=" form-control-static inlineEditEnb">R</span>							   </div>
-                                       <div class="form-group">
-                                        <label>Company :</label>
-                                         <span pattern="[a-zA-Z\sàèéìòù]+" name="company__c" dropname="text" type="text" inlinetext="test" class=" form-control-static inlineEditEnb">test</span>							   </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                       <div class="form-group">
-                                        <label>Mobile :</label>
-                                        <span pattern="\d{1,15}" name="mobile__c" dropname="text" type="text" inlinetext="0123456789" class=" form-control-static inlineEditEnb">0123456789</span>							   </div>	
-                                    </div>
-                                    <div class="col-sm-6">
-                                       <div class="form-group">
-                                        <label>Phone :</label>
-                                        <span pattern="\d{1,15}" name="phone__c" dropname="text" type="text" inlinetext="0123456789" class=" form-control-static inlineEditEnb">0123456789</span>							   </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                    </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-header" role="tab" id="headingTwo">
-                          <div class="mb-0">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
-                              aria-controls="collapseOne" class="collapsed">
-                              <i class="fa fa-angle-down" aria-hidden="true"></i>
-                              <p>Lead Details</p>
-                            </a>
-          
-                          </div>
-                        </div>
-                        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false">
-                          <div class="card-block">
-                            <div class="row-fluid">
-                                                       
-                              <div class="span4">
-                                  
-                                  <h6>First Name : <span class="font_weight_none">xxxx</span></h6>
-                                  <h6>Email : <span class="font_weight_none">xxxx@gmail.com</span></h6>
-                                  <h6>Mobile : <span class="font_weight_none">0123456789</span></h6>
-                          
-                              </div>
-                              
-                              <div class="span4">
-                                
-                                <h6>Last Name: <span class="font_weight_none">R</span></h6>
-                                <h6>Company : <span class="font_weight_none">test</span></h6>
-                                <h6>Phone : <span class="font_weight_none">0123456789</span></h6>
-                          
-                            </div>
-                      
-                      </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-header" role="tab" id="headingThree">
-                          <div class="mb-0">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false"
-                              aria-controls="collapseOne" class="collapsed">
-                              <i class="fa fa-angle-down" aria-hidden="true"></i>
-                              <p>Address Details</p>
-                            </a>
-          
-                          </div>
-                        </div>
-                        <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree"
-                          aria-expanded="false">
-                          <div class="card-block">
-                            <div class="row-fluid">
-                                                       
-                              <div class="span4">
-                                  
-                                  <h6>First Name : <span class="font_weight_none">xxxx</span></h6>
-                                  <h6>Email : <span class="font_weight_none">xxxx@gmail.com</span></h6>
-                                  <h6>Mobile : <span class="font_weight_none">0123456789</span></h6>
-                          
-                              </div>
-                              
-                              <div class="span4">
-                                
-                                <h6>Last Name: <span class="font_weight_none">R</span></h6>
-                                <h6>Company : <span class="font_weight_none">test</span></h6>
-                                <h6>Phone : <span class="font_weight_none">0123456789</span></h6>
-                          
-                            </div>
-                      
-                      </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-header" role="tab" id="headingOne">
-                          <div class="mb-0">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false"
-                              aria-controls="collapseOne" class="collapsed">
-                              <i class="fa fa-angle-down" aria-hidden="true"></i>
-                              <p>Lead Information</p>
-                            </a>
-                          </div>
-                        </div>
-          
-                        <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false"
-                          style="">
-                          <div class="card-block">
-                            <div class="row-fluid">
-                                                       
-                              <div class="span4">
-                                  
-                                  <h6>First Name : <span class="font_weight_none">xxxx</span></h6>
-                                  <h6>Email : <span class="font_weight_none">xxxx@gmail.com</span></h6>
-                                  <h6>Mobile : <span class="font_weight_none">0123456789</span></h6>
-                          
-                              </div>
-                              
-                              <div class="span4">
-                                
-                                <h6>Last Name: <span class="font_weight_none">R</span></h6>
-                                <h6>Company : <span class="font_weight_none">test</span></h6>
-                                <h6>Phone : <span class="font_weight_none">0123456789</span></h6>
-                          
-                            </div>
-                      
-                      </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-header" role="tab" id="headingTwo">
-                          <div class="mb-0">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false"
-                              aria-controls="collapseOne" class="collapsed">
-                              <i class="fa fa-angle-down" aria-hidden="true"></i>
-                              <p>Lead Information</p>
-                            </a>
-                          </div>
-                        </div>
-                        <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
-                          aria-expanded="false">
-                          <div class="card-block">
-                            <div class="row-fluid">
-                                                       
-                              <div class="span4">
-                                  
-                                  <h6>First Name : <span class="font_weight_none">xxxx</span></h6>
-                                  <h6>Email : <span class="font_weight_none">xxxx@gmail.com</span></h6>
-                                  <h6>Mobile : <span class="font_weight_none">0123456789</span></h6>
-                          
-                              </div>
-                              
-                              <div class="span4">
-                                
-                                <h6>Last Name: <span class="font_weight_none">R</span></h6>
-                                <h6>Company : <span class="font_weight_none">test</span></h6>
-                                <h6>Phone : <span class="font_weight_none">0123456789</span></h6>
-                          
-                            </div>
-                      
-                      </div>
-                    </div>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-header" role="tab" id="headingThree">
-                          <div class="mb-0">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false"
-                              aria-controls="collapseOne" class="collapsed">
-                              <i class="fa fa-angle-down" aria-hidden="true"></i>
-                              <p>Lead Information</p>
-                            </a>
-                          </div>
-                        </div>
-                        <div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingThree"
-                          aria-expanded="false">
-                          <div class="card-block">
-                            <div class="row-fluid">
-                                                       
-                              <div class="span4">
-                                  
-                                  <h6>First Name : <span class="font_weight_none">xxxx</span></h6>
-                                  <h6>Email : <span class="font_weight_none">xxxx@gmail.com</span></h6>
-                                  <h6>Mobile : <span class="font_weight_none">0123456789</span></h6>
-                          
-                              </div>
-                              
-                              <div class="span4">
-                                
-                                <h6>Last Name: <span class="font_weight_none">R</span></h6>
-                                <h6>Company : <span class="font_weight_none">test</span></h6>
-                                <h6>Phone : <span class="font_weight_none">0123456789</span></h6>
-                          
-                            </div>
-                      
-                      </div></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      <div class="card">
+        <div class="card-header">
+          <a (click)="visibleOne = !visibleOne">
+            <i class="fa fa-angle-down"></i>
+            <p>Lead Information</p>
+          </a>
+        </div>
+        <div class="card-block" *ngIf="!visibleOne">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <strong>First Name :</strong>
+                <span data-toggle="tooltip" title="" data-original-title="xxxx"><span pattern="[a-zA-Z\sàèéìòù]+" name="first_name__c" dropname="text" type="text" inlinetext="xxxx" class=" form-control-static inlineEditEnb">xxxx</span></span>
+              </div>
+              <div class="form-group">
+                <label>Email :</label>
+                <span pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email__c" dropname="email" type="email" inlinetext="xxxx@gmail.com"  class=" form-control-static inlineEditEnb">xxxx@gmail.com</span> 
+              </div>
+              <div class="form-group">
+                <label>Mobile :</label>
+                <span pattern="\d{1,15}" name="mobile__c" dropname="text" type="text" inlinetext="0123456789" class=" form-control-static inlineEditEnb">0123456789</span>
               </div>
             </div>
-          </section>
-            
+            <div class="col-sm-6">
+              <div class="form-group">
+                <strong>Last Name:</strong>
+                <span pattern="[a-zA-Z\sàèéìòù]+" name="last_name__c" dropname="text" type="text" inlinetext="R" class=" form-control-static inlineEditEnb">R</span> 
+              </div>
+              <div class="form-group">
+                <label>Company :</label>
+                <span pattern="[a-zA-Z\sàèéìòù]+" name="company__c" dropname="text" type="text" inlinetext="test" class=" form-control-static inlineEditEnb">test</span> 
+              </div>
+              <div class="form-group">
+                <label>Phone :</label>
+                <span pattern="\d{1,15}" name="phone__c" dropname="text" type="text" inlinetext="0123456789" class=" form-control-static inlineEditEnb">0123456789</span> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <a (click)="visibleTwo = !visibleTwo">
+            <i class="fa fa-angle-down"></i>
+            <p>Lead Information</p>
+          </a>
+        </div>
+        <div class="card-block" *ngIf="!visibleTwo">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <strong>First Name :</strong>
+                <span data-toggle="tooltip" title="" data-original-title="xxxx"><span pattern="[a-zA-Z\sàèéìòù]+" name="first_name__c" dropname="text" type="text" inlinetext="xxxx" class=" form-control-static inlineEditEnb">xxxx</span></span>
+              </div>
+              <div class="form-group">
+                <label>Email :</label>
+                <span pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email__c" dropname="email" type="email" inlinetext="xxxx@gmail.com"  class=" form-control-static inlineEditEnb">xxxx@gmail.com</span> 
+              </div>
+              <div class="form-group">
+                <label>Mobile :</label>
+                <span pattern="\d{1,15}" name="mobile__c" dropname="text" type="text" inlinetext="0123456789" class=" form-control-static inlineEditEnb">0123456789</span>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <strong>Last Name:</strong>
+                <span pattern="[a-zA-Z\sàèéìòù]+" name="last_name__c" dropname="text" type="text" inlinetext="R" class=" form-control-static inlineEditEnb">R</span> 
+              </div>
+              <div class="form-group">
+                <label>Company :</label>
+                <span pattern="[a-zA-Z\sàèéìòù]+" name="company__c" dropname="text" type="text" inlinetext="test" class=" form-control-static inlineEditEnb">test</span> 
+              </div>
+              <div class="form-group">
+                <label>Phone :</label>
+                <span pattern="\d{1,15}" name="phone__c" dropname="text" type="text" inlinetext="0123456789" class=" form-control-static inlineEditEnb">0123456789</span> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <a (click)="visibleThree = !visibleThree">
+            <i class="fa fa-angle-down"></i>
+            <p>Lead Information</p>
+          </a>
+        </div>
+        <div class="card-block" *ngIf="!visibleThree">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <strong>First Name :</strong>
+                <span data-toggle="tooltip" title="" data-original-title="xxxx"><span pattern="[a-zA-Z\sàèéìòù]+" name="first_name__c" dropname="text" type="text" inlinetext="xxxx" class=" form-control-static inlineEditEnb">xxxx</span></span>
+              </div>
+              <div class="form-group">
+                <label>Email :</label>
+                <span pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email__c" dropname="email" type="email" inlinetext="xxxx@gmail.com"  class=" form-control-static inlineEditEnb">xxxx@gmail.com</span> 
+              </div>
+              <div class="form-group">
+                <label>Mobile :</label>
+                <span pattern="\d{1,15}" name="mobile__c" dropname="text" type="text" inlinetext="0123456789" class=" form-control-static inlineEditEnb">0123456789</span>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <strong>Last Name:</strong>
+                <span pattern="[a-zA-Z\sàèéìòù]+" name="last_name__c" dropname="text" type="text" inlinetext="R" class=" form-control-static inlineEditEnb">R</span> 
+              </div>
+              <div class="form-group">
+                <label>Company :</label>
+                <span pattern="[a-zA-Z\sàèéìòù]+" name="company__c" dropname="text" type="text" inlinetext="test" class=" form-control-static inlineEditEnb">test</span> 
+              </div>
+              <div class="form-group">
+                <label>Phone :</label>
+                <span pattern="\d{1,15}" name="phone__c" dropname="text" type="text" inlinetext="0123456789" class=" form-control-static inlineEditEnb">0123456789</span> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  
     <div class="col-md-4">
       <div class="panel-group">
         <div class="panel panel-default ">
@@ -476,11 +356,11 @@
                       </div>
                     </div>
                     <!--<div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-                              <div class="form-group">
-                                <label>Time</label>
-                                <input type="time" name="start_time" id="start_time" class="form-control">
-                              </div>
-                              </div>-->
+                                <div class="form-group">
+                                  <label>Time</label>
+                                  <input type="time" name="start_time" id="start_time" class="form-control">
+                                </div>
+                                </div>-->
                     <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                       <div class="form-group">
                         <label for="usr">End Date</label>
@@ -488,11 +368,11 @@
                       </div>
                     </div>
                     <!--<div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-                              <div class="form-group">
-                                <label>Time</label>
-                                <input type="time" name="end_time" id="end_time" class="form-control">
-                              </div>
-                              </div>-->
+                                <div class="form-group">
+                                  <label>Time</label>
+                                  <input type="time" name="end_time" id="end_time" class="form-control">
+                                </div>
+                                </div>-->
                   </div>
                   <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -663,7 +543,6 @@
         </div>
       </div>
     </div>
-  
-  
-  
   </div>
+</section>
+  

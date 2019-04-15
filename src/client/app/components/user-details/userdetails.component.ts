@@ -9,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['userdetails.component.css']
 })
 export class UserdetailsComponent implements OnInit {
+  visibleOne : Boolean = false;
+  visibleTwo : Boolean = true;
+  visibleThree : Boolean = true;
   constructor() { }
 
   ngOnInit() {
