@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 // import { RegistrationService } from './service/registration.service';
 import { AboutModule } from './about/about.module';
 import { LoginModule } from './login/login.module';
@@ -21,7 +20,9 @@ import { SidebarModule } from './components/sidebar/sidebar.module';
 import { TableListModule } from './components/table-list/table-list.module';
 import { HeaderModule } from './components/header/header.module';
 import { ModalModule } from './components/modal/modal.module'
-
+import { DriverModule } from './components/driver/driver.module';
+import { OpportunityModule } from './components/opportunity/opportunity.module';
+import { CustomerModule } from './components/customer/customer.module';
 // import { MDBBootstrapModule, } from 'angular-bootstrap-md';
  
 @NgModule({
@@ -42,6 +43,9 @@ import { ModalModule } from './components/modal/modal.module'
     TableListModule,
     HeaderModule,
     ModalModule,
+    DriverModule,
+    OpportunityModule,
+    CustomerModule,
     SharedModule.forRoot(),
     /**
      * In order to start the Service Worker in Production located at "/ngsw-worker.js"

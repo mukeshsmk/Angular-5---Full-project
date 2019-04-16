@@ -4,15 +4,14 @@ import { Component, OnInit } from '@angular/core';
  */
 @Component({
   moduleId: module.id,
-  selector: 'sd-userdetails',
-  templateUrl: 'userdetails.component.html',
-  styleUrls: ['userdetails.component.css']
+  selector: 'sd-customer',
+  templateUrl: 'customer.component.html',
+  styleUrls: ['customer.component.css']
 })
-export class UserdetailsComponent implements OnInit {
+export class CustomerComponent implements OnInit {
   visibleOne : Boolean = false;
   visibleTwo : Boolean = true;
-  
-  
+  visibleThree : Boolean = true;
   constructor() { }
 
   ngOnInit() {

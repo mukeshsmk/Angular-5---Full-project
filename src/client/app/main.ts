@@ -3,6 +3,7 @@
  * @see https://angular.io/docs/ts/latest/api/platform-browser-dynamic/index/bootstrap-function.html
  */
 import { enableProdMode } from '@angular/core';
+
 // The browser platform with a compiler
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 // Load i18n providers
