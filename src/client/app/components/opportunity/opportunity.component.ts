@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { OpportunityModule } from './opportunity.module';
 /**
  * This class represents the lazy loaded AboutComponent.
  */
@@ -16,6 +17,8 @@ export class OpportunityComponent implements OnInit {
   visibleFive : Boolean = true;
   visibleSix : Boolean = true;
   visibleSeven : Boolean = true;
+
+  @Input() opportunity:any;
   
   constructor() { }
 

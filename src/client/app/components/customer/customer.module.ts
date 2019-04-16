@@ -8,6 +8,6 @@ import { CustomerRoutingModule } from './customer-routing.module';
   declarations: [CustomerComponent],
   exports: [CustomerComponent]
 })
-export class CustomerModule{ 
+export class DriverModule { 
 
 }

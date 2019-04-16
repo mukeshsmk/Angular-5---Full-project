@@ -21,7 +21,7 @@ import { Component, Input } from "@angular/core";
       <ng-container
         *ngIf="template"
         [ngTemplateOutlet]="template"
-        [ngTemplateOutletContext]="{ person: dataContext }"
+        [ngTemplateOutletContext]="{ data: dataContext }"
       >
       </ng-container>
     </div>

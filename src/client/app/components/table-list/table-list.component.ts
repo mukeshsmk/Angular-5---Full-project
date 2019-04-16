@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { TabsComponent } from "../tab/tabs.component";
 import { HttpClient } from "@angular/common/http";
 import GeneralService from "../../shared/GeneralService";
+import { Template } from "@angular/compiler/src/render3/r3_ast";
 
 @Component({
   moduleId: module.id,
@@ -11,28 +12,63 @@ import GeneralService from "../../shared/GeneralService";
   styleUrls: ["table-list.component.css"]
 })
 export class TableListComponent {
+  p: number = 1;
+
   @ViewChild(TabsComponent) tabsComponent: any;
   @ViewChild("personDetails") persondetailsTemplate: any;
+  @ViewChild("stockDetails") stockdetailsTemplate: any;
+  @ViewChild("driverDetails") driverdetailsTemplate: any;
+  @ViewChild("customerDetails") customerdetailsTemplate: any;
+
   opportunityList: any = [];
   module: string = "opportunities";
+  opportunityListData: any = [];
+  page:number = 1;
+  limit:number = 10;
 
   constructor(private http: HttpClient, public generalService: GeneralService) {
+    let params = {
+      page:this.page,
+      limit:this.limit
+    }
     this.generalService.emitter.subscribe((response: string) => {
       this.module = response;
-      this.loadData(this.module);
+      this.loadData(this.module,(params));
       console.log("Loading data", this.module);
     });
-    this.loadData(this.module);
+    this.loadData(this.module,(params));
   }
 
-  loadData(type: string) {
+  loadData(type: string,params:any) {
+    params = 'page='+params.page+'&limit='+params.limit;
     this.http
-      .get<{ success: object }>("http://10.0.0.2:8080/api/" + type)
+      .get<{ success: object }>("http://10.0.0.9:8080/api/" + type+'?'+params)
       .subscribe(response => {
-        this.opportunityList = response;
+        this.opportunityListData = response;
+        this.opportunityListData.last_page = Array(this.opportunityListData.last_page).fill(1).map((x,i)=>i);
+        this.opportunityList = response.data;
       });
   }
-
+  pageCount(limit:any){
+    this.limit = limit;
+    let params = {
+      page:this.page,
+      limit:this.limit
+    }
+   
+    this.loadData(this.module,params)
+  }
+  pageNumber(page:any){
+    this.page = page;
+    let params = {
+      page:this.page,
+      limit:this.limit
+    }
+    this.loadData(this.module,params)
+  }
+  activateClass(i:any){
+    i.active = !i.current_page;    
+  }
   sort(arg: any) {
     switch (arg) {
       case "name":
@@ -113,10 +149,27 @@ export class TableListComponent {
     }
   }
   viewPersondetails(data: any) {
-    console.log(this.persondetailsTemplate);
+    console.log(data);
+    let template;
+    console.log(this.module);
+    switch(this.module){
+      case 'opportunities': 
+        template = this.persondetailsTemplate;
+      break;
+      case 'vehicle_stocks': 
+        template = this.stockdetailsTemplate;
+      break;
+      case 'drivers': 
+        template = this.driverdetailsTemplate;
+      break;
+      case 'customers': 
+        template = this.customerdetailsTemplate;
+      break;
+    }
+    console.log(template);
     this.tabsComponent.openTab(
       data.name,
-      this.persondetailsTemplate,
+      template,
       data,
       true
     );

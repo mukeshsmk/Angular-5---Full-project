@@ -18,5 +18,5 @@ export class UserdetailsComponent implements OnInit {
   ngOnInit() {
     
   }
-
+ 
 }

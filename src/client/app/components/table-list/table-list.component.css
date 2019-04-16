@@ -110,3 +110,32 @@ input[type=checkbox]{
   margin-right: auto;
   margin-left: auto;
 }
+.page-link {
+  position: relative;
+  display: block;
+  padding: .5rem .75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #0f0f10;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+.page-link :active {
+ color: #fff;
+ background-color: #0f0f10;
+}
+.page-link:hover {
+  color: #fff !important;
+  background-color: #0f0f10;
+}
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #191b1c;
+}
+.w-auto {
+  width: auto!important;
+  margin: 0px 12px;
+  height: 27px;
+  font-size: 12px;
+}

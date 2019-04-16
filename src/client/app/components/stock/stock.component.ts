@@ -4,17 +4,19 @@ import { Component, OnInit ,Input} from '@angular/core';
  */
 @Component({
   moduleId: module.id,
-  selector: 'sd-customer',
-  templateUrl: 'customer.component.html',
-  styleUrls: ['customer.component.css']
+  selector: 'sd-stock',
+  templateUrl: 'stock.component.html',
+  styleUrls: ['stock.component.css']
 })
-export class CustomerComponent implements OnInit {
+export class StockComponent implements OnInit {
   visibleOne : Boolean = false;
   visibleTwo : Boolean = true;
   
-  @Input() customer:any;
-  
-  constructor() { }
+  @Input() stock:any;
+
+  constructor() {
+    console.log(this.stock)
+   }
 
   ngOnInit() {
     
