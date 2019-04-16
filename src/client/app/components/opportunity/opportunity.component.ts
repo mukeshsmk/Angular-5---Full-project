@@ -10,7 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OpportunityComponent implements OnInit {
   visibleOne : Boolean = false;
+  visibleTwo : Boolean = true;
+  visibleThree : Boolean = true;
+  visibleFour : Boolean = true;
+  visibleFive : Boolean = true;
+  visibleSix : Boolean = true;
+  visibleSeven : Boolean = true;
+  
   constructor() { }
+
   ngOnInit() {
     
   }

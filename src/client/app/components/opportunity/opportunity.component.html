@@ -1,1 +1,666 @@
-<p>cxvxfc</p>
+<div class="container-fluid">
+  <div class="col-md-12">
+    <div class="btn-group btn-breadcrumb">
+      <button href="#" color-index="0" class="color-btn btn btn-success">New
+      </button><button href="#" color-index="1" class="color-btn btn showData workingID btn-success" sfid="702"
+        type="workingModal" data-toggle="modal" data-target="#workingModal702">Working</button>
+      <button href="#" color-index="2" class="color-btn btn showData workingID btn-success" type="appointmentModal"
+        data-toggle="modal" data-target="#appointmentModal702">Appointment</button>
+      <button href="#" color-index="3" class="color-btn btn showDataNon workingID btn-success" type="quotationModal"
+        data-toggle="modal" data-target="#quotationModal702">Quotation</button>
+      <button href="#" color-index="4" class="color-btn btn showData workingID btn-success" type="negotiationModal"
+        data-toggle="modal" data-target="#negotiationModal702">Negotiation</button>
+      <button href="#" color-index="5" class="color-btn btn showDataNon saveAllModal btn-info" typem="Finalize"
+        sfid="702">Finalize</button>
+      <button href="#" color-index="6" class="color-btn btn showData workingID btn-info" type="closedLostModal"
+        data-toggle="modal" data-target="#closedLostModal702">Closed Lost</button>
+      <button href="#" color-index="6" class="color-btn btn showData workingID btn-info" type="closedWonModal"
+        data-toggle="modal" data-target="#closedWonModal702">Closed Won</button>
+      <button href="#" color-index="7" class="color-btn btn showDataNon workingID btn-info" type="duplicateModal"
+        data-toggle="modal" data-target="#duplicateModal702">Duplicate</button>
+      <button href="#" color-index="8" class="color-btn btn showDataNon workingID btn-info" type="convertedModal"
+        data-toggle="modal" data-target="#convertedModal702">Converted</button>
+    </div>
+    <br><br>
+
+  </div>
+</div>
+
+<section>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <a (click)="visibleOne = !visibleOne">
+            <i class="fa fa-angle-down"></i>
+            <p>Lead Information</p>
+          </a>
+        </div>
+        <div class="card-block" *ngIf="!visibleOne">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <strong>First Name :</strong>
+                <span data-toggle="tooltip" title="" data-original-title="xxxx"><span pattern="[a-zA-Z\sàèéìòù]+" name="first_name__c" dropname="text" type="text" inlinetext="xxxx" class=" form-control-static inlineEditEnb">xxxx</span></span>
+              </div>
+              <div class="form-group">
+                <label>Email :</label>
+                <span pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email__c" dropname="email" type="email" inlinetext="xxxx@gmail.com"  class=" form-control-static inlineEditEnb">xxxx@gmail.com</span> 
+              </div>
+              <div class="form-group">
+                <label>Mobile :</label>
+                <span pattern="\d{1,15}" name="mobile__c" dropname="text" type="text" inlinetext="0123456789" class=" form-control-static inlineEditEnb">0123456789</span>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <strong>Last Name:</strong>
+                <span pattern="[a-zA-Z\sàèéìòù]+" name="last_name__c" dropname="text" type="text" inlinetext="R" class=" form-control-static inlineEditEnb">R</span> 
+              </div>
+              <div class="form-group">
+                <label>Company :</label>
+                <span pattern="[a-zA-Z\sàèéìòù]+" name="company__c" dropname="text" type="text" inlinetext="test" class=" form-control-static inlineEditEnb">test</span> 
+              </div>
+              <div class="form-group">
+                <label>Phone :</label>
+                <span pattern="\d{1,15}" name="phone__c" dropname="text" type="text" inlinetext="0123456789" class=" form-control-static inlineEditEnb">0123456789</span> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <a (click)="visibleTwo = !visibleTwo">
+            <i class="fa fa-angle-down"></i>
+            <p>Lead Details</p>
+          </a>
+        </div>
+        <div class="card-block" *ngIf="!visibleTwo">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <strong>Request Type :</strong>
+                <span name="request_type__c" dropname="Request_Type__c" type="Request_Type__c" inlinetext="Digital Brochure Request" class=" form-control-static inlineEditSelect">Digital Brochure Request</span>				
+              </div>
+              <div class="form-group">
+                <label>Lead type  :</label>
+                <span pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email__c" dropname="email" type="email" inlinetext="xxxx@gmail.com"  class=" form-control-static inlineEditEnb">Gumtree</span> 
+              </div>
+              <div class="form-group">
+                <label>Lead Source :</label>
+                <span name="lead_source__c" dropname="lead_source__c" type="lead_source__c" inlinetext="" class=" form-control-static inlineEditSelect"></span>							   
+              </div>
+               <div class="form-group">
+								  <label>Introduction to Finance Manager :</label>
+								  									<!-- <input type="checkbox" name="edit_financemanager" id="edit_financemanager" value="1" disabled=""> -->
+								  							   </div>
+							
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <strong>Selling Dealer:</strong>
+                <span name="selling_dealer__c" dropname="text" type="text" inlinetext="ABC Berkeley Toyota" class=" form-control-static noEdit">ABC Berkeley Toyota</span>							   
+              </div>
+              <div class="form-group">
+                <label>Stock No : </label>
+                <span name="stock_number__c" dropname="text" type="text" inlinetext="" class=" form-control-static inlineEditEnb"></span>							  
+               </div>
+              <div class="form-group">
+                <label>Lead Status  :</label>
+                <span name="lead_status__c" dropname="lead_status__c" type="lead_status__c" inlinetext="" class=" form-control-static inlineEditSelect"></span>							   
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <a (click)="visibleThree = !visibleThree">
+            <i class="fa fa-angle-down"></i>
+            <p>Address Details</p>
+          </a>
+        </div>
+        <div class="card-block" *ngIf="!visibleThree">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Street :</label>
+                <span name="street__c" dropname="text" type="text" inlinetext="" class=" form-control-static inlineEditEnb"></span>								
+              </div>
+              <div class="form-group">
+                <label>City :</label>
+                <span name="city__c" dropname="text" type="text" inlinetext="" class=" form-control-static inlineEditEnb"></span>								
+              </div>
+              <div class="form-group">
+                <label>State/Province :</label>
+                <span name="state_province__c" dropname="text" type="text" inlinetext="" class=" form-control-static inlineEditEnb"></span>								
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>State/Province :</label>
+                <span name="state_province__c" dropname="text" type="text" inlinetext="" class=" form-control-static inlineEditEnb"></span>							
+              </div>
+              <div class="form-group">
+                <label>Zip/PostalCode :</label>
+                <span name="zip_postal_code__c" dropname="text" type="text" inlinetext="560099" class=" form-control-static inlineEditEnb">560099</span>								
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <div class="card-header">
+          <a (click)="visibleFour = !visibleFour">
+            <i class="fa fa-angle-down"></i>
+            <p>Customer Insight</p>
+          </a>
+        </div>
+        <div class="card-block" *ngIf="!visibleFour">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Previous Customer Name :</label>
+                <span name="previous_customer_name__c" dropname="text" type="text" inlinetext="0037F00001MT9zFQAT" class=" form-control-static inlineEditEnb">0037F00001MT9zFQAT</span>								</div>
+            </div>
+            <div class="form-group">
+              <label> Customer Data Completeness Score :</label>
+               <span name="customer_data_completeness_score__c" dropname="text" type="text" inlinetext="70" class=" form-control-static inlineEditEnb">70</span>							
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Activity Score :</label>
+                 <span name="activity_score__c" dropname="text" type="text" inlinetext="2" class=" form-control-static inlineEditEnb">2</span>							   
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="card">
+        <div class="card-header">
+          <a (click)="visibleSix = !visibleSix">
+            <i class="fa fa-angle-down"></i>
+            <p> Addtional Information</p>
+          </a>
+        </div>
+        <div class="card-block" *ngIf="!visibleSix">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+								<label>Primary :</label>
+                <span name="primary__c" dropname="primary__c" type="primary__c" inlinetext="" class=" form-control-static inlineEditSelect"></span>							
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="card">
+        <div class="card-header">
+          <a (click)="visibleFive = !visibleFive">
+            <i class="fa fa-angle-down"></i>
+            <p>Customer Insight</p>
+          </a>
+        </div>
+        <div class="card-block" *ngIf="!visibleFive">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Previous Customer Name :</label>
+                <span name="previous_customer_name__c" dropname="text" type="text" inlinetext="0037F00001MT9zFQAT" class=" form-control-static inlineEditEnb">0037F00001MT9zFQAT</span>								</div>
+           
+            <div class="form-group">
+              <label> Customer Data Completeness Score :</label>
+               <span name="customer_data_completeness_score__c" dropname="text" type="text" inlinetext="70" class=" form-control-static inlineEditEnb">70</span>							   
+              </div>
+    
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Activity Score :</label>
+                 <span name="activity_score__c" dropname="text" type="text" inlinetext="2" class=" form-control-static inlineEditEnb">2</span>							   
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="card">
+        <div class="card-header">
+          <a (click)="visibleSeven = !visibleSeven">
+            <i class="fa fa-angle-down"></i>
+            <p>System Information</p>
+          </a>
+        </div>
+        <div class="card-block" *ngIf="!visibleSeven">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Created by :</label>
+                <span class="form-control-static ">0057F000004MCYXQA4</span>
+               </div>
+               <div class="form-group">
+                <label>Last modified by :</label>
+                <span class="form-control-static ">0057F0000031bCmQAI</span>
+               </div>
+              
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Created Date :</label>
+                <span class="form-control-static ">2019-03-29 02:17:19</span>
+               </div>
+               <div class="form-group">
+                <label>Last modified date :</label>
+                <span class="form-control-static ">2019-04-12 07:14:08</span>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+    <div class="col-md-4">
+      <div class="panel-group">
+        <div class="panel panel-default ">
+          <div class="container">
+            <ul class="nav nav-tabs nav-tabse">
+              <li class="active"><a data-toggle="tab" href="#task702" aria-expanded="true">Task</a></li>
+              <li class=""><a data-toggle="tab" href="#menu1702" aria-expanded="false">Call Log</a></li>
+              <li class=""><a data-toggle="tab" href="#menu2702" aria-expanded="false">Event</a></li>
+              <li class=""><a data-toggle="tab" href="#menu3702" aria-expanded="false">Email</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-group">
+        <div class="panel panel-default ">
+          <div class="tab-content">
+  
+            <div id="task702" class="tab-pane fade active in">
+              <div class="panel panel-default panel-body" style="border-bottom:1px solid #ffc43a;">
+                <h4 class="panel-title pull-left" style="padding-top: 7.5px;"><i class="fa fa-tasks"
+                    aria-hidden="true"></i>&nbsp; Task</h4>
+                <div class="btn-group pull-right">
+                  <!--<a href="#" class="btn btn-default btn-sm" data-toggle="modal" data-target="#newTaskModal">New Task</a>-->
+                </div>
+              </div>
+  
+              <form class="demo-form-task" method="post" id="leadTaskForm" name="leadTaskForm" data-parsley-validate=""
+                novalidate="">
+                <div class="modal-body" style="padding: 5px; max-height:300px; overflow:auto;;">
+                  <div style="margin-left:20px; margin-right:15px;">
+                    <div id="inserttasksuccess" style="display:none;">
+                      <div class="alert alert-success alert-dismissible fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                        <strong>Success!</strong> New Task inserted successfully.
+                      </div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-md-12" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label for="usr">Name</label>
+                          <input type="text" name="name" id="name" value="xxxx" readonly="" class="form-control">
+  
+                        </div>
+                      </div>
+                    </div><br>
+                    <div class="row">
+                      <div class="col-md-6" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label for="usr">subject</label>
+                          <input type="text" required="" name="subject" id="subject" class="form-control">
+  
+                        </div>
+                      </div>
+                      <div class="col-md-6" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label for="usr">Assigned To</label>
+                          <input type="text" name="assigned_to" id="assigned_to" value="Manikandan Gunasekar" readonly=""
+                            class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <!--<label>Related To</label>-->
+                          <input type="hidden" name="assigned_to_sfid" id="assigned_to_sfid" value="a0E7F00000K4EX2UAN"
+                            class="form-control">
+  
+                          <!--<label>Related To</label>-->
+                          <input type="hidden" name="type_c" id="type_c" value="Task" class="form-control">
+                          <!--<label>Related To</label>-->
+                          <input type="hidden" name="opportunity__c" id="opportunity__c" value="0067F00000MxHJYQA3"
+                            class="form-control">
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-lg-8" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label>Due Date</label>
+                          <input type="date" required="" name="due_date" id="due_date" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-8" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label>Status</label>
+                          <select required="" class="form-control" id="status">
+                            <option value="">-- None--</option>
+                            <option value="Starred">Starred </option>
+                            <option value="Not starred">Not starred</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer" id="footer_close">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <input type="submit" class="btn btn-default btn-info" id="submit" value="Save">
+                </div>
+              </form>
+            </div>
+            <div id="menu1702" class="tab-pane fade">
+              <div class="panel panel-default panel-body" style="border-bottom:1px solid #ffc43a;">
+                <h4 class="panel-title pull-left" style="padding-top: 7.5px;"><i class="fa fa-phone-square"
+                    aria-hidden="true"></i>&nbsp; Call Log</h4>
+                <div class="btn-group pull-right">
+                  <!--<a href="#" class="btn btn-default btn-sm" data-toggle="modal" data-target="#newCallLogModal">New Call Log</a>-->
+                </div>
+              </div>
+              <form class="demo-form-call-log" method="post" id="leadCallLogForm" name="leadCallLogForm"
+                data-parsley-validate="" novalidate="">
+                <div class="panel-body" id="success_body" style="height:auto;">
+                  <div class="row">
+                    <div id="insertcalllogsuccess" style="display:none;">
+                      <div class="alert alert-success alert-dismissible fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                        <strong>Success!</strong> New Call Log inserted successfully.
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label for="usr">Name</label>
+                        <input type="text" name="callname" id="name" value="xxxx" readonly="" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label for="usr">Subject</label>
+                        <input type="text" name="callsubject" id="subject" class="form-control">
+                      </div>
+                    </div>
+                  </div><br>
+                  <div class="row">
+                    <div class="col-md-12" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label>Comments</label>
+                        <textarea class="form-control" rows="3" name="callcomment" id="comment"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                    <div class="form-group">
+                      <!--<label>Related To</label>-->
+                      <input type="hidden" name="assigned_to_sfid" id="assigned_to_sfid" value="a0E7F00000K4EX2UAN"
+                        class="form-control">
+  
+                      <!--<label>Related To</label>-->
+                      <input type="hidden" name="type_c" id="type_c" value="Log a Call" class="form-control">
+                      <!--<label>Related To</label>-->
+                      <input type="hidden" name="opportunity__c" id="opportunity__c" value="0067F00000MxHJYQA3"
+                        class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer" id="footer_close">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <input type="submit" class="btn btn-default btn-info" id="submit" value="Save">
+                </div>
+              </form>
+  
+  
+            </div>
+            <div id="menu2702" class="tab-pane fade">
+              <div class="panel panel-default panel-body" style="border-bottom:1px solid #ffc43a;">
+                <h4 class="panel-title pull-left" style="padding-top: 7.5px;"><i class="fa fa-calendar-o"
+                    aria-hidden="true"></i>&nbsp; Event</h4>
+                <div class="btn-group pull-right">
+                  <!--<a href="#" class="btn btn-default btn-sm" data-toggle="modal" data-target="#newEventModal">New Event</a>-->
+                </div>
+              </div>
+              <form class="demo-form-event" method="post" id="leadEventForm" name="leadEventForm" data-parsley-validate=""
+                novalidate="">
+                <div class="panel-body" id="success_body" style="height:auto;">
+                  <div id="inserteventsuccess" style="display:none;">
+                    <div class="alert alert-success alert-dismissible fade in">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                      <strong>Success!</strong> New Event inserted successfully.
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label for="usr">Name</label>
+                        <input type="text" name="name" id="name" value="xxxx" readonly="" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label for="usr">Subject</label>
+                        <input type="text" name="subject" id="subject" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label for="usr">Start Date</label>
+                        <input type="date" name="start_date" id="start_date" class="form-control">
+                      </div>
+                    </div>
+                    <!--<div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                                <div class="form-group">
+                                  <label>Time</label>
+                                  <input type="time" name="start_time" id="start_time" class="form-control">
+                                </div>
+                                </div>-->
+                    <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label for="usr">End Date</label>
+                        <input type="date" name="end_date" id="end_date" class="form-control">
+                      </div>
+                    </div>
+                    <!--<div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                                <div class="form-group">
+                                  <label>Time</label>
+                                  <input type="time" name="end_time" id="end_time" class="form-control">
+                                </div>
+                                </div>-->
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <!--<label>Related To</label>-->
+                        <input type="hidden" name="related_to" id="related_to" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label for="usr">Assigned To</label>
+                        <input type="text" name="assigned_to" id="assigned_to" value="Manikandan Gunasekar" readonly=""
+                          class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" name="location" id="location" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12" style="padding-bottom: 1px;">
+                    <div class="form-group">
+                      <!--<label>Related To</label>-->
+                      <input type="hidden" name="assigned_to_sfid" id="assigned_to_sfid" value="a0E7F00000K4EX2UAN"
+                        class="form-control">
+                      <!--<label>Related To</label>-->
+                      <input type="hidden" name="type_c" id="type_c" value="Event" class="form-control">
+                      <!--<label>Related To</label>-->
+                      <input type="hidden" name="opportunity__c" id="opportunity__c" value="0067F00000MxHJYQA3"
+                        class="form-control">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label for="usr">All-Day Event</label><br>
+                        <input type="checkbox" name="all_day_event" id="all_day_event" value="All Day Event"
+                          data-parsley-multiple="all_day_event">
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer" id="footer_close">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <input type="submit" class="btn btn-default btn-info" id="submit" value="Save">
+                </div>
+              </form>
+  
+            </div>
+            <div id="menu3702" class="tab-pane fade">
+              <div class="panel panel-default panel-body" style="border-bottom:1px solid #ffc43a;">
+                <h4 class="panel-title pull-left" style="padding-top: 7.5px;"><i class="fa fa-envelope-o"
+                    aria-hidden="true"></i>&nbsp;Email</h4>
+                <div class="btn-group pull-right">
+                  <!--<a href="#" class="btn btn-default btn-sm" data-toggle="modal" data-target="#newEmailModal">New Email</a>-->
+                </div>
+              </div>
+              <form class="demo-form-email" method="post" id="leadEmailForm" name="leadEmailForm" data-parsley-validate=""
+                novalidate="">
+                <div class="panel-body" id="success_body" style="height:auto;">
+                  <div id="insertemailsuccess" style="display:none;">
+                    <div class="alert alert-success alert-dismissible fade in">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                      <strong>Success!</strong> Email inserted successfully.
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label for="usr">*From</label>
+                        <input type="email" name="emailfrom" id="emailfrom" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label>To</label>
+                        <input type="email" name="emailto" id="emailto" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label for="usr">Bcc</label>
+                        <input type="email" name="emailbcc" id="emailbcc" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <br>
+                        <div id="summernote">
+                          <p></p>
+                        </div>
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label>Subject</label>
+                        <textarea name="emailsubject" id="emailsubject" rows="3" class="form-control"
+                          placeholder="Enter Subject"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                    <div class="form-group">
+                      <!--<label>Related To</label>-->
+                      <input type="hidden" name="assigned_to_sfid" id="assigned_to_sfid" value="a0E7F00000K4EX2UAN"
+                        class="form-control">
+                      <!--<label>Related To</label>-->
+                      <input type="hidden" name="type_c" id="type_c" value="Email" class="form-control">
+                      <!--<label>Related To</label>-->
+                      <input type="hidden" name="opportunity__c" id="opportunity__c" value="0067F00000MxHJYQA3"
+                        class="form-control">
+                    </div>
+                  </div>
+                  <br>
+                  <div id="summernote">
+                    <p></p>
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                </div>
+                <div class="modal-footer" id="footer_close">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <input type="submit" class="btn btn-default btn-info" id="submit" value="Save">
+                </div>
+              </form>
+  
+  
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading" style="background-color: #ffffff;">Notifications</div>
+          <div class="panel-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  

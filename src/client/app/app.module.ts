@@ -1,35 +1,34 @@
-import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { APP_BASE_HREF } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { AppComponent } from './app.component';
-import { ReactiveFormsModule,FormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
+import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { APP_BASE_HREF } from "@angular/common";
+import { HttpClientModule } from "@angular/common/http";
+import { ServiceWorkerModule } from "@angular/service-worker";
+import { AppComponent } from "./app.component";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { AppRoutingModule } from "./app-routing.module";
 
 // import { RegistrationService } from './service/registration.service';
-import { AboutModule } from './about/about.module';
-import { LoginModule } from './login/login.module';
-import { SignupModule } from './signup/signup.module';
-import { ForgetModule } from './forget/forget.module';
-import { HomeModule } from './home/home.module';
-import { SharedModule } from './shared/shared.module';
-import { CoreModule } from './core/core.module';
-import { ResetPasswordModule } from './resetpassword/resetpassword.module';
-import { SidebarModule } from './components/sidebar/sidebar.module';
-import { TableListModule } from './components/table-list/table-list.module';
-import { HeaderModule } from './components/header/header.module';
-import { ModalModule } from './components/modal/modal.module'
-import { DriverModule } from './components/driver/driver.module';
-import { OpportunityModule } from './components/opportunity/opportunity.module';
-import { CustomerModule } from './components/customer/customer.module';
+import { AboutModule } from "./about/about.module";
+import { LoginModule } from "./login/login.module";
+import { SignupModule } from "./signup/signup.module";
+import { ForgetModule } from "./forget/forget.module";
+import { HomeModule } from "./home/home.module";
+import { SharedModule } from "./shared/shared.module";
+import { CoreModule } from "./core/core.module";
+import { ResetPasswordModule } from "./resetpassword/resetpassword.module";
+import { SidebarModule } from "./components/sidebar/sidebar.module";
+import { TableListModule } from "./components/table-list/table-list.module";
+import { HeaderModule } from "./components/header/header.module";
+import { ModalModule } from "./components/modal/modal.module";
 // import { MDBBootstrapModule, } from 'angular-bootstrap-md';
- 
+
+import GeneralService from "./shared/GeneralService";
+
 @NgModule({
   imports: [
     BrowserModule,
     CoreModule,
-     HttpClientModule,
+    HttpClientModule,
     AppRoutingModule,
     AboutModule,
     HomeModule,
@@ -43,10 +42,7 @@ import { CustomerModule } from './components/customer/customer.module';
     TableListModule,
     HeaderModule,
     ModalModule,
-    DriverModule,
-    OpportunityModule,
-    CustomerModule,
-    SharedModule.forRoot(),
+    SharedModule.forRoot()
     /**
      * In order to start the Service Worker in Production located at "/ngsw-worker.js"
      * uncomment this line. More about Service Workers here
@@ -55,12 +51,14 @@ import { CustomerModule } from './components/customer/customer.module';
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: String('<%= BUILD_TYPE %>') === 'prod' })
   ],
   declarations: [AppComponent],
-  schemas:[NO_ERRORS_SCHEMA],
-  providers: [{
-    provide: APP_BASE_HREF,
-    useValue: '<%= APP_BASE %>'
-  }],
+  schemas: [NO_ERRORS_SCHEMA],
+  providers: [
+    {
+      provide: APP_BASE_HREF,
+      useValue: "<%= APP_BASE %>"
+    },
+    GeneralService
+  ],
   bootstrap: [AppComponent]
-
 })
-export class AppModule { }
+export class AppModule {}

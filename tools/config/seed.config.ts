@@ -1,15 +1,15 @@
-import { join } from 'path';
-import * as slash from 'slash';
-import { argv } from 'yargs';
+import { join } from "path";
+import * as slash from "slash";
+import { argv } from "yargs";
 
-const magicImporter = require('node-sass-magic-importer');
+const magicImporter = require("node-sass-magic-importer");
 
 import {
   BuildType,
   ExtendPackages,
   InjectableDependency,
   SourceMapExplorerOutputFormat
-} from './seed.config.interfaces';
+} from "./seed.config.interfaces";
 
 /************************* DO NOT CHANGE ************************
  *
@@ -32,8 +32,8 @@ import {
  * @type {Environments}
  */
 export const BUILD_TYPES: BuildType = {
-  DEVELOPMENT: 'dev',
-  PRODUCTION: 'prod'
+  DEVELOPMENT: "dev",
+  PRODUCTION: "prod"
 };
 
 /**
@@ -41,9 +41,9 @@ export const BUILD_TYPES: BuildType = {
  * @type {SourceMapExplorerOutputFormats}
  */
 export const SME_OUTPUT_FORMATS: SourceMapExplorerOutputFormat = {
-  HTML: 'html',
-  JSON: 'json',
-  TSV: 'tsv'
+  HTML: "html",
+  JSON: "json",
+  TSV: "tsv"
 };
 
 /**
@@ -64,12 +64,12 @@ export class SeedConfig {
    * The default port is `5555`, which can be overriden by the  `--port` flag when running `npm start`.
    * @type {number}
    */
-  PORT = argv['port'] || 5555;
+  PORT = argv["port"] || 5555;
 
   /**
    * The root folder of the project (up two levels from the current directory).
    */
-  PROJECT_ROOT = join(__dirname, '../..');
+  PROJECT_ROOT = join(__dirname, "../..");
 
   /**
    * The current build type.
@@ -81,7 +81,7 @@ export class SeedConfig {
    * The flag to determine preserving source maps on build or not.
    * The default value is `false`, which can be overriden by the `--preserve-source-maps` flag when running `npm start`.
    */
-  PRESERVE_SOURCE_MAPS = argv['preserve-source-maps'] || false;
+  PRESERVE_SOURCE_MAPS = argv["preserve-source-maps"] || false;
 
   /**
    * The current source-map-explorer output format.
@@ -92,35 +92,35 @@ export class SeedConfig {
   /**
    * The current source-map-explorer output folder.
    */
-  SME_DIR = 'sme';
+  SME_DIR = "sme";
 
   /**
    * The flag for the debug option of the application.
    * The default value is `false`, which can be overriden by the `--debug` flag when running `npm start`.
    * @type {boolean}
    */
-  DEBUG = argv['debug'] || false;
+  DEBUG = argv["debug"] || false;
 
   /**
    * The port where the documentation application will run.
    * The default docs port is `4003`, which can be overriden by the `--docs-port` flag when running `npm start`.
    * @type {number}
    */
-  DOCS_PORT = argv['docs-port'] || 4003;
+  DOCS_PORT = argv["docs-port"] || 4003;
 
   /**
    * The port where the unit test coverage report application will run.
    * The default coverage port is `4004`, which can by overriden by the `--coverage-port` flag when running `npm start`.
    * @type {number}
    */
-  COVERAGE_PORT = argv['coverage-port'] || 4004;
+  COVERAGE_PORT = argv["coverage-port"] || 4004;
 
   /**
-  * The path to the coverage output
-  * NB: this must match what is configured in ./karma.conf.js
-  */
-  COVERAGE_DIR = 'coverage_js';
-  COVERAGE_TS_DIR = 'coverage';
+   * The path to the coverage output
+   * NB: this must match what is configured in ./karma.conf.js
+   */
+  COVERAGE_DIR = "coverage_js";
+  COVERAGE_TS_DIR = "coverage";
 
   /**
    * The path for the base of the application at runtime.
@@ -128,13 +128,13 @@ export class SeedConfig {
    * which can be overriden by the `--base` flag when running `npm start`.
    * @type {string}
    */
-  APP_BASE = argv['base'] || '/';
+  APP_BASE = argv["base"] || "/";
 
   /**
    * The base path of node modules.
    * @type {string}
    */
-  NPM_BASE = slash(join('.', this.APP_BASE, 'node_modules/'));
+  NPM_BASE = slash(join(".", this.APP_BASE, "node_modules/"));
 
   /**
    * The build interval which will force the TypeScript compiler to perform a typed compile run.
@@ -152,14 +152,14 @@ export class SeedConfig {
    * The default directory is `app`.
    * @type {string}
    */
-  BOOTSTRAP_DIR = argv['app'] || 'app';
+  BOOTSTRAP_DIR = argv["app"] || "app";
 
   /**
    * The directory where the client files are located.
    * The default directory is `client`.
    * @type {string}
    */
-  APP_CLIENT = argv['client'] || 'client';
+  APP_CLIENT = argv["client"] || "client";
 
   /**
    * The bootstrap file to be used to boot the application.
@@ -167,24 +167,25 @@ export class SeedConfig {
    */
   BOOTSTRAP_MODULE = `${this.BOOTSTRAP_DIR}/main`;
 
-  BOOTSTRAP_PROD_MODULE = `${this.BOOTSTRAP_DIR}/` + 'main';
+  BOOTSTRAP_PROD_MODULE = `${this.BOOTSTRAP_DIR}/` + "main";
 
-  NG_FACTORY_FILE = 'main-prod';
+  NG_FACTORY_FILE = "main-prod";
 
-  BOOTSTRAP_FACTORY_PROD_MODULE = `${this.BOOTSTRAP_DIR}/${this
-    .NG_FACTORY_FILE}`;
+  BOOTSTRAP_FACTORY_PROD_MODULE = `${this.BOOTSTRAP_DIR}/${
+    this.NG_FACTORY_FILE
+  }`;
   /**
    * The default title of the application as used in the `<title>` tag of the
    * `index.html`.
    * @type {string}
    */
-  APP_TITLE = 'Welcome to angular-seed!';
+  APP_TITLE = "QRS App Retail";
 
   /**
    * Tracking ID.
    * @type {string}
    */
-  GOOGLE_ANALYTICS_ID = 'UA-XXXXXXXX-X';
+  GOOGLE_ANALYTICS_ID = "UA-XXXXXXXX-X";
 
   /**
    * The base folder of the applications source files.
@@ -196,7 +197,7 @@ export class SeedConfig {
    * The name of the TypeScript project file
    * @type {string}
    */
-  APP_PROJECTNAME = 'tsconfig.json';
+  APP_PROJECTNAME = "tsconfig.json";
 
   /**
    * The folder of the applications asset files.
@@ -213,7 +214,7 @@ export class SeedConfig {
   /**
    * The folder of the e2e specs and framework
    */
-  E2E_SRC = 'src/e2e';
+  E2E_SRC = "src/e2e";
 
   /**
    * The folder of the applications scss files.
@@ -225,12 +226,12 @@ export class SeedConfig {
    * The directory of the applications tools
    * @type {string}
    */
-  TOOLS_DIR = 'tools';
+  TOOLS_DIR = "tools";
 
   /**
    * The directory of the tasks provided by the seed.
    */
-  SEED_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'seed');
+  SEED_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, "tasks", "seed");
 
   /**
    * Seed tasks which are composition of other tasks.
@@ -238,8 +239,8 @@ export class SeedConfig {
   SEED_COMPOSITE_TASKS = join(
     process.cwd(),
     this.TOOLS_DIR,
-    'config',
-    'seed.tasks.json'
+    "config",
+    "seed.tasks.json"
   );
 
   /**
@@ -250,21 +251,21 @@ export class SeedConfig {
   PROJECT_COMPOSITE_TASKS = join(
     process.cwd(),
     this.TOOLS_DIR,
-    'config',
-    'project.tasks.json'
+    "config",
+    "project.tasks.json"
   );
 
   /**
    * The destination folder for the generated documentation.
    * @type {string}
    */
-  DOCS_DEST = 'docs';
+  DOCS_DEST = "docs";
 
   /**
    * The base folder for built files.
    * @type {string}
    */
-  DIST_DIR = 'dist';
+  DIST_DIR = "dist";
 
   /**
    * The folder for built files in the `dev` environment.
@@ -300,9 +301,10 @@ export class SeedConfig {
    * The folder for the built files, corresponding to the current environment.
    * @type {string}
    */
-  APP_DEST = this.BUILD_TYPE === BUILD_TYPES.DEVELOPMENT
-    ? this.DEV_DEST
-    : this.PROD_DEST;
+  APP_DEST =
+    this.BUILD_TYPE === BUILD_TYPES.DEVELOPMENT
+      ? this.DEV_DEST
+      : this.PROD_DEST;
 
   /**
    * The folder for the built CSS files.
@@ -325,41 +327,40 @@ export class SeedConfig {
    * The name of the bundle file to includes all CSS files.
    * @type {string}
    */
-  CSS_BUNDLE_NAME = 'main';
+  CSS_BUNDLE_NAME = "main";
 
   /**
    * The name of the bundle file to include all JavaScript shims.
    * @type {string}
    */
-  JS_PROD_SHIMS_BUNDLE = 'shims.js';
+  JS_PROD_SHIMS_BUNDLE = "shims.js";
 
   /**
    * The name of the bundle file to include all JavaScript application files.
    * @type {string}
    */
-  JS_PROD_APP_BUNDLE = 'app.js';
+  JS_PROD_APP_BUNDLE = "app.js";
 
   /**
    * The required NPM version to run the application.
    * @type {string}
    */
-  VERSION_NPM = '2.14.2';
+  VERSION_NPM = "2.14.2";
 
   /**
    * The required NodeJS version to run the application.
    * @type {string}
    */
-  VERSION_NODE = '4.0.0';
+  VERSION_NODE = "4.0.0";
 
   /**
    * Enable SCSS stylesheet compilation.
    * Set ENABLE_SCSS environment variable to 'true' or '1'
    * @type {boolean}
    */
-  ENABLE_SCSS = ['true', '1'].indexOf(
-    `${process.env.ENABLE_SCSS}`.toLowerCase()
-  ) !== -1 ||
-    argv['scss'] ||
+  ENABLE_SCSS =
+    ["true", "1"].indexOf(`${process.env.ENABLE_SCSS}`.toLowerCase()) !== -1 ||
+    argv["scss"] ||
     false;
 
   /**
@@ -408,7 +409,7 @@ export class SeedConfig {
      * @memberOf _.templateSettings
      * @type {string}
      */
-    variable: ''
+    variable: ""
   };
 
   /**
@@ -416,19 +417,19 @@ export class SeedConfig {
    * @type {InjectableDependency[]}
    */
   NPM_DEPENDENCIES: InjectableDependency[] = [
-    { src: 'core-js/client/shim.min.js', inject: 'shims' },
-    { src: 'zone.js/dist/zone.js', inject: 'libs' },
+    { src: "core-js/client/shim.min.js", inject: "shims" },
+    { src: "zone.js/dist/zone.js", inject: "libs" },
     {
-      src: 'zone.js/dist/long-stack-trace-zone.js',
-      inject: 'libs',
+      src: "zone.js/dist/long-stack-trace-zone.js",
+      inject: "libs",
       buildType: BUILD_TYPES.DEVELOPMENT
     },
-    { src: 'intl/dist/Intl.min.js', inject: 'shims' },
+    { src: "intl/dist/Intl.min.js", inject: "shims" },
     {
-      src: 'systemjs/dist/system.src.js',
-      inject: 'shims',
+      src: "systemjs/dist/system.src.js",
+      inject: "shims",
       buildType: BUILD_TYPES.DEVELOPMENT
-    },
+    }
   ];
 
   /**
@@ -441,19 +442,19 @@ export class SeedConfig {
    * The list of editor temporary files to ignore in watcher and asset builder.
    * @type {string[]}
    */
-  TEMP_FILES: string[] = ['**/*___jb_tmp___', '**/*~'];
+  TEMP_FILES: string[] = ["**/*___jb_tmp___", "**/*~"];
 
   /**
    * List of directories to include in commonjs
    * @type {string[]}
    */
-  ROLLUP_INCLUDE_DIR: string[] = ['node_modules/**'];
+  ROLLUP_INCLUDE_DIR: string[] = ["node_modules/**"];
 
   /**
-  * List of named export Object key value pairs
-  * key: dependencie file
-  * value: exported Objects
-  */
+   * List of named export Object key value pairs
+   * key: dependencie file
+   * value: exported Objects
+   */
   ROLLUP_NAMED_EXPORTS: any[] = [];
 
   /**
@@ -474,57 +475,55 @@ export class SeedConfig {
    */
   SYSTEM_CONFIG_DEV: any = {
     bundles: {
-      'node_modules/.tmp/Rx.min.js': [
-        'rxjs',
-        'rxjs/*'
-      ]
+      "node_modules/.tmp/Rx.min.js": ["rxjs", "rxjs/*"]
     },
     paths: {
       [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
-      '@angular/animations':
-        'node_modules/@angular/animations/bundles/animations.umd.js',
-      '@angular/platform-browser/animations':
-        'node_modules/@angular/platform-browser/bundles/platform-browser-animations.umd.js',
-      '@angular/common': 'node_modules/@angular/common/bundles/common.umd.js',
-      '@angular/common/http': 'node_modules/@angular/common/bundles/common-http.umd.js',
-      '@angular/compiler':
-        'node_modules/@angular/compiler/bundles/compiler.umd.js',
-      '@angular/core': 'node_modules/@angular/core/bundles/core.umd.js',
-      '@angular/forms': 'node_modules/@angular/forms/bundles/forms.umd.js',
-      '@angular/platform-browser':
-        'node_modules/@angular/platform-browser/bundles/platform-browser.umd.js',
-      '@angular/platform-browser-dynamic':
-        'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
-      '@angular/router': 'node_modules/@angular/router/bundles/router.umd.js',
-      '@angular/animations/browser':
-        'node_modules/@angular/animations/bundles/animations-browser.umd.js',
-      '@angular/service-worker':
-        'node_modules/@angular/service-worker/bundles/service-worker.umd.js',
-      'tslib': 'node_modules/tslib/tslib.js',
+      "@angular/animations":
+        "node_modules/@angular/animations/bundles/animations.umd.js",
+      "@angular/platform-browser/animations":
+        "node_modules/@angular/platform-browser/bundles/platform-browser-animations.umd.js",
+      "@angular/common": "node_modules/@angular/common/bundles/common.umd.js",
+      "@angular/common/http":
+        "node_modules/@angular/common/bundles/common-http.umd.js",
+      "@angular/compiler":
+        "node_modules/@angular/compiler/bundles/compiler.umd.js",
+      "@angular/core": "node_modules/@angular/core/bundles/core.umd.js",
+      "@angular/forms": "node_modules/@angular/forms/bundles/forms.umd.js",
+      "@angular/platform-browser":
+        "node_modules/@angular/platform-browser/bundles/platform-browser.umd.js",
+      "@angular/platform-browser-dynamic":
+        "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js",
+      "@angular/router": "node_modules/@angular/router/bundles/router.umd.js",
+      "@angular/animations/browser":
+        "node_modules/@angular/animations/bundles/animations-browser.umd.js",
+      "@angular/service-worker":
+        "node_modules/@angular/service-worker/bundles/service-worker.umd.js",
+      tslib: "node_modules/tslib/tslib.js",
 
-      '@angular/common/testing':
-        'node_modules/@angular/common/bundles/common-testing.umd.js',
-      '@angular/common/http/testing':
-        'node_modules/@angular/common/bundles/common-http-testing.umd.js',
-      '@angular/compiler/testing':
-        'node_modules/@angular/compiler/bundles/compiler-testing.umd.js',
-      '@angular/core/testing':
-        'node_modules/@angular/core/bundles/core-testing.umd.js',
-      '@angular/platform-browser/testing':
-        'node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js',
-      '@angular/platform-browser-dynamic/testing':
-        'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
-      '@angular/router/testing':
-        'node_modules/@angular/router/bundles/router-testing.umd.js',
+      "@angular/common/testing":
+        "node_modules/@angular/common/bundles/common-testing.umd.js",
+      "@angular/common/http/testing":
+        "node_modules/@angular/common/bundles/common-http-testing.umd.js",
+      "@angular/compiler/testing":
+        "node_modules/@angular/compiler/bundles/compiler-testing.umd.js",
+      "@angular/core/testing":
+        "node_modules/@angular/core/bundles/core-testing.umd.js",
+      "@angular/platform-browser/testing":
+        "node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js",
+      "@angular/platform-browser-dynamic/testing":
+        "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js",
+      "@angular/router/testing":
+        "node_modules/@angular/router/bundles/router-testing.umd.js",
 
-      'app/': `${this.APP_BASE}app/`,
+      "app/": `${this.APP_BASE}app/`,
       // For test config
-      'dist/dev/': '/base/dist/dev/',
-      '': 'node_modules/',
+      "dist/dev/": "/base/dist/dev/",
+      "": "node_modules/"
     },
     packages: {
       [this.BOOTSTRAP_DIR]: {
-        defaultExtension: 'js'
+        defaultExtension: "js"
       }
     }
   };
@@ -544,8 +543,8 @@ export class SeedConfig {
     defaultJSExtensions: true,
     base: this.PROJECT_ROOT,
     packageConfigPaths: [
-      join('node_modules', '*', 'package.json'),
-      join('node_modules', '@angular', '*', 'package.json')
+      join("node_modules", "*", "package.json"),
+      join("node_modules", "@angular", "*", "package.json")
       // for other modules like @ngx-translate the package.json path needs to updated here
       // otherwise npm run build.prod would fail
       // join('node_modules', '@ngx-translate', '*', 'package.json')
@@ -554,80 +553,81 @@ export class SeedConfig {
       // Note that for multiple apps this configuration need to be updated
       // You will have to include entries for each individual application in
       // `src/client`.
-      [join(this.TMP_DIR, this.BOOTSTRAP_DIR, '*')]: `${this.TMP_DIR}/${this
-        .BOOTSTRAP_DIR}/*`,
-      '@angular/platform-browser/animations':
-        'node_modules/@angular/platform-browser/bundles/platform-browser-animations.umd.js',
-      '@angular/animations/browser':
-        'node_modules/@angular/animations/bundles/animations-browser.umd.js',
-      '@angular/common/http':
-        'node_modules/@angular/common/bundles/common-http.umd.js',
-      'tslib': 'node_modules/tslib/tslib.js',
-      'rxjs': 'node_modules/rxjs',
-      'dist/tmp/node_modules/*': 'dist/tmp/node_modules/*',
-      'node_modules/*': 'node_modules/*',
-      '*': 'node_modules/*'
+      [join(this.TMP_DIR, this.BOOTSTRAP_DIR, "*")]: `${this.TMP_DIR}/${
+        this.BOOTSTRAP_DIR
+      }/*`,
+      "@angular/platform-browser/animations":
+        "node_modules/@angular/platform-browser/bundles/platform-browser-animations.umd.js",
+      "@angular/animations/browser":
+        "node_modules/@angular/animations/bundles/animations-browser.umd.js",
+      "@angular/common/http":
+        "node_modules/@angular/common/bundles/common-http.umd.js",
+      tslib: "node_modules/tslib/tslib.js",
+      rxjs: "node_modules/rxjs",
+      "dist/tmp/node_modules/*": "dist/tmp/node_modules/*",
+      "node_modules/*": "node_modules/*",
+      "*": "node_modules/*"
     },
     packages: {
-      '@angular/animations': {
-        main: 'bundles/animations.umd.js',
-        defaultExtension: 'js'
+      "@angular/animations": {
+        main: "bundles/animations.umd.js",
+        defaultExtension: "js"
       },
-      '@angular/common': {
-        main: 'bundles/common.umd.js',
-        defaultExtension: 'js'
+      "@angular/common": {
+        main: "bundles/common.umd.js",
+        defaultExtension: "js"
       },
-      '@angular/compiler': {
-        main: 'bundles/compiler.umd.js',
-        defaultExtension: 'js'
+      "@angular/compiler": {
+        main: "bundles/compiler.umd.js",
+        defaultExtension: "js"
       },
-      '@angular/core/testing': {
-        main: 'bundles/core-testing.umd.js',
-        defaultExtension: 'js'
+      "@angular/core/testing": {
+        main: "bundles/core-testing.umd.js",
+        defaultExtension: "js"
       },
-      '@angular/core': {
-        main: 'bundles/core.umd.js',
-        defaultExtension: 'js'
+      "@angular/core": {
+        main: "bundles/core.umd.js",
+        defaultExtension: "js"
       },
-      '@angular/forms': {
-        main: 'bundles/forms.umd.js',
-        defaultExtension: 'js'
+      "@angular/forms": {
+        main: "bundles/forms.umd.js",
+        defaultExtension: "js"
       },
-      '@angular/platform-browser': {
-        main: 'bundles/platform-browser.umd.js',
-        defaultExtension: 'js'
+      "@angular/platform-browser": {
+        main: "bundles/platform-browser.umd.js",
+        defaultExtension: "js"
       },
-      '@angular/platform-browser-dynamic': {
-        main: 'bundles/platform-browser-dynamic.umd.js',
-        defaultExtension: 'js'
+      "@angular/platform-browser-dynamic": {
+        main: "bundles/platform-browser-dynamic.umd.js",
+        defaultExtension: "js"
       },
-      '@angular/router': {
-        main: 'bundles/router.umd.js',
-        defaultExtension: 'js'
+      "@angular/router": {
+        main: "bundles/router.umd.js",
+        defaultExtension: "js"
       },
-      '@angular/service-worker': {
-        main: 'bundles/service-worker.umd.js',
-        defaultExtension: 'js'
+      "@angular/service-worker": {
+        main: "bundles/service-worker.umd.js",
+        defaultExtension: "js"
       },
-      'rxjs': {
-        main: 'index.js',
-        defaultExtension: 'js'
+      rxjs: {
+        main: "index.js",
+        defaultExtension: "js"
       },
-      'rxjs/ajax': {
-        main: 'index.js',
-        defaultExtension: 'js'
+      "rxjs/ajax": {
+        main: "index.js",
+        defaultExtension: "js"
       },
-      'rxjs/operators': {
-        main: 'index.js',
-        defaultExtension: 'js'
+      "rxjs/operators": {
+        main: "index.js",
+        defaultExtension: "js"
       },
-      'rxjs/testing': {
-        main: 'index.js',
-        defaultExtension: 'js'
+      "rxjs/testing": {
+        main: "index.js",
+        defaultExtension: "js"
       },
-      'rxjs/webSocket': {
-        main: 'index.js',
-        defaultExtension: 'js'
+      "rxjs/webSocket": {
+        main: "index.js",
+        defaultExtension: "js"
       }
     }
   };
@@ -637,15 +637,15 @@ export class SeedConfig {
    * @type {Array}
    */
   BROWSER_LIST = [
-    'ie >= 10',
-    'ie_mob >= 10',
-    'ff >= 30',
-    'chrome >= 34',
-    'safari >= 7',
-    'opera >= 23',
-    'ios >= 7',
-    'android >= 4.4',
-    'bb >= 10'
+    "ie >= 10",
+    "ie_mob >= 10",
+    "ff >= 30",
+    "chrome >= 34",
+    "safari >= 7",
+    "opera >= 23",
+    "ios >= 7",
+    "android >= 4.4",
+    "bb >= 10"
   ];
 
   /**
@@ -655,9 +655,9 @@ export class SeedConfig {
   COLOR_GUARD_WHITE_LIST: [string, string][] = [];
 
   /**
-  * Browser-sync middleware configurations array.
-  * @type {Array}
-  */
+   * Browser-sync middleware configurations array.
+   * @type {Array}
+   */
   PROXY_MIDDLEWARE: any[] = [];
 
   /**
@@ -671,7 +671,7 @@ export class SeedConfig {
    */
   QUERY_STRING_GENERATOR = () => {
     return Date.now().toString();
-  }
+  };
 
   /**
    * Returns the array of injectable dependencies (the list of local files to be injected in the `index.html`).
@@ -681,8 +681,9 @@ export class SeedConfig {
     return [
       ...this.APP_ASSETS,
       {
-        src: `${this.CSS_SRC}/${this
-          .CSS_BUNDLE_NAME}.${this.getInjectableStyleExtension()}`,
+        src: `${this.CSS_SRC}/${
+          this.CSS_BUNDLE_NAME
+        }.${this.getInjectableStyleExtension()}`,
         inject: true,
         vendor: false
       }
@@ -701,38 +702,38 @@ export class SeedConfig {
      * @return {any}
      */
     const defaults = {
-      'browser-sync': {
+      "browser-sync": {
         middleware: [
-          require('connect-history-api-fallback')({
+          require("connect-history-api-fallback")({
             index: `${this.APP_BASE}index.html`
           }),
           ...this.PROXY_MIDDLEWARE
         ],
         port: this.PORT,
         startPath: this.APP_BASE,
-        open: argv['b'] ? false : true,
+        open: argv["b"] ? false : true,
         injectChanges: false,
         server: {
           baseDir: `${this.DIST_DIR}/empty/`,
           routes: {
             [`${this.APP_BASE}${this.APP_SRC}`]: this.APP_SRC,
             [`${this.APP_BASE}${this.APP_DEST}`]: this.APP_DEST,
-            [`${this.APP_BASE}node_modules`]: 'node_modules',
-            [`${this.APP_BASE.replace(/\/$/, '')}`]: this.APP_DEST
+            [`${this.APP_BASE}node_modules`]: "node_modules",
+            [`${this.APP_BASE.replace(/\/$/, "")}`]: this.APP_DEST
           }
         }
       },
 
       // Note: you can customize the location of the file
-      'environment-config': join(this.PROJECT_ROOT, this.TOOLS_DIR, 'env'),
+      "environment-config": join(this.PROJECT_ROOT, this.TOOLS_DIR, "env"),
 
       /**
        * The options to pass to gulp-sass (and then to node-sass).
        * Reference: https://github.com/sass/node-sass#options
        * @type {object}
        */
-      'gulp-sass': {
-        includePaths: ['./node_modules/'],
+      "gulp-sass": {
+        includePaths: ["./node_modules/"],
         importer: magicImporter()
       },
 
@@ -741,7 +742,7 @@ export class SeedConfig {
        * Reference: https://github.com/mariocasciaro/gulp-concat-css
        * @type {object}
        */
-      'gulp-concat-css': {
+      "gulp-concat-css": {
         targetFile: `${this.CSS_BUNDLE_NAME}.css`,
         options: {
           rebaseUrls: false
@@ -760,14 +761,14 @@ export class SeedConfig {
   getKarmaReporters(): any {
     return {
       preprocessors: {
-        'dist/**/!(*spec|index|*.module|*.routes).js': ['coverage']
+        "dist/**/!(*spec|index|*.module|*.routes).js": ["coverage"]
       },
-      reporters: ['mocha', 'coverage', 'karma-remap-istanbul'],
+      reporters: ["mocha", "coverage", "karma-remap-istanbul"],
       coverageReporter: {
-        dir: this.COVERAGE_DIR + '/',
+        dir: this.COVERAGE_DIR + "/",
         reporters: [
-          { type: 'json', subdir: '.', file: 'coverage-final.json' },
-          { type: 'html', subdir: '.' }
+          { type: "json", subdir: ".", file: "coverage-final.json" },
+          { type: "html", subdir: "." }
         ]
       },
       remapIstanbulReporter: {
@@ -784,7 +785,7 @@ export class SeedConfig {
    * @param {any} source The source object (to be merged onto target)
    */
   mergeObject(target: any, source: any) {
-    const deepExtend = require('deep-extend');
+    const deepExtend = require("deep-extend");
     deepExtend(target, source);
   }
 
@@ -801,8 +802,8 @@ export class SeedConfig {
 
   getInjectableStyleExtension() {
     return this.BUILD_TYPE === BUILD_TYPES.PRODUCTION && this.ENABLE_SCSS
-      ? 'scss'
-      : 'css';
+      ? "scss"
+      : "css";
   }
 
   addPackageBundles(pack: ExtendPackages) {
@@ -824,8 +825,8 @@ export class SeedConfig {
   }
 
   /**
- * Convert named rollup array to object
- */
+   * Convert named rollup array to object
+   */
   getRollupNamedExports() {
     let namedExports = {};
     this.ROLLUP_NAMED_EXPORTS.map(namedExport => {
@@ -869,7 +870,7 @@ function filterDependency(type: string, d: InjectableDependency): boolean {
  * @return {number} The applications version.
  */
 function appVersion(): number | string {
-  const pkg = require('../../package.json');
+  const pkg = require("../../package.json");
   return pkg.version;
 }
 
@@ -877,8 +878,8 @@ function appVersion(): number | string {
  * Returns the application build type.
  */
 function getBuildType() {
-  const type = (argv['build-type'] || argv['env'] || '').toLowerCase();
-  const base: string[] = argv['_'];
+  const type = (argv["build-type"] || argv["env"] || "").toLowerCase();
+  const base: string[] = argv["_"];
   const prodKeyword = !!base
     .filter(o => o.indexOf(BUILD_TYPES.PRODUCTION) >= 0)
     .pop();
@@ -890,6 +891,6 @@ function getBuildType() {
 }
 
 function getSmeOutFormat() {
-  const format = (argv['sme-out-format'] || '').toUpperCase();
+  const format = (argv["sme-out-format"] || "").toUpperCase();
   return SME_OUTPUT_FORMATS[format] || SME_OUTPUT_FORMATS.HTML;
 }
