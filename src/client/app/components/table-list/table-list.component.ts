@@ -27,7 +27,7 @@ export class TableListComponent {
 
   loadData(type: string) {
     this.http
-      .get<{ success: object }>("http://localhost:8080/api/" + type)
+      .get<{ success: object }>("http://10.0.0.2:8080/api/" + type)
       .subscribe(response => {
         this.opportunityList = response;
       });
