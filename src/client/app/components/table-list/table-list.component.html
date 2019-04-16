@@ -5,76 +5,346 @@
         <div class="row">
           <div class="col-md-12">
             <div class="card">
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead class=" text-primary">
-                      <th>
-                          <input type="checkbox" id="blahA" value="1"/>
-                      </th>
-                      <th>
-                        ID
-                      </th>
-                      <th>
-                        <a href="#">
-                          <i class="fas fa-sort-amount-down" (click)="sort('name')"></i>
-                        </a> Name
-                      </th>
-                      <th> <a href="#">
-                        <i class="fas fa-sort-amount-down" (click)="sort('company')"></i>
-                        </a>
-                        Company
-                      </th>
-                      <th> <a href="#">
-                        <i class="fas fa-sort-amount-down" (click)="sort('phone')"></i>
-                        </a>
-                        phone
-                      </th>
-                      <th> <a href="#">
-                        <i class="fas fa-sort-amount-down" (click)="sort('email')"></i>
-                        </a>
-                        EMail
-                      </th>
-                      <th> <a href="#">
-                        <i class="fas fa-sort-amount-down" (click)="sort('leadowner')"></i>
-                        </a>
-                        LeadOwner
-                      </th>
-                      <th> <a href="#" >
-                        </a>
-                        Edit
-                      </th>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let opportunity of opportunityList">
-                        <td>
+              <div class="card-body" [ngSwitch]="module">
+              
+                <ng-template [ngSwitchCase]= "'opportunities'">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
                             <input type="checkbox" id="blahA" value="1"/>
-                        </td>
-                        <td>
-                          {{opportunity.id}}
-                        </td>
-                        <td>
-                            <a href="#" (click)="viewPersondetails(opportunity)">{{opportunity.name}}</a>
-                        </td>
-                        <td>
-                            {{opportunity.company}}
-                        </td>
-                        <td>
-                            {{opportunity.phone}}
-                        </td>
-                        <td>
-                            {{opportunity.email}}
-                        </td>
-                        <td>
-                            {{opportunity.leadowner}}
-                        </td>
-                        <td>
-                          <span class="fas fa-edit" (click)="onOpenAbout()"></span>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                        </th>
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sort('name')"></i>
+                          </a> Name
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('company')"></i>
+                          </a>
+                          Company
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('phone')"></i>
+                          </a>
+                          phone
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('email')"></i>
+                          </a>
+                          EMail
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('leadowner')"></i>
+                          </a>
+                          LeadOwner
+                        </th>
+                        <th> <a href="#" >
+                          </a>
+                          Edit
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let opportunity of opportunityList">
+                          <td>
+                              <input type="checkbox" id="blahA" value="1"/>
+                          </td>
+                          <td>
+                            {{opportunity.id}}
+                          </td>
+                          <td>
+                              <a href="#" (click)="viewPersondetails(opportunity)">{{opportunity.name}}</a>
+                          </td>
+                          <td>
+                              {{opportunity.company__c}}
+                          </td>
+                          <td>
+                              {{opportunity.phone__c}}
+                          </td>
+                          <td>
+                              {{opportunity.email__c}}
+                          </td>
+                          <td>
+                              {{opportunity.leadowner}}
+                          </td>
+                          <td>
+                            <span class="fas fa-edit" (click)="onOpenAbout()"></span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+
+                <ng-template [ngSwitchCase]= "'vehicle_stocks'">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                            <input type="checkbox" id="blahA" value="1"/>
+                        </th>
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sort('name')"></i>
+                          </a> Stock Number
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('company')"></i>
+                          </a>
+                          VIN
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('phone')"></i>
+                          </a>
+                          REG No.
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('email')"></i>
+                          </a>
+                          Vehicle Type
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('leadowner')"></i>
+                          </a>
+                          Fuel Type
+                        </th>
+                        <th> <a href="#" >
+                          </a>
+                          Make
+                        </th>
+                        <th> <a href="#" >
+                          </a>
+                          Model
+                        </th>
+                        <th> <a href="#" >
+                          </a>
+                          Edit
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let opportunity of opportunityList">
+                          <td>
+                              <input type="checkbox" id="blahA" value="1"/>
+                          </td>
+                          <td>
+                            {{opportunity.id}}
+                          </td>
+                          <td>
+                              <a href="#" (click)="viewPersondetails(opportunity)">{{opportunity.name}}</a>
+                          </td>
+                          <td>
+                              {{opportunity.rego_no__c}}
+                          </td>
+                          <td>
+                              {{opportunity.vin__c}}
+                          </td>
+                          <td>
+                              {{opportunity.vehicle_type__c}}
+                          </td>
+                          <td>
+                              {{opportunity.fuel_type__c}}
+                          </td>
+                          <td>
+                              {{opportunity.make__c}}
+                          </td>
+                          <td>
+                              {{opportunity.model_name__c}}
+                          </td>
+                          <td>
+                            <span class="fas fa-edit" (click)="onOpenAbout()"></span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+
+
+                <ng-template [ngSwitchCase]= "'drivers'">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                            <input type="checkbox" id="blahA" value="1"/>
+                        </th>
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sort('name')"></i>
+                          </a> Name
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('company')"></i>
+                          </a>
+                          Customer Type
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('phone')"></i>
+                          </a>
+                          Email
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('email')"></i>
+                          </a>
+                          Mobile
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('leadowner')"></i>
+                          </a>
+                          Account Number
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('leadowner')"></i>
+                          </a>
+                          Created Date
+                        </th>
+                        <th> <a href="#" >
+                          </a>
+                          Edit
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let opportunity of opportunityList">
+                          <td>
+                              <input type="checkbox" id="blahA" value="1"/>
+                          </td>
+                          <td>
+                            {{opportunity.id}}
+                          </td>
+                          <td>
+                              <a href="#" (click)="viewPersondetails(opportunity)">{{opportunity.name}}</a>
+                          </td>
+                          <td>
+                              {{opportunity.customer_type__c}}
+                          </td>
+                          <td>
+                              {{opportunity.email}}
+                          </td>
+                          <td>
+                              {{opportunity.phone}}
+                          </td>
+                          <td>
+                              {{opportunity.accountid}}
+                          </td>
+                          <td>
+                              {{opportunity.createddate}}
+                          </td>
+                          <td>
+                          <td>
+                            <span class="fas fa-edit" (click)="onOpenAbout()"></span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+
+
+
+                <ng-template [ngSwitchCase]= "'customers'">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                            <input type="checkbox" id="blahA" value="1"/>
+                        </th>
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sort('name')"></i>
+                          </a> Name
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('company')"></i>
+                          </a>
+                          Email
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('phone')"></i>
+                          </a>
+                          Mobile Phone
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('email')"></i>
+                          </a>
+                          Account
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('leadowner')"></i>
+                          </a>
+                          Account Number
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('leadowner')"></i>
+                          </a>
+                          Phone
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('leadowner')"></i>
+                          </a>
+                          State
+                        </th>
+                        <th> <a href="#">
+                          <i class="fas fa-sort-amount-down" (click)="sort('leadowner')"></i>
+                          </a>
+                          Postal Code
+                        </th>
+                        <th> <a href="#" >
+                          </a>
+                          Edit
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let opportunity of opportunityList">
+                          <td>
+                              <input type="checkbox" id="blahA" value="1"/>
+                          </td>
+                          <td>
+                            {{opportunity.id}}
+                          </td>
+                          <td>
+                              <a href="#" (click)="viewPersondetails(opportunity)">{{opportunity.name}}</a>
+                          </td>
+                          <td>
+                              {{opportunity.email}}
+                          </td>
+                          <td>
+                              {{opportunity.mobile__c}}
+                          </td>
+                          <td>
+                              {{opportunity.account__c}}
+                          </td>
+                          <td>
+                              {{opportunity.accountnumber}}
+                          </td>
+                          <td>
+                              {{opportunity.phone}}
+                          </td>
+                          <td>
+                              {{opportunity.state__c}}
+                          </td>
+                          <td>
+                              {{opportunity.billing_postcode__c}}
+                          </td>
+                          <td>
+                            <span class="fas fa-edit" (click)="onOpenAbout()"></span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+
               </div>
             </div>
           </div>
