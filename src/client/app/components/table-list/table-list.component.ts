@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 
 import { TabsComponent } from "../tab/tabs.component";
 import { HttpClient } from "@angular/common/http";
-import GeneralService from "../../shared/GeneralService";
+import GeneralService from "../../shared/services/GeneralService";
 import { Template } from "@angular/compiler/src/render3/r3_ast";
+
 
 @Component({
   moduleId: module.id,
@@ -25,11 +26,14 @@ export class TableListComponent {
   opportunityListData: any = [];
   page:number = 1;
   limit:number = 10;
+  search:any= '';
 
+  searchTerm:string;
   constructor(private http: HttpClient, public generalService: GeneralService) {
     let params = {
       page:this.page,
-      limit:this.limit
+      limit:this.limit,
+      search:this.search
     }
     this.generalService.emitter.subscribe((response: string) => {
       this.module = response;
@@ -39,8 +43,10 @@ export class TableListComponent {
     this.loadData(this.module,(params));
   }
 
+
+
   loadData(type: string,params:any) {
-    params = 'page='+params.page+'&limit='+params.limit;
+    params = 'page='+params.page+'&limit='+params.limit+'&search='+params.search;
     this.http
       .get<{ success: object }>("http://10.0.0.9:8080/api/" + type+'?'+params)
       .subscribe(response => {
@@ -49,11 +55,23 @@ export class TableListComponent {
         this.opportunityList = response.data;
       });
   }
+  searchList(searchData:any){
+    if(searchData.length>=3 || searchData.length == 0 ){
+      this.search = searchData;
+      let params = {
+        page:this.page,
+        limit:this.limit,
+        search:this.search
+      }
+      this.loadData(this.module,params)
+    }
+  }
   pageCount(limit:any){
     this.limit = limit;
     let params = {
       page:this.page,
-      limit:this.limit
+      limit:this.limit,
+      search:this.search
     }
    
     this.loadData(this.module,params)
@@ -62,7 +80,8 @@ export class TableListComponent {
     this.page = page;
     let params = {
       page:this.page,
-      limit:this.limit
+      limit:this.limit,
+      search:this.search
     }
     this.loadData(this.module,params)
   }
@@ -174,6 +193,7 @@ export class TableListComponent {
       true
     );
   }
+ 
 
   //https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fpeople%2Fperson-edit.component.ts
 }

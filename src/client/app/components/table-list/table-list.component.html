@@ -17,8 +17,7 @@
             </div>
             <div class="col-sm-6">
               <div id="example_filter" class="dataTables_filter">
-                <label class="d-flex float-right">Search:<input type="search" class="form-control  w-auto input-sm"
-                    placeholder="" aria-controls="example">
+                <label class="d-flex float-right">Search:<input type="search" (keyup)="searchList($event.target.value)" class="form-control  w-auto input-sm" placeholder="" aria-controls="example">
                 </label>
               </div>
             </div>
@@ -411,10 +410,3 @@
 
 </ng-template>
 
-
-
-<!-- <sd-stock></sd-stock>
-<sd-driver></sd-driver>
-<sd-customer></sd-customer> -->
-
-<!-- <sd-driver></sd-driver> -->

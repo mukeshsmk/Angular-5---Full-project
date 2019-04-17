@@ -15,7 +15,7 @@ import {
 import { TabComponent } from "./tab.component";
 import { DynamicTabsDirective } from "./dynamic-tabs.directive";
 
-import GeneralService from "../../shared/GeneralService";
+import GeneralService from "../../shared/services/GeneralService";
 
 @Component({
   selector: "sd-tabs",

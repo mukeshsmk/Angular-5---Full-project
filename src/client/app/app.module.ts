@@ -20,9 +20,9 @@ import { SidebarModule } from "./components/sidebar/sidebar.module";
 import { TableListModule } from "./components/table-list/table-list.module";
 import { HeaderModule } from "./components/header/header.module";
 import { ModalModule } from "./components/modal/modal.module";
-// import { MDBBootstrapModule, } from 'angular-bootstrap-md';
 
-import GeneralService from "./shared/GeneralService";
+
+import GeneralService from "./shared/services/GeneralService";
 
 @NgModule({
   imports: [
@@ -55,6 +55,7 @@ import GeneralService from "./shared/GeneralService";
   providers: [
     {
       provide: APP_BASE_HREF,
+      
       useValue: "<%= APP_BASE %>"
     },
     GeneralService

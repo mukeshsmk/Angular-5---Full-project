@@ -132,6 +132,7 @@ input[type=checkbox]{
   z-index: 1;
   color: #fff;
   background-color: #191b1c;
+  border: none;
 }
 .w-auto {
   width: auto!important;

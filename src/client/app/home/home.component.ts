@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  } from '@angular/core';
 import { NameListService } from '../shared/name-list/name-list.service';
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -28,7 +28,10 @@ export class HomeComponent implements OnInit {
    */
   ngOnInit() {
     this.getNames();
+    
   }
+  
+
 
   /**
    * Handle the nameListService observable
@@ -51,5 +54,6 @@ export class HomeComponent implements OnInit {
     this.newName = '';
     return false;
   }
+
 
 }

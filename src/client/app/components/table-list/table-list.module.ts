@@ -10,6 +10,7 @@ import { OpportunityComponent } from '../opportunity/opportunity.component';
 import { DriverComponent } from '../driver/driver.component';
 import { CustomerComponent } from './../customer/customer.component';
 import { StockComponent } from './../stock/stock.component'
+
  
 
 @NgModule({

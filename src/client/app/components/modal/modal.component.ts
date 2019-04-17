@@ -1,48 +1,25 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { HttpClient } from '@angular/common/http';
-import { HttpErrorResponse } from '@angular/common/http';
-import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
+
 /**
  * This class represents the lazy loaded AboutComponent.
  */
 @Component({
   moduleId: module.id,
-  selector: 'sd-modal',
-  templateUrl: 'modal.component.html',
-  styleUrls: ['modal.component.css']
+  selector: "sd-modal",
+  templateUrl: "modal.component.html",
+  styleUrls: ["modal.component.css"]
 })
-export class ModalComponent {
+export class ModalComponent implements OnInit {
 
-   public _token:any;
-  user = {
-    email:'',
-   }
+  private bodyText: string;
+  constructor(private router: Router ) {}
 
-   forgetForm : FormGroup;
-   isEmailError : boolean = false;
-   constructor( private formBuilder: FormBuilder, private http: HttpClient) { 
+  ngOnInit() {
 
-  }
 
-  onSubmit() {
-  if(this.user){
-    this.http.post<{success: object}>('http://10.0.0.3:8080/api/password/email',this.user)
-    .subscribe((response)=>{
-      console.log('Success ',JSON.stringify(response));
-      this._token = response.success;
-      localStorage.setItem('reset_password_token', JSON.stringify(this._token.token )); 
-      
-    },  (err : HttpErrorResponse)=>{
-      this.isEmailError = true;
-      
-      setTimeout(() => {
-        console.log('hide');
-        this.isEmailError = false;
-      }, 5000);
-    });
-     
-
-  }
 }
+
+
+
 }
