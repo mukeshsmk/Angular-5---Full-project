@@ -82,6 +82,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
+                
               <div class="card-body" [ngSwitch]="module">
                 <ng-template [ngSwitchCase]="'opportunities'">
                   <div class="table-responsive">
@@ -90,7 +91,7 @@
                         <th>
                           <input type="checkbox" id="blahA" value="1" />
                         </th>
-                        <th>
+                        <th (click)="sort('id')">
                           Id
                         </th>
                         <th>
@@ -144,7 +145,7 @@
                         </th>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let opportunity of opportunityList">
+                        <tr *ngFor="let opportunity of opportunityList" >
                           <td>
                             <input type="checkbox" id="blahA" value="1" />
                           </td>
@@ -173,7 +174,7 @@
                           <td>
                             <span
                               class="fas fa-edit"
-                              (click)="onOpenAbout()"
+                              (click)="openOpportunityModal(opportunity)"
                             ></span>
                           </td>
                         </tr>
@@ -588,36 +589,31 @@
       </div>
     </div>
 
-    <div class="modal fade full-size" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <sd-opportunity-form></sd-opportunity-form>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+    <!--<ng-template let-oppournityModal="data" #oppournityModal>-->
+      <div class="modal full-size" tabindex="-1" role="dialog" [ngClass]="{ 'fade': opportunityOpen, 'd-flex': !opportunityOpen }">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                (click)="closeOpportunityModal()"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <sd-opportunity-form [opportunity]="modalData" (update)="updateOpportunity($event)"></sd-opportunity-form>
+            </div>
+            
           </div>
         </div>
       </div>
-    </div>
+    <!--</ng-template> -->
+    
   </sd-tab>
 </sd-tabs>
 
