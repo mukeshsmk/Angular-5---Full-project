@@ -3,21 +3,79 @@
     <div class="main-content">
       <div class="container-fluid">
         <div class="card">
+          <div class="row mb-2">
+            <div class="col-3">
+              <select class="form-control">
+                <option value="allLeads" selected="">All</option>
+                <option value="allocated">Allocated Leads</option>
+                <option value="unAllocated">Un Allocated Leads</option>
+              </select>
+            </div>
+            <div class="col">
+              <button
+                onclick="trigger_change()"
+                type="button"
+                class="btn btn-secondary pull-right mr-1"
+              >
+                <i
+                  data-toggle="tooltip"
+                  data-original-title="Refresh"
+                  class="fa fa-refresh"
+                  aria-hidden="true"
+                ></i>
+              </button>
+              <button
+                id="createNewLead"
+                type="button"
+                class="btn btn-secondary pull-right mr-1"
+              >
+                <i
+                  data-toggle="tooltip"
+                  data-original-title="New Lead"
+                  class="fa fa-plus"
+                >
+                </i>
+              </button>
+              <button type="button" class="btn btn-secondary pull-right mr-1">
+                <i
+                  data-toggle="tooltip"
+                  data-original-title="Quick Lead"
+                  class="fa fa-bolt"
+                >
+                </i>
+              </button>
+            </div>
+          </div>
           <div class="row">
             <div class="col-sm-6">
               <div class="dataTables_length mt-4 mb-4" id="example_length">
-                <label class="d-flex align-top">Show <select (change)="pageCount($event.target.value)"  name="example_length" aria-controls="example"
-                    class="form-control w-auto input-sm">
+                <label class="d-flex align-top"
+                  >Show
+                  <select
+                    (change)="pageCount($event.target.value)"
+                    name="example_length"
+                    aria-controls="example"
+                    class="form-control w-auto input-sm"
+                  >
                     <option value="10">10</option>
                     <option value="25">25</option>
                     <option value="50">50</option>
                     <option value="100">100</option>
-                  </select> entries</label>
+                  </select>
+                  entries</label
+                >
               </div>
             </div>
             <div class="col-sm-6">
               <div id="example_filter" class="dataTables_filter">
-                <label class="d-flex float-right">Search:<input type="search" (keyup)="searchList($event.target.value)" class="form-control  w-auto input-sm" placeholder="" aria-controls="example">
+                <label class="d-flex float-right"
+                  >Search:<input
+                    type="search"
+                    (keyup)="searchList($event.target.value)"
+                    class="form-control  w-auto input-sm"
+                    placeholder=""
+                    aria-controls="example"
+                  />
                 </label>
               </div>
             </div>
@@ -26,7 +84,6 @@
             <div class="col-md-12">
                 
               <div class="card-body" [ngSwitch]="module">
-
                 <ng-template [ngSwitchCase]="'opportunities'">
                   <div class="table-responsive">
                     <table class="table">
@@ -39,59 +96,86 @@
                         </th>
                         <th>
                           <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('name')"></i>
-                          </a> Name
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('name')"
+                            ></i>
+                          </a>
+                          Name
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('company')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('company')"
+                            ></i>
                           </a>
                           Company
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('phone')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('phone')"
+                            ></i>
                           </a>
                           Phone
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('email')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('email')"
+                            ></i>
                           </a>
                           Email
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('leadowner')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('leadowner')"
+                            ></i>
                           </a>
                           LeadOwner
                         </th>
-                        <th> <a href="#">
-                          </a>
+                        <th>
+                          <a href="#"> </a>
                           Edit
                         </th>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let opportunity of opportunityList">
+                        <tr *ngFor="let opportunity of opportunityList" >
                           <td>
                             <input type="checkbox" id="blahA" value="1" />
                           </td>
                           <td>
-                            {{opportunity.id}}
+                            {{ opportunity.id }}
                           </td>
                           <td>
-                            <a href="#" (click)="viewPersondetails(opportunity)">{{opportunity.name}}</a>
+                            <a
+                              href="#"
+                              (click)="viewPersondetails(opportunity)"
+                              >{{ opportunity.name }}</a
+                            >
                           </td>
                           <td>
-                            {{opportunity.company__c}}
+                            {{ opportunity.company__c }}
                           </td>
                           <td>
-                            {{opportunity.phone__c}}
+                            {{ opportunity.phone__c }}
                           </td>
                           <td>
-                            {{opportunity.email__c}}
+                            {{ opportunity.email__c }}
                           </td>
                           <td>
-                            {{opportunity.leadowner}}
+                            {{ opportunity.leadowner }}
                           </td>
                           <td>
-                            <span class="fas fa-edit" (click)="onOpenAbout()"></span>
+                            <span
+                              class="fas fa-edit"
+                              (click)="openOpportunityModal(opportunity)"
+                            ></span>
                           </td>
                         </tr>
                       </tbody>
@@ -111,39 +195,59 @@
                         </th>
                         <th>
                           <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('name')"></i>
-                          </a> StockNumber
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('name')"
+                            ></i>
+                          </a>
+                          StockNumber
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('company')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('company')"
+                            ></i>
                           </a>
                           VIN
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('phone')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('phone')"
+                            ></i>
                           </a>
                           REG No.
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('email')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('email')"
+                            ></i>
                           </a>
                           VehicleType
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('leadowner')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('leadowner')"
+                            ></i>
                           </a>
                           FuelType
                         </th>
-                        <th> <a href="#">
-                          </a>
+                        <th>
+                          <a href="#"> </a>
                           Make
                         </th>
-                        <th> <a href="#">
-                          </a>
+                        <th>
+                          <a href="#"> </a>
                           Model
                         </th>
-                        <th> <a href="#">
-                          </a>
+                        <th>
+                          <a href="#"> </a>
                           Edit
                         </th>
                       </thead>
@@ -153,38 +257,44 @@
                             <input type="checkbox" id="blahA" value="1" />
                           </td>
                           <td>
-                            {{opportunity.id}}
+                            {{ opportunity.id }}
                           </td>
                           <td>
-                            <a href="#" (click)="viewPersondetails(opportunity)">{{opportunity.name}}</a>
+                            <a
+                              href="#"
+                              (click)="viewPersondetails(opportunity)"
+                              >{{ opportunity.name }}</a
+                            >
                           </td>
                           <td>
-                            {{opportunity.rego_no__c}}
+                            {{ opportunity.rego_no__c }}
                           </td>
                           <td>
-                            {{opportunity.vin__c}}
+                            {{ opportunity.vin__c }}
                           </td>
                           <td>
-                            {{opportunity.vehicle_type__c}}
+                            {{ opportunity.vehicle_type__c }}
                           </td>
                           <td>
-                            {{opportunity.fuel_type__c}}
+                            {{ opportunity.fuel_type__c }}
                           </td>
                           <td>
-                            {{opportunity.make__c}}
+                            {{ opportunity.make__c }}
                           </td>
                           <td>
-                            {{opportunity.model_name__c}}
+                            {{ opportunity.model_name__c }}
                           </td>
                           <td>
-                            <span class="fas fa-edit" (click)="onOpenAbout()"></span>
+                            <span
+                              class="fas fa-edit"
+                              (click)="onOpenAbout()"
+                            ></span>
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                 </ng-template>
-
 
                 <ng-template [ngSwitchCase]="'drivers'">
                   <div class="table-responsive">
@@ -198,36 +308,60 @@
                         </th> -->
                         <th>
                           <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('name')"></i>
-                          </a> Name
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('name')"
+                            ></i>
+                          </a>
+                          Name
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('company')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('company')"
+                            ></i>
                           </a>
                           CustomerType
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('phone')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('phone')"
+                            ></i>
                           </a>
                           Email
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('email')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('email')"
+                            ></i>
                           </a>
                           Mobile
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('leadowner')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('leadowner')"
+                            ></i>
                           </a>
                           AccountNumber
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('leadowner')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('leadowner')"
+                            ></i>
                           </a>
                           Created Date
                         </th>
-                        <th> <a href="#">
-                          </a>
+                        <th>
+                          <a href="#"> </a>
                           Edit
                         </th>
                       </thead>
@@ -237,37 +371,42 @@
                             <input type="checkbox" id="blahA" value="1" />
                           </td>
                           <td>
-                            {{opportunity.id}}
+                            {{ opportunity.id }}
                           </td>
                           <td>
-                            <a href="#" (click)="viewPersondetails(opportunity)">{{opportunity.name}}</a>
+                            <a
+                              href="#"
+                              (click)="viewPersondetails(opportunity)"
+                              >{{ opportunity.name }}</a
+                            >
                           </td>
                           <td>
-                            {{opportunity.customer_type__c}}
+                            {{ opportunity.customer_type__c }}
                           </td>
                           <td>
-                            {{opportunity.email}}
+                            {{ opportunity.email }}
                           </td>
                           <td>
-                            {{opportunity.phone}}
+                            {{ opportunity.phone }}
                           </td>
                           <td>
-                            {{opportunity.accountid}}
+                            {{ opportunity.accountid }}
                           </td>
                           <td>
-                            {{opportunity.createddate}}
+                            {{ opportunity.createddate }}
                           </td>
+                          <td></td>
                           <td>
-                          <td>
-                            <span class="fas fa-edit" (click)="onOpenAbout()"></span>
+                            <span
+                              class="fas fa-edit"
+                              (click)="onOpenAbout()"
+                            ></span>
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                 </ng-template>
-
-
 
                 <ng-template [ngSwitchCase]="'customers'">
                   <div class="table-responsive">
@@ -281,46 +420,78 @@
                         </th> -->
                         <th>
                           <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('name')"></i>
-                          </a> Name
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('name')"
+                            ></i>
+                          </a>
+                          Name
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('company')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('company')"
+                            ></i>
                           </a>
                           Email
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('phone')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('phone')"
+                            ></i>
                           </a>
                           MobilePhone
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('email')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('email')"
+                            ></i>
                           </a>
                           Account
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('leadowner')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('leadowner')"
+                            ></i>
                           </a>
                           AccountNumber
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('leadowner')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('leadowner')"
+                            ></i>
                           </a>
                           Phone
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('leadowner')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('leadowner')"
+                            ></i>
                           </a>
                           State
                         </th>
-                        <th> <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sort('leadowner')"></i>
+                        <th>
+                          <a href="#">
+                            <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sort('leadowner')"
+                            ></i>
                           </a>
                           PostalCode
                         </th>
-                        <th> <a href="#">
-                          </a>
+                        <th>
+                          <a href="#"> </a>
                           Edit
                         </th>
                       </thead>
@@ -330,41 +501,47 @@
                             <input type="checkbox" id="blahA" value="1" />
                           </td>
                           <td>
-                            {{opportunity.id}}
+                            {{ opportunity.id }}
                           </td>
                           <td>
-                            <a href="#" (click)="viewPersondetails(opportunity)">{{opportunity.name}}</a>
+                            <a
+                              href="#"
+                              (click)="viewPersondetails(opportunity)"
+                              >{{ opportunity.name }}</a
+                            >
                           </td>
                           <td>
-                            {{opportunity.email}}
+                            {{ opportunity.email }}
                           </td>
                           <td>
-                            {{opportunity.mobile__c}}
+                            {{ opportunity.mobile__c }}
                           </td>
                           <td>
-                            {{opportunity.account__c}}
+                            {{ opportunity.account__c }}
                           </td>
                           <td>
-                            {{opportunity.accountnumber}}
+                            {{ opportunity.accountnumber }}
                           </td>
                           <td>
-                            {{opportunity.phone}}
+                            {{ opportunity.phone }}
                           </td>
                           <td>
-                            {{opportunity.state__c}}
+                            {{ opportunity.state__c }}
                           </td>
                           <td>
-                            {{opportunity.billing_postcode__c}}
+                            {{ opportunity.billing_postcode__c }}
                           </td>
                           <td>
-                            <span class="fas fa-edit" (click)="onOpenAbout()"></span>
+                            <span
+                              class="fas fa-edit"
+                              (click)="onOpenAbout()"
+                            ></span>
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                 </ng-template>
-
               </div>
             </div>
           </div>
@@ -372,46 +549,83 @@
       </div>
     </div>
 
-
-
-
-  <div class="row w-auto">
-    <div class="col-sm-5">
-      <div class="dataTables_info mt-4" id="example_info" role="status" aria-live="polite">Showing {{opportunityListData.from}} to {{opportunityListData.to}} of {{opportunityListData.total}} entries
+    <div class="row w-auto">
+      <div class="col-sm-5">
+        <div
+          class="dataTables_info mt-4"
+          id="example_info"
+          role="status"
+          aria-live="polite"
+        >
+          Showing {{ opportunityListData.from }} to
+          {{ opportunityListData.to }} of
+          {{ opportunityListData.total }} entries
+        </div>
       </div>
-    </div>
-    <div class="col-sm-7">
-      <div class="dataTables_paginate paging_simple_numbers d-flex float-right" id="example_paginate">
-        <ul class="pagination">
+      <div class="col-sm-7">
+        <div
+          class="dataTables_paginate paging_simple_numbers d-flex float-right"
+          id="example_paginate"
+        >
+          <ul class="pagination">
             <ul class="pagination justify-content-end">
-                <li class="page-item"><a class="page-link" href="">Previous</a></li>
-                <li class="page-item " [ngClass]="{'active bg-dark':opportunityListData.current_page == i+1}" *ngFor="let i of opportunityListData.last_page" (click)="pageNumber(i+1)">
-                  <a class="page-link" >{{i+1}}</a></li>
-                <li class="page-item"><a class="page-link" href="">Next</a></li>
-              </ul>
-        </ul>
+              <li class="page-item">
+                <a class="page-link" href="">Previous</a>
+              </li>
+              <li
+                class="page-item "
+                [ngClass]="{
+                  'active bg-dark': opportunityListData.current_page == i + 1
+                }"
+                *ngFor="let i of opportunityListData.last_page"
+                (click)="pageNumber(i + 1)"
+              >
+                <a class="page-link">{{ i + 1 }}</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="">Next</a></li>
+            </ul>
+          </ul>
+        </div>
       </div>
     </div>
-</div>
 
-</sd-tab>
-
+    <!--<ng-template let-oppournityModal="data" #oppournityModal>-->
+      <div class="modal full-size" tabindex="-1" role="dialog" [ngClass]="{ 'fade': opportunityOpen, 'd-flex': !opportunityOpen }">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                (click)="closeOpportunityModal()"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <sd-opportunity-form [opportunity]="modalData" (update)="updateOpportunity($event)"></sd-opportunity-form>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    <!--</ng-template> -->
+    
+  </sd-tab>
 </sd-tabs>
 
 <ng-template let-opportunity="data" #personDetails>
   <sd-opportunity [opportunity]="opportunity"></sd-opportunity>
-
 </ng-template>
 <ng-template let-stock="data" #stockDetails>
   <sd-stock [stock]="stock"></sd-stock>
-
 </ng-template>
 <ng-template let-driver="data" #driverDetails>
   <sd-driver [driver]="driver"></sd-driver>
-
 </ng-template>
 <ng-template let-customer="data" #customerDetails>
   <sd-customer [customer]="customer"></sd-customer>
-
 </ng-template>
-

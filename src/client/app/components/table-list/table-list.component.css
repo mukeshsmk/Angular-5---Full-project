@@ -1,14 +1,20 @@
 @font-face {
-  font-family: 'Glyphicons Halflings';
+  font-family: "Glyphicons Halflings";
 
-  src: url('../fonts/glyphicons-halflings-regular.eot');
-  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url("../fonts/glyphicons-halflings-regular.eot");
+  src: url("../fonts/glyphicons-halflings-regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/glyphicons-halflings-regular.woff2") format("woff2"),
+    url("../fonts/glyphicons-halflings-regular.woff") format("woff"),
+    url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"),
+    url("../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular")
+      format("svg");
 }
 .glyphicon {
   position: relative;
   top: 1px;
   display: inline-block;
-  font-family: 'Glyphicons Halflings';
+  font-family: "Glyphicons Halflings";
   font-style: normal;
   font-weight: normal;
   line-height: 1;
@@ -17,46 +23,50 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.fas{
-    color: #0747A6;
-    font-size: 15px;
-    margin: 0 12px;
+.fas {
+  color: #0747a6;
+  font-size: 15px;
+  margin: 0 12px;
 }
-.fa-sort-amount-down{
-color: grey;
+.fa-sort-amount-down {
+  color: grey;
 }
 table.dataTable thead .sorting:after {
   opacity: 0.2;
   content: "\e150";
 }
-table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:after {
   position: absolute;
   bottom: 8px;
   right: 8px;
   display: block;
-  font-family: 'Glyphicons Halflings';
+  font-family: "Glyphicons Halflings";
   opacity: 0.5;
-  
 }
 table thead th .glyphicon-sort {
-  vertical-align: bottom; 
-   border-bottom:none;
+  vertical-align: bottom;
+  border-bottom: none;
 }
-.table td .glyphicon-sort, .table th glyphicon-sort {
-  padding: .75rem;
+.table td .glyphicon-sort,
+.table th glyphicon-sort {
+  padding: 0.75rem;
   vertical-align: top;
   border-top: none;
 }
-.sorting{
-  color:#ddd;
+.sorting {
+  color: #ddd;
 }
 
-.glyphicon-sort{
+.glyphicon-sort {
   color: #dadada;
   font-size: 14px;
   margin: 0 5px 5px 0px;
 }
-.glyphicon-sort-by-attributes{
+.glyphicon-sort-by-attributes {
   color: #dadada;
   font-size: 14px;
   margin: 0 5px 5px 0px;
@@ -69,8 +79,7 @@ table thead th .glyphicon-sort {
   border-bottom: 2px solid #dee2e6;
 }
 
-
-input[type=checkbox]{
+input[type="checkbox"] {
   border: 1px solid #106cc8;
   font-size: 14px;
   height: 12px;
@@ -89,12 +98,13 @@ input[type=checkbox]{
   background-color: #fff;
   background-clip: border-box;
   border: none;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 .card-body {
   padding: 0;
 }
-.table td, .table th {
+.table td,
+.table th {
   padding: 8px 8px;
   vertical-align: top;
   font-size: 14px;
@@ -113,7 +123,7 @@ input[type=checkbox]{
 .page-link {
   position: relative;
   display: block;
-  padding: .5rem .75rem;
+  padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
   color: #0f0f10;
@@ -121,8 +131,8 @@ input[type=checkbox]{
   border: 1px solid #dee2e6;
 }
 .page-link :active {
- color: #fff;
- background-color: #0f0f10;
+  color: #fff;
+  background-color: #0f0f10;
 }
 .page-link:hover {
   color: #fff !important;
@@ -135,8 +145,18 @@ input[type=checkbox]{
   border: none;
 }
 .w-auto {
-  width: auto!important;
+  width: auto !important;
   margin: 0px 12px;
   height: 27px;
   font-size: 12px;
+}
+
+.modal.full-size .modal-body {
+  overflow: auto;
+  height: calc(100vh - 200px);
+}
+
+.modal.full-size .modal-dialog {
+  width: calc(100vw - 100px);
+  max-width: 800px;
 }
