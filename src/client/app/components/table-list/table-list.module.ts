@@ -11,9 +11,16 @@ import { DriverComponent } from "../driver/driver.component";
 import { CustomerComponent } from "./../customer/customer.component";
 import { StockComponent } from "./../stock/stock.component";
 import { OpportunityFormComponent } from "./../opportunity-form/opportunity-form.component";
+import { ActivitiesComponent } from "./../activities/activities.component";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 @NgModule({
-  imports: [TableListRoutingModule, CommonModule],
+  imports: [
+    TableListRoutingModule,
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule
+  ],
   declarations: [
     TableListComponent,
     TabsComponent,
@@ -24,7 +31,8 @@ import { OpportunityFormComponent } from "./../opportunity-form/opportunity-form
     DriverComponent,
     CustomerComponent,
     StockComponent,
-    OpportunityFormComponent
+    OpportunityFormComponent,
+    ActivitiesComponent
   ],
   exports: [TableListComponent],
   entryComponents: [TabComponent]
