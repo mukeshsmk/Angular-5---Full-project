@@ -24,7 +24,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-
+                
               <div class="card-body" [ngSwitch]="module">
 
                 <ng-template [ngSwitchCase]="'opportunities'">
@@ -34,7 +34,7 @@
                         <th>
                           <input type="checkbox" id="blahA" value="1" />
                         </th>
-                        <th>
+                        <th (click)="sort('id')">
                           Id
                         </th>
                         <th>

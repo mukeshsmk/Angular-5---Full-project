@@ -48,7 +48,7 @@ export class TableListComponent {
   loadData(type: string,params:any) {
     params = 'page='+params.page+'&limit='+params.limit+'&search='+params.search;
     this.http
-      .get<{ success: object }>("http://10.0.0.9:8080/api/" + type+'?'+params)
+      .get<{ success: object, data: any }>("http://localhost:8080/api/" + type+'?'+params)
       .subscribe(response => {
         this.opportunityListData = response;
         this.opportunityListData.last_page = Array(this.opportunityListData.last_page).fill(1).map((x,i)=>i);
@@ -107,9 +107,9 @@ export class TableListComponent {
         });
         break;
       case "company":
-        this.opportunityList = this.opportunityList.sort(function(a, b) {
-          var x = a.company.toLowerCase();
-          var y = b.company.toLowerCase();
+        this.opportunityList = this.opportunityList.sort(function(a: any, b: any) {
+          var x = a.company__c.toLowerCase();
+          var y = b.company__c.toLowerCase();
           if (x < y) {
             return -1;
           }
@@ -120,16 +120,16 @@ export class TableListComponent {
         });
         break;
       case "phone":
-        this.opportunityList = this.opportunityList.sort(function(a, b) {
-          var x = a.phone;
-          var y = b.phone;
+        this.opportunityList = this.opportunityList.sort(function(a: any, b: any) {
+          var x = a.phone__c;
+          var y = b.phone__c;
           return x - y;
         });
         break;
       case "email":
-        this.opportunityList = this.opportunityList.sort(function(a, b) {
-          var x = a.email.toLowerCase();
-          var y = b.email.toLowerCase();
+        this.opportunityList = this.opportunityList.sort(function(a: any, b: any) {
+          var x = a.email__c.toLowerCase();
+          var y = b.email__c.toLowerCase();
           if (x < y) {
             return -1;
           }
@@ -140,7 +140,7 @@ export class TableListComponent {
         });
         break;
       case "leadowner":
-        this.opportunityList = this.opportunityList.sort(function(a, b) {
+        this.opportunityList = this.opportunityList.sort(function(a: any, b: any) {
           var x = a.leadowner.toLowerCase();
           var y = b.leadowner.toLowerCase();
           if (x < y) {
@@ -153,7 +153,7 @@ export class TableListComponent {
         });
         break;
       case "id":
-        this.opportunityList = this.opportunityList.sort(function(a, b) {
+        this.opportunityList = this.opportunityList.sort(function(a: any, b: any) {
           var x = a.id;
           var y = b.id;
           if (x < y) {
