@@ -1,0 +1,206 @@
+<div class="container-fluid">
+  <div class="card mt-3">
+    <div class="card-header">
+      <a
+        data-toggle="collapse"
+        href="#card-lead-information"
+        aria-expanded="true"
+        aria-controls="card-lead-information"
+      >
+      Stock Information
+      </a>
+    </div>
+    <div class="card-body collapse show" id="card-lead-information">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label><span class="red_star">*</span>Stock Number</label>
+                <input type="text" pattern="[a-zA-Z0-9\sàèéìòù]+" name="name" class="form-control" id="name" required="">
+             </div>
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label>Selling Dealer</label>
+                <select class="form-control" name="selling_dealer__c" id="selling_dealer__c">
+                   <option value="">---Select---</option>
+                </select>
+             </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label for="usr">VIN</label>
+                <input type="text" name="vin__c" pattern="[a-zA-Z0-9\sàèéìòù]+" class="form-control" id="vin__c">
+             </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label for="usr"><span class="red_star">*</span>Vehicle Type</label>
+                <select class="form-control" name="vehicle_type__c" id="vehicle_type__c" required="">
+                   <option value="">-- SELECT --</option>
+                   <option value="New"> New </option>
+                   <option value="Demo"> Demo </option>
+                   <option value="Used"> Used </option>
+                </select>
+             </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label>Fuel Type</label>
+                <input type="text" name="fuel_type__c" id="fuel_type__c" class="form-control">
+             </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label for="usr">Reg No</label>
+                <input type="text" name="rego_no__c" class="form-control" id="rego_no__c">
+             </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label>Manufacture Year</label>
+                <input type="text" name="manufacture_year__c" id="manufacture_year__c" class="form-control">
+             </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label for="usr">Body Type</label>
+                <input type="text" name="body_type__c" class="form-control" id="body_type__c">
+             </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label><span class="red_star">*</span>Model</label>
+                <input type="text" class="form-control" id="model__c" autocomplete="off" name="model__c"><span onclick="" class="fa fa-search"></span>
+                <div style="display:none;" id="model__c_error"> </div>
+                <input type="hidden" id="in_model__c" name="model_name__c">
+             </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label for="usr">Body Color</label>
+                <input type="text" name="body_colour__c" class="form-control" id="body_colour__c">
+                </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label><span class="red_star">*</span>Make</label>
+                <input type="text" name="make__c" class="form-control" id="make__c" required="">
+             </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label>First Image Name</label>
+                <input type="text" name="first_image_name__c" class="form-control" id="first_image_name__c">
+             </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label>Dealer Code</label>
+                <input type="text" name="dealer_code__c" class="form-control" id="dealer_code__c">
+             </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label>Vehicle Stock Days</label>
+                <input type="text" name="vehicle_stock_days__c" class="form-control" id="vehicle_stock_days__c">
+             </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label>Owner</label>
+                <input type="text" name="ownerid" class="form-control" id="ownerid">
+             </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label for="usr">Price</label>
+                <input type="text" name="egc_price__c" class="form-control" id="egc_price__c">
+             </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label for="usr">Series</label>
+                <input type="text" name="series_c__c" class="form-control" id="series_c__c">
+             </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label for="usr">Stock Image</label>
+                <input type="text" name="stock_image__c" class="form-control" id="stock_image__c">
+             </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label>Stock Added Date</label>
+                <input type="date" class="form-control">
+             </div>
+        </div>
+      </div> 
+    
+    </div>
+  </div>
+
+  
+  <div class="card mt-3 mb-3">
+    <div class="card-header">
+      <a data-toggle="collapse" href="#system-information"
+        ><span class="glyphicon glyphicon-menu-down"></span>System
+        Information</a
+      >
+    </div>
+    <div
+      id="system-information"
+      class="collapse in card-body"
+      aria-expanded="true"
+    >
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label for="usr">Creaed by</label>
+
+             </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label for="usr">Created date</label>
+                <div id="createddate"><b>2019-03-26 12:45:59</b></div>
+             </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label for="usr">Last Modified by</label>
+              
+             </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+                <label for="usr">Last modified date</label>
+             </div>
+        </div>
+      </div>
+      <!--- end of row -->
+    </div>
+  </div>
+</div>

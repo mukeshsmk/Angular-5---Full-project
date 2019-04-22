@@ -5,6 +5,7 @@ import { map } from "rxjs/operators";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from "../shared/services/AuthService";
+import Config from '../shared/config';
 
 /**
  * This class represents the lazy loaded AboutComponent.
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.user) {
       this.http
-        .post<{ success: object }>("http://localhost:8080/api/login", this.user)
+        .post<{ success: object }>(Config.BASE_URL + "api/login", this.user)
         .subscribe(
           response => {
             this._token = response.success;

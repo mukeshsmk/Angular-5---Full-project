@@ -11,6 +11,9 @@ import { DriverComponent } from "../driver/driver.component";
 import { CustomerComponent } from "./../customer/customer.component";
 import { StockComponent } from "./../stock/stock.component";
 import { OpportunityFormComponent } from "./../opportunity-form/opportunity-form.component";
+import { DriverFormComponent } from "./../driver-form/driver-form.component";
+import { CustomerFormComponent } from './../customer-form/customer-form.component';
+import { VehicleStockFormComponent } from "./../vehiclestock-form/vehiclestock-form.component"
 
 @NgModule({
   imports: [TableListRoutingModule, CommonModule],
@@ -24,7 +27,10 @@ import { OpportunityFormComponent } from "./../opportunity-form/opportunity-form
     DriverComponent,
     CustomerComponent,
     StockComponent,
-    OpportunityFormComponent
+    OpportunityFormComponent,
+    DriverFormComponent,
+    CustomerFormComponent,
+    VehicleStockFormComponent
   ],
   exports: [TableListComponent],
   entryComponents: [TabComponent]
