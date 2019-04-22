@@ -13,11 +13,17 @@ import { CustomerComponent } from "./../customer/customer.component";
 import { StockComponent } from "./../stock/stock.component";
 import { OpportunityFormComponent } from "./../opportunity-form/opportunity-form.component";
 import { DriverFormComponent } from "./../driver-form/driver-form.component";
-import { CustomerFormComponent } from './../customer-form/customer-form.component';
-import { VehicleStockFormComponent } from "./../vehiclestock-form/vehiclestock-form.component"
+import { CustomerFormComponent } from "./../customer-form/customer-form.component";
+import { VehicleStockFormComponent } from "./../vehiclestock-form/vehiclestock-form.component";
+import { ActivitiesComponent } from "./../activities/activities.component";
 
 @NgModule({
-  imports: [TableListRoutingModule, CommonModule,FormsModule, ReactiveFormsModule],
+  imports: [
+    TableListRoutingModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   declarations: [
     TableListComponent,
     TabsComponent,
@@ -31,7 +37,8 @@ import { VehicleStockFormComponent } from "./../vehiclestock-form/vehiclestock-f
     OpportunityFormComponent,
     DriverFormComponent,
     CustomerFormComponent,
-    VehicleStockFormComponent
+    VehicleStockFormComponent,
+    ActivitiesComponent
   ],
   exports: [TableListComponent],
   entryComponents: [TabComponent]

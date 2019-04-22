@@ -108,6 +108,7 @@ import GeneralService from "../../shared/services/GeneralService";
 })
 export class TabsComponent implements AfterContentInit {
   dynamicTabs: TabComponent[] = [];
+  listTabs: TabComponent[] = [];
 
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
 
@@ -160,8 +161,14 @@ export class TabsComponent implements AfterContentInit {
 
     // remember the dynamic component for rendering the
     // tab navigation headers
-    this.dynamicTabs.push(componentRef.instance as TabComponent);
-
+    if (this.dynamicTabs.length > 9) {
+      const tab = this.dynamicTabs.pop();
+      this.listTabs.push(tab);
+      this.dynamicTabs.push(componentRef.instance as TabComponent);
+      // set it active
+    } else {
+      this.dynamicTabs.push(componentRef.instance as TabComponent);
+    }
     // set it active
     this.selectTab(this.dynamicTabs[this.dynamicTabs.length - 1]);
   }
@@ -190,6 +197,11 @@ export class TabsComponent implements AfterContentInit {
         this.selectTab(this.tabs.first);
         break;
       }
+    }
+
+    if (this.dynamicTabs.length < 9 && this.listTabs.length > 0) {
+      const tab = this.listTabs.pop();
+      this.dynamicTabs.push(tab);
     }
   }
 
