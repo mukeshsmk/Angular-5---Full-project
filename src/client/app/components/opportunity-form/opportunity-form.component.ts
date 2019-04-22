@@ -26,6 +26,7 @@ export class OpportunityFormComponent implements OnInit {
   requestTypeerr:Boolean = false;
 
   @Input() opportunity: any;
+  @Input() type:any;
   @Output('update') send = new EventEmitter<any>();
 
   opportunityForm: FormGroup;

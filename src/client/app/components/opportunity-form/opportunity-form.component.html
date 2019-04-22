@@ -142,6 +142,9 @@
                    
                   >
                     <option value="">-- SELECT --</option>
+                    <option value="Phone"> Phone </option>
+                    <option value="Walk-In"> Walk-In </option>
+                    <option value="Internet"> Internet</option>
                   </select>
                   <p class="error-box margin-top-0" *ngIf="leadSourceErr">
                       Lead source is Required
@@ -174,10 +177,18 @@
                     name="lead_type__c"
                     required=""
                     [(ngModel)]="opportunity.lead_type__c"
-                    ><option value="Gumtree">Gumtree</option
-                    ><option value="Carsales">Carsales</option
-                    ><option value="Facebook">Facebook</option></select
-                  >
+                    >
+                    <option value="">-- SELECT --</option>
+                    <option *ngIf="opportunity.lead_source__c == 'Internet'" value="Gumtree">Gumtree</option>
+                    <option *ngIf="opportunity.lead_source__c == 'Internet'" value="Carsales">Carsales</option>
+                    <option *ngIf="opportunity.lead_source__c == 'Internet'" value="Facebook">Facebook</option>
+                    <option *ngIf="opportunity.lead_source__c == 'Phone'" value='Online'>Online</option>
+                    <option *ngIf="opportunity.lead_source__c == 'Phone'" value='Radio'>Radio</option>
+                    <option *ngIf="opportunity.lead_source__c == 'Phone'" value='Edm'>Edm</option>
+                    <option *ngIf="opportunity.lead_source__c == 'Walk-In'" value='Online'>Online</option>
+                    <option *ngIf="opportunity.lead_source__c == 'Walk-In'" value='Radio'>Radio</option>
+                    <option *ngIf="opportunity.lead_source__c == 'Walk-In'" value='Edm'>Edm</option>
+                    </select>
                   <p class="error-box margin-top-0" *ngIf="leadTypeerr">
                       Lead Type is Required
                   </p>
@@ -194,7 +205,11 @@
                     class="selcet form-control"
                     [(ngModel)]="opportunity.lead_status__c"
                   >
-                    <option value="">-- SELECT --</option>
+                  <option value="">-- SELECT --</option>
+                  <option value="New"> New </option>
+                  <option value="Working"> Working </option>
+                  <option value="Appointment"> Appointment </option>
+                  <option value="Test Drive"> Test Drive </option>
                   </select>
                 </div>
               </div>
@@ -223,6 +238,10 @@
                     [(ngModel)]="opportunity.request_type__c"
                   >
                     <option value="">-- SELECT --</option>
+                    <option value="Test Drive"> Test Drive </option>
+                    <option value="Digital Brochure Request"> Digital Brochure Request </option>
+                    <option value="Contact Us"> Contact Us </option>
+                    <option value="General Enquiry"> General Enquiry </option>
                   </select>
                   <p class="error-box margin-top-0" *ngIf="requestTypeerr">
                       Request type is Required
@@ -257,6 +276,7 @@
                     id="introduction_to_finance_manager__c_lead"
                     data-parsley-multiple="introduction_to_finance_manager__c"
                     value="f"
+                    [(ngModel)]="opportunity.introduction_to_finance_manager__c"
                   />
                 </div>
               </div>
@@ -293,7 +313,7 @@
           </div>
         </div>
         <div class="card mt-3">
-          <div class="card-header">
+          <div class="card-header" *ngIf="type=='edit'">
             <a
               data-toggle="collapse"
               href="#address-information"
@@ -381,7 +401,7 @@
         </div>
       
         <div class="card mt-3">
-          <div class="card-header">
+          <div class="card-header" *ngIf="type=='edit'">
             <a
               data-toggle="collapse"
               href="#customer-insight"
@@ -441,7 +461,7 @@
         </div>
       
         <div class="card mt-3">
-          <div class="card-header">
+          <div class="card-header" *ngIf="type=='edit'">
             <a data-toggle="collapse" href="#addtional-information"
               ><span class="glyphicon glyphicon-menu-down"></span>
               &nbsp;Addtional Information

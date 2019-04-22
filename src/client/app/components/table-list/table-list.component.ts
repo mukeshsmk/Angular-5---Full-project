@@ -30,6 +30,7 @@ export class TableListComponent {
   showEdit: boolean = false;
   opportunityOpen:boolean = true;
   modalData: any =[];
+  formType:any;
 
   searchTerm: string;
   constructor(private http: HttpClient, public generalService: GeneralService) {
@@ -202,6 +203,11 @@ export class TableListComponent {
   openOpportunityModal(data:any){
     console.log(data)
     this.modalData = data;
+    this.formType = 'edit';
+    this.opportunityOpen = false;
+  }
+  openNewOpportunityModal(){
+    this.formType = 'new';
     this.opportunityOpen = false;
   }
   closeOpportunityModal(){
@@ -210,13 +216,22 @@ export class TableListComponent {
   }
   updateOpportunity(event:any){
     console.log(event)
+    let endpoint:any;
+    if(this.formType =='edit'){
+      endpoint = 'leadUpdate';
+    }
+    if(this.formType =='new'){
+      endpoint = 'quickLeadInsert';
+    }
+
     this.http
-      .post<{ success: object }>(Config.BASE_URL + "api/leadUpdate",event)
+      .post<{ success: object }>(Config.BASE_URL + "api/"+endpoint,event)
       .subscribe((response: any) => {
         console.log(response)
         this.opportunityOpen = true;
         this.modalData = [];
       });
+      
   }
   //https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fpeople%2Fperson-edit.component.ts
 }

@@ -36,7 +36,7 @@
                 >
                 </i>
               </button>
-              <button type="button" class="btn btn-secondary pull-right mr-1">
+              <button type="button" class="btn btn-secondary pull-right mr-1" *ngIf="module == 'opportunities'" (click)="openNewOpportunityModal()">
                 <i
                   data-toggle="tooltip"
                   data-original-title="Quick Lead"
@@ -606,7 +606,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <sd-opportunity-form [opportunity]="modalData" (update)="updateOpportunity($event)"></sd-opportunity-form>
+              <sd-opportunity-form [opportunity]="modalData" [type]="formType" (update)="updateOpportunity($event)"></sd-opportunity-form>
             </div>
             
           </div>
