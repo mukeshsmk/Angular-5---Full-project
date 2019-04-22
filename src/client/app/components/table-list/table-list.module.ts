@@ -15,6 +15,7 @@ import { OpportunityFormComponent } from "./../opportunity-form/opportunity-form
 import { DriverFormComponent } from "./../driver-form/driver-form.component";
 import { CustomerFormComponent } from "./../customer-form/customer-form.component";
 import { VehicleStockFormComponent } from "./../vehiclestock-form/vehiclestock-form.component";
+import { ActivitiesComponent } from "./../activities/activities.component";
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { VehicleStockFormComponent } from "./../vehiclestock-form/vehiclestock-f
     OpportunityFormComponent,
     DriverFormComponent,
     CustomerFormComponent,
-    VehicleStockFormComponent
+    VehicleStockFormComponent,
+    ActivitiesComponent
   ],
   exports: [TableListComponent],
   entryComponents: [TabComponent]
