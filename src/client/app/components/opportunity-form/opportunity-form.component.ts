@@ -4,11 +4,11 @@ import { Component, OnInit, Input } from "@angular/core";
  */
 @Component({
   moduleId: module.id,
-  selector: "sd-opportunity",
-  templateUrl: "opportunity.component.html",
-  styleUrls: ["opportunity.component.css"]
+  selector: "sd-opportunity-form",
+  templateUrl: "opportunity-form.component.html",
+  styleUrls: ["opportunity-form.component.css"]
 })
-export class OpportunityComponent implements OnInit {
+export class OpportunityFormComponent implements OnInit {
   visibleOne: Boolean = false;
   visibleTwo: Boolean = true;
   visibleThree: Boolean = true;

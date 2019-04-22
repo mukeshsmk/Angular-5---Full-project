@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 
 import { TabsComponent } from "../tab/tabs.component";
 import { HttpClient } from "@angular/common/http";
 import GeneralService from "../../shared/services/GeneralService";
-import { Template } from "@angular/compiler/src/render3/r3_ast";
-
+import Config from "../../shared/config";
 
 @Component({
   moduleId: module.id,
@@ -24,69 +23,78 @@ export class TableListComponent {
   opportunityList: any = [];
   module: string = "opportunities";
   opportunityListData: any = [];
-  page:number = 1;
-  limit:number = 10;
-  search:any= '';
+  page: number = 1;
+  limit: number = 10;
+  search: any = "";
+  showEdit: boolean = false;
 
-  searchTerm:string;
+  searchTerm: string;
   constructor(private http: HttpClient, public generalService: GeneralService) {
     let params = {
-      page:this.page,
-      limit:this.limit,
-      search:this.search
-    }
+      page: this.page,
+      limit: this.limit,
+      search: this.search
+    };
     this.generalService.emitter.subscribe((response: string) => {
       this.module = response;
-      this.loadData(this.module,(params));
+      this.loadData(this.module, params);
       console.log("Loading data", this.module);
     });
-    this.loadData(this.module,(params));
+    this.loadData(this.module, params);
   }
 
-
-
-  loadData(type: string,params:any) {
-    params = 'page='+params.page+'&limit='+params.limit+'&search='+params.search;
+  loadData(type: string, params: any) {
+    params =
+      "page=" +
+      params.page +
+      "&limit=" +
+      params.limit +
+      "&search=" +
+      params.search;
     this.http
-      .get<{ success: object }>("http://10.0.0.9:8080/api/" + type+'?'+params)
-      .subscribe(response => {
+      .get<{ success: object }>(Config.BASE_URL + "api/" + type + "?" + params)
+      .subscribe((response: any) => {
         this.opportunityListData = response;
-        this.opportunityListData.last_page = Array(this.opportunityListData.last_page).fill(1).map((x,i)=>i);
+        this.opportunityListData.last_page = Array(
+          this.opportunityListData.last_page
+        )
+          .fill(1)
+          .map((x, i) => i);
         this.opportunityList = response.data;
       });
   }
-  searchList(searchData:any){
-    if(searchData.length>=3 || searchData.length == 0 ){
+  searchList(searchData: any) {
+    if (searchData.length >= 3 || searchData.length == 0) {
       this.search = searchData;
       let params = {
-        page:this.page,
-        limit:this.limit,
-        search:this.search
-      }
-      this.loadData(this.module,params)
+        page: this.page,
+        limit: this.limit,
+        search: this.search
+      };
+      this.loadData(this.module, params);
     }
   }
-  pageCount(limit:any){
+  pageCount(limit: any) {
     this.limit = limit;
     let params = {
-      page:this.page,
-      limit:this.limit,
-      search:this.search
-    }
-   
-    this.loadData(this.module,params)
+      page: this.page,
+      limit: this.limit,
+      search: this.search
+    };
+
+    this.loadData(this.module, params);
   }
-  pageNumber(page:any){
+  pageNumber(page: any) {
     this.page = page;
     let params = {
-      page:this.page,
-      limit:this.limit,
-      search:this.search
-    }
-    this.loadData(this.module,params)
+      page: this.page,
+      limit: this.limit,
+      search: this.search
+    };
+    this.loadData(this.module, params);
   }
-  activateClass(i:any){
-    i.active = !i.current_page;    
+  activateClass(i: any) {
+    i.active = !i.current_page;
   }
   sort(arg: any) {
     switch (arg) {
@@ -107,7 +115,10 @@ export class TableListComponent {
         });
         break;
       case "company":
-        this.opportunityList = this.opportunityList.sort(function(a, b) {
+        this.opportunityList = this.opportunityList.sort(function(
+          a: any,
+          b: any
+        ) {
           var x = a.company.toLowerCase();
           var y = b.company.toLowerCase();
           if (x < y) {
@@ -140,7 +151,10 @@ export class TableListComponent {
         });
         break;
       case "leadowner":
-        this.opportunityList = this.opportunityList.sort(function(a, b) {
+        this.opportunityList = this.opportunityList.sort(function(
+          a: any,
+          b: any
+        ) {
           var x = a.leadowner.toLowerCase();
           var y = b.leadowner.toLowerCase();
           if (x < y) {
@@ -171,29 +185,22 @@ export class TableListComponent {
     console.log(data);
     let template;
     console.log(this.module);
-    switch(this.module){
-      case 'opportunities': 
+    switch (this.module) {
+      case "opportunities":
         template = this.persondetailsTemplate;
-      break;
-      case 'vehicle_stocks': 
+        break;
+      case "vehicle_stocks":
         template = this.stockdetailsTemplate;
-      break;
-      case 'drivers': 
+        break;
+      case "drivers":
         template = this.driverdetailsTemplate;
-      break;
-      case 'customers': 
+        break;
+      case "customers":
         template = this.customerdetailsTemplate;
-      break;
+        break;
     }
-    console.log(template);
-    this.tabsComponent.openTab(
-      data.name,
-      template,
-      data,
-      true
-    );
+    this.tabsComponent.openTab(data.name, template, data, true);
   }
- 
 
   //https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fpeople%2Fperson-edit.component.ts
 }

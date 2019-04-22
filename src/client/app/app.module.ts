@@ -8,7 +8,6 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 
 // import { RegistrationService } from './service/registration.service';
-import { AboutModule } from "./about/about.module";
 import { LoginModule } from "./login/login.module";
 import { SignupModule } from "./signup/signup.module";
 import { ForgetModule } from "./forget/forget.module";
@@ -21,8 +20,9 @@ import { TableListModule } from "./components/table-list/table-list.module";
 import { HeaderModule } from "./components/header/header.module";
 import { ModalModule } from "./components/modal/modal.module";
 
-
 import GeneralService from "./shared/services/GeneralService";
+import { AuthService } from "./shared/services/AuthService";
+import { AuthGuardService } from "./shared/services/AuthGuardService";
 
 @NgModule({
   imports: [
@@ -30,7 +30,6 @@ import GeneralService from "./shared/services/GeneralService";
     CoreModule,
     HttpClientModule,
     AppRoutingModule,
-    AboutModule,
     HomeModule,
     SignupModule,
     LoginModule,
@@ -55,10 +54,12 @@ import GeneralService from "./shared/services/GeneralService";
   providers: [
     {
       provide: APP_BASE_HREF,
-      
+
       useValue: "<%= APP_BASE %>"
     },
-    GeneralService
+    AuthGuardService,
+    GeneralService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
