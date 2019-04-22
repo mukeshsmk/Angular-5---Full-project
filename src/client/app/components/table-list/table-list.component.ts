@@ -19,6 +19,7 @@ export class TableListComponent {
   @ViewChild("stockDetails") stockdetailsTemplate: any;
   @ViewChild("driverDetails") driverdetailsTemplate: any;
   @ViewChild("customerDetails") customerdetailsTemplate: any;
+  @ViewChild("oppournityModal") oppournitymodalTemplate: any;
 
   opportunityList: any = [];
   module: string = "opportunities";
@@ -27,6 +28,8 @@ export class TableListComponent {
   limit: number = 10;
   search: any = "";
   showEdit: boolean = false;
+  opportunityOpen:boolean = true;
+  modalData: any =[];
 
   searchTerm: string;
   constructor(private http: HttpClient, public generalService: GeneralService) {
@@ -77,7 +80,7 @@ export class TableListComponent {
   pageCount(limit: any) {
     this.limit = limit;
     let params = {
-      page: this.page,
+      page: 1,
       limit: this.limit,
       search: this.search
     };
@@ -115,12 +118,9 @@ export class TableListComponent {
         });
         break;
       case "company":
-        this.opportunityList = this.opportunityList.sort(function(
-          a: any,
-          b: any
-        ) {
-          var x = a.company.toLowerCase();
-          var y = b.company.toLowerCase();
+        this.opportunityList = this.opportunityList.sort(function(a: any, b: any) {
+          var x = a.company__c.toLowerCase();
+          var y = b.company__c.toLowerCase();
           if (x < y) {
             return -1;
           }
@@ -131,16 +131,16 @@ export class TableListComponent {
         });
         break;
       case "phone":
-        this.opportunityList = this.opportunityList.sort(function(a, b) {
-          var x = a.phone;
-          var y = b.phone;
+        this.opportunityList = this.opportunityList.sort(function(a: any, b: any) {
+          var x = a.phone__c;
+          var y = b.phone__c;
           return x - y;
         });
         break;
       case "email":
-        this.opportunityList = this.opportunityList.sort(function(a, b) {
-          var x = a.email.toLowerCase();
-          var y = b.email.toLowerCase();
+        this.opportunityList = this.opportunityList.sort(function(a: any, b: any) {
+          var x = a.email__c.toLowerCase();
+          var y = b.email__c.toLowerCase();
           if (x < y) {
             return -1;
           }
@@ -151,10 +151,7 @@ export class TableListComponent {
         });
         break;
       case "leadowner":
-        this.opportunityList = this.opportunityList.sort(function(
-          a: any,
-          b: any
-        ) {
+        this.opportunityList = this.opportunityList.sort(function(a: any, b: any) {
           var x = a.leadowner.toLowerCase();
           var y = b.leadowner.toLowerCase();
           if (x < y) {
@@ -167,7 +164,7 @@ export class TableListComponent {
         });
         break;
       case "id":
-        this.opportunityList = this.opportunityList.sort(function(a, b) {
+        this.opportunityList = this.opportunityList.sort(function(a: any, b: any) {
           var x = a.id;
           var y = b.id;
           if (x < y) {
@@ -202,5 +199,24 @@ export class TableListComponent {
     this.tabsComponent.openTab(data.name, template, data, true);
   }
 
+  openOpportunityModal(data:any){
+    console.log(data)
+    this.modalData = data;
+    this.opportunityOpen = false;
+  }
+  closeOpportunityModal(){
+    this.opportunityOpen = true;
+    this.modalData = [];
+  }
+  updateOpportunity(event:any){
+    console.log(event)
+    this.http
+      .post<{ success: object }>(Config.BASE_URL + "api/leadUpdate",event)
+      .subscribe((response: any) => {
+        console.log(response)
+        this.opportunityOpen = true;
+        this.modalData = [];
+      });
+  }
   //https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fpeople%2Fperson-edit.component.ts
 }

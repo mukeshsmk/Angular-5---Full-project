@@ -77,17 +77,12 @@ import GeneralService from "../../shared/services/GeneralService";
         border-top: 1px solid #EF1B24;
         border-bottom: 1px solid #EF1B24;
       }
-      .dynamicTabs active{
-        border-top: 1px solid #EF1B24;
-        border-bottom: 1px solid #EF1B24;
-    }
+      
       .nav-tabs select {
         background: #fff;
         word-wrap: normal;
         font-family: inherit;
         padding: 10px 35px;
-        margin: 0 25px;
-        border: 1px solid #000000;
         font-size: 14px;
       }
       .nav-tabs {
@@ -98,8 +93,7 @@ import GeneralService from "../../shared/services/GeneralService";
         padding: 0 0 0 20px;
       }
       .selectTab {
-        margin: -10px 0 0;
-        padding: 0 0 0 10px;
+        margin: 0px 10px 0 3%;
       }
 
       .dynamicTabs {
@@ -108,17 +102,25 @@ import GeneralService from "../../shared/services/GeneralService";
         background: #f4f7f9;
         font-size: 16px;
         color: #000 !important;
-        margin: -10px 3px 0 0px;
+        margin: 0px 3px 0 0px;
       }
+      .active{
+        border-top: 1px solid #EF1B24;
+        border-bottom: 1px solid #EF1B24;
+    }
       .dynamicTabs a {
         color: #828383;
         text-decoration: none;
+      }
+      sd-tabs ul{
+        margin: 0;
       }
     `
   ]
 })
 export class TabsComponent implements AfterContentInit {
   dynamicTabs: TabComponent[] = [];
+  listTabs: TabComponent[] = [];
 
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
 
@@ -171,8 +173,14 @@ export class TabsComponent implements AfterContentInit {
 
     // remember the dynamic component for rendering the
     // tab navigation headers
-    this.dynamicTabs.push(componentRef.instance as TabComponent);
-
+    if (this.dynamicTabs.length > 9) {
+      const tab = this.dynamicTabs.pop();
+      this.listTabs.push(tab);
+      this.dynamicTabs.push(componentRef.instance as TabComponent);
+      // set it active
+    } else {
+      this.dynamicTabs.push(componentRef.instance as TabComponent);
+    }
     // set it active
     this.selectTab(this.dynamicTabs[this.dynamicTabs.length - 1]);
   }
@@ -201,6 +209,11 @@ export class TabsComponent implements AfterContentInit {
         this.selectTab(this.tabs.first);
         break;
       }
+    }
+
+    if (this.dynamicTabs.length < 9 && this.listTabs.length > 0) {
+      const tab = this.listTabs.pop();
+      this.dynamicTabs.push(tab);
     }
   }
 

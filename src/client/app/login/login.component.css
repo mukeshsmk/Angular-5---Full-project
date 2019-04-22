@@ -5,13 +5,8 @@ body{
   min-height: 100vh;
   background-size: cover;
   background-position: 50% 0;
-  background-image:url('https://app-retail-gjaya79.c9users.io/final/assets/images/bg.jpg');
+  background-image:url('/assets/images/bg.jpg');
 }
-:host {
-  display: block;
-  padding: 0 16px;
-}
- 
 form {
   margin: 0 15px;
   width: 445px;
@@ -142,4 +137,15 @@ form[_ngcontent-c1] {
   width: 100%;
   color: #6c35a8;
   font-size: 18px;
+}
+.loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url('/assets/images/loader.gif') 50% 50% no-repeat rgb(249,249,249);
+  background-size: 100px 100px;
+  opacity: .8;
 }

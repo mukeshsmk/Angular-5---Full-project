@@ -32,7 +32,8 @@
       <div class="card">
         <div class="card-header">
           <a (click)="visibleOne = !visibleOne">
-            <i class="fa fa-angle-down"></i>
+              <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
+              <i class="fa fa-angle-down" *ngIf="!visibleOne"></i>
             <p> Customer Information</p>
           </a>
         </div>
@@ -40,56 +41,56 @@
           <div class="row">
             <div class="col-sm-3">
               <div class="form-group">
-                 <label>Name:</label>
-                 <span class="form-control-static">{{ customer.name }}</span>
+                 <label><b>Name : </b></label>
+                 <span class="form-control-static"> {{ customer.name }}</span>
               </div>
               <div class="form-group">
-                 <label>First Name:</label>
-                 <span class="form-control-static">{{ customer.first_name__c }}</span>
+                 <label><b>First Name :</b></label>
+                 <span class="form-control-static"> {{ customer.first_name__c }}</span>
               </div>
               <div class="form-group">
-                 <label>Last Name:</label>
+                 <label><b>Last Name :</b></label>
                  <span class="form-control-static"> {{ customer.last_name__c }}</span>
               </div>	
               <div class="form-group">
-                 <label>Business Email:</label>
-                 <span class="form-control-static">{{ customer.business_email__c }}</span>
+                 <label><b>Business Email :</b></label>
+                 <span class="form-control-static"> {{ customer.business_email__c }}</span>
               </div>							
   
            </div>
   
            <div class="col-sm-3">
             <div class="form-group">
-               <label>Mobile:</label>
-               <span class="form-control-static">{{ customer.mobile__c }}</span>
+               <label><b>Mobile :</b></label>
+               <span class="form-control-static"> {{ customer.mobile__c }}</span>
             </div>
             <div class="form-group">
-               <label>Phone: </label>
-               <span class="form-control-static">{{ customer.phone }}</span>
+               <label><b>Phone :</b> </label>
+               <span class="form-control-static"> {{ customer.phone }}</span>
             </div>
             <div class="form-group">
-               <label>State:</label>
-               <span class="form-control-static">{{ customer.state__c }}</span>
+               <label><b>State :</b></label>
+               <span class="form-control-static"> {{ customer.state__c }}</span>
             </div>
 
          </div>
 
          <div class="col-sm-3">
           <div class="form-group">
-             <label>Billing postcode:</label>
-             <span class="form-control-static">{{ customer.billing_postcode__c }}</span>
+             <label><b>Billing postcode :</b></label>
+             <span class="form-control-static"> {{ customer.billing_postcode__c }}</span>
           </div>
           <div class="form-group">
-             <label>Billing state:</label>
-             <span class="form-control-static">{{ customer.billing_state__c }}</span>
+             <label><b>Billing state :</b></label>
+             <span class="form-control-static"> {{ customer.billing_state__c }}</span>
           </div>
           <div class="form-group">
-             <label>Account:</label>
-             <span class="form-control-static">{{ customer.account__c }}</span>
+             <label><b>Account :</b></label>
+             <span class="form-control-static"> {{ customer.account__c }}</span>
           </div>
           <div class="form-group">
-             <label>Account Number:</label>
-             <span class="form-control-static">{{ customer.accountnumber }}</span>
+             <label><b>Account Number :</b></label>
+             <span class="form-control-static"> {{ customer.accountnumber }}</span>
           </div>						
        </div>
 
@@ -103,7 +104,8 @@
       <div class="card">
         <div class="card-header">
           <a (click)="visibleTwo = !visibleTwo">
-            <i class="fa fa-angle-down"></i>
+              <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
+              <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i>
             <p> System Information</p>
           </a>
         </div>
@@ -111,22 +113,22 @@
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <label>Created by</label>
-                <span class="form-control-static"></span>
+                <label><b>Created by :</b></label>
+                <span class="form-control-static" ></span>
              </div>
              <div class="form-group">
-                <label>Created Date</label>
-                <span class="form-control-static">2019-04-12 07:22:00</span>
+                <label><b>Created Date :</b></label>
+                <span class="form-control-static"> 2019-04-12 07:22:00</span>
              </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <label>Last modified by</label>
+                <label><b>Last modified by :</b></label>
                 <span class="form-control-static"></span>
              </div>
              <div class="form-group">
-                <label>Last modified date</label>
-                <span class="form-control-static"></span>
+                <label><b>Last modified date :</b></label>
+                <span class="form-control-static"> </span>
              </div>
             </div>
           </div>

@@ -2,8 +2,7 @@
 <div class="bg_img"> 
   <div class="login_container" >
       <div class="login_box">
-        <img src="https://app-retail-gjaya79.c9users.io/final/assets/images/logo-dark.png" class="modal-img" style="margin: 10px 0;;height: 60px">
-        <!-- <img src="../../../../images/logo.png" class="modal-img" style="margin: 10px 0;;height: 60px"> -->
+        <img src="/assets/images/logo.png" class="modal-img" style="margin: 10px 0;;height: 60px">
         <form (ngSubmit)="onSubmit(loginForm)" #registerForm="ngForm">
             <div>
               <br>
@@ -27,9 +26,9 @@
                 <p class="error-box margin-top-0" *ngIf="password.hasError('required')">
                   Password is Required
                 </p>
-                <p class="error-box margin-top-0" *ngIf="password.hasError('minlength')">
+                <!-- <p class="error-box margin-top-0" *ngIf="password.hasError('minlength')">
                  Minimum 6 Characters are Required
-                </p>
+                </p> -->
               </div>
           
               <p *ngIf="isLoginError" class="error-box margin-top-0">
@@ -38,13 +37,12 @@
           
               <br>
 
-              <button type="submit" [disabled]="!registerForm.valid" class="login">Sign in</button>  
+              <button type="submit"  [disabled]="!registerForm.valid" class="login">Sign In</button>  
             </div>
             
           
-            <!-- <div class="success">
-                <span *ngIf="infoMessage.length > 0">{{ infoMessage }}</span>
-            </div> -->
+            <div class="loader" *ngIf="visibleOne"></div>
+           
           
           </form> 
       </div>
