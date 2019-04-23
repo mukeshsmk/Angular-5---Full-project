@@ -32,7 +32,6 @@
                     class="form-control"
                     id="first_name__c_lead"
                     formControlName = "first_name__c"
-                    value=" {{ opportunity.first_name__c }}"
                   />
                 </div>
               </div>
@@ -595,11 +594,11 @@
       <div class="modal-footer">
           <button
             type="button"
-            class="btn btn-secondary"
+            class="btn btn-default"
             data-dismiss="modal"
             (click)="closeModal()"
           >
-            Close
+            cancel
           </button>
           <button type="submit" class="btn btn-primary" >Save changes</button>
         </div>

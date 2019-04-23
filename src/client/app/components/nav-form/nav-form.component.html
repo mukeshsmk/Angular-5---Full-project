@@ -1,0 +1,412 @@
+<form (ngSubmit)="onSubmit(opportunityForm)" #registerForm="ngForm">
+    <div class="container-fluid">
+        <div class="card mt-3">
+          <div class="card-header">
+            <a
+              data-toggle="collapse"
+              href="#card-lead-information"
+              aria-expanded="true"
+              aria-controls="card-lead-information"
+            >
+            Working Status
+            </a>
+          </div>
+          <div class="card-body collapse show" id="card-lead-information">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                  <div class="form-group">
+                      <label for="usr">First Name</label>
+                      <input type="text" name="subject" id="subject" used="first_name__c" class="first_name__c703 common_txt_box703Working form-control">
+                   </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                  <div class="form-group">
+                      <label>Last Name</label>
+                      <input type="text" name="due_date" id="due_date" used="last_name__c" class="last_name__c703  common_txt_box703Working form-control">
+                   </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                  <div class="form-group">
+                      <label for="usr">Mobile</label>
+                      <input type="text" name="name" id="name" used="mobile__c" class="common_txt_box703Working mobile__c703  form-control">
+                   </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                  <div class="form-group">
+                      <label>Email</label>
+                      <input type="text" name="related_to" id="related_to" used="email__c" class="email__c703  common_txt_box703Working form-control">
+                   </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                  <div class="form-group">
+                      <label for="usr">Post Code</label>
+                      <input type="text" name="assigned_to" id="assigned_to" used="zip_postal_code__c" class="zip_postal_code__c703Working  common_txt_box703Working form-control">
+                   </div>
+              </div>
+            </div>
+           
+           
+            <!--- end of row -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-default"
+            data-dismiss="modal"
+            (click)="closeOpportunityModal()"
+          >
+            cancel
+          </button>
+          <button type="button" class="btn btn-info" (click)="onSubmit(opportunity)">Save</button>
+        </div>
+<!-- </form>
+
+
+
+<form (ngSubmit)="onSubmit(opportunityForm)" #registerForm="ngForm"> -->
+    <div class="container-fluid">
+        <div class="card mt-3">
+          <div class="card-header">
+            <a
+              data-toggle="collapse"
+              href="#card-lead-information"
+              aria-expanded="true"
+              aria-controls="card-lead-information"
+            >
+            Appointment Status
+            </a>
+          </div>
+          <div class="card-body collapse show" id="card-lead-information">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                  <div class="form-group">
+                      <label for="usr">Address</label>
+                      <input type="text" class="form-control">
+                   </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                  <div class="form-group">
+                      <label>License Number</label>
+                      <input type="text" name="license_number__c" used="license_number__c" class="license_number__c703  common_txt_box703Appointment form-control">
+                   </div>
+              </div>
+            </div>
+                     
+           
+            <!--- end of row -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-default"
+            data-dismiss="modal"
+            (click)="closeOpportunityModal()"
+          >
+            cancel
+          </button>
+          <button type="button" class="btn btn-info" (click)="onSubmit(opportunity)">Save</button>
+        </div>
+
+<!-- </form> 
+
+
+
+<form (ngSubmit)="onSubmit(opportunityForm)" #registerForm="ngForm"> -->
+
+    <div class="container-fluid">
+        <div class="card mt-3">
+          <div class="card-header">
+            <a
+              data-toggle="collapse"
+              href="#card-lead-information"
+              aria-expanded="true"
+              aria-controls="card-lead-information"
+            >
+            Quotation Modal Status
+            </a>
+          </div>
+          <div class="card-body collapse show" id="card-lead-information">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                  <div class="form-group">
+                      <label for="usr">Place of work:</label>
+                      <input type="text" name="place_of_work__c" used="place_of_work__c" class="common_txt_box703Quotation place_of_work__c703 form-control">
+                   </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                  <div class="form-group">
+                      <label>Family Details:</label>
+                      <input type="text" name="family_details__c" used="family_details__c" class="common_txt_box703Quotation family_details__c703 form-control">
+                   </div>
+              </div>
+            </div>
+                     
+           
+            <!--- end of row -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-default"
+            data-dismiss="modal"
+            (click)="closeOpportunityModal()"
+          >
+            cancel
+          </button>
+          <button type="button" class="btn btn-info" (click)="onSubmit(opportunity)">Save</button>
+        </div>
+
+<!-- </form>
+
+
+<form (ngSubmit)="onSubmit(opportunityForm)" #registerForm="ngForm"> -->
+
+    <div class="container-fluid">
+        <div class="card mt-3">
+          <div class="card-header">
+            <a
+              data-toggle="collapse"
+              href="#card-lead-information"
+              aria-expanded="true"
+              aria-controls="card-lead-information"
+            >
+            Working Status
+            </a>
+          </div>
+          <div class="card-body collapse show" id="card-lead-information">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                  <div class="form-group">
+                      <label><input type="checkbox" value="">  Introduction to manager</label>
+                   </div>
+              </div>
+            </div>
+                     
+           
+            <!--- end of row -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-default"
+            data-dismiss="modal"
+            (click)="closeOpportunityModal()"
+          >
+            cancel
+          </button>
+          <button type="button" class="btn btn-info" (click)="onSubmit(opportunity)">Save</button>
+        </div>
+        
+<!-- </form> 
+
+
+
+<form (ngSubmit)="onSubmit(opportunityForm)" #registerForm="ngForm"> --> 
+
+    <div class="container-fluid">
+        <div class="card mt-3">
+          <div class="card-header">
+            <a
+              data-toggle="collapse"
+              href="#card-lead-information"
+              aria-expanded="true"
+              aria-controls="card-lead-information"
+            >
+            closed Lost
+            </a>
+          </div>
+          <div class="card-body collapse show" id="card-lead-information">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                  <div class="form-group">
+                      <label for="usr">Notes:</label>
+                      <!--
+      <input type="text" name="place_of_work__c" used="place_of_work__c" class="1common_txt_box703Quotation place_of_work__c703 form-control">
+     -->
+     <textarea rows="5" class="form-control" used="notes__c"></textarea>
+     </div>
+              </div>
+            </div>
+                     
+           
+            <!--- end of row -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-default"
+            data-dismiss="modal"
+            (click)="closeOpportunityModal()"
+          >
+            cancel
+          </button>
+          <button type="button" class="btn btn-info" (click)="onSubmit(opportunity)">Save</button>
+        </div>
+        
+<!-- </form>
+
+<form (ngSubmit)="onSubmit(opportunityForm)" #registerForm="ngForm"> -->
+
+    <div class="container-fluid">
+        <div class="card mt-3">
+          <div class="card-header">
+            <a
+              data-toggle="collapse"
+              href="#card-lead-information"
+              aria-expanded="true"
+              aria-controls="card-lead-information"
+            >
+            Working Status
+            </a>
+          </div>
+          <div class="card-body collapse show" id="card-lead-information">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                  <div class="form-group">
+                      <label>Vin Number:</label>
+                      <input type="text" name="family_details__c" used="family_details__c" class="common_txt_box703ClosedWon family_details__c703 form-control">
+                  </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                  <div class="form-group">
+                      <label for="usr">Stock Number:</label>
+                      <input type="text" name="place_of_work__c" used="place_of_work__c" class="common_txt_box703ClosedWon place_of_work__c703 form-control">
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                  <div class="form-group">
+                      <label for="usr">Mobile</label>
+                      <input type="text" name="name" used="mobile__c" class="common_txt_box703ClosedWon mobile__c703  form-control">
+                   </div>
+              </div>
+            </div>
+          
+           
+           
+            <!--- end of row -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-default"
+            data-dismiss="modal"
+            (click)="closeOpportunityModal()"
+          >
+            cancel
+          </button>
+          <button type="button" class="btn btn-info" (click)="onSubmit(opportunity)">Save</button>
+        </div>
+
+<!-- </form> 
+
+
+<form (ngSubmit)="onSubmit(opportunityForm)" #registerForm="ngForm"> -->
+
+<div class="container-fluid">
+    <div class="card mt-3">
+      <div class="card-header">
+        <a
+          data-toggle="collapse"
+          href="#card-lead-information"
+          aria-expanded="true"
+          aria-controls="card-lead-information"
+        >
+        duplicateModal
+        </a>
+      </div>
+      <div class="card-body collapse show" id="card-lead-information">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                  <label for="usr">Notes:</label>
+                  <!--
+                  <input type="text" name="place_of_work__c" used="place_of_work__c" class="1common_txt_box703Quotation place_of_work__c703 form-control">
+                -->
+                <textarea rows="6" class="form-control" used="notes__c"></textarea>
+                </div>
+          </div>
+        </div>
+                 
+       
+        <!--- end of row -->
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-default"
+        data-dismiss="modal"
+        (click)="closeOpportunityModal()"
+      >
+        cancel
+      </button>
+      <button type="button" class="btn btn-info" (click)="onSubmit(opportunity)">Save</button>
+    </div>
+    
+<!-- </form> 
+
+
+<form (ngSubmit)="onSubmit(opportunityForm)" #registerForm="ngForm"> -->
+
+<div class="container-fluid">
+    <div class="card mt-3">
+      <div class="card-header">
+        <a
+          data-toggle="collapse"
+          href="#card-lead-information"
+          aria-expanded="true"
+          aria-controls="card-lead-information"
+        >
+        Converted
+        </a>
+      </div>
+      <div class="card-body collapse show" id="card-lead-information">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                  <label for="usr">Notes:</label>
+                  <!--
+                  <input type="text" name="place_of_work__c" used="place_of_work__c" class="1common_txt_box703Quotation place_of_work__c703 form-control">
+                -->
+                <textarea rows="6" cols="50" class="form-control" used="notes__c"></textarea>
+                </div>
+          </div>
+        </div>
+                 
+       
+        <!--- end of row -->
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-default"
+        data-dismiss="modal"
+        (click)="closeOpportunityModal()"
+      >
+        cancel
+      </button>
+      <button type="button" class="btn btn-info" (click)="onSubmit(opportunity)">Save</button>
+    </div>
+    
+</form>

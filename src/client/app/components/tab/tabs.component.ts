@@ -28,7 +28,7 @@ import GeneralService from "../../shared/services/GeneralService";
         [class.active]="tab.active"
       >
         <a href="#">
-          <select (change)="moduleChanged($event.target.value)">
+          <select class="pointer" (change)="moduleChanged($event.target.value)">
             <option value="opportunities">Opportunity</option>
             <option value="vehicle_stocks">Vehicle Stock</option>
             <option value="drivers">Driver</option>
@@ -62,6 +62,10 @@ import GeneralService from "../../shared/services/GeneralService";
       nav-tabs ul {
         background: red;
       }
+      .nav{
+        margin-top: 0;
+      }
+      .pointer {cursor: pointer;}
       .tab-close {
         color: gray;
         text-align: right;
@@ -72,12 +76,17 @@ import GeneralService from "../../shared/services/GeneralService";
       .tab.active {
         background: red;
       }
+      .selectTab active{
+        border-top: 1px solid #EF1B24;
+        border-bottom: 1px solid #EF1B24;
+      }
+      
       .nav-tabs select {
         background: #fff;
         word-wrap: normal;
+        font-family: inherit;
         padding: 10px 35px;
-        margin: 0 25px;
-        border: 1px solid #000000;
+        font-size: 14px;
       }
       .nav-tabs {
         border-bottom: 1px solid #db4e4e !important;
@@ -87,8 +96,7 @@ import GeneralService from "../../shared/services/GeneralService";
         padding: 0 0 0 20px;
       }
       .selectTab {
-        margin: -10px 0 0;
-        padding: 0 0 0 10px;
+        margin: 0px 10px 0 3%;
       }
 
       .dynamicTabs {
@@ -97,11 +105,18 @@ import GeneralService from "../../shared/services/GeneralService";
         background: #f4f7f9;
         font-size: 16px;
         color: #000 !important;
-        margin: -10px 3px 0 0px;
+        margin: 0px 3px 0 0px;
       }
+      .active{
+        border-top: 1px solid #EF1B24;
+        border-bottom: 1px solid #EF1B24;
+    }
       .dynamicTabs a {
         color: #828383;
         text-decoration: none;
+      }
+      sd-tabs ul{
+        margin: 0;
       }
     `
   ]

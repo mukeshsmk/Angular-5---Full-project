@@ -68,14 +68,28 @@ h2 a {
   display: block;
   width: 0;
   height: 0;
-  /* border-top: 17px solid transparent; */
-  /* border-bottom: 17px solid transparent; */
-  /* border-left: 10px solid white; */
   position: absolute;
   top: 50%;
   margin-top: -17px;
   left: 100%;
   z-index: 3;
+}
+.btn-success {
+  color: #fff;
+  border-color: #4cae4c;
+}
+.btn-breadcrumb .btn.btn-success:hover:not(:last-child):before {
+  border-left: 10px solid #398439;
+  /* background:#449d44; */
+}
+.btn-breadcrumb .btn.btn-success:not(:last-child):before {
+  border-left: 10px solid #4cae4c;
+}
+.btn-breadcrumb .btn.btn-success:hover:not(:last-child):after {
+  border-left: 10px solid #47a447;
+}
+.btn-breadcrumb .btn.btn-success:not(:last-child):after {
+  border-left: 10px solid #5cb85c;
 }
 .btn-breadcrumb .btn.btn-info:hover:not(:last-child):before {
   border-left: 10px solid #269abc;

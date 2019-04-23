@@ -19,6 +19,6 @@ ul {
 }
 .mainComponent{
   float:left;
-  margin-left: 85px;
+  margin-left: 67px;
   width: calc( 100% - 85px);
 }

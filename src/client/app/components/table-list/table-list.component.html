@@ -5,7 +5,7 @@
         <div class="card">
           <div class="row mb-2">
             <div class="col-3">
-              <select class="form-control">
+              <select class="form-control form-list">
                 <option value="allLeads" selected="">All</option>
                 <option value="allocated">Allocated Leads</option>
                 <option value="unAllocated">Un Allocated Leads</option>
@@ -24,6 +24,7 @@
                   aria-hidden="true"
                 ></i>
               </button>
+              
               <button
                 id="createNewLead"
                 type="button"
@@ -70,7 +71,7 @@
             </div>
             <div class="col-sm-6">
               <div id="example_filter" class="dataTables_filter">
-                <label class="d-flex float-right"
+                <label class="d-flex mt-4 float-right"
                   >Search:<input
                     type="search"
                     (keyup)="searchList($event.target.value)"
@@ -155,10 +156,14 @@
                             {{ opportunity.id }}
                           </td>
                           <td>
-                            <a
+                              <a
                               href="#"
-                              (click)="viewPersondetails(opportunity)"
-                              >{{ opportunity.name }}</a
+                              (click)="viewPersondetails(opportunity)" 
+                              >
+                                <div class="tooltip">{{ opportunity.name }}
+                                  <span class="tooltiptext">Requested Type: Test Drive <br> Model of interest: A10 </span>
+                                </div>
+                              </a
                             >
                           </td>
                           <td>
@@ -415,7 +420,7 @@
                     <table class="table">
                       <thead class=" text-primary">
                         <th>
-                          <input type="checkbox" id="blahA" value="1" />
+                          <!--<input type="checkbox" id="blahA" value="1" />-->
                         </th>
                         <!-- <th>
                           ID
@@ -499,9 +504,9 @@
                       </thead>
                       <tbody>
                         <tr *ngFor="let opportunity of opportunityList">
-                          <td>
+                          <!--<td>
                             <input type="checkbox" id="blahA" value="1" />
-                          </td>
+                          </td>-->
                           <td>
                             {{ opportunity.id }}
                           </td>
@@ -609,17 +614,25 @@
             </div>
             <div class="modal-body"  [ngSwitch]="module">
               <ng-template [ngSwitchCase]="'opportunities'">
-                <sd-opportunity-form [opportunity]="modalData" [type]="formType" (updateOpportunity)="updateOpportunity($event)"></sd-opportunity-form>
+                <div *ngIf="!opportunityOpen">
+                    <sd-opportunity-form [opportunity]="modalData" [type]="formType" (updateOpportunity)="updateOpportunity($event)"></sd-opportunity-form>
+                </div>
               </ng-template>
               <ng-template [ngSwitchCase]="'vehicle_stocks'">
-                  <sd-vehiclestock-form  (updatevehicleStock)="updatevehicleStock($event)"></sd-vehiclestock-form>
-                </ng-template>
+                <div *ngIf="!opportunityOpen">
+                    <sd-vehiclestock-form [vehicleStock]="modalData" [type]="formType" (updatevehicleStock)="updatevehicleStock($event)"></sd-vehiclestock-form>
+                </div>
+              </ng-template>
               <ng-template [ngSwitchCase]="'drivers'">
-                  <sd-driver-form  (updateDriver)="updateDriver($event)"></sd-driver-form>
+                <div *ngIf="!opportunityOpen">
+                  <sd-driver-form  [driver]="modalData" [type]="formType" (updateDriver)="updateDriver($event)"></sd-driver-form>
+                </div>
                 </ng-template>
               <ng-template [ngSwitchCase]="'customers'">
-                  <sd-customer-form [customer]="modalData" [type]="formType" (updateCustomer)="updateCustomer($event)"></sd-customer-form>
-                </ng-template>
+                <div *ngIf="!opportunityOpen">
+                    <sd-customer-form [customer]="modalData" [type]="formType" (updateCustomer)="updateCustomer($event)"></sd-customer-form>
+                </div>
+              </ng-template>
             </div>
             
           </div>
@@ -629,6 +642,8 @@
     
   </sd-tab>
 </sd-tabs>
+
+
 
 <ng-template let-opportunity="data" #personDetails>
   <sd-opportunity [opportunity]="opportunity"></sd-opportunity>

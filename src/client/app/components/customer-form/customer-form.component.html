@@ -79,6 +79,13 @@
                 required=""
                 formControlName="accountnumber"
               />
+              <div *ngIf="submitted && customerForm.controls.accountnumber.errors" class="error">
+                  <div *ngIf="customerForm.controls.accountnumber.errors.required">
+                    <p class="error-box margin-top-0">
+                      Account Number is Required
+                    </p>
+                  </div>
+                </div>
             </div>
           </div>
         </div>
@@ -177,7 +184,6 @@
                 name="fax"
                 id="fax"
                 class="form-control"
-                required=""
                 formControlName="fax"
               />
             </div>
@@ -208,6 +214,13 @@
                 required=""
                 formControlName="business_email__c"
               />
+              <div *ngIf="submitted && customerForm.controls.business_email__c.errors" class="error">
+                  <div *ngIf="customerForm.controls.business_email__c.errors.required">
+                    <p class="error-box margin-top-0">
+                      Email is Required
+                    </p>
+                  </div>
+                </div>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -280,6 +293,13 @@
                 name="email"
                 formControlName="email"
               />
+              <div *ngIf="submitted && customerForm.controls.email.errors" class="error">
+                  <div *ngIf="customerForm.controls.email.errors.required">
+                    <p class="error-box margin-top-0">
+                      Email is Required
+                    </p>
+                  </div>
+                </div>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">

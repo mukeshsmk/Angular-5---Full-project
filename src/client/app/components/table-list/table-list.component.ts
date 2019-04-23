@@ -230,8 +230,8 @@ export class TableListComponent {
       .post<{ success: object }>(Config.BASE_URL + "api/"+endpoint,event)
       .subscribe((response: any) => {
         console.log(response)
-        //this.opportunityOpen = true;
-        //this.modalData = [];
+        this.opportunityOpen = true;
+        this.modalData = [];
       });
       
   }
@@ -241,11 +241,45 @@ export class TableListComponent {
     this.formType = 'edit';
     this.opportunityOpen = false;
   }
+  updatevehicleStock(event:any){
+    console.log(event)
+    let endpoint:any;
+    if(this.formType =='edit'){
+      endpoint = 'vehicle_stockUpdate';
+    }
+    if(this.formType =='new'){
+      //endpoint = 'createCustomer';
+    }
+    this.http
+      .post<{ success: object }>(Config.BASE_URL + "api/"+endpoint,event)
+      .subscribe((response: any) => {
+        console.log(response)
+        this.opportunityOpen = true;
+        this.modalData = [];
+      });
+  }
   //Driver modal
   updateDriverModal(data:any){
     this.modalData = data;
     this.formType = 'edit';
     this.opportunityOpen = false;
+  }
+  updateDriver(event:any){
+    console.log(event)
+    let endpoint:any;
+    if(this.formType =='edit'){
+      endpoint = 'driverUpdate';
+    }
+    if(this.formType =='new'){
+      //endpoint = 'createCustomer';
+    }
+    this.http
+      .post<{ success: object }>(Config.BASE_URL + "api/"+endpoint,event)
+      .subscribe((response: any) => {
+        console.log(response)
+        this.opportunityOpen = true;
+        this.modalData = [];
+      });
   }
   //customer modal
   openNewCustomerModal(){
@@ -256,6 +290,22 @@ export class TableListComponent {
     this.modalData = data;
     this.formType = 'edit';
     this.opportunityOpen = false;
+  }
+  updateCustomer(event:any){
+    let endpoint:any;
+    if(this.formType =='edit'){
+      endpoint = 'customerUpdate';
+    }
+    if(this.formType =='new'){
+      endpoint = 'createCustomer';
+    }
+    this.http
+      .post<{ success: object }>(Config.BASE_URL + "api/"+endpoint,event)
+      .subscribe((response: any) => {
+        console.log(response)
+        this.opportunityOpen = true;
+        this.modalData = [];
+      });
   }
   //https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fpeople%2Fperson-edit.component.ts
 }

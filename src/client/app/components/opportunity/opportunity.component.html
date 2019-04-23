@@ -104,7 +104,8 @@
       <div class="card">
         <div class="card-header">
           <a (click)="visibleOne = !visibleOne">
-            <i class="fa fa-angle-down"></i>
+              <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
+              <i class="fa fa-angle-down" *ngIf="!visibleOne"></i>
             <p>Lead Information</p>
           </a>
         </div>
@@ -112,7 +113,7 @@
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <strong>First Name :</strong>
+                <strong><b>First Name :</b></strong>
                 <span data-toggle="tooltip" title="" data-original-title="xxxx"
                   ><span
                     pattern="[a-zA-Z\sàèéìòù]+"
@@ -121,12 +122,12 @@
                     type="text"
                     inlinetext="xxxx"
                     class=" form-control-static inlineEditEnb"
-                    >{{ opportunity.first_name__c }}</span
+                    > {{ opportunity.first_name__c }}</span
                   ></span
                 >
               </div>
               <div class="form-group">
-                <label>Email :</label>
+                <label><b>Email :</b></label>
                 <span
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                   name="email__c"
@@ -134,11 +135,11 @@
                   type="email"
                   inlinetext="xxxx@gmail.com"
                   class=" form-control-static inlineEditEnb"
-                  >{{ opportunity.email__c }}</span
+                  > {{ opportunity.email__c }}</span
                 >
               </div>
               <div class="form-group">
-                <label>Mobile :</label>
+                <label><b>Mobile :</b></label>
                 <span
                   pattern="\d{1,15}"
                   name="mobile__c"
@@ -146,13 +147,13 @@
                   type="text"
                   inlinetext="0123456789"
                   class=" form-control-static inlineEditEnb"
-                  >{{ opportunity.mobile__c }}</span
+                  > {{ opportunity.mobile__c }}</span
                 >
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <strong>Last Name:</strong>
+                <strong>Last Name :</strong>
                 <span
                   pattern="[a-zA-Z\sàèéìòù]+"
                   name="last_name__c"
@@ -160,11 +161,11 @@
                   type="text"
                   inlinetext="R"
                   class=" form-control-static inlineEditEnb"
-                  >{{ opportunity.last_name__c }}</span
+                  > {{ opportunity.last_name__c }}</span
                 >
               </div>
               <div class="form-group">
-                <label>Company :</label>
+                <label><b>Company :</b></label>
                 <span
                   pattern="[a-zA-Z\sàèéìòù]+"
                   name="company__c"
@@ -172,11 +173,11 @@
                   type="text"
                   inlinetext="test"
                   class=" form-control-static inlineEditEnb"
-                  >{{ opportunity.company__c }}</span
+                  > {{ opportunity.company__c }}</span
                 >
               </div>
               <div class="form-group">
-                <label>Phone :</label>
+                <label><b>Phone : </b></label>
                 <span
                   pattern="\d{1,15}"
                   name="phone__c"
@@ -184,7 +185,7 @@
                   type="text"
                   inlinetext="0123456789"
                   class=" form-control-static inlineEditEnb"
-                  >{{ opportunity.phone__c }}</span
+                  > {{ opportunity.phone__c }}</span
                 >
               </div>
             </div>
@@ -194,7 +195,8 @@
       <div class="card">
         <div class="card-header">
           <a (click)="visibleTwo = !visibleTwo">
-            <i class="fa fa-angle-down"></i>
+              <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
+              <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i>
             <p>Lead Details</p>
           </a>
         </div>
@@ -202,18 +204,18 @@
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <strong>Request Type :</strong>
+                <strong>Request Type : </strong>
                 <span
                   name="request_type__c"
                   dropname="Request_Type__c"
                   type="Request_Type__c"
                   inlinetext="Digital Brochure Request"
                   class=" form-control-static inlineEditSelect"
-                  >{{ opportunity.request_type__c }}</span
+                  > {{ opportunity.request_type__c }}</span
                 >
               </div>
               <div class="form-group">
-                <label>Lead type :</label>
+                <label><b>Lead type : </b></label>
                 <span
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                   name="email__c"
@@ -221,57 +223,57 @@
                   type="email"
                   inlinetext="xxxx@gmail.com"
                   class=" form-control-static inlineEditEnb"
-                  >{{ opportunity.email__c }}</span
+                  > {{ opportunity.email__c }}</span
                 >
               </div>
               <div class="form-group">
-                <label>Lead Source :</label>
+                <label><b>Lead Source :</b></label>
                 <span
                   name="lead_source__c"
                   dropname="lead_source__c"
                   type="lead_source__c"
                   inlinetext=""
                   class=" form-control-static inlineEditSelect"
-                  >{{ opportunity.lead_source__c }}</span
+                  > {{ opportunity.lead_source__c }}</span
                 >
               </div>
               <div class="form-group">
-                <label>Introduction to Finance Manager :</label>
+                <label><b>Introduction to Finance Manager :</b></label>
                 <!-- <input type="checkbox" name="edit_financemanager" id="edit_financemanager" value="1" disabled=""> -->
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <strong>Selling Dealer:</strong>
+                <strong>Selling Dealer :</strong>
                 <span
                   name="selling_dealer__c"
                   dropname="text"
                   type="text"
                   inlinetext="ABC Berkeley Toyota"
                   class=" form-control-static noEdit"
-                  >{{ opportunity.selling_dealer__c }}</span
+                  > {{ opportunity.selling_dealer__c }}</span
                 >
               </div>
               <div class="form-group">
-                <label>Stock No : </label>
+                <label><b>Stock No : </b></label>
                 <span
                   name="stock_number__c"
                   dropname="text"
                   type="text"
                   inlinetext=""
                   class=" form-control-static inlineEditEnb"
-                  >{{ opportunity.stock_number__c }}</span
+                  > {{ opportunity.stock_number__c }}</span
                 >
               </div>
               <div class="form-group">
-                <label>Lead Status :</label>
+                <label><b>Lead Status :</b></label>
                 <span
                   name="lead_status__c"
                   dropname="lead_status__c"
                   type="lead_status__c"
                   inlinetext=""
                   class=" form-control-static inlineEditSelect"
-                  >{{ opportunity.lead_status__c }}</span
+                  > {{ opportunity.lead_status__c }}</span
                 >
               </div>
             </div>
@@ -281,7 +283,8 @@
       <div class="card">
         <div class="card-header">
           <a (click)="visibleThree = !visibleThree">
-            <i class="fa fa-angle-down"></i>
+              <i class="fa fa-angle-right" *ngIf="visibleThree"></i>
+              <i class="fa fa-angle-down" *ngIf="!visibleThree"></i>
             <p>Address Details</p>
           </a>
         </div>
@@ -289,18 +292,18 @@
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <label>Street :</label>
+                <label><b>Street :</b></label>
                 <span
                   name="street__c"
                   dropname="text"
                   type="text"
                   inlinetext=""
                   class=" form-control-static inlineEditEnb"
-                  >{{ opportunity.street__c }}</span
+                  > {{ opportunity.street__c }}</span
                 >
               </div>
               <div class="form-group">
-                <label>City :</label>
+                <label><b>City : </b></label>
                 <span
                   name="city__c"
                   dropname="text"
@@ -311,38 +314,38 @@
                 >
               </div>
               <div class="form-group">
-                <label>State/Province :</label>
+                <label><b>State/Province :</b></label>
                 <span
                   name="state_province__c"
                   dropname="text"
                   type="text"
                   inlinetext=""
                   class=" form-control-static inlineEditEnb"
-                  >{{ opportunity.lead_source__c }}</span
+                  > {{ opportunity.lead_source__c }}</span
                 >
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <label>State/Province :</label>
+                <label><b>State/Province :</b></label>
                 <span
                   name="state_province__c"
                   dropname="text"
                   type="text"
                   inlinetext=""
                   class=" form-control-static inlineEditEnb"
-                  >{{ opportunity.state_province__c }}</span
+                  > {{ opportunity.state_province__c }}</span
                 >
               </div>
               <div class="form-group">
-                <label>Zip/PostalCode :</label>
+                <label><b>Zip/PostalCode :</b></label>
                 <span
                   name="zip_postal_code__c"
                   dropname="text"
                   type="text"
                   inlinetext="560099"
                   class=" form-control-static inlineEditEnb"
-                  >{{ opportunity.zip_postal_code__c }}</span
+                  > {{ opportunity.zip_postal_code__c }}</span
                 >
               </div>
             </div>
@@ -353,7 +356,8 @@
       <div class="card">
         <div class="card-header">
           <a (click)="visibleFour = !visibleFour">
-            <i class="fa fa-angle-down"></i>
+              <i class="fa fa-angle-right" *ngIf="visibleFour"></i>
+              <i class="fa fa-angle-down" *ngIf="!visibleFour"></i>
             <p>Customer Insight</p>
           </a>
         </div>
@@ -361,38 +365,38 @@
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <label>Previous Customer Name :</label>
+                <label><b>Previous Customer Name :</b></label>
                 <span
                   name="previous_customer_name__c"
                   dropname="text"
                   type="text"
                   inlinetext="0037F00001MT9zFQAT"
                   class=" form-control-static inlineEditEnb"
-                  >{{ opportunity.previous_customer_name__c }}</span
+                  > {{ opportunity.previous_customer_name__c }}</span
                 >
               </div>
             </div>
             <div class="form-group">
-              <label> Customer Data Completeness Score :</label>
+              <label> <b>Customer Data Completeness Score :</b></label>
               <span
                 name="customer_data_completeness_score__c"
                 dropname="text"
                 type="text"
                 inlinetext="70"
                 class=" form-control-static inlineEditEnb"
-                >{{ opportunity.customer_data_completeness_score__c }}</span
+                > {{ opportunity.customer_data_completeness_score__c }}</span
               >
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <label>Activity Score :</label>
+                <label><b>Activity Score :</b></label>
                 <span
                   name="activity_score__c"
                   dropname="text"
                   type="text"
                   inlinetext="2"
                   class=" form-control-static inlineEditEnb"
-                  >{{ opportunity.activity_score__c }}</span
+                  > {{ opportunity.activity_score__c }}</span
                 >
               </div>
             </div>
@@ -403,7 +407,8 @@
       <div class="card">
         <div class="card-header">
           <a (click)="visibleSix = !visibleSix">
-            <i class="fa fa-angle-down"></i>
+              <i class="fa fa-angle-right" *ngIf="visibleSix"></i>
+              <i class="fa fa-angle-down" *ngIf="!visibleSix"></i>
             <p>Addtional Information</p>
           </a>
         </div>
@@ -411,14 +416,14 @@
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <label>Primary :</label>
+                <label><b>Primary :</b></label>
                 <span
                   name="primary__c"
                   dropname="primary__c"
                   type="primary__c"
                   inlinetext=""
                   class=" form-control-static inlineEditSelect"
-                  >{{ opportunity.primary__c }}</span
+                  > {{ opportunity.primary__c }}</span
                 >
               </div>
             </div>
@@ -426,61 +431,12 @@
         </div>
       </div>
 
-      <div class="card">
-        <div class="card-header">
-          <a (click)="visibleFive = !visibleFive">
-            <i class="fa fa-angle-down"></i>
-            <p>Customer Insight</p>
-          </a>
-        </div>
-        <div class="card-block" *ngIf="!visibleFive">
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label>Previous Customer Name :</label>
-                <span
-                  name="previous_customer_name__c"
-                  dropname="text"
-                  type="text"
-                  inlinetext="0037F00001MT9zFQAT"
-                  class=" form-control-static inlineEditEnb"
-                  >{{ opportunity.previous_customer_name__c }}</span
-                >
-              </div>
-
-              <div class="form-group">
-                <label> Customer Data Completeness Score :</label>
-                <span
-                  name="customer_data_completeness_score__c"
-                  dropname="text"
-                  type="text"
-                  inlinetext="70"
-                  class=" form-control-static inlineEditEnb"
-                  >{{ opportunity.customer_data_completeness_score__c }}</span
-                >
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label>Activity Score :</label>
-                <span
-                  name="activity_score__c"
-                  dropname="text"
-                  type="text"
-                  inlinetext="2"
-                  class=" form-control-static inlineEditEnb"
-                  >{{ opportunity.activity_score__c }}</span
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+  
       <div class="card">
         <div class="card-header">
           <a (click)="visibleSeven = !visibleSeven">
-            <i class="fa fa-angle-down"></i>
+              <i class="fa fa-angle-right" *ngIf="visibleSeven"></i>
+              <i class="fa fa-angle-down" *ngIf="!visibleSeven"></i>
             <p>System Information</p>
           </a>
         </div>
@@ -488,22 +444,22 @@
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <label>Created by :</label>
-                <span class="form-control-static ">0057F000004MCYXQA4</span>
+                <label><b>Created by :</b></label>
+                <span class="form-control-static "> 0057F000004MCYXQA4</span>
               </div>
               <div class="form-group">
-                <label>Last modified by :</label>
-                <span class="form-control-static ">0057F0000031bCmQAI</span>
+                <label><b>Last modified by :</b></label>
+                <span class="form-control-static "> 0057F0000031bCmQAI</span>
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <label>Created Date :</label>
-                <span class="form-control-static ">2019-03-29 02:17:19</span>
+                <label><b>Created Date :</b></label>
+                <span class="form-control-static "> 2019-03-29 02:17:19</span>
               </div>
               <div class="form-group">
-                <label>Last modified date :</label>
-                <span class="form-control-static ">2019-04-12 07:14:08</span>
+                <label><b>Last modified date :</b></label>
+                <span class="form-control-static "> 2019-04-12 07:14:08</span>
               </div>
             </div>
           </div>

@@ -1,3 +1,4 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="driverForm">
 <div class="container-fluid">
   <div class="card mt-3">
     <div class="card-header">
@@ -29,7 +30,16 @@
               type="text"
               class="form-control"
               id="first_name__c_lead"
+              formControlName="name"
+              required=""
             />
+            <div *ngIf="submitted && driverForm.controls.name.errors" class="error">
+              <div *ngIf="driverForm.controls.name.errors.required">
+                <p class="error-box margin-top-0">
+                  Name is Required
+                </p>
+              </div>
+            </div>
           </div>
       </div>
       </div>
@@ -41,9 +51,11 @@
               class="selcet form-control"
               id="parent_account"
               name="parent_account"
+              formControlName="parent_account"
             >
               <option value="">-- SELECT --</option>
             </select>
+
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -52,11 +64,18 @@
             <input
               type="text"
               name="accountid"
-              pattern="[a-zA-Z\sàèéìòù]+"
               id="accountid"
               class="form-control"
               required=""
+              formControlName="accountid"
             />
+            <div *ngIf="submitted && driverForm.controls.accountid.errors" class="error">
+                <div *ngIf="driverForm.controls.accountid.errors.required">
+                  <p class="error-box margin-top-0">
+                      Account Number is Required
+                  </p>
+                </div>
+              </div>
           </div>
         </div>
       </div>
@@ -67,10 +86,12 @@
             <select
               class="selcet form-control"
               id="title"
+              name="title"
+              formControlName="title"
             >
-              <option value="">Mr</option>
-              <option value="">Miss</option>
-              <option value="">Mrs</option>
+              <option value="Mr">Mr</option>
+              <option value="Miss">Miss</option>
+              <option value="Mrs">Mrs</option>
             </select>
           </div>
         </div>
@@ -82,9 +103,10 @@
               name="birthdate"
               id="birthdate"
               class="form-control"
-              required=""
               placeholder="YYYY/MM/DD"
+              formControlName="birthdate"
             />
+            
           </div>
         </div>
       </div>
@@ -96,6 +118,7 @@
               class="selcet form-control"
               id="customer_type__c"
               name="customer_type__c"
+              formControlName="customer_type__c"
             >
               <option value="">-- SELECT --</option>
               <option value="">Primary</option>
@@ -110,6 +133,7 @@
               class="selcet form-control"
               id="record_type"
               name="record_type"
+              formControlName="record_type"
             >
               <option value="">-- SELECT --</option>
               <option value="">Primary</option>
@@ -125,6 +149,7 @@
               class="selcet form-control"
               id="selling_dealer"
               name="selling_dealer"
+              formControlName="selling_dealer"
             >
               <option value="">-- SELECT --</option>
              
@@ -138,6 +163,7 @@
               class="selcet form-control"
               name="service_dealer"
               id="service_dealer"
+              formControlName="service_dealer"
             >
               <option value="">-- SELECT --</option>
       
@@ -153,6 +179,7 @@
               class="selcet form-control"
               id="customer_type"
               name="customer_type"
+              formControlName="customer_type"
             >
               <option value="">-- SELECT --</option>
               <option value="">Test Drive</option>
@@ -163,8 +190,8 @@
         <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
           <div class="form-group">
             <label for="Make">Do Not Contact</label><br>
-            <input type="radio" value="" name="do_not_contact__c" checked="" data-parsley-multiple="do_not_contact__c"> no
-            <input type="radio" value="" name="do_not_contact__c" data-parsley-multiple="do_not_contact__c"> yes
+            <input type="radio" value="" name="do_not_contact__c" formControlName="do_not_contact__c" checked="" data-parsley-multiple="do_not_contact__c"> no
+            <input type="radio" value="" name="do_not_contact__c" formControlName="do_not_contact__c" data-parsley-multiple="do_not_contact__c"> yes
          </div>
         </div>
       </div>
@@ -177,7 +204,7 @@
               name="fax"
               id="fax"
               class="form-control"
-              required=""
+              formControlName="fax"
             />
           </div>
         </div>
@@ -190,6 +217,7 @@
               class="form-control"
               name="business_phone__c"
               id="business_phone__c"
+              formControlName="business_phone__c"
             />
           </div>
         </div>
@@ -204,7 +232,15 @@
               id="business_email__c"
               class="form-control"
               required=""
+              formControlName="business_email__c"
             />
+            <div *ngIf="submitted && driverForm.controls.business_email__c.errors" class="error">
+                <div *ngIf="driverForm.controls.business_email__c.errors.required">
+                  <p class="error-box margin-top-0">
+                      Business Email is Required
+                  </p>
+                </div>
+              </div>
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -216,6 +252,7 @@
               class="form-control"
               name="business_phone_service_type__c"
               id="business_phone_service_type__c"
+              formControlName="business_phone_service_type__c"
             />
           </div>
         </div>
@@ -224,15 +261,15 @@
         <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
           <div class="form-group">
             <label for="usr">Business Email Valid</label><br>
-            <input type="radio" value="" name="business_email_valid__c" checked="" data-parsley-multiple="business_email_valid__c"> no
-            <input type="radio" value="" name="business_email_valid__c" data-parsley-multiple="business_email_valid__c"> yes                     
+            <input type="radio" value="" name="business_email_valid__c" formControlName="business_email_valid__c" checked="" data-parsley-multiple="business_email_valid__c"> no
+            <input type="radio" value="" name="business_email_valid__c" formControlName="business_email_valid__c" data-parsley-multiple="business_email_valid__c"> yes                     
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
           <div class="form-group">
             <label for="usr">Business Phone Valid</label><br>
-            <input type="radio" value="" name="business_phone_valid__c" checked="" data-parsley-multiple="business_phone_valid__c"> no
-            <input type="radio" value="" name="business_phone_valid__c" data-parsley-multiple="business_phone_valid__c"> yes                     
+            <input type="radio" value="" name="business_phone_valid__c" formControlName="business_phone_valid__c" checked="" data-parsley-multiple="business_phone_valid__c"> no
+            <input type="radio" value="" name="business_phone_valid__c" formControlName="business_phone_valid__c" data-parsley-multiple="business_phone_valid__c"> yes                     
         </div>
         </div>
       </div>
@@ -246,7 +283,15 @@
               id="home_email__c"
               class="form-control"
               required=""
+              formControlName="home_email__c"
             />
+            <div *ngIf="submitted && driverForm.controls.home_email__c.errors" class="error">
+                <div *ngIf="driverForm.controls.home_email__c.errors.required">
+                  <p class="error-box margin-top-0">
+                      Home Email is Required
+                  </p>
+                </div>
+              </div>
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -256,7 +301,9 @@
             pattern="\d{1,15}" 
             name="homephone" 
             class="form-control" 
-            id="homephone">
+            id="homephone"
+            formControlName="homephone" 
+            >
          </div>
         </div>
       </div>
@@ -268,14 +315,16 @@
             <input type="text" 
             name="home_phone_service_type__c" 
             id="home_phone_service_type__c" 
-            class="form-control">
+            class="form-control"
+            formControlName="home_phone_service_type__c" 
+            >
          </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
           <div class="form-group">
             <label for="usr">Home Phone Valid</label><br>
-            <input type="radio" name="home_phone_valid__c" value="" checked="" data-parsley-multiple="home_phone_valid__c"> no
-            <input type="radio" name="home_phone_valid__c" value="" data-parsley-multiple="home_phone_valid__c"> yes
+            <input type="radio" name="home_phone_valid__c" formControlName="home_phone_valid__c" value="" checked="" data-parsley-multiple="home_phone_valid__c"> no
+            <input type="radio" name="home_phone_valid__c" formControlName="home_phone_valid__c" value="" data-parsley-multiple="home_phone_valid__c"> yes
          </div>
         </div>
       </div>
@@ -287,13 +336,15 @@
             <input type="email"
              class="form-control" 
              id="email"  
-             name="email">
+             name="email"
+             formControlName="email"
+             >
          </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
         <div class="form-group">
           <label>MobilePhone:</label>
-          <input type="number" pattern="\d{1,15}" id="mobilephone" name="mobilephone" class="form-control">
+          <input type="number" pattern="\d{1,15}" id="mobilephone" name="mobilephone" formControlName="mobilephone" class="form-control">
        </div>
        </div>
       </div>
@@ -313,7 +364,9 @@
             <input type="text" 
             id="interest_of_make__c"
              name="interest_of_make__c" 
-             class="form-control">
+             class="form-control"
+             formControlName="interest_of_make__c"
+             >
          </div>
         </div>
       </div>
@@ -348,6 +401,7 @@
               class="form-control"
               cols="2"
               row="20"
+              formControlName="billing_address__c"
             >
             </textarea>
           </div>
@@ -359,7 +413,8 @@
               id="billing_suburb__c"
               name="billing_suburb__c"
               class="form-control"
-            >
+              formControlName="billing_suburb__c"
+              >
            
           </div>
         </div>
@@ -371,7 +426,9 @@
             <input type="text" 
             id="billing_state__c" 
             name="billing_state__c" 
-            class="form-control">
+            class="form-control"
+            formControlName="billing_state__c" 
+            >
          </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -381,7 +438,9 @@
             id="billing_post_code__c" 
             name="billing_post_code__c"
              maxlength="4" 
-             class="form-control">
+             class="form-control"
+             formControlName="billing_post_code__c"
+             >
          </div>
         </div>
       </div>
@@ -393,7 +452,9 @@
             type="text"
              id="billing_country__c"
               name="billing_country__c"
-               class="form-control">
+               class="form-control"
+               formControlName="billing_country__c"
+               >
          </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -403,7 +464,9 @@
              type="text"
              id="billingdpid__c"
              name="billingdpid__c" 
-             class="form-control">
+             class="form-control"
+             formControlName="billingdpid__c" 
+             >
          </div>
         </div>
       </div>
@@ -415,7 +478,9 @@
             type="text" 
             name="billing_latitude__c" 
             id="billing_latitude__c" 
-            class="form-control">
+            class="form-control"
+            formControlName="billing_latitude__c" 
+            >
          </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -425,7 +490,9 @@
             type="text" 
             name="billing_longitude__c" 
             id="billing_longitude__c" 
-            class="form-control">
+            class="form-control"
+            formControlName="billing_longitude__c" 
+            >
          </div>
         </div>
       </div>
@@ -526,3 +593,16 @@
     </div>
   </div>
 </div>
+
+<div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-default"
+      data-dismiss="modal"
+      (click)="closeOpportunityModal()"
+    >
+      cancel
+    </button>
+    <button type="button" class="btn btn-info" (click)="onSubmit(opportunity)">Save</button>
+  </div>
+</form>
