@@ -15,6 +15,7 @@ import { OpportunityFormComponent } from "./../opportunity-form/opportunity-form
 import { DriverFormComponent } from "./../driver-form/driver-form.component";
 import { CustomerFormComponent } from "./../customer-form/customer-form.component";
 import { VehicleStockFormComponent } from "./../vehiclestock-form/vehiclestock-form.component";
+import { NavFormComponent } from './../nav-form/nav-form.component';
 import { ActivitiesComponent } from "./../activities/activities.component";
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ActivitiesComponent } from "./../activities/activities.component";
     DriverFormComponent,
     CustomerFormComponent,
     VehicleStockFormComponent,
-    ActivitiesComponent
+    ActivitiesComponent,
+    NavFormComponent
   ],
   exports: [TableListComponent],
   entryComponents: [TabComponent]

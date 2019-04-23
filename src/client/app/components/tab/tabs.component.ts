@@ -62,6 +62,9 @@ import GeneralService from "../../shared/services/GeneralService";
       nav-tabs ul {
         background: red;
       }
+      .nav{
+        margin-top: 0;
+      }
       .pointer {cursor: pointer;}
       .tab-close {
         color: gray;
