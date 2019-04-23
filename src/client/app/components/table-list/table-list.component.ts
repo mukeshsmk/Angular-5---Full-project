@@ -29,7 +29,8 @@ export class TableListComponent {
   search: any = "";
   showEdit: boolean = false;
   opportunityOpen:boolean = true;
-  modalData: any =[];
+  modalData: any=[];
+  formType:any;
 
   searchTerm: string;
   constructor(private http: HttpClient, public generalService: GeneralService) {
@@ -70,7 +71,7 @@ export class TableListComponent {
     if (searchData.length >= 3 || searchData.length == 0) {
       this.search = searchData;
       let params = {
-        page: this.page,
+        page: 1,
         limit: this.limit,
         search: this.search
       };
@@ -199,19 +200,107 @@ export class TableListComponent {
     this.tabsComponent.openTab(data.name, template, data, true);
   }
 
+  //opportunity modal
   openOpportunityModal(data:any){
     console.log(data)
     this.modalData = data;
+    this.formType = 'edit';
     this.opportunityOpen = false;
   }
-  closeOpportunityModal(){
+  openNewOpportunityModal(){
+    this.formType = 'new';
+    this.opportunityOpen = false;
+  }
+  closeModal(){
     this.opportunityOpen = true;
     this.modalData = [];
   }
   updateOpportunity(event:any){
-    console.log(event)
+    console.log(JSON.stringify(event))
+    let endpoint:any;
+    if(this.formType =='edit'){
+      endpoint = 'leadUpdate';
+    }
+    if(this.formType =='new'){
+      endpoint = 'quickLeadInsert';
+      //event = JSON.stringify(event)
+    }
+
     this.http
-      .post<{ success: object }>(Config.BASE_URL + "api/leadUpdate",event)
+      .post<{ success: object }>(Config.BASE_URL + "api/"+endpoint,event)
+      .subscribe((response: any) => {
+        console.log(response)
+        this.opportunityOpen = true;
+        this.modalData = [];
+      });
+      
+  }
+  //vehicleStock Modal
+  updatevehicleStockModal(data:any){
+    this.modalData = data;
+    this.formType = 'edit';
+    this.opportunityOpen = false;
+  }
+  updatevehicleStock(event:any){
+    console.log(event)
+    let endpoint:any;
+    if(this.formType =='edit'){
+      endpoint = 'vehicle_stockUpdate';
+    }
+    if(this.formType =='new'){
+      //endpoint = 'createCustomer';
+    }
+    this.http
+      .post<{ success: object }>(Config.BASE_URL + "api/"+endpoint,event)
+      .subscribe((response: any) => {
+        console.log(response)
+        this.opportunityOpen = true;
+        this.modalData = [];
+      });
+  }
+  //Driver modal
+  updateDriverModal(data:any){
+    this.modalData = data;
+    this.formType = 'edit';
+    this.opportunityOpen = false;
+  }
+  updateDriver(event:any){
+    console.log(event)
+    let endpoint:any;
+    if(this.formType =='edit'){
+      endpoint = 'driverUpdate';
+    }
+    if(this.formType =='new'){
+      //endpoint = 'createCustomer';
+    }
+    this.http
+      .post<{ success: object }>(Config.BASE_URL + "api/"+endpoint,event)
+      .subscribe((response: any) => {
+        console.log(response)
+        this.opportunityOpen = true;
+        this.modalData = [];
+      });
+  }
+  //customer modal
+  openNewCustomerModal(){
+    this.formType = 'new';
+    this.opportunityOpen = false;
+  }
+  updateCustomerModal(data:any){
+    this.modalData = data;
+    this.formType = 'edit';
+    this.opportunityOpen = false;
+  }
+  updateCustomer(event:any){
+    let endpoint:any;
+    if(this.formType =='edit'){
+      endpoint = 'customerUpdate';
+    }
+    if(this.formType =='new'){
+      endpoint = 'createCustomer';
+    }
+    this.http
+      .post<{ success: object }>(Config.BASE_URL + "api/"+endpoint,event)
       .subscribe((response: any) => {
         console.log(response)
         this.opportunityOpen = true;

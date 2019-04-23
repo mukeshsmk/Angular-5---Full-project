@@ -29,6 +29,8 @@
                 id="createNewLead"
                 type="button"
                 class="btn btn-secondary pull-right mr-1"
+                *ngIf="module == 'customers'"
+                (click)="openNewCustomerModal()"
               >
                 <i
                   data-toggle="tooltip"
@@ -37,7 +39,7 @@
                 >
                 </i>
               </button>
-              <button type="button" class="btn btn-secondary pull-right mr-1">
+              <button type="button" class="btn btn-secondary pull-right mr-1" *ngIf="module == 'opportunities'" (click)="openNewOpportunityModal()">
                 <i
                   data-toggle="tooltip"
                   data-original-title="Quick Lead"
@@ -292,7 +294,7 @@
                           <td>
                             <span
                               class="fas fa-edit pointer"
-                              (click)="onOpenAbout()"
+                              (click)="updatevehicleStockModal(opportunity)"
                             ></span>
                           </td>
                         </tr>
@@ -404,7 +406,7 @@
                           <td>
                             <span
                               class="fas fa-edit pointer"
-                              (click)="onOpenAbout()"
+                              (click)="updateDriverModal(opportunity)"
                             ></span>
                           </td>
                         </tr>
@@ -418,7 +420,7 @@
                     <table class="table">
                       <thead class=" text-primary pointer">
                         <th>
-                          <input type="checkbox" id="blahA" value="1" />
+                          <!--<input type="checkbox" id="blahA" value="1" />-->
                         </th>
                         <!-- <th>
                           ID
@@ -502,9 +504,9 @@
                       </thead>
                       <tbody>
                         <tr *ngFor="let opportunity of opportunityList">
-                          <td>
+                          <!--<td>
                             <input type="checkbox" id="blahA" value="1" />
-                          </td>
+                          </td>-->
                           <td>
                             {{ opportunity.id }}
                           </td>
@@ -539,7 +541,7 @@
                           <td>
                             <span
                               class="fas fa-edit pointer"
-                              (click)="onOpenAbout()"
+                              (click)="updateCustomerModal(opportunity)"
                             ></span>
                           </td>
                         </tr>
@@ -605,14 +607,32 @@
                 class="close"
                 data-dismiss="modal"
                 aria-label="Close"
-                (click)="closeOpportunityModal()"
+                (click)="closeModal()"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              <sd-opportunity-form [opportunity]="modalData" (update)="updateOpportunity($event)"></sd-opportunity-form>
-              <!-- <sd-nav-form></sd-nav-form> -->
+            <div class="modal-body"  [ngSwitch]="module">
+              <ng-template [ngSwitchCase]="'opportunities'">
+                <div *ngIf="!opportunityOpen">
+                    <sd-opportunity-form [opportunity]="modalData" [type]="formType" (updateOpportunity)="updateOpportunity($event)"></sd-opportunity-form>
+                </div>
+              </ng-template>
+              <ng-template [ngSwitchCase]="'vehicle_stocks'">
+                <div *ngIf="!opportunityOpen">
+                    <sd-vehiclestock-form [vehicleStock]="modalData" [type]="formType" (updatevehicleStock)="updatevehicleStock($event)"></sd-vehiclestock-form>
+                </div>
+              </ng-template>
+              <ng-template [ngSwitchCase]="'drivers'">
+                <div *ngIf="!opportunityOpen">
+                  <sd-driver-form  [driver]="modalData" [type]="formType" (updateDriver)="updateDriver($event)"></sd-driver-form>
+                </div>
+                </ng-template>
+              <ng-template [ngSwitchCase]="'customers'">
+                <div *ngIf="!opportunityOpen">
+                    <sd-customer-form [customer]="modalData" [type]="formType" (updateCustomer)="updateCustomer($event)"></sd-customer-form>
+                </div>
+              </ng-template>
             </div>
             
           </div>

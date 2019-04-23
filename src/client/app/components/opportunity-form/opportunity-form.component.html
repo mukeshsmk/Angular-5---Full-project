@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit(opportunityForm)" #registerForm="ngForm">
+<form (ngSubmit)="onSubmit()" [formGroup]="opportunityForm">
     <div class="container-fluid">
         <div class="card mt-3">
           <div class="card-header pointer">
@@ -30,7 +30,7 @@
                     type="text"
                     class="form-control"
                     id="first_name__c_lead"
-                    [(ngModel)] = "opportunity.first_name__c"
+                    formControlName = "first_name__c"
                   />
                 </div>
               </div>
@@ -43,12 +43,18 @@
                     pattern="[a-zA-Z\sàèéìòù]+"
                     id="last_name__c_lead"
                     class="form-control"
-                    [(ngModel)]="opportunity.last_name__c"
+                    formControlName="last_name__c"
                     required=""
+                    value=" {{ opportunity.last_name__c }}"
                   />
-                  <p class="error-box margin-top-0" *ngIf="lastNameErr">
-                      Last name is Required
-                    </p>
+                  <div *ngIf="submitted && opportunityForm.controls.last_name__c.errors" class="error">
+                    <div *ngIf="opportunityForm.controls.last_name__c.errors.required">
+                      <p class="error-box margin-top-0">
+                        Last name is Required
+                      </p>
+                    </div>
+                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -62,12 +68,17 @@
                     pattern="[a-zA-Z\sàèéìòù]+"
                     id="company__c_lead"
                     class="form-control"
-                    [(ngModel)]="opportunity.company__c"
+                    formControlName="company__c"
                     required=""
+                    value=" {{ opportunity.company__c }}"
                   />
-                  <p class="error-box margin-top-0" *ngIf="companyErr">
-                      Company is Required
-                  </p>
+                  <div *ngIf="submitted && opportunityForm.controls.company__c.errors" class="error">
+                      <div *ngIf="opportunityForm.controls.company__c.errors.required">
+                        <p class="error-box margin-top-0">
+                          Company is Required
+                        </p>
+                      </div>
+                    </div>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -78,7 +89,8 @@
                     class="form-control"
                     name="record_type_name__c"
                     id="record_type_name__c_lead"
-                    [(ngModel)]="opportunity.record_type_name__c_lead"
+                    formControlName="record_type_name__c_lead"
+                    value=" {{ opportunity.record_type_name__c_lead }}"
                   />
                 </div>
               </div>
@@ -92,7 +104,8 @@
                     class="form-control"
                     name="selling_dealer__c"
                     id="selling_dealer__c_lead"
-                    [(ngModel)]="opportunity.selling_dealer__c"
+                    formControlName="selling_dealer__c"
+                    value=" {{ opportunity.selling_dealer__c }}"
                   />
                 </div>
               </div>
@@ -105,7 +118,8 @@
                     class="selcet form-control"
                     id="source__c_lead"
                     name="source__c"
-                    [(ngModel)]="opportunity.source__c"
+                    formControlName="source__c"
+                    value=" {{ opportunity.source__c }}"
                   >
                     <option value="">-- SELECT --</option>
                   </select>
@@ -121,7 +135,8 @@
                     name="phone__c"
                     id="phone__c_lead"
                     class="form-control"
-                    [(ngModel)]="opportunity.phone__c"
+                    formControlName="phone__c"
+                    value=" {{ opportunity.phone__c }}"
                   />
                 </div>
               </div>
@@ -133,18 +148,25 @@
                   <label><span class="red_star">*</span>Lead Source</label>
                   <select
                     id="lead_source__c_lead"
-                    onchange="getmodel();"
+                    
                     name="lead_source__c"
                     class="selcet form-control"
                     required=""
-                    [(ngModel)]="opportunity.lead_source__c"
-                   
+                    formControlName="lead_source__c"
+                    value=" {{ opportunity.lead_source__c }}"
                   >
                     <option value="">-- SELECT --</option>
+                    <option value="Phone"> Phone </option>
+                    <option value="Walk-In"> Walk-In </option>
+                    <option value="Internet"> Internet</option>
                   </select>
-                  <p class="error-box margin-top-0" *ngIf="leadSourceErr">
-                      Lead source is Required
-                  </p>
+                  <div *ngIf="submitted && opportunityForm.controls.lead_source__c.errors" class="error">
+                      <div *ngIf="opportunityForm.controls.lead_source__c.errors.required">
+                        <p class="error-box margin-top-0">
+                            Lead source is Required
+                        </p>
+                      </div>
+                    </div>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -157,7 +179,8 @@
                     class="form-control"
                     name="mobile__c_lead"
                     id="mobile__c_lead"
-                    [(ngModel)]="opportunity.mobile__c"
+                    formControlName="mobile__c"
+                    value=" {{ opportunity.mobile__c }}"
                   />
                 </div>
               </div>
@@ -172,14 +195,27 @@
                     id="lead_type__c_lead"
                     name="lead_type__c"
                     required=""
-                    [(ngModel)]="opportunity.lead_type__c"
-                    ><option value="Gumtree">Gumtree</option
-                    ><option value="Carsales">Carsales</option
-                    ><option value="Facebook">Facebook</option></select
-                  >
-                  <p class="error-box margin-top-0" *ngIf="leadTypeerr">
-                      Lead Type is Required
-                  </p>
+                    formControlName="lead_type__c"
+                    value=" {{ opportunity.lead_type__c }}"
+                    >
+                    <option value="">-- SELECT --</option>
+                    <option *ngIf="opportunityForm.value.lead_source__c == 'Internet'" value="Gumtree">Gumtree</option>
+                    <option *ngIf="opportunityForm.value.lead_source__c == 'Internet'" value="Carsales">Carsales</option>
+                    <option *ngIf="opportunityForm.value.lead_source__c == 'Internet'" value="Facebook">Facebook</option>
+                    <option *ngIf="opportunityForm.value.lead_source__c == 'Phone'" value='Online'>Online</option>
+                    <option *ngIf="opportunityForm.value.lead_source__c == 'Phone'" value='Radio'>Radio</option>
+                    <option *ngIf="opportunityForm.value.lead_source__c == 'Phone'" value='Edm'>Edm</option>
+                    <option *ngIf="opportunityForm.value.lead_source__c == 'Walk-In'" value='Online'>Online</option>
+                    <option *ngIf="opportunityForm.value.lead_source__c == 'Walk-In'" value='Radio'>Radio</option>
+                    <option *ngIf="opportunityForm.value.lead_source__c == 'Walk-In'" value='Edm'>Edm</option>
+                    </select>
+                    <div *ngIf="submitted && opportunityForm.controls.lead_type__c.errors" class="error">
+                        <div *ngIf="opportunityForm.controls.lead_type__c.errors.required">
+                          <p class="error-box margin-top-0">
+                              Lead Type is Required
+                          </p>
+                        </div>
+                      </div>
                 </div>
               </div>
             </div>
@@ -191,9 +227,14 @@
                     id="lead_status__c__lead"
                     name="lead_status__c"
                     class="selcet form-control"
-                    [(ngModel)]="opportunity.lead_status__c"
+                    formControlName="lead_status__c"
+                    value=" {{ opportunity.lead_status__c }}"
                   >
-                    <option value="">-- SELECT --</option>
+                  <option value="">-- SELECT --</option>
+                  <option value="New"> New </option>
+                  <option value="Working"> Working </option>
+                  <option value="Appointment"> Appointment </option>
+                  <option value="Test Drive"> Test Drive </option>
                   </select>
                 </div>
               </div>
@@ -205,7 +246,8 @@
                     id="email__c_lead"
                     name="email__c"
                     class="form-control"
-                    [(ngModel)]="opportunity.email__c"
+                    formControlName="email__c"
+                    value=" {{ opportunity.email__c }}"
                   />
                 </div>
               </div>
@@ -219,13 +261,23 @@
                     name="request_type__c"
                     class="selcet form-control"
                     required=""
-                    [(ngModel)]="opportunity.request_type__c"
+                    formControlName="request_type__c"
+                    value=" {{ opportunity.request_type__c }}"
                   >
                     <option value="">-- SELECT --</option>
+                    <option value="Test Drive"> Test Drive </option>
+                    <option value="Digital Brochure Request"> Digital Brochure Request </option>
+                    <option value="Contact Us"> Contact Us </option>
+                    <option value="General Enquiry"> General Enquiry </option>
                   </select>
-                  <p class="error-box margin-top-0" *ngIf="requestTypeerr">
-                      Request type is Required
-                    </p>
+                  <div *ngIf="submitted && opportunityForm.controls.request_type__c.errors" class="error">
+                      <div *ngIf="opportunityForm.controls.request_type__c.errors.required">
+                        <p class="error-box margin-top-0">
+                            Request type is Required
+                        </p>
+                      </div>
+                    </div>
+                  
                 </div>
               </div>
             </div>
@@ -239,7 +291,8 @@
                     class="form-control"
                     id="stock_number__c_lead"
                     name="stock_number__c"
-                    [(ngModel)]="opportunity.stock_number__c"
+                    formControlName="stock_number__c"
+                    value=" {{ opportunity.stock_number__c }}"
                   />
                 </div>
               </div>
@@ -256,6 +309,8 @@
                     id="introduction_to_finance_manager__c_lead"
                     data-parsley-multiple="introduction_to_finance_manager__c"
                     value="f"
+                    formControlName="introduction_to_finance_manager__c"
+                    value=" {{ opportunity.introduction_to_finance_manager__c  }}"
                   />
                 </div>
               </div>
@@ -270,7 +325,8 @@
                     name="vehicle_stock__c"
                     id="vehicle_stock__c_lead"
                     class="form-control"
-                    [(ngModel)]="opportunity.vehicle_stock__c"
+                    formControlName="vehicle_stock__c"
+                    value=" {{ opportunity.vehicle_stock__c }}"
                   />
                 </div>
               </div>
@@ -284,14 +340,15 @@
                     name="comments_from_stock_c__c"
                     id="comments_from_stock_c__c_lead"
                     class="form-control"
-                    [(ngModel)]="opportunity.comments_from_stock_c__c"
+                    formControlName="comments_from_stock_c__c"
+                    value=" {{ opportunity.comments_from_stock_c__c }}"
                   ></textarea>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="card mt-3">
+        <div class="card mt-3"  *ngIf="type=='edit'">
           <div class="card-header pointer">
             <a
               data-toggle="collapse"
@@ -318,7 +375,8 @@
                     class="form-control"
                     cols="5"
                     row="20"
-                    [(ngModel)]="opportunity.street__c"
+                    formControlName="street__c"
+                    value=" {{ opportunity.street__c }}"
                   >
                   </textarea>
                 </div>
@@ -333,7 +391,8 @@
                     name="city__c"
                     type="text"
                     class="form-control"
-                    [(ngModel)]="opportunity.city__c"
+                    formControlName="city__c"
+                    value=" {{ opportunity.city__c }}"
                   />
                 </div>
               </div>
@@ -345,7 +404,8 @@
                     name="state_province__c"
                     type="text"
                     class="form-control"
-                    [(ngModel)]="opportunity.state_province__c"
+                    formControlName="state_province__c"
+                    value=" {{ opportunity.state_province__c }}"
                   />
                 </div>
               </div>
@@ -359,7 +419,8 @@
                     name="zip_postal_code__c"
                     type="text"
                     class="form-control"
-                    [(ngModel)]="opportunity.zip_postal_code__c"
+                    formControlName="zip_postal_code__c"
+                    value=" {{ opportunity.zip_postal_code__c }}"
                   />
                 </div>
               </div>
@@ -371,6 +432,8 @@
                     name="country__c"
                     type="text"
                     class="form-control"
+                    formControlName="country__c"
+                    value=" {{ opportunity.country__c }}"
                   />
                 </div>
               </div>
@@ -379,7 +442,7 @@
           </div>
         </div>
       
-        <div class="card mt-3">
+        <div class="card mt-3"  *ngIf="type=='edit'">
           <div class="card-header pointer">
             <a
               data-toggle="collapse"
@@ -403,7 +466,8 @@
                     id="previous_customer_name__c_lead"
                     name="previous_customer_name__c"
                     class="form-control"
-                    [(ngModel)]="opportunity.previous_customer_name__c"
+                    formControlName="previous_customer_name__c"
+                    value=" {{ opportunity.previous_customer_name__c }}"
                   />
                 </div>
               </div>
@@ -418,7 +482,8 @@
                     name="activity_score__c"
                     type="number"
                     class="form-control"
-                    [(ngModel)]="opportunity.activity_score__c_lead"
+                    formControlName="activity_score__c_lead"
+                    value=" {{ opportunity.activity_score__c_lead }}"
                   />
                 </div>
               </div>
@@ -430,7 +495,8 @@
                     name="customer_data_completeness_score__c"
                     type="number"
                     class="form-control"
-                    [(ngModel)]="opportunity.customer_data_completeness_score__c"
+                    formControlName="customer_data_completeness_score__c"
+                    value=" {{ opportunity.customer_data_completeness_score__c }}"
                   />
                 </div>
               </div>
@@ -439,7 +505,7 @@
           </div>
         </div>
       
-        <div class="card mt-3">
+        <div class="card mt-3"  *ngIf="type=='edit'">
           <div class="card-header pointer">
             <a data-toggle="collapse" href="#addtional-information"
               ><span class="glyphicon glyphicon-menu-down"></span>
@@ -460,7 +526,8 @@
                     name="currentgenerators__c"
                     type="text"
                     class="form-control"
-                    [(ngModel)]="opportunity.currentgenerators__c"
+                    formControlName="currentgenerators__c"
+                    value=" {{ opportunity.currentgenerators__c }}"
                   />
                 </div>
               </div>
@@ -468,7 +535,7 @@
               <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                 <div class="form-group">
                   <label>Primary</label>
-                  <select id="primary__c_lead" name="primary__c" class="form-control">
+                  <select id="primary__c_lead" name="primary__c" class="form-control" formControlName="primary__c" value=" {{ opportunity.primary__c }}">
                     <option value="">-- SELECT --</option>
                     <option value="Yes"> Yes </option>
                     <option value="No"> No </option>
@@ -495,13 +562,13 @@
               <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                 <div class="form-group">
                   <label>Created by</label>
-                  <div id="createdby_lead"><b>{{ opportunity.createdbyid}}</b></div>
+                  <div id="createdby_lead"><b>{{ createdbyid}}</b></div>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                 <div class="form-group">
                   <label>Last modified by</label>
-                  <div id="lastmodifiedby_lead"><b>{{ opportunity.lastmodifiedbyid}}</b></div>
+                  <div id="lastmodifiedby_lead"><b>{{ lastmodifiedbyid}}</b></div>
                 </div>
               </div>
             </div>
@@ -509,13 +576,13 @@
               <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                 <div class="form-group">
                   <label>Created Date</label>
-                  <div id="createddate_lead"><b>{{ opportunity.createddate}}</b></div>
+                  <div id="createddate_lead"><b>{{ createddate}}</b></div>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                 <div class="form-group">
                   <label>Last modified date</label>
-                  <div id="lastmodifiedbyid_lead">{{ opportunity.lastmodifieddate}}</div>
+                  <div id="lastmodifiedbyid_lead">{{ lastmodifieddate}}</div>
                 </div>
               </div>
             </div>
@@ -528,10 +595,10 @@
             type="button"
             class="btn btn-default"
             data-dismiss="modal"
-            (click)="closeOpportunityModal()"
+            (click)="closeModal()"
           >
             cancel
           </button>
-          <button type="button" class="btn btn-info" (click)="onSubmit(opportunity)">Save</button>
+          <button type="submit" class="btn btn-primary" >Save changes</button>
         </div>
 </form>
