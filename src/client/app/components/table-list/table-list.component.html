@@ -28,6 +28,8 @@
                 id="createNewLead"
                 type="button"
                 class="btn btn-secondary pull-right mr-1"
+                *ngIf="module == 'customers'"
+                (click)="openNewCustomerModal()"
               >
                 <i
                   data-toggle="tooltip"
@@ -287,7 +289,7 @@
                           <td>
                             <span
                               class="fas fa-edit"
-                              (click)="onOpenAbout()"
+                              (click)="updatevehicleStockModal(opportunity)"
                             ></span>
                           </td>
                         </tr>
@@ -399,7 +401,7 @@
                           <td>
                             <span
                               class="fas fa-edit"
-                              (click)="onOpenAbout()"
+                              (click)="updateDriverModal(opportunity)"
                             ></span>
                           </td>
                         </tr>
@@ -534,7 +536,7 @@
                           <td>
                             <span
                               class="fas fa-edit"
-                              (click)="onOpenAbout()"
+                              (click)="updateCustomerModal(opportunity)"
                             ></span>
                           </td>
                         </tr>
@@ -600,13 +602,24 @@
                 class="close"
                 data-dismiss="modal"
                 aria-label="Close"
-                (click)="closeOpportunityModal()"
+                (click)="closeModal()"
               >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              <sd-opportunity-form [opportunity]="modalData" [type]="formType" (update)="updateOpportunity($event)"></sd-opportunity-form>
+            <div class="modal-body"  [ngSwitch]="module">
+              <ng-template [ngSwitchCase]="'opportunities'">
+                <sd-opportunity-form [opportunity]="modalData" [type]="formType" (updateOpportunity)="updateOpportunity($event)"></sd-opportunity-form>
+              </ng-template>
+              <ng-template [ngSwitchCase]="'vehicle_stocks'">
+                  <sd-vehiclestock-form  (updatevehicleStock)="updatevehicleStock($event)"></sd-vehiclestock-form>
+                </ng-template>
+              <ng-template [ngSwitchCase]="'drivers'">
+                  <sd-driver-form  (updateDriver)="updateDriver($event)"></sd-driver-form>
+                </ng-template>
+              <ng-template [ngSwitchCase]="'customers'">
+                  <sd-customer-form [customer]="modalData" [type]="formType" (updateCustomer)="updateCustomer($event)"></sd-customer-form>
+                </ng-template>
             </div>
             
           </div>

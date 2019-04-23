@@ -29,7 +29,7 @@ export class TableListComponent {
   search: any = "";
   showEdit: boolean = false;
   opportunityOpen:boolean = true;
-  modalData: any =[];
+  modalData: any=[];
   formType:any;
 
   searchTerm: string;
@@ -71,7 +71,7 @@ export class TableListComponent {
     if (searchData.length >= 3 || searchData.length == 0) {
       this.search = searchData;
       let params = {
-        page: this.page,
+        page: 1,
         limit: this.limit,
         search: this.search
       };
@@ -200,6 +200,7 @@ export class TableListComponent {
     this.tabsComponent.openTab(data.name, template, data, true);
   }
 
+  //opportunity modal
   openOpportunityModal(data:any){
     console.log(data)
     this.modalData = data;
@@ -210,28 +211,51 @@ export class TableListComponent {
     this.formType = 'new';
     this.opportunityOpen = false;
   }
-  closeOpportunityModal(){
+  closeModal(){
     this.opportunityOpen = true;
     this.modalData = [];
   }
   updateOpportunity(event:any){
-    console.log(event)
+    console.log(JSON.stringify(event))
     let endpoint:any;
     if(this.formType =='edit'){
       endpoint = 'leadUpdate';
     }
     if(this.formType =='new'){
       endpoint = 'quickLeadInsert';
+      //event = JSON.stringify(event)
     }
 
     this.http
       .post<{ success: object }>(Config.BASE_URL + "api/"+endpoint,event)
       .subscribe((response: any) => {
         console.log(response)
-        this.opportunityOpen = true;
-        this.modalData = [];
+        //this.opportunityOpen = true;
+        //this.modalData = [];
       });
       
+  }
+  //vehicleStock Modal
+  updatevehicleStockModal(data:any){
+    this.modalData = data;
+    this.formType = 'edit';
+    this.opportunityOpen = false;
+  }
+  //Driver modal
+  updateDriverModal(data:any){
+    this.modalData = data;
+    this.formType = 'edit';
+    this.opportunityOpen = false;
+  }
+  //customer modal
+  openNewCustomerModal(){
+    this.formType = 'new';
+    this.opportunityOpen = false;
+  }
+  updateCustomerModal(data:any){
+    this.modalData = data;
+    this.formType = 'edit';
+    this.opportunityOpen = false;
   }
   //https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fpeople%2Fperson-edit.component.ts
 }

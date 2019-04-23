@@ -73,3 +73,6 @@ button:hover {
   padding: 0px !important;
 }
 
+.error-box{
+  color: #b80000;
+}
