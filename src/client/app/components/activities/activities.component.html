@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-body p-0">
     <ul class="nav nav-tabs">
-      <li class="nav-item ml-1">
+      <li class="nav-item ml-5">
         <a
           class="nav-link active"
           data-toggle="tab"
@@ -68,7 +68,7 @@
                     <div class="row">
                       <div class="col-md-12" style="padding-bottom: 1px;">
                         <div class="form-group">
-                          <label for="usr">Name</label>
+                          <label for="usr"><b>Name</b></label>
                           <input
                             type="text"
                             name="name"
@@ -85,7 +85,7 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="usr">subject</label>
+                          <label for="usr"><b>subject</b></label>
                           <input
                             type="text"
                             required=""
@@ -98,7 +98,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="usr">Assigned To</label>
+                          <label for="usr"><b>Assigned To</b></label>
                           <input
                             type="text"
                             name="assigned_to"
@@ -151,7 +151,7 @@
                     <div class="row">
                       <div class="col-lg-8" style="padding-bottom: 1px;">
                         <div class="form-group">
-                          <label>Due Date</label>
+                          <label><b>Due Date</b></label>
                           <input
                             type="date"
                             required=""
@@ -166,7 +166,7 @@
                     <div class="row">
                       <div class="col-md-8" style="padding-bottom: 1px;">
                         <div class="form-group">
-                          <label>Status</label>
+                          <label><b>Status</b></label>
                           <select required="" class="form-control" id="status" formControlName="status">
                             <option value="">-- None--</option>
                             <option value="Starred">Starred </option>
@@ -193,7 +193,7 @@
           </div>
           <div id="menu1702" class="tab-pane fade" role="tabpanel">
             <div class="card-body p-0">
-              <h4 class="panel-title p-3">
+              <h4 class="card-title p-3">
                 <i class="fa fa-phone-square" aria-hidden="true"></i>&nbsp; Call
                 Log
               </h4>
@@ -217,7 +217,7 @@
                     style="padding-bottom: 1px;"
                   >
                     <div class="form-group">
-                      <label for="usr">Name</label>
+                      <label for="usr"><b>Name</b></label>
                       <input
                         type="text"
                         name="callname"
@@ -233,7 +233,7 @@
                     style="padding-bottom: 1px;"
                   >
                     <div class="form-group">
-                      <label for="usr">Subject</label>
+                      <label for="usr"><b>Subject</b></label>
                       <input
                         type="text"
                         name="callsubject"
@@ -247,7 +247,7 @@
                 <div class="row">
                   <div class="col-md-12" style="padding-bottom: 1px;">
                     <div class="form-group">
-                      <label>Comments</label>
+                      <label><b>Comments</b></label>
                       <textarea
                         class="form-control"
                         rows="3"
@@ -313,10 +313,11 @@
             </div>
           </div>
           <div id="menu2702" class="tab-pane fade" role="tabpanel">
-            <div class="card-body">
-              <h4 class="panel-title">
+            <div class="card-body p-0">
+              <h4 class="card-title p-3">
                 <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; Event
               </h4>
+              <div class="p-3">
               <form
                 class="demo-form-event"
                 method="post"
@@ -344,7 +345,7 @@
                       style="padding-bottom: 1px;"
                     >
                       <div class="form-group">
-                        <label for="usr">Name</label>
+                        <label for="usr"><b>Name</b></label>
                         <input
                           type="text"
                           name="name"
@@ -360,7 +361,7 @@
                       style="padding-bottom: 1px;"
                     >
                       <div class="form-group">
-                        <label for="usr">Subject</label>
+                        <label for="usr"><b>Subject</b></label>
                         <input
                           type="text"
                           name="subject"
@@ -376,7 +377,7 @@
                       style="padding-bottom: 1px;"
                     >
                       <div class="form-group">
-                        <label for="usr">Start Date</label>
+                        <label for="usr"><b>Start Date</b></label>
                         <input
                           type="date"
                           name="start_date"
@@ -390,7 +391,7 @@
                       style="padding-bottom: 1px;"
                     >
                       <div class="form-group">
-                        <label for="usr">End Date</label>
+                        <label for="usr"><b>End Date</b></label>
                         <input
                           type="date"
                           name="end_date"
@@ -422,7 +423,7 @@
                       style="padding-bottom: 1px;"
                     >
                       <div class="form-group">
-                        <label for="usr">Assigned To</label>
+                        <label for="usr"><b>Assigned To</b></label>
                         <input
                           type="text"
                           name="assigned_to"
@@ -438,7 +439,7 @@
                       style="padding-bottom: 1px;"
                     >
                       <div class="form-group">
-                        <label>Location</label>
+                        <label><b>Location</b></label>
                         <input
                           type="text"
                           name="location"
@@ -482,7 +483,7 @@
                       style="padding-bottom: 1px;"
                     >
                       <div class="form-group">
-                        <label for="usr">All-Day Event</label><br />
+                        <label for="usr"><b>All-Day Event</b></label><br />
                         <input
                           type="checkbox"
                           name="all_day_event"
@@ -501,6 +502,7 @@
                   </div>
                 </div>
               </form>
+            </div>
               <div class="card-footer text-right" id="footer_close">
                 <button
                   type="button"
@@ -520,7 +522,7 @@
           </div>
           <div id="menu3702" class="tab-pane fade" role="tabpanel">
             <div class="card-body p-0">
-              <h4 class="p-3">
+              <h4 class="card-title p-3">
                 <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;Email
               </h4>
               <div class="p-3">
@@ -550,7 +552,7 @@
                     <div class="row">
                       <div class="col-md-12" style="padding-bottom: 1px;">
                         <div class="form-group">
-                          <label for="usr">*From</label>
+                          <label for="usr"><b>*From</b></label>
                           <input
                             type="email"
                             name="emailfrom"
@@ -563,7 +565,7 @@
                     <div class="row">
                       <div class="col-md-12" style="padding-bottom: 1px;">
                         <div class="form-group">
-                          <label>To</label>
+                          <label><b>To</b></label>
                           <input
                             type="email"
                             name="emailto"
@@ -576,7 +578,7 @@
                     <div class="row">
                       <div class="col-md-12" style="padding-bottom: 1px;">
                         <div class="form-group">
-                          <label for="usr">Bcc</label>
+                          <label for="usr"><b>Bcc</b></label>
                           <input
                             type="email"
                             name="emailbcc"
@@ -607,7 +609,7 @@
                         style="padding-bottom: 1px;"
                       >
                         <div class="form-group">
-                          <label>Subject</label>
+                          <label><b>Subject</b></label>
                           <textarea
                             name="emailsubject"
                             id="emailsubject"

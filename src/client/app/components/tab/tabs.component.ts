@@ -75,12 +75,7 @@ import GeneralService from "../../shared/services/GeneralService";
       }
       .tab.active {
         background: red;
-      }
-      .selectTab active{
-        border-top: 1px solid #EF1B24;
-        border-bottom: 1px solid #EF1B24;
-      }
-      
+      }    
       .nav-tabs select {
         background: #fff;
         word-wrap: normal;
@@ -110,6 +105,7 @@ import GeneralService from "../../shared/services/GeneralService";
       .active{
         border-top: 1px solid #EF1B24;
         border-bottom: 1px solid #EF1B24;
+        background:#fff;
     }
       .dynamicTabs a {
         color: #828383;

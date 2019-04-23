@@ -17,6 +17,7 @@ import { CustomerFormComponent } from "./../customer-form/customer-form.componen
 import { VehicleStockFormComponent } from "./../vehiclestock-form/vehiclestock-form.component";
 import { NavFormComponent } from './../nav-form/nav-form.component';
 import { ActivitiesComponent } from "./../activities/activities.component";
+import { NavigationBarComponent } from './../navigation-bar/navigation-bar.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { ActivitiesComponent } from "./../activities/activities.component";
     CustomerFormComponent,
     VehicleStockFormComponent,
     ActivitiesComponent,
-    NavFormComponent
+    NavFormComponent,
+    NavigationBarComponent
   ],
   exports: [TableListComponent],
   entryComponents: [TabComponent]

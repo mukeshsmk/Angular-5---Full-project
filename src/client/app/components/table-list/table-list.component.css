@@ -184,6 +184,7 @@ input[type="checkbox"] {
 .tooltip {
   position: relative;
   display: inline-block;
+  z-index: 1050 !important;
   opacity: inherit;
 }
 
@@ -218,3 +219,5 @@ input[type="checkbox"] {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+.pointer {cursor: pointer;}

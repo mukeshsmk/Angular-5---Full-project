@@ -1,0 +1,16 @@
+.nav-tabs .nav-link.active{
+    background-color: transparent!important;
+    color: #000!important;
+    border-top: 1px solid #ffc43a;
+    border-left: 1px solid #ffc43a;
+    border-right: 1px solid #ffc43a;
+}
+.card-body ul li{
+    margin-top: 0px;
+}
+.nav {
+    margin-top:0px;
+}
+.card-title{
+    border-bottom: 1px solid #fcc43a;
+}
