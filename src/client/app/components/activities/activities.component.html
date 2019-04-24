@@ -2,40 +2,16 @@
   <div class="card-body p-0">
     <ul class="nav nav-tabs">
       <li class="nav-item ml-4">
-        <a
-          class="nav-link active"
-          data-toggle="tab"
-          href="#task702"
-          aria-expanded="true"
-          >Task</a
-        >
+        <a class="nav-link active" data-toggle="tab" href="#task702" aria-expanded="true">Task</a>
       </li>
       <li class="nav-item">
-        <a
-          class="nav-link"
-          data-toggle="tab"
-          href="#menu1702"
-          aria-expanded="false"
-          >Call Log</a
-        >
+        <a class="nav-link" data-toggle="tab" href="#menu1702" aria-expanded="false">Call Log</a>
       </li>
       <li class="nav-item">
-        <a
-          class="nav-link"
-          data-toggle="tab"
-          href="#menu2702"
-          aria-expanded="false"
-          >Event</a
-        >
+        <a class="nav-link" data-toggle="tab" href="#menu2702" aria-expanded="false">Event</a>
       </li>
       <li class="nav-item">
-        <a
-          class="nav-link"
-          data-toggle="tab"
-          href="#menu3702"
-          aria-expanded="false"
-          >Email</a
-        >
+        <a class="nav-link" data-toggle="tab" href="#menu3702" aria-expanded="false">Email</a>
       </li>
     </ul>
     <div class="panel-group">
@@ -46,20 +22,12 @@
               <h4 class="card-title p-3">
                 <i class="fa fa-tasks" aria-hidden="true"></i>&nbsp; Task
               </h4>
-              <form [formGroup]="taskForm" (ngSubmit)="onTaskSubmit()">
+              <form (ngSubmit)="onSubmit(taskForm)" [formGroup]="taskForm">
                 <div class="p-3">
                   <div>
                     <div id="inserttasksuccess" style="display:none;">
-                      <div
-                        class="alert alert-success alert-dismissible fade in"
-                      >
-                        <a
-                          href="#"
-                          class="close"
-                          data-dismiss="alert"
-                          aria-label="close"
-                          >×</a
-                        >
+                      <div class="alert alert-success alert-dismissible fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
                         <strong>Success!</strong> New Task inserted
                         successfully.
                       </div>
@@ -69,15 +37,7 @@
                       <div class="col-md-12" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr"><b>Name</b></label>
-                          <input
-                            type="text"
-                            name="name"
-                            id="name"
-                            value="xxxx"
-                            readonly=""
-                            class="form-control"
-                            formControlName="name"
-                          />
+                          <input type="text" name="name" readonly class="form-control" formControlName="name" />
                         </div>
                       </div>
                     </div>
@@ -86,64 +46,15 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="usr"><b>subject</b></label>
-                          <input
-                            type="text"
-                            required=""
-                            name="subject"
-                            id="subject"
-                            class="form-control"
-                            formControlName="subject"
-                          />
+                          <input type="text" required="" name="subject" id="subject" class="form-control"
+                            formControlName="subject__c" />
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="usr"><b>Assigned To</b></label>
-                          <input
-                            type="text"
-                            name="assigned_to"
-                            id="assigned_to"
-                            value="Manikandan Gunasekar"
-                            readonly=""
-                            class="form-control"
-                            formControlName="assigned_to"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
-                        <div class="form-group">
-                          <input
-                            type="hidden"
-                            name="assigned_to_sfid"
-                            id="assigned_to_sfid"
-                            value="a0E7F00000K4EX2UAN"
-                            class="form-control"
-                            formControlName="assigned_to_sfid"
-                          />
-
-                          <!--<label>Related To</label>-->
-                          <input
-                            type="hidden"
-                            name="type_c"
-                            id="type_c"
-                            value="Task"
-                            class="form-control"
-                            formControlName="type_c"
-                          />
-                          <!--<label>Related To</label>-->
-                          <input
-                            type="hidden"
-                            name="opportunity__c"
-                            id="opportunity__c"
-                            value="0067F00000MxHJYQA3"
-                            class="form-control"
-                            formControlName="opportunity__c"
-                          />
+                          <input type="text" name="assigned_to" id="assigned_to" readonly class="form-control"
+                            formControlName="assigned_to" />
                         </div>
                       </div>
                     </div>
@@ -152,14 +63,8 @@
                       <div class="col-lg-8" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label><b>Due Date</b></label>
-                          <input
-                            type="date"
-                            required=""
-                            name="due_date"
-                            id="due_date"
-                            class="form-control"
-                            formControlName="due_date"
-                          />
+                          <input type="date" required="" name="due_date" id="due_date" class="form-control"
+                            formControlName="end_date__c" />
                         </div>
                       </div>
                     </div>
@@ -167,7 +72,7 @@
                       <div class="col-md-8" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label><b>Status</b></label>
-                          <select required="" class="form-control" id="status" formControlName="status">
+                          <select required="" class="form-control" id="status" formControlName="status__c">
                             <option value="">-- None--</option>
                             <option value="Starred">Starred </option>
                             <option value="Not starred">Not starred</option>
@@ -181,135 +86,61 @@
                   <button type="button" class="btn btn-default">
                     Cancel
                   </button>
-                  <input
-                    type="submit"
-                    class="btn btn-default btn-info"
-                    id="submit"
-                    value="Save"
-                  />
+                  <input type="submit" class="btn btn-default btn-info" id="submit" value="Save" />
                 </div>
               </form>
             </div>
           </div>
           <div id="menu1702" class="tab-pane fade" role="tabpanel">
             <div class="card-body p-0">
-              <h4 class="card-title p-3">
-                <i class="fa fa-phone-square" aria-hidden="true"></i>&nbsp; Call
-                Log
-              </h4>
-              <div class="p-3">
-                <div class="row">
-                  <div id="insertcalllogsuccess" style="display:none;">
-                    <div class="alert alert-success alert-dismissible fade in">
-                      <a
-                        href="#"
-                        class="close"
-                        data-dismiss="alert"
-                        aria-label="close"
-                        >×</a
-                      >
-                      <strong>Success!</strong> New Call Log inserted
-                      successfully.
-                    </div>
-                  </div>
-                  <div
-                    class="col-lg-6 col-md-6 col-sm-6"
-                    style="padding-bottom: 1px;"
-                  >
-                    <div class="form-group">
-                      <label for="usr"><b>Name</b></label>
-                      <input
-                        type="text"
-                        name="callname"
-                        id="name"
-                        value="xxxx"
-                        readonly=""
-                        class="form-control"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    class="col-lg-6 col-md-6 col-sm-6"
-                    style="padding-bottom: 1px;"
-                  >
-                    <div class="form-group">
-                      <label for="usr"><b>Subject</b></label>
-                      <input
-                        type="text"
-                        name="callsubject"
-                        id="subject"
-                        class="form-control"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <br />
-                <div class="row">
-                  <div class="col-md-12" style="padding-bottom: 1px;">
-                    <div class="form-group">
-                      <label><b>Comments</b></label>
-                      <textarea
-                        class="form-control"
-                        rows="3"
-                        name="callcomment"
-                        id="comment"
-                      ></textarea>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-lg-6 col-md-6 col-sm-6"
-                  style="padding-bottom: 1px;"
-                >
-                  <div class="form-group">
-                    <input
-                      type="hidden"
-                      name="assigned_to_sfid"
-                      id="assigned_to_sfid"
-                      value="a0E7F00000K4EX2UAN"
-                      class="form-control"
-                    />
+              <form (ngSubmit)="onSubmit(callForm)" [formGroup]="callForm">
 
-                    <input
-                      type="hidden"
-                      name="type_c"
-                      id="type_c"
-                      value="Log a Call"
-                      class="form-control"
-                    />
-                    <input
-                      type="hidden"
-                      name="opportunity__c"
-                      id="opportunity__c"
-                      value="0067F00000MxHJYQA3"
-                      class="form-control"
-                    />
+                <h4 class="card-title p-3">
+                  <i class="fa fa-phone-square" aria-hidden="true"></i>&nbsp; Call
+                  Log
+                </h4>
+                <div class="p-3">
+                  <div class="row">
+                    <div id="insertcalllogsuccess" style="display:none;">
+                      <div class="alert alert-success alert-dismissible fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                        <strong>Success!</strong> New Call Log inserted
+                        successfully.
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label for="usr"><b>Name</b></label>
+                        <input type="text" name="callname" id="name" formControlName="name" readonly=""
+                          class="form-control" />
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label for="usr"><b>Subject</b></label>
+                        <input type="text" name="callsubject" id="subject" formControlName="subject__c"
+                          class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                  <div class="row">
+                    <div class="col-md-12" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label><b>Comments</b></label>
+                        <textarea class="form-control" rows="3" name="callcomment" formControlName="comments__c"
+                          id="comment"></textarea>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <form
-              class="demo-form-call-log"
-              method="post"
-              id="leadCallLogForm"
-              name="leadCallLogForm"
-              data-parsley-validate=""
-              novalidate=""
-            ></form>
-            <div class="card-footer text-right">
-              <button
-                type="button"
-                class="btn btn-default"
-                data-dismiss="modal"
-              >
-                Cancel
-              </button>
-              <input
-                type="submit"
-                class="btn btn-default btn-info"
-                id="submit"
-                value="Save"
-              />
+                <div class="card-footer text-right">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Cancel
+                  </button>
+                  <input type="submit" class="btn btn-default btn-info" id="submit" value="Save" />
+                </div>
+              </form>
             </div>
           </div>
           <div id="menu2702" class="tab-pane fade" role="tabpanel">
@@ -318,205 +149,91 @@
                 <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; Event
               </h4>
               <div class="p-3">
-              <form
-                class="demo-form-event"
-                method="post"
-                id="leadEventForm"
-                name="leadEventForm"
-                data-parsley-validate=""
-                novalidate=""
-              >
-                <div class="panel-body" id="success_body" style="height:auto;">
-                  <div id="inserteventsuccess" style="display:none;">
-                    <div class="alert alert-success alert-dismissible fade in">
-                      <a
-                        href="#"
-                        class="close"
-                        data-dismiss="alert"
-                        aria-label="close"
-                        >×</a
-                      >
-                      <strong>Success!</strong> New Event inserted successfully.
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div
-                      class="col-lg-6 col-md-6 col-sm-6"
-                      style="padding-bottom: 1px;"
-                    >
-                      <div class="form-group">
-                        <label for="usr"><b>Name</b></label>
-                        <input
-                          type="text"
-                          name="name"
-                          id="name"
-                          value="xxxx"
-                          readonly=""
-                          class="form-control"
-                        />
+                <form (ngSubmit)="onSubmit(eventForm)" [formGroup]="eventForm">
+                  <div class="panel-body" id="success_body" style="height:auto;">
+                    <div id="inserteventsuccess" style="display:none;">
+                      <div class="alert alert-success alert-dismissible fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                        <strong>Success!</strong> New Event inserted successfully.
                       </div>
                     </div>
-                    <div
-                      class="col-lg-6 col-md-6 col-sm-6"
-                      style="padding-bottom: 1px;"
-                    >
-                      <div class="form-group">
-                        <label for="usr"><b>Subject</b></label>
-                        <input
-                          type="text"
-                          name="subject"
-                          id="subject"
-                          class="form-control"
-                        />
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label for="usr"><b>Name</b></label>
+                          <input type="text" name="name" id="name" formControlName="name" readonly=""
+                            class="form-control" />
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label for="usr"><b>Subject</b></label>
+                          <input type="text" name="subject" id="subject" formControlName="subject__c"
+                            class="form-control" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div
-                      class="col-lg-6 col-md-6 col-sm-6"
-                      style="padding-bottom: 1px;"
-                    >
-                      <div class="form-group">
-                        <label for="usr"><b>Start Date</b></label>
-                        <input
-                          type="date"
-                          name="start_date"
-                          id="start_date"
-                          class="form-control"
-                        />
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label for="usr"><b>Start Date</b></label>
+                          <input type="date" name="start_date" id="start_date" formControlName="start_date__c"
+                            class="form-control" />
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label for="usr"><b>End Date</b></label>
+                          <input type="date" name="end_date" id="end_date" formControlName="end_date__c"
+                            class="form-control" />
+                        </div>
                       </div>
                     </div>
-                    <div
-                      class="col-lg-6 col-md-6 col-sm-6"
-                      style="padding-bottom: 1px;"
-                    >
-                      <div class="form-group">
-                        <label for="usr"><b>End Date</b></label>
-                        <input
-                          type="date"
-                          name="end_date"
-                          id="end_date"
-                          class="form-control"
-                        />
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <!--<label>Related To</label>-->
+                          <input type="hidden" name="related_to" id="related_to" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label for="usr"><b>Assigned To</b></label>
+                          <input type="text" name="assigned_to" id="assigned_to" formControlName="assigned_to"
+                            readonly="" class="form-control" />
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label><b>Location</b></label>
+                          <input type="text" name="location" id="location" formControlName="location__c"
+                            class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label for="usr"><b>All-Day Event</b></label><br />
+                          <input type="checkbox" name="all_day_event" id="all_day_event"
+                            formControlName="all_day_flag__c" data-parsley-multiple="all_day_event" />
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                        <div class="form-group"></div>
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <div
-                      class="col-lg-6 col-md-6 col-sm-6"
-                      style="padding-bottom: 1px;"
-                    >
-                      <div class="form-group">
-                        <!--<label>Related To</label>-->
-                        <input
-                          type="hidden"
-                          name="related_to"
-                          id="related_to"
-                          class="form-control"
-                        />
-                      </div>
-                    </div>
+
+                  <div class="card-footer text-right" id="footer_close">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                      Cancel
+                    </button>
+                    <input type="submit" class="btn btn-default btn-info" id="submit" value="Save" />
                   </div>
-                  <div class="row">
-                    <div
-                      class="col-lg-6 col-md-6 col-sm-6"
-                      style="padding-bottom: 1px;"
-                    >
-                      <div class="form-group">
-                        <label for="usr"><b>Assigned To</b></label>
-                        <input
-                          type="text"
-                          name="assigned_to"
-                          id="assigned_to"
-                          value="Manikandan Gunasekar"
-                          readonly=""
-                          class="form-control"
-                        />
-                      </div>
-                    </div>
-                    <div
-                      class="col-lg-6 col-md-6 col-sm-6"
-                      style="padding-bottom: 1px;"
-                    >
-                      <div class="form-group">
-                        <label><b>Location</b></label>
-                        <input
-                          type="text"
-                          name="location"
-                          id="location"
-                          class="form-control"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-12" style="padding-bottom: 1px;">
-                    <div class="form-group">
-                      <!--<label>Related To</label>-->
-                      <input
-                        type="hidden"
-                        name="assigned_to_sfid"
-                        id="assigned_to_sfid"
-                        value="a0E7F00000K4EX2UAN"
-                        class="form-control"
-                      />
-                      <!--<label>Related To</label>-->
-                      <input
-                        type="hidden"
-                        name="type_c"
-                        id="type_c"
-                        value="Event"
-                        class="form-control"
-                      />
-                      <!--<label>Related To</label>-->
-                      <input
-                        type="hidden"
-                        name="opportunity__c"
-                        id="opportunity__c"
-                        value="0067F00000MxHJYQA3"
-                        class="form-control"
-                      />
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div
-                      class="col-lg-6 col-md-6 col-sm-6"
-                      style="padding-bottom: 1px;"
-                    >
-                      <div class="form-group">
-                        <label for="usr"><b>All-Day Event</b></label><br />
-                        <input
-                          type="checkbox"
-                          name="all_day_event"
-                          id="all_day_event"
-                          value="All Day Event"
-                          data-parsley-multiple="all_day_event"
-                        />
-                      </div>
-                    </div>
-                    <div
-                      class="col-lg-6 col-md-6 col-sm-6"
-                      style="padding-bottom: 1px;"
-                    >
-                      <div class="form-group"></div>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-              <div class="card-footer text-right" id="footer_close">
-                <button
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                >
-                  Cancel
-                </button>
-                <input
-                  type="submit"
-                  class="btn btn-default btn-info"
-                  id="submit"
-                  value="Save"
-                />
+                </form>
               </div>
             </div>
           </div>
@@ -526,26 +243,11 @@
                 <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;Email
               </h4>
               <div class="p-3">
-                <form
-                  class="demo-form-email"
-                  method="post"
-                  id="leadEmailForm"
-                  name="leadEmailForm"
-                  data-parsley-validate=""
-                  novalidate=""
-                >
+                <form (ngSubmit)="onSubmit(emailForm)" [formGroup]="emailForm">
                   <div>
                     <div id="insertemailsuccess" style="display:none;">
-                      <div
-                        class="alert alert-success alert-dismissible fade in"
-                      >
-                        <a
-                          href="#"
-                          class="close"
-                          data-dismiss="alert"
-                          aria-label="close"
-                          >×</a
-                        >
+                      <div class="alert alert-success alert-dismissible fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
                         <strong>Success!</strong> Email inserted successfully.
                       </div>
                     </div>
@@ -553,12 +255,8 @@
                       <div class="col-md-12" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr"><b>*From</b></label>
-                          <input
-                            type="email"
-                            name="emailfrom"
-                            id="emailfrom"
-                            class="form-control"
-                          />
+                          <input type="email" name="emailfrom" id="emailfrom" formControlName="from__c"
+                            class="form-control" />
                         </div>
                       </div>
                     </div>
@@ -566,12 +264,8 @@
                       <div class="col-md-12" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label><b>To</b></label>
-                          <input
-                            type="email"
-                            name="emailto"
-                            id="emailto"
-                            class="form-control"
-                          />
+                          <input type="email" name="emailto" id="emailto" formControlName="to__c"
+                            class="form-control" />
                         </div>
                       </div>
                     </div>
@@ -579,20 +273,13 @@
                       <div class="col-md-12" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr"><b>Bcc</b></label>
-                          <input
-                            type="email"
-                            name="emailbcc"
-                            id="emailbcc"
-                            class="form-control"
-                          />
+                          <input type="email" name="emailbcc" id="emailbcc" formControlName="bcc__c"
+                            class="form-control" />
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div
-                        class="col-lg-12 col-md-12 col-sm-12"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <br />
                           <div id="summernote">
@@ -604,70 +291,28 @@
                     </div>
 
                     <div class="row">
-                      <div
-                        class="col-lg-12 col-md-12 col-sm-12"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label><b>Subject</b></label>
-                          <textarea
-                            name="emailsubject"
-                            id="emailsubject"
-                            rows="3"
-                            class="form-control"
-                            placeholder="Enter Subject"
-                          ></textarea>
+                          <textarea name="emailsubject" id="emailsubject" rows="3" formControlName="subject__c"
+                            class="form-control" placeholder="Enter Subject"></textarea>
                         </div>
                       </div>
                     </div>
-                    <div
-                      class="col-lg-6 col-md-6 col-sm-6"
-                      style="padding-bottom: 1px;"
-                    >
-                      <div class="form-group">
-                        <!--<label>Related To</label>-->
-                        <input
-                          type="hidden"
-                          name="assigned_to_sfid"
-                          id="assigned_to_sfid"
-                          value="a0E7F00000K4EX2UAN"
-                          class="form-control"
-                        />
-                        <!--<label>Related To</label>-->
-                        <input
-                          type="hidden"
-                          name="type_c"
-                          id="type_c"
-                          value="Email"
-                          class="form-control"
-                        />
-                        <!--<label>Related To</label>-->
-                        <input
-                          type="hidden"
-                          name="opportunity__c"
-                          id="opportunity__c"
-                          value="0067F00000MxHJYQA3"
-                          class="form-control"
-                        />
-                      </div>
-                    </div>
+
                     <br />
                     <div id="summernote">
                       <p></p>
                     </div>
                   </div>
+
+                  <div class="card-footer text-right">
+                    <button type="button" class="btn btn-default">
+                      Cancel
+                    </button>
+                    <input type="submit" class="btn btn-default btn-info" id="submit" value="Save" />
+                  </div>
                 </form>
-              </div>
-              <div class="card-footer text-right">
-                <button type="button" class="btn btn-default">
-                  Cancel
-                </button>
-                <input
-                  type="submit"
-                  class="btn btn-default btn-info"
-                  id="submit"
-                  value="Save"
-                />
               </div>
             </div>
           </div>

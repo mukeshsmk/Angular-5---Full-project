@@ -55,6 +55,11 @@ export class LoginComponent implements OnInit {
               "access_token",
               JSON.stringify(this._token.access_token)
             );
+            localStorage.setItem(
+              "user_data",
+              JSON.stringify(this._token.userData)
+            );
+            console.log(JSON.stringify(this._token.userData))
             
             this.infoMessage = "Login Success!";
             this.visibleOne=false;
