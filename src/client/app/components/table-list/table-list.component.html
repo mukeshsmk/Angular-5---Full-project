@@ -203,10 +203,14 @@
                             {{ opportunity.leadowner }}
                           </td>
                           <td>
+
                             <span
                               class="fas fa-edit pointer"
                               (click)="openOpportunityModal(opportunity)"
+                              title="Edit Lead"
                             ></span>
+                           
+                            
                           </td>
                         </tr>
                       </tbody>
@@ -581,7 +585,7 @@
     </div>
 
     <div class="row w-auto">
-      <div class="col-sm-5">
+      <div class="col-sm-5 p-0">
         <div
           class="dataTables_info mt-4"
           id="example_info"
