@@ -343,6 +343,8 @@
                     name="comments_from_stock_c__c"
                     id="comments_from_stock_c__c_lead"
                     class="form-control"
+                    cols="5"
+                    row="20"
                     formControlName="comments_from_stock_c__c"
                     value=" {{ opportunity.comments_from_stock_c__c }}"
                   ></textarea>
@@ -358,10 +360,10 @@
               href="#address-information"
               aria-expanded="false"
               aria-controls="address-information"
-              (click)="visibletwo = !visibletwo"
-              >
-                <i class="fa fa-angle-right" *ngIf="visibletwo"></i>
-                <i class="fa fa-angle-down" *ngIf="!visibletwo"></i>
+              (click)="visibleTwo = !visibleTwo"
+            >
+              <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
+              <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i>
                  Address  Information</a
             >
           </div>
@@ -374,18 +376,29 @@
             <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                 <div class="form-group">
-                  <label>Street</label>
+                  <label>Address</label>
                   <textarea
-                    id="street__c_lead"
-                    name="street__c"
                     class="form-control"
                     cols="5"
                     row="20"
-                    formControlName="street__c"
-                    value=" {{ opportunity.street__c }}"
                   >
                   </textarea>
                 </div>
+              </div>
+                <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                    <div class="form-group">
+                      <label>Street</label>
+                      <textarea
+                        id="street__c_lead"
+                        name="street__c"
+                        class="form-control"
+                        cols="5"
+                        row="20"
+                        formControlName="street__c"
+                        value=" {{ opportunity.street__c }}"
+                      >
+                      </textarea>
+                    </div>
               </div>
             </div>
             <div class="row">
@@ -611,8 +624,8 @@
             data-dismiss="modal"
             (click)="closeModal()"
           >
-            cancel
+            Cancel
           </button>
-          <button type="submit" class="btn btn-primary" >Save changes</button>
+          <button type="submit" class="btn btn-info" >Save</button>
         </div>
 </form>

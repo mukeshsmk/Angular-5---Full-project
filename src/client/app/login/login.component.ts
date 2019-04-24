@@ -18,7 +18,7 @@ import Config from '../shared/config';
   providers: [AuthService]
 })
 export class LoginComponent implements OnInit {
-  visibleOne: Boolean = false;
+  loaderOne: Boolean = false;
   public _token: any;
   user = {
     email: "",
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.user) {
-      this.visibleOne = true;
+      this.loaderOne = true;
       this.http
         .post<{ success: object }>(Config.BASE_URL + "api/login", this.user)
         .subscribe(
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
             );
             
             this.infoMessage = "Login Success!";
-            this.visibleOne=false;
+            this.loaderOne=false;
             this.router.navigate(["/home"]);
             setTimeout(() => {
               console.log("hide");
@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
           },
           (err: HttpErrorResponse) => {
             this.isLoginError = true;
-            this.visibleOne=false;
+            this.loaderOne=false;
             setTimeout(() => {
               console.log("hide");
               this.isLoginError = false;

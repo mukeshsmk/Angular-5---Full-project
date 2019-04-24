@@ -11,22 +11,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
   styleUrls: ["nav-form.component.css"]
 })
 export class NavFormComponent implements OnInit {
-  // visibleOne: Boolean = false;
-  // visibleTwo: Boolean = true;
-  // visibleThree: Boolean = true;
-  // visibleFour: Boolean = true;
-  // visibleFive: Boolean = true;
-  // visibleSix: Boolean = true;
-  // visibleSeven: Boolean = true;
 
-  // lastNameErr:Boolean = false;
-  // companyErr:Boolean = false;
-  // leadSourceErr:Boolean = false;
-  // leadTypeerr:Boolean = false;
-  // requestTypeerr:Boolean = false;
-
-  // @Input() opportunity: any;
-  // @Output('update') send = new EventEmitter<any>();
 
   opportunityForm: FormGroup;
 
@@ -41,27 +26,6 @@ export class NavFormComponent implements OnInit {
   }
   
   onSubmit(){
-  //   if(this.opportunity.last_name__c == null || this.opportunity.last_name__c.length<0){
-  //     this.lastNameErr = true;
-  //     return;
-  //   }
-  //   if(this.opportunity.company__c == null || this.opportunity.company__c.length<0){
-  //     this.companyErr = true;
-  //     return;
-  //   }
-  //   if(this.opportunity.lead_source__c == null || this.opportunity.lead_source__c.length<0){
-  //     this.leadSourceErr = true;
-  //     return;
-  //   }
-  //   if(this.opportunity.lead_type__c == null || this.opportunity.lead_type__c.length<0){
-  //     this.leadTypeerr = true;
-  //     return;
-  //   }
-  //   if(this.opportunity.request_type__c == null || this.opportunity.request_type__c.length<0){
-  //     this.requestTypeerr = true;
-  //     return;
-  //   }
-  //   this.send.emit(this.opportunity); 
   }
   
 }

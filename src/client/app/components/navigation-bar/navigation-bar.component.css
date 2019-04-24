@@ -175,7 +175,7 @@ h2 a{color:#fff; font-weight:bold;}
 }
 .pointer {cursor: pointer;}
 
-.btn{
+.btn-nav{
   padding: 6px 12px 6px 24px;
     font-size: 14px;
     height: 35px;
@@ -185,4 +185,22 @@ h2 a{color:#fff; font-weight:bold;}
 }
 .modal-title{
   color: #EC1C24;
+  font:18px;
+}
+.card-head{
+color:#333;
+}
+label{
+  font-size: 13px;
+  font-weight: bold;
+}
+.btn-default{
+  color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.btn-default:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
 }

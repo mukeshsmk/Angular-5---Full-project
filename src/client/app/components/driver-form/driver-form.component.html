@@ -16,7 +16,7 @@
         <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
           <div class="form-group">
             <label
-              >Lead Owner<b class="mx-2">&nbsp;Manikandan Gunasekar</b></label
+              >Lead Owner<b class="mx-2"><br>Manikandan Gunasekar</b></label
             >
           </div>
           
@@ -381,8 +381,11 @@
         href="#address-information"
         aria-expanded="false"
         aria-controls="address-information"
-        ><span class="glyphicon glyphicon-menu-down"></span> Address
-        Information</a
+        (click)="visibleOne = !visibleOne"
+        >
+          <i class="fa fa-angle-down" *ngIf="visibleOne"></i>
+          <i class="fa fa-angle-right" *ngIf="!visibleOne"></i>
+           Address Information</a
       >
     </div>
     <div
@@ -512,7 +515,10 @@
   <div class="card mt-3">
     <div class="card-header">
       <a data-toggle="collapse" href="#addtional-information"
-        ><span class="glyphicon glyphicon-menu-down"></span>
+      (click)="visibleTwo = !visibleTwo"
+      >
+        <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
+        <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i>
         &nbsp;Additional Information
       </a>
     </div>
@@ -552,8 +558,11 @@
   <div class="card mt-3 mb-3">
     <div class="card-header">
       <a data-toggle="collapse" href="#system-information"
-        ><span class="glyphicon glyphicon-menu-down"></span>System
-        Information</a
+      (click)="visibleThree = !visibleThree"
+      >
+        <i class="fa fa-angle-right" *ngIf="visibleThree"></i>
+        <i class="fa fa-angle-down" *ngIf="!visibleThree"></i>
+        System Information</a
       >
     </div>
     <div
@@ -601,7 +610,7 @@
       data-dismiss="modal"
       (click)="closeOpportunityModal()"
     >
-      cancel
+      Cancel
     </button>
     <button type="button" class="btn btn-info" (click)="onSubmit(opportunity)">Save</button>
   </div>

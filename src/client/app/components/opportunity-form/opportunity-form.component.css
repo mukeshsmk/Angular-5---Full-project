@@ -29,7 +29,7 @@ label {
   padding: .375rem .75rem;
   font-size: 14px;
   font-weight: 400;
-  height: 28px;
+  /* height: 28px; */
   line-height: 1.5;
   color: #495057;
   background-color: #fff;
@@ -66,4 +66,17 @@ label {
   font-size: 25px;
   margin: 0px 10px 0px 0px;
   color: #0747a6 !important;
+}
+.text_area{
+  height:auto !important;
+}
+.btn-info{
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.btn-info:hover {
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #269abc;
 }

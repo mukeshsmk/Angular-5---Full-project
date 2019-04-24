@@ -20,7 +20,7 @@ export class TableListComponent {
   @ViewChild("driverDetails") driverdetailsTemplate: any;
   @ViewChild("customerDetails") customerdetailsTemplate: any;
   @ViewChild("oppournityModal") oppournitymodalTemplate: any;
-
+  loaderOne: Boolean = false;
   opportunityList: any = [];
   module: string = "opportunities";
   opportunityListData: any = [];
@@ -47,7 +47,17 @@ export class TableListComponent {
     this.loadData(this.module, params);
   }
 
+  refresh(){
+    let params = {
+      page: this.page,
+      limit: this.limit,
+      search: this.search
+    };
+    this.loadData;
+    this.loadData(this.module, params);
+  }
   loadData(type: string, params: any) {
+    this.loaderOne = true;
     params =
       "page=" +
       params.page +
@@ -65,6 +75,7 @@ export class TableListComponent {
           .fill(1)
           .map((x, i) => i);
         this.opportunityList = response.data;
+        this.loaderOne = false;
       });
   }
   searchList(searchData: any) {
@@ -180,6 +191,7 @@ export class TableListComponent {
     }
   }
   viewPersondetails(data: any) {
+    this.loaderOne = true;
     console.log(data);
     let template;
     console.log(this.module);
@@ -198,6 +210,7 @@ export class TableListComponent {
         break;
     }
     this.tabsComponent.openTab(data.name, template, data, true);
+    this.loaderOne=false;
   }
 
   //opportunity modal
