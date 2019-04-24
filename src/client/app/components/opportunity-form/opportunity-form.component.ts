@@ -15,8 +15,8 @@ export class OpportunityFormComponent implements OnInit {
   visibleThree: Boolean = true;
   visibleFour: Boolean = true;
   visibleFive: Boolean = true;
-  visibleSix: Boolean = true;
-  visibleSeven: Boolean = true;
+  // visibleSix: Boolean = true;
+  // visibleSeven: Boolean = true;
 
   submitted = false;
 

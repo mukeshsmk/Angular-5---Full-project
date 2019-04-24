@@ -81,7 +81,7 @@ table thead th .glyphicon-sort {
   vertical-align: bottom;
   color: #333340;
   font-size: 14px;
-  border-bottom: 2px solid #dee2e6;
+  border-bottom: 3px solid #dee2e6;
 }
 
 input[type="checkbox"] {
@@ -221,3 +221,17 @@ input[type="checkbox"] {
 }
 
 .pointer {cursor: pointer;}
+.not-allowed {cursor: not-allowed;}
+
+.module_logo{
+  width: 20px;
+  margin: -5px 5px 0 15px;
+}
+.module_logo_book{
+  width: 14px;
+  margin: -5px 5px 0 15px;
+}
+.dataTables_info{
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}

@@ -1,8 +1,31 @@
 <sd-navigation-bar></sd-navigation-bar>
 
+<div class="card-head">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="pt-1 pl-2">
+                  <img class="mr-2" src="/assets/images/stock.png">  <span style="font-size:18px;">124578A</span>
+               </div>
+        </div>
+        <div class="col-sm-6">
+            <div class=" row pull-right">
+               <button type="button" edit_id="btn1170" title="Edit" class="btn btn-default inlineEditBtn170">
+                Edit
+               </button>				
+               <button type="button" title="Details" id="btn1170" class="btn btn-md btn-primary mr-2 ml-2">
+                  <i class="fas fa-th"></i> Details
+               </button>
+               <button title="Activity" type="button" id="btn2170" class="btn btn-default btn-md mr-1">
+                  <i class="fas fa-th-list"></i> Related
+               </button>
+            </div>
+         </div>
+    </div>
+</div>
+
 <section>
   <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-12">
       <div class="card">
         <div class="card-header pointer">
           <a (click)="visibleOne = !visibleOne">
@@ -17,12 +40,12 @@
               <div class="row">
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label><b>Stock No :</b></label>
+                    <label>Stock No :</label>
                     <!-- $details[0]->sfid-->
                     <span name="name" dropname="text" type="text" inlinetext="124578A"
                       class=" form-control-static inlineEditEnb"> {{ stock.name }}</span> </div>
                   <div class="form-group">
-                    <label><b>Selling Dealer :</b></label>
+                    <label>Selling Dealer :</label>
                     <span pattern="[a-zA-Z\sàèéìòù]+" name="selling_dealer__c" dropname="text" type="text"
                       inlinetext="ABC Berkeley Toyota" class=" form-control-static noEdit"> {{ stock.selling_dealer__c }}</span>
                   </div>
@@ -30,48 +53,48 @@
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label><b>Vin :</b></label>
+                    <label>Vin :</label>
                     <span name="vin__c" dropname="text" type="text" inlinetext="1234"
                       class=" form-control-static inlineEditEnb"> {{ stock.vin__c }}</span>
                   </div>
                   <div class="form-group">
-                    <label><b>Reg No :</b> </label>
+                    <label>Reg No : </label>
                     <span name="rego_no__c" dropname="text" type="text" inlinetext=""
                       class=" form-control-static inlineEditEnb"> {{ stock.rego_no__c }}</span> </div>
                 </div>
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label><b>Manafacture Year :</b></label>
+                    <label>Manafacture Year :</label>
                     <span name="manufacture_year__c" dropname="text" type="text" inlinetext=""
                       class=" form-control-static inlineEditEnb"> {{ stock.manufacture_year__c }}</span> </div>
                   <div class="form-group">
-                    <label><b>Body type :</b></label>
+                    <label>Body type :</label>
                     <span name="body_type__c" dropname="text" type="text" inlinetext=""
                       class=" form-control-static inlineEditEnb"> {{ stock.body_type__c }}</span> </div>
                 </div>
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label><b>Body Color :</b></label>
+                    <label>Body Color :</label>
                     <span name="body_colour__c" dropname="text" type="text" inlinetext="Red"
                       class=" form-control-static inlineEditEnb"> {{ stock.body_colour__c }}</span> </div>
                   <div class="form-group">
-                    <label><b>Price :</b></label>
+                    <label>Price :</label>
                     <span name="egc_price__c" dropname="text" type="text" inlinetext=""
                       class=" form-control-static inlineEditEnb"> {{ stock.egc_price__c }}</span> </div>
                 </div>
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label><b>Series :</b></label>
+                    <label>Series :</label>
                     <span name="series_c__c" dropname="text" type="text" inlinetext=""
                       class=" form-control-static inlineEditEnb"> {{ stock.series_c__c }}</span> </div>
                 </div>
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label><b>Vehicle Type :</b></label>
+                    <label>Vehicle Type :</label>
                     <span name="vehicle_type__c" dropname="text" type="text" inlinetext="New"
                       class=" form-control-static inlineEditEnb"> {{ stock.vehicle_type__c }}</span>
                     <!-- <span class="form-control-static">New</span> -->
@@ -80,21 +103,21 @@
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label><b>Fuel Type :</b></label>
+                    <label>Fuel Type :</label>
                     <span name="fuel_type__c" dropname="text" type="text" inlinetext=""
                       class=" form-control-static inlineEditEnb"> {{ stock.fuel_type__c }}</span> </div>
                 </div>
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label><b>Make :</b></label>
+                    <label>Make :</label>
                     <span name="make__c" dropname="text" type="text" inlinetext=""
                       class=" form-control-static inlineEditEnb"> {{ stock.make__c }}</span> </div>
                 </div>
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label><b>Model :</b></label>
+                    <label>Model :</label>
 
                     <span name="model__c" dropname="text" type="text" inlinetext=""
                       class=" form-control-static inlineEditEnb"> {{ stock.model__c }}</span> </div>
@@ -140,21 +163,21 @@
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <label><b>Created by :</b></label>
+                <label>Created by :</label>
                 <span class="form-control-static"></span>
               </div>
               <div class="form-group">
-                <label><b>Created Date :</b></label>
+                <label>Created Date :</label>
                 <span class="form-control-static"> 2019-04-12 07:22:00</span>
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <label><b>Last modified by :</b></label>
+                <label>Last modified by :</label>
                 <span class="form-control-static"></span>
               </div>
               <div class="form-group">
-                <label><b>Last modified date :</b></label>
+                <label>Last modified date :</label>
                 <span class="form-control-static"></span>
               </div>
             </div>

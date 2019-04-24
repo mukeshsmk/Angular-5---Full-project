@@ -1,9 +1,28 @@
 <sd-navigation-bar></sd-navigation-bar>
 
+<div class="card-head">
+      <div class="row">
+          <div class="col-sm-6">
+              <div class="pt-1 pl-2">
+                  <img class="mr-2" src="/assets/images/customer.png"> <span style="font-size:18px;">XYZ Pty Ltd.</span>
+                 </div>
+          </div>
+          <div class="col-sm-6">
+              <div class=" row pull-right">			
+                 <button type="button" title="Details" id="btn1170" class="btn btn-md btn-primary mr-2 ml-2">
+                    <i class="fas fa-th"></i> Details
+                 </button>
+                 <button title="Activity" type="button" id="btn2170" class="btn btn-default btn-md mr-1">
+                    <i class="fas fa-th-list"></i> Related
+                 </button>
+              </div>
+           </div>
+      </div>
+  </div>
 
 <section>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12"> 
       <div class="card">
         <div class="card-header pointer ">
           <a (click)="visibleOne = !visibleOne">
@@ -16,19 +35,19 @@
           <div class="row">
             <div class="col-sm-3">
               <div class="form-group">
-                 <label><b>Name : </b></label>
+                 <label>Name : </label>
                  <span class="form-control-static"> {{ customer.name }}</span>
               </div>
               <div class="form-group">
-                 <label><b>First Name :</b></label>
+                 <label>First Name :</label>
                  <span class="form-control-static"> {{ customer.first_name__c }}</span>
               </div>
               <div class="form-group">
-                 <label><b>Last Name :</b></label>
+                 <label>Last Name :</label>
                  <span class="form-control-static"> {{ customer.last_name__c }}</span>
               </div>	
               <div class="form-group">
-                 <label><b>Business Email :</b></label>
+                 <label>Business Email :</label>
                  <span class="form-control-static"> {{ customer.business_email__c }}</span>
               </div>							
   
@@ -36,15 +55,15 @@
   
            <div class="col-sm-3">
             <div class="form-group">
-               <label><b>Mobile :</b></label>
+               <label>Mobile :</label>
                <span class="form-control-static"> {{ customer.mobile__c }}</span>
             </div>
             <div class="form-group">
-               <label><b>Phone :</b> </label>
+               <label>Phone : </label>
                <span class="form-control-static"> {{ customer.phone }}</span>
             </div>
             <div class="form-group">
-               <label><b>State :</b></label>
+               <label>State :</label>
                <span class="form-control-static"> {{ customer.state__c }}</span>
             </div>
 
@@ -52,19 +71,19 @@
 
          <div class="col-sm-3">
           <div class="form-group">
-             <label><b>Billing postcode :</b></label>
+             <label>Billing postcode :</label>
              <span class="form-control-static"> {{ customer.billing_postcode__c }}</span>
           </div>
           <div class="form-group">
-             <label><b>Billing state :</b></label>
+             <label>Billing state :</label>
              <span class="form-control-static"> {{ customer.billing_state__c }}</span>
           </div>
           <div class="form-group">
-             <label><b>Account :</b></label>
+             <label>Account :</label>
              <span class="form-control-static"> {{ customer.account__c }}</span>
           </div>
           <div class="form-group">
-             <label><b>Account Number :</b></label>
+             <label>Account Number :</label>
              <span class="form-control-static"> {{ customer.accountnumber }}</span>
           </div>						
        </div>
@@ -88,21 +107,21 @@
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <label><b>Created by :</b></label>
+                <label>Created by :</label>
                 <span class="form-control-static" ></span>
              </div>
              <div class="form-group">
-                <label><b>Created Date :</b></label>
+                <label>Created Date :</label>
                 <span class="form-control-static"> 2019-04-12 07:22:00</span>
              </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <label><b>Last modified by :</b></label>
+                <label>Last modified by :</label>
                 <span class="form-control-static"></span>
              </div>
              <div class="form-group">
-                <label><b>Last modified date :</b></label>
+                <label>Last modified date :</label>
                 <span class="form-control-static"> </span>
              </div>
             </div>

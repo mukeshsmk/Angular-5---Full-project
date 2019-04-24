@@ -81,53 +81,6 @@ button:hover {
   background: transparent !important;
   text-decoration: none;
 }
-
-label {
-  display: inline-block;
-  margin-bottom: 5px;
-  font-size: 14px;
-}
-.form-control {
-  display: block;
-  width: 100%;
-  padding: .375rem .75rem;
-  font-size: 14px;
-  font-weight: 400;
-  height: 28px;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: .25rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-.form-group {
-  margin-bottom: 5px;
-}
-.modal.full-size .modal-dialog{
-  width: 600px !important;
-  max-width: 600px !important;;
-}
-
-.modal-content {
-  /* position: relative; */
-  display: -ms-flexbox;
-  /* display: flex; */
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 600px !important;
-  pointer-events: auto;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid rgba(0,0,0,.2);
-  border-radius: .3rem;
-  outline: 0;
-  height: 621px !important;
-}
-.full-size{
-  background: #81818199;
-}
 .error-box{
   color: #b80000;
 }
