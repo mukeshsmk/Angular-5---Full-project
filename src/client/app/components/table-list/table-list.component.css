@@ -151,9 +151,10 @@ input[type="checkbox"] {
 }
 .w-auto {
   width: auto !important;
-  margin: 0px 12px;
+  margin: -4px 12px;
   height: 27px;
   font-size: 12px;
+  padding: 0px 0;
 }
 
 .modal.full-size .modal-body {
@@ -234,4 +235,31 @@ input[type="checkbox"] {
 .dataTables_info{
   font-size: 14px;
   letter-spacing: 0.5px;
+}
+.align-top{
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.tooltip-edit {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-edit .tooltiptext-edit{
+  visibility: hidden;
+  width: 100px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 1px;
+  padding: 5px 5px;
+  position: initial;
+  z-index: 1;
+  top: 20px;
+  left: 85%;;
+}
+
+.tooltip-edit:hover .tooltiptext-edit {
+  visibility: visible;
 }
