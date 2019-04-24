@@ -1,5 +1,8 @@
 <sd-tabs>
   <sd-tab>
+
+      <div class="loader" *ngIf="loaderOne"></div>
+
     <div class="main-content">
       <div class="container-fluid">
         <div class="card">
@@ -37,7 +40,7 @@
            
             <div class="col">
               <button
-                onclick="trigger_change()"
+                (click)="refresh()"
                 type="button"
                 class="btn btn-secondary pull-right mr-1"
               >
@@ -63,6 +66,20 @@
                 >
                 </i>
               </button>
+              <button
+              id="createNewLead"
+              type="button"
+              class="btn btn-secondary pull-right mr-1"
+              *ngIf="module == 'drivers'"
+              (click)="openNewCustomerModal()"
+            >
+              <i
+                data-toggle="tooltip"
+                data-original-title="New Lead"
+                class="fa fa-plus"
+              >
+              </i>
+            </button>
               <button type="button" class="btn btn-secondary pull-right mr-1" *ngIf="module == 'opportunities'" (click)="openNewOpportunityModal()">
                 <i
                   data-toggle="tooltip"
@@ -222,9 +239,9 @@
                   <div class="table-responsive">
                     <table class="table mt-4">
                       <thead class=" text-primary pointer">
-                        <th>
+                        <!-- <th>
                           <input type="checkbox" id="blahA" value="1" />
-                        </th>
+                        </th> -->
                         <th>
                           id
                         </th>
@@ -288,9 +305,9 @@
                       </thead>
                       <tbody>
                         <tr *ngFor="let opportunity of opportunityList">
-                          <td>
+                          <!-- <td>
                             <input type="checkbox" id="blahA" value="1" />
-                          </td>
+                          </td> -->
                           <td>
                             {{ opportunity.id }}
                           </td>
@@ -335,12 +352,12 @@
                   <div class="table-responsive">
                     <table class="table mt-4">
                       <thead class=" text-primary pointer">
-                        <th>
-                          <input type="checkbox" id="blahA" value="1" />
-                        </th>
                         <!-- <th>
-                          ID
+                          <input type="checkbox" id="blahA" value="1" />
                         </th> -->
+                        <th>
+                          ID
+                        </th>
                         <th>
                           <a href="#">
                             <i
@@ -402,9 +419,9 @@
                       </thead>
                       <tbody>
                         <tr *ngFor="let opportunity of opportunityList">
-                          <td>
+                          <!-- <td>
                             <input type="checkbox" id="blahA" value="1" />
-                          </td>
+                          </td> -->
                           <td>
                             {{ opportunity.id }}
                           </td>
@@ -430,7 +447,6 @@
                           <td>
                             {{ opportunity.createddate }}
                           </td>
-                          <td></td>
                           <td>
                             <span
                               class="fas fa-edit pointer"

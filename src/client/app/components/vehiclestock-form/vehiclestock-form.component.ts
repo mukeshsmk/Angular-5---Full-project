@@ -13,6 +13,10 @@ import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms"
 export class VehicleStockFormComponent implements OnInit {
   visibleOne: Boolean = false;
   visibleTwo: Boolean = true;
+  visibleThree: Boolean = true;
+  visibleFour: Boolean = true;
+  visibleFive: Boolean = true;
+  visibleSix: Boolean = true;
   
  
   @Input() vehicleStock: any;

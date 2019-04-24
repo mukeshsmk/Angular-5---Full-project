@@ -11,6 +11,33 @@
 .nav {
     margin-top:0px;
 }
+.nav-link{
+    color: #337ab7;
+}
 .card-title{
     border-bottom: 1px solid #fcc43a;
+}
+.card-title {
+    margin-bottom: .75rem;
+    font-size: 16px;
+}
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.btn-default:hover {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+input[type=submit] {
+    background-color: DodgerBlue;
+    color: #fff;
+    cursor: pointer;
+}
+.btn-info:hover {
+    color: #fff;
+    background-color: #31b0d5;
+    border-color: #269abc;
 }

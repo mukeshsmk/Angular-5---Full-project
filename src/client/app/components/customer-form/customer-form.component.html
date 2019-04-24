@@ -390,8 +390,11 @@
           href="#address-information"
           aria-expanded="false"
           aria-controls="address-information"
-          ><span class="glyphicon glyphicon-menu-down"></span> Address
-          Information</a
+          (click)="visibleOne = !visibleOne"
+          >
+            <i class="fa fa-angle-down" *ngIf="visibleOne"></i>
+            <i class="fa fa-angle-right" *ngIf="!visibleOne"></i> 
+            Address Information</a
         >
       </div>
       <div
@@ -615,8 +618,12 @@
     <div class="card mt-3">
       <div class="card-header">
         <a data-toggle="collapse" href="#addtional-information"
-          ><span class="glyphicon glyphicon-menu-down"></span>
-          &nbsp;Additional Information
+        (click)="visibleTwo = !visibleTwo"
+        >
+          <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
+          <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i> 
+          
+          Additional Information
         </a>
       </div>
       <div
@@ -674,8 +681,11 @@
     <div class="card mt-3 mb-3">
       <div class="card-header">
         <a data-toggle="collapse" href="#system-information"
-          ><span class="glyphicon glyphicon-menu-down"></span>System
-          Information</a
+        (click)="visibleThree = !visibleThree"
+        >
+          <i class="fa fa-angle-right" *ngIf="visibleThree"></i>
+          <i class="fa fa-angle-down" *ngIf="!visibleThree"></i> 
+          System Information</a
         >
       </div>
       <div
@@ -718,12 +728,12 @@
   <div class="modal-footer">
     <button
       type="button"
-      class="btn btn-secondary"
+      class="btn btn-default"
       data-dismiss="modal"
       (click)="closeModal()"
     >
-      Close
+      Cancel
     </button>
-    <button type="submit" class="btn btn-primary">Save changes</button>
+    <button type="submit" class="btn btn-info">Save</button>
   </div>
 </form>

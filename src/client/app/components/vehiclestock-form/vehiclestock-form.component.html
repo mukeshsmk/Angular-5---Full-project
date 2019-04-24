@@ -297,8 +297,11 @@
     <div class="card mt-3 mb-3">
       <div class="card-header">
         <a data-toggle="collapse" href="#system-information"
-          ><span class="glyphicon glyphicon-menu-down"></span>System
-          Information</a
+        (click)="visibleOne = !visibleOne"
+        >
+          <i class="fa fa-angle-down" *ngIf="visibleOne"></i>
+          <i class="fa fa-angle-right" *ngIf="!visibleOne"></i>
+          System Information</a
         >
       </div>
       <div
@@ -315,7 +318,7 @@
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label for="usr">Created date</label>
-              <div id="createddate"><b>2019-03-26 12:45:59</b></div>
+              <div id="createddate">2019-03-26 12:45:59</div>
             </div>
           </div>
         </div>
@@ -343,7 +346,7 @@
       data-dismiss="modal"
       (click)="closeOpportunityModal()"
     >
-      cancel
+      Cancel
     </button>
     <button type="button" class="btn btn-info" (click)="onSubmit(opportunity)">
       Save
