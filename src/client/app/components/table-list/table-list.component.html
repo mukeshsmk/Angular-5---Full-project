@@ -1,43 +1,53 @@
 <sd-tabs>
   <sd-tab>
-
-      <div class="loader" *ngIf="loaderOne"></div>
+    <div class="loader" *ngIf="loaderOne"></div>
 
     <div class="main-content">
       <div class="container-fluid">
         <div class="card">
           <div class="row mb-2">
-            <div  [ngSwitch]="module">
+            <div [ngSwitch]="module">
               <ng-template [ngSwitchCase]="'opportunities'">
-                  <img class="module_logo_book" src="/assets/images/book.png"><span style="font-size:18px;" >Opportunity</span>
-                  <div class="col-3">
-                      <select class="form-control form-list">
-                        <option value="allLeads" selected="">All</option>
-                        <option value="allocated">Allocated Leads</option>
-                        <option value="unAllocated">Un Allocated Leads</option>
-                      </select>
-                    </div>
+                <img
+                  class="module_logo_book"
+                  src="/assets/images/book.png"
+                /><span style="font-size:18px;">Opportunity</span>
+                <div class="col-3">
+                  <select class="form-control form-list">
+                    <option value="allLeads" selected="">All</option>
+                    <option value="allocated">Allocated Leads</option>
+                    <option value="unAllocated">Un Allocated Leads</option>
+                  </select>
+                </div>
               </ng-template>
               <ng-template [ngSwitchCase]="'vehicle_stocks'">
-                  <img class="module_logo" src="/assets/images/stock.png"><span style="font-size:18px;" >Vehicle Stock</span>
-                  <div class="col-3">
-                      <select class="form-control form-list">
-                        <option value="all" selected="">All</option>
-                        <option value="new">New Vehicle</option>
-                        <option value="used">Used Vehicle</option>
-                        <option value="demo">Demo</option>
-                      </select>
-                    </div>
+                <img class="module_logo" src="/assets/images/stock.png" /><span
+                  style="font-size:18px;"
+                  >Vehicle Stock</span
+                >
+                <div class="col-3">
+                  <select class="form-control form-list">
+                    <option value="all" selected="">All</option>
+                    <option value="new">New Vehicle</option>
+                    <option value="used">Used Vehicle</option>
+                    <option value="demo">Demo</option>
+                  </select>
+                </div>
               </ng-template>
               <ng-template [ngSwitchCase]="'drivers'">
-                  <img class="module_logo" src="/assets/images/driver.png"><span style="font-size:18px;" >Driver</span>
+                <img class="module_logo" src="/assets/images/driver.png" /><span
+                  style="font-size:18px;"
+                  >Driver</span
+                >
               </ng-template>
               <ng-template [ngSwitchCase]="'customers'">
-                  <img class="module_logo" src="/assets/images/customer.png"><span style="font-size:18px;" >Customer</span>
+                <img
+                  class="module_logo"
+                  src="/assets/images/customer.png"
+                /><span style="font-size:18px;">Customer</span>
               </ng-template>
             </div>
-              
-           
+
             <div class="col">
               <button
                 (click)="refresh()"
@@ -51,7 +61,7 @@
                   aria-hidden="true"
                 ></i>
               </button>
-              
+
               <button
                 id="createNewLead"
                 type="button"
@@ -67,20 +77,25 @@
                 </i>
               </button>
               <button
-              id="createNewLead"
-              type="button"
-              class="btn btn-secondary pull-right mr-1"
-              *ngIf="module == 'drivers'"
-              (click)="openNewCustomerModal()"
-            >
-              <i
-                data-toggle="tooltip"
-                data-original-title="New Lead"
-                class="fa fa-plus"
+                id="createNewLead"
+                type="button"
+                class="btn btn-secondary pull-right mr-1"
+                *ngIf="module == 'drivers'"
+                (click)="openNewCustomerModal()"
               >
-              </i>
-            </button>
-              <button type="button" class="btn btn-secondary pull-right mr-1" *ngIf="module == 'opportunities'" (click)="openNewOpportunityModal()">
+                <i
+                  data-toggle="tooltip"
+                  data-original-title="New Lead"
+                  class="fa fa-plus"
+                >
+                </i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary pull-right mr-1"
+                *ngIf="module == 'opportunities'"
+                (click)="openNewOpportunityModal()"
+              >
                 <i
                   data-toggle="tooltip"
                   data-original-title="Quick Lead"
@@ -126,7 +141,6 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-                
               <div class="card-body" [ngSwitch]="module">
                 <ng-template [ngSwitchCase]="'opportunities'">
                   <div class="table-responsive">
@@ -189,7 +203,7 @@
                         </th>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let opportunity of opportunityList" >
+                        <tr *ngFor="let opportunity of opportunityList">
                           <td>
                             <input type="checkbox" id="blahA" value="1" />
                           </td>
@@ -197,15 +211,18 @@
                             {{ opportunity.id }}
                           </td>
                           <td>
-                              <a
+                            <a
                               href="#"
-                              (click)="viewPersondetails(opportunity)" 
-                              >
-                                <div class="tooltip">{{ opportunity.name }}
-                                  <span class="tooltiptext">Requested Type: Test Drive <br> Model of interest: A10 </span>
-                                </div>
-                              </a
+                              (click)="viewPersondetails(opportunity)"
                             >
+                              <div class="tooltip">
+                                {{ opportunity.name }}
+                                <span class="tooltiptext"
+                                  >Requested Type: Test Drive <br />
+                                  Model of interest: A10
+                                </span>
+                              </div>
+                            </a>
                           </td>
                           <td>
                             {{ opportunity.company__c }}
@@ -220,14 +237,11 @@
                             {{ opportunity.leadowner }}
                           </td>
                           <td>
-
                             <span
                               class="fas fa-edit pointer"
                               (click)="openOpportunityModal(opportunity)"
                               title="Edit Lead"
                             ></span>
-                           
-                            
                           </td>
                         </tr>
                       </tbody>
@@ -618,13 +632,15 @@
           class="dataTables_paginate paging_simple_numbers d-flex float-right"
           id="example_paginate"
         >
-        
           <ul class="pagination">
             <ul class="pagination justify-content-end">
-              <li class="page-item" [ngClass]="{disabled:opportunityListData.current_page === 1}">
+              <li
+                class="page-item"
+                [ngClass]="{ disabled: opportunityListData.current_page === 1 }"
+              >
                 <a class="page-link" href="">Previous</a>
               </li>
-              <li 
+              <li
                 class="page-item "
                 [ngClass]="{
                   'active bg-dark': opportunityListData.current_page == i + 1
@@ -634,10 +650,17 @@
               >
                 <a class="page-link">{{ i + 1 }}</a>
               </li>
-              
-              <li class="page-item"  [ngClass]="{disabled:opportunityListData.current_page === opportunityListData.last_page }">
-                <a class="page-link" href="">Next</a></li>
-                
+
+              <li
+                class="page-item"
+                [ngClass]="{
+                  disabled:
+                    opportunityListData.current_page ===
+                    opportunityListData.last_page
+                }"
+              >
+                <a class="page-link" href="">Next</a>
+              </li>
             </ul>
           </ul>
         </div>
@@ -645,53 +668,70 @@
     </div>
 
     <!--<ng-template let-oppournityModal="data" #oppournityModal>-->
-      <div class="modal full-size" tabindex="-1" role="dialog" [ngClass]="{ 'fade': opportunityOpen, 'd-flex': !opportunityOpen }">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-                (click)="closeModal()"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body"  [ngSwitch]="module">
-              <ng-template [ngSwitchCase]="'opportunities'">
-                <div *ngIf="!opportunityOpen">
-                    <sd-opportunity-form [opportunity]="modalData" [type]="formType" (updateOpportunity)="updateOpportunity($event)"></sd-opportunity-form>
-                </div>
-              </ng-template>
-              <ng-template [ngSwitchCase]="'vehicle_stocks'">
-                <div *ngIf="!opportunityOpen">
-                    <sd-vehiclestock-form [vehicleStock]="modalData" [type]="formType" (updatevehicleStock)="updatevehicleStock($event)"></sd-vehiclestock-form>
-                </div>
-              </ng-template>
-              <ng-template [ngSwitchCase]="'drivers'">
-                <div *ngIf="!opportunityOpen">
-                  <sd-driver-form  [driver]="modalData" [type]="formType" (updateDriver)="updateDriver($event)"></sd-driver-form>
-                </div>
-                </ng-template>
-              <ng-template [ngSwitchCase]="'customers'">
-                <div *ngIf="!opportunityOpen">
-                    <sd-customer-form [customer]="modalData" [type]="formType" (updateCustomer)="updateCustomer($event)"></sd-customer-form>
-                </div>
-              </ng-template>
-            </div>
-            
+    <div
+      class="modal full-size"
+      tabindex="-1"
+      role="dialog"
+      [ngClass]="{ fade: opportunityOpen, 'd-flex': !opportunityOpen }"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              (click)="closeModal()"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" [ngSwitch]="module">
+            <ng-template [ngSwitchCase]="'opportunities'">
+              <div *ngIf="!opportunityOpen">
+                <sd-opportunity-form
+                  [opportunity]="modalData"
+                  [type]="formType"
+                  (updateOpportunity)="updateOpportunity($event)"
+                ></sd-opportunity-form>
+              </div>
+            </ng-template>
+            <ng-template [ngSwitchCase]="'vehicle_stocks'">
+              <div *ngIf="!opportunityOpen">
+                <sd-vehiclestock-form
+                  [vehicleStock]="modalData"
+                  [type]="formType"
+                  (updatevehicleStock)="updatevehicleStock($event)"
+                ></sd-vehiclestock-form>
+              </div>
+            </ng-template>
+            <ng-template [ngSwitchCase]="'drivers'">
+              <div *ngIf="!opportunityOpen">
+                <sd-driver-form
+                  [driver]="modalData"
+                  [type]="formType"
+                  (updateDriver)="updateDriver($event)"
+                ></sd-driver-form>
+              </div>
+            </ng-template>
+            <ng-template [ngSwitchCase]="'customers'">
+              <div *ngIf="!opportunityOpen">
+                <sd-customer-form
+                  [customer]="modalData"
+                  [type]="formType"
+                  (updateCustomer)="updateCustomer($event)"
+                ></sd-customer-form>
+              </div>
+            </ng-template>
           </div>
         </div>
       </div>
+    </div>
     <!--</ng-template> -->
-    
   </sd-tab>
 </sd-tabs>
-
-
 
 <ng-template let-opportunity="data" #personDetails>
   <sd-opportunity [opportunity]="opportunity"></sd-opportunity>

@@ -1,5 +1,5 @@
 const Config: any = {
-  BASE_URL: "http://10.0.0.9:8080/"
+  BASE_URL: "http://localhost:8080/"
 };
 
 export default Config;

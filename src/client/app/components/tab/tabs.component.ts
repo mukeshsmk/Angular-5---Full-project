@@ -7,6 +7,7 @@ import {
   Component,
   ContentChildren,
   QueryList,
+  OnInit,
   AfterContentInit,
   ViewChild,
   ComponentFactoryResolver
@@ -16,110 +17,37 @@ import { TabComponent } from "./tab.component";
 import { DynamicTabsDirective } from "./dynamic-tabs.directive";
 
 import GeneralService from "../../shared/services/GeneralService";
+import { isComponentInstance } from "@angular/core/src/render3/context_discovery";
 
 @Component({
+  moduleId: module.id,
   selector: "sd-tabs",
-  template: `
-    <ul class="nav nav-tabs">
-      <li
-        *ngFor="let tab of tabs"
-        (click)="selectTab(tab)"
-        class="selectTab"
-        [class.active]="tab.active"
-      >
-        <a href="#">
-          <select class="pointer" (change)="moduleChanged($event.target.value)">
-            <option value="opportunities">Opportunity</option>
-            <option value="vehicle_stocks">Vehicle Stock</option>
-            <option value="drivers">Driver</option>
-            <option value="customers">Customer</option>
-          </select>
-        </a>
-      </li>
-      <!-- dynamic tabs -->
-      <li
-        *ngFor="let tab of dynamicTabs"
-        (click)="selectTab(tab)"
-        class="dynamicTabs"
-        [class.active]="tab.active"
-      >
-        <a href="#"
-          >{{ tab.title }}
-          <span
-            class="tab-close"
-            *ngIf="tab.isCloseable"
-            (click)="closeTab(tab)"
-            >X</span
-          ></a
-        >
-      </li>
-    </ul>
-    <ng-content></ng-content>
-    <ng-template dynamic-tabs #container></ng-template>
-  `,
-  styles: [
-    `
-      nav-tabs ul {
-        background: red;
-      }
-      .nav{
-        margin-top: 0;
-      }
-      .pointer {cursor: pointer;}
-      .tab-close {
-        color: gray;
-        text-align: right;
-        font-size: 12px;
-        margin: 0 5px;
-        font-weight: bold;
-      }
-      .tab.active {
-        background: red;
-      }    
-      .nav-tabs select {
-        background: #fff;
-        word-wrap: normal;
-        font-family: inherit;
-        padding: 10px 35px;
-        font-size: 14px;
-      }
-      .nav-tabs {
-        border-bottom: 1px solid #db4e4e !important;
-      }
-      .nav-tabs ul {
-        margin: 0px 0 0;
-        padding: 0 0 0 20px;
-      }
-      .selectTab {
-        margin: 0px 10px 0 3%;
-      }
-
-      .dynamicTabs {
-        padding: 7px 25px;
-        border: 1px solid #000000;
-        background: #f4f7f9;
-        font-size: 16px;
-        color: #000 !important;
-        margin: 0px 3px 0 0px;
-      }
-      .active{
-        border-top: 1px solid #EF1B24;
-        border-bottom: 1px solid #EF1B24;
-        background:#fff;
-    }
-      .dynamicTabs a {
-        color: #828383;
-        text-decoration: none;
-      }
-      sd-tabs ul{
-        margin: 0;
-      }
-    `
-  ]
+  templateUrl: "tabs.component.html",
+  styleUrls: ["tabs.component.css"]
 })
-export class TabsComponent implements AfterContentInit {
+export class TabsComponent implements OnInit, AfterContentInit {
+  listModules: any[] = [
+    {
+      id: "opportunities",
+      title: "Opportunity"
+    },
+    {
+      id: "vehicle_stocks",
+      title: "Vehicle Stocks"
+    },
+    {
+      id: "drivers",
+      title: "Drivers"
+    },
+    {
+      id: "customers",
+      title: "Customers"
+    }
+  ];
   dynamicTabs: TabComponent[] = [];
-  listTabs: TabComponent[] = [];
+  hiddenTabs: TabComponent[] = [];
+  selectedHiddenTab: number;
+  selectedModule: string;
 
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
 
@@ -137,6 +65,11 @@ export class TabsComponent implements AfterContentInit {
     public generalService: GeneralService
   ) {}
 
+  ngOnInit() {
+    this.selectedModule = this.listModules[0].title;
+    this.generalService.changeModule(this.listModules[0].id);
+  }
+
   // contentChildren are set
   ngAfterContentInit() {
     // get all active tabs
@@ -148,40 +81,84 @@ export class TabsComponent implements AfterContentInit {
     }
   }
 
-  openTab(title: string, template: any, data: any, isCloseable = false) {
-    // get a component factory for our TabComponent
-    const componentFactory = this._componentFactoryResolver.resolveComponentFactory(
-      TabComponent
-    );
+  openTab(
+    title: string,
+    template: any,
+    data: any,
+    isCloseable = false,
+    tabId: string
+  ) {
+    // Before pushing it into the tabs, find whether same tab exists
+    const foundInDynamicTab = this.dynamicTabs.find(obj => obj.tabId === tabId);
+    const foundInHiddenTab = this.hiddenTabs.find(obj => obj.tabId === tabId);
 
-    // fetch the view container reference from our anchor directive
-    const viewContainerRef = this.dynamicTabPlaceholder.viewContainer;
-
-    // alternatively...
-    // let viewContainerRef = this.dynamicTabPlaceholder;
-
-    // create a component instance
-    const componentRef = viewContainerRef.createComponent(componentFactory);
-
-    // set the according properties on our component instance
-    const instance: TabComponent = componentRef.instance as TabComponent;
-    instance.title = title;
-    instance.template = template;
-    instance.dataContext = data;
-    instance.isCloseable = isCloseable;
-
-    // remember the dynamic component for rendering the
-    // tab navigation headers
-    if (this.dynamicTabs.length > 9) {
-      const tab = this.dynamicTabs.pop();
-      this.listTabs.push(tab);
-      this.dynamicTabs.push(componentRef.instance as TabComponent);
-      // set it active
+    if (foundInDynamicTab || foundInHiddenTab) {
+      if (foundInDynamicTab) {
+        this.selectTab(foundInDynamicTab);
+      }
+      if (foundInHiddenTab) {
+        const index = this.hiddenTabs.indexOf(foundInHiddenTab);
+        const tab = this.hiddenTabs.splice(index, 1);
+        this.hiddenTabs.push(this.dynamicTabs.pop());
+        this.dynamicTabs.push(tab[0]);
+        this.selectTab(tab[0]);
+      }
     } else {
-      this.dynamicTabs.push(componentRef.instance as TabComponent);
+      // get a component factory for our TabComponent
+      const componentFactory = this._componentFactoryResolver.resolveComponentFactory(
+        TabComponent
+      );
+
+      // fetch the view container reference from our anchor directive
+      const viewContainerRef = this.dynamicTabPlaceholder.viewContainer;
+
+      // alternatively...
+      // let viewContainerRef = this.dynamicTabPlaceholder;
+
+      // create a component instance
+      const componentRef = viewContainerRef.createComponent(componentFactory);
+
+      // set the according properties on our component instance
+      const instance: TabComponent = componentRef.instance as TabComponent;
+      instance.title = title;
+      instance.template = template;
+      instance.dataContext = data;
+      instance.isCloseable = isCloseable;
+      instance.tabId = tabId;
+
+      // remember the dynamic component for rendering the
+      // tab navigation headers
+      if (this.dynamicTabs.length > 4) {
+        const tab = this.dynamicTabs.pop();
+        this.hiddenTabs.push(tab);
+        this.dynamicTabs.push(componentRef.instance as TabComponent);
+      } else {
+        this.dynamicTabs.push(componentRef.instance as TabComponent);
+      }
+
+      // set it active
+      this.selectTab(this.dynamicTabs[this.dynamicTabs.length - 1]);
     }
-    // set it active
-    this.selectTab(this.dynamicTabs[this.dynamicTabs.length - 1]);
+  }
+
+  selectHiddenTab(index: number) {
+    // deactivate all tabs
+    const removeItems = this.hiddenTabs.splice(index, 1);
+    const hiddenTab = removeItems[0];
+
+    const lastDynamicTab = this.dynamicTabs.pop();
+
+    this.dynamicTabs.push(hiddenTab);
+
+    this.tabs.toArray().forEach(tab => (tab.active = false));
+    this.hiddenTabs.forEach(tab => (tab.active = false));
+    this.dynamicTabs.forEach(tab => (tab.active = false));
+
+    // activate the tab the user has clicked on.
+    hiddenTab.active = true;
+    this.selectedHiddenTab = undefined;
+
+    this.hiddenTabs.push(lastDynamicTab);
   }
 
   selectTab(tab: TabComponent) {
@@ -210,8 +187,8 @@ export class TabsComponent implements AfterContentInit {
       }
     }
 
-    if (this.dynamicTabs.length < 9 && this.listTabs.length > 0) {
-      const tab = this.listTabs.pop();
+    if (this.dynamicTabs.length < 9 && this.hiddenTabs.length > 0) {
+      const tab = this.hiddenTabs.pop();
       this.dynamicTabs.push(tab);
     }
   }
@@ -224,7 +201,9 @@ export class TabsComponent implements AfterContentInit {
     }
   }
 
-  moduleChanged(type: string) {
-    this.generalService.changeModule(type);
+  moduleChanged(event: any, module: any) {
+    event.preventDefault();
+    this.selectedModule = module.title;
+    this.generalService.changeModule(module.id);
   }
 }

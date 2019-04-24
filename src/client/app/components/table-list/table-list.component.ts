@@ -28,9 +28,9 @@ export class TableListComponent {
   limit: number = 10;
   search: any = "";
   showEdit: boolean = false;
-  opportunityOpen:boolean = true;
-  modalData: any=[];
-  formType:any;
+  opportunityOpen: boolean = true;
+  modalData: any = [];
+  formType: any;
 
   searchTerm: string;
   constructor(private http: HttpClient, public generalService: GeneralService) {
@@ -47,7 +47,7 @@ export class TableListComponent {
     this.loadData(this.module, params);
   }
 
-  refresh(){
+  refresh() {
     let params = {
       page: this.page,
       limit: this.limit,
@@ -130,7 +130,10 @@ export class TableListComponent {
         });
         break;
       case "company":
-        this.opportunityList = this.opportunityList.sort(function(a: any, b: any) {
+        this.opportunityList = this.opportunityList.sort(function(
+          a: any,
+          b: any
+        ) {
           var x = a.company__c.toLowerCase();
           var y = b.company__c.toLowerCase();
           if (x < y) {
@@ -143,14 +146,20 @@ export class TableListComponent {
         });
         break;
       case "phone":
-        this.opportunityList = this.opportunityList.sort(function(a: any, b: any) {
+        this.opportunityList = this.opportunityList.sort(function(
+          a: any,
+          b: any
+        ) {
           var x = a.phone__c;
           var y = b.phone__c;
           return x - y;
         });
         break;
       case "email":
-        this.opportunityList = this.opportunityList.sort(function(a: any, b: any) {
+        this.opportunityList = this.opportunityList.sort(function(
+          a: any,
+          b: any
+        ) {
           var x = a.email__c.toLowerCase();
           var y = b.email__c.toLowerCase();
           if (x < y) {
@@ -163,7 +172,10 @@ export class TableListComponent {
         });
         break;
       case "leadowner":
-        this.opportunityList = this.opportunityList.sort(function(a: any, b: any) {
+        this.opportunityList = this.opportunityList.sort(function(
+          a: any,
+          b: any
+        ) {
           var x = a.leadowner.toLowerCase();
           var y = b.leadowner.toLowerCase();
           if (x < y) {
@@ -176,7 +188,10 @@ export class TableListComponent {
         });
         break;
       case "id":
-        this.opportunityList = this.opportunityList.sort(function(a: any, b: any) {
+        this.opportunityList = this.opportunityList.sort(function(
+          a: any,
+          b: any
+        ) {
           var x = a.id;
           var y = b.id;
           if (x < y) {
@@ -192,9 +207,7 @@ export class TableListComponent {
   }
   viewPersondetails(data: any) {
     this.loaderOne = true;
-    console.log(data);
     let template;
-    console.log(this.module);
     switch (this.module) {
       case "opportunities":
         template = this.persondetailsTemplate;
@@ -209,113 +222,119 @@ export class TableListComponent {
         template = this.customerdetailsTemplate;
         break;
     }
-    this.tabsComponent.openTab(data.name, template, data, true);
-    this.loaderOne=false;
+    console.log(data);
+    this.tabsComponent.openTab(
+      data.name,
+      template,
+      data,
+      true,
+      this.module + "-" + data.id
+    );
+    this.loaderOne = false;
   }
 
   //opportunity modal
-  openOpportunityModal(data:any){
-    console.log(data)
+  openOpportunityModal(data: any) {
+    console.log(data);
     this.modalData = data;
-    this.formType = 'edit';
+    this.formType = "edit";
     this.opportunityOpen = false;
   }
-  openNewOpportunityModal(){
-    this.formType = 'new';
+  openNewOpportunityModal() {
+    this.formType = "new";
     this.opportunityOpen = false;
   }
-  closeModal(){
+  closeModal() {
     this.opportunityOpen = true;
     this.modalData = [];
   }
-  updateOpportunity(event:any){
-    console.log(JSON.stringify(event))
-    let endpoint:any;
-    if(this.formType =='edit'){
-      endpoint = 'leadUpdate';
+  updateOpportunity(event: any) {
+    console.log(JSON.stringify(event));
+    let endpoint: any;
+    if (this.formType == "edit") {
+      endpoint = "leadUpdate";
     }
-    if(this.formType =='new'){
-      endpoint = 'quickLeadInsert';
+    if (this.formType == "new") {
+      endpoint = "quickLeadInsert";
       //event = JSON.stringify(event)
     }
 
     this.http
-      .post<{ success: object }>(Config.BASE_URL + "api/"+endpoint,event)
+      .post<{ success: object }>(Config.BASE_URL + "api/" + endpoint, event)
       .subscribe((response: any) => {
-        console.log(response)
+        console.log(response);
         this.opportunityOpen = true;
         this.modalData = [];
       });
-      
   }
   //vehicleStock Modal
-  updatevehicleStockModal(data:any){
+  updatevehicleStockModal(data: any) {
     this.modalData = data;
-    this.formType = 'edit';
+    this.formType = "edit";
     this.opportunityOpen = false;
   }
-  updatevehicleStock(event:any){
-    console.log(event)
-    let endpoint:any;
-    if(this.formType =='edit'){
-      endpoint = 'vehicle_stockUpdate';
+  updatevehicleStock(event: any) {
+    console.log(event);
+    let endpoint: any;
+    if (this.formType == "edit") {
+      endpoint = "vehicle_stockUpdate";
     }
-    if(this.formType =='new'){
+    if (this.formType == "new") {
       //endpoint = 'createCustomer';
     }
     this.http
-      .post<{ success: object }>(Config.BASE_URL + "api/"+endpoint,event)
+      .post<{ success: object }>(Config.BASE_URL + "api/" + endpoint, event)
       .subscribe((response: any) => {
-        console.log(response)
+        console.log(response);
         this.opportunityOpen = true;
         this.modalData = [];
       });
   }
   //Driver modal
-  updateDriverModal(data:any){
+  updateDriverModal(data: any) {
     this.modalData = data;
-    this.formType = 'edit';
+    this.formType = "edit";
     this.opportunityOpen = false;
   }
-  updateDriver(event:any){
-    console.log(event)
-    let endpoint:any;
-    if(this.formType =='edit'){
-      endpoint = 'driverUpdate';
+  updateDriver(event: any) {
+    console.log(event);
+    let endpoint: any;
+    if (this.formType == "edit") {
+      endpoint = "driverUpdate";
     }
-    if(this.formType =='new'){
+    if (this.formType == "new") {
       //endpoint = 'createCustomer';
     }
     this.http
-      .post<{ success: object }>(Config.BASE_URL + "api/"+endpoint,event)
+      .post<{ success: object }>(Config.BASE_URL + "api/" + endpoint, event)
       .subscribe((response: any) => {
-        console.log(response)
+        console.log(response);
         this.opportunityOpen = true;
         this.modalData = [];
       });
   }
   //customer modal
-  openNewCustomerModal(){
-    this.formType = 'new';
+  openNewCustomerModal() {
+    this.formType = "new";
     this.opportunityOpen = false;
   }
-  updateCustomerModal(data:any){
+  updateCustomerModal(data: any) {
     this.modalData = data;
-    this.formType = 'edit';
+    this.formType = "edit";
     this.opportunityOpen = false;
   }
-  updateCustomer(event:any){
-    let endpoint:any;
-    if(this.formType =='edit'){
-      endpoint = 'customerUpdate';
+  updateCustomer(event: any) {
+    let endpoint: any;
+    if (this.formType == "edit") {
+      endpoint = "customerUpdate";
     }
-    if(this.formType =='new'){
-      endpoint = 'createCustomer';
+    if (this.formType == "new") {
+      endpoint = "createCustomer";
     }
     this.http
-      .post<{ success: object }>(Config.BASE_URL + "api/"+endpoint,event)
+      .post<{ success: object }>(Config.BASE_URL + "api/" + endpoint, event)
       .subscribe((response: any) => {
-        console.log(response)
+        console.log(response);
         this.opportunityOpen = true;
         this.modalData = [];
       });

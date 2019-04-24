@@ -40,47 +40,49 @@ export class NavigationBarComponent implements OnInit {
 
   ngOnInit() {
     this.submitted = false;
-    this.newTaskForm = this.formBuilder.group({
-      first_name__c: [this.details.first_name__c],
-      last_name__c: [this.details.last_name__c],
-      mobile__c: [this.details.mobile__c],
-      email__c: [this.details.email__c],
-      zip_postal_code__c: [this.details.zip_postal_code__c],
-      stagename: ["Working"]
-    });
-    this.appointmentTaskForm = this.formBuilder.group({
-      license_number__c: [this.details.license_number__c],
-      stagename: ["Appointment"]
-    });
-    this.quotationTaskForm = this.formBuilder.group({
-      family_details__c: [this.details.family_details__c],
-      place_of_work__c: [this.details.place_of_work__c],
-      stagename: ["Quotation"]
-    });
-    this.negotiationTaskForm = this.formBuilder.group({
-      introduction_to_finance_manager__c: [
-        this.details.introduction_to_finance_manager__c
-      ],
-      stagename: ["Negotiation"]
-    });
-    this.closedLostTaskForm = this.formBuilder.group({
-      notes__c: [this.details.notes__c],
-      stagename: ["ClosedLost"]
-    });
-    this.closedWonTaskForm = this.formBuilder.group({
-      vin_number__c: [this.details.vin_number__c],
-      stock_number__c: [this.details.stock_number__c],
-      mobile__c: [this.details.mobile__c],
-      stagename: ["ClosedWon"]
-    });
-    this.duplicateTaskForm = this.formBuilder.group({
-      notes__c: [this.details.notes__c],
-      stagename: ["Duplicate"]
-    });
-    this.convertesTaskForm = this.formBuilder.group({
-      notes__c: [this.details.notes__c],
-      stagename: ["Converted"]
-    });
+    if (this.details) {
+      this.newTaskForm = this.formBuilder.group({
+        first_name__c: [this.details.first_name__c],
+        last_name__c: [this.details.last_name__c],
+        mobile__c: [this.details.mobile__c],
+        email__c: [this.details.email__c],
+        zip_postal_code__c: [this.details.zip_postal_code__c],
+        stagename: ["Working"]
+      });
+      this.appointmentTaskForm = this.formBuilder.group({
+        license_number__c: [this.details.license_number__c],
+        stagename: ["Appointment"]
+      });
+      this.quotationTaskForm = this.formBuilder.group({
+        family_details__c: [this.details.family_details__c],
+        place_of_work__c: [this.details.place_of_work__c],
+        stagename: ["Quotation"]
+      });
+      this.negotiationTaskForm = this.formBuilder.group({
+        introduction_to_finance_manager__c: [
+          this.details.introduction_to_finance_manager__c
+        ],
+        stagename: ["Negotiation"]
+      });
+      this.closedLostTaskForm = this.formBuilder.group({
+        notes__c: [this.details.notes__c],
+        stagename: ["ClosedLost"]
+      });
+      this.closedWonTaskForm = this.formBuilder.group({
+        vin_number__c: [this.details.vin_number__c],
+        stock_number__c: [this.details.stock_number__c],
+        mobile__c: [this.details.mobile__c],
+        stagename: ["ClosedWon"]
+      });
+      this.duplicateTaskForm = this.formBuilder.group({
+        notes__c: [this.details.notes__c],
+        stagename: ["Duplicate"]
+      });
+      this.convertesTaskForm = this.formBuilder.group({
+        notes__c: [this.details.notes__c],
+        stagename: ["Converted"]
+      });
+    }
   }
   updateData(data: any, endpoint: any) {
     this.http

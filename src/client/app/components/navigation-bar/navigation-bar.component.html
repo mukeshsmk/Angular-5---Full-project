@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="col-md-12">
-    <div class="btn-group btn-nav btn-breadcrumb">
+    <div class="btn-group btn-nav btn-breadcrumb" *ngIf="details">
       <button color-index="0" class="color-btn btn btn-success">
         New
       </button>
@@ -385,7 +385,7 @@
                               type="checkbox"
                               formControlName="introduction_to_finance_manager__c"
                             />
-                            <p> Introduction to manager</p></label
+                            <p>Introduction to manager</p></label
                           >
                         </div>
                       </div>
@@ -433,10 +433,7 @@
                     id="card-lead-information"
                   >
                     <div class="row">
-                      <div
-                      class="col-10"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-10" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label>Notes:</label>
                           <!--
@@ -581,10 +578,7 @@
                     id="card-lead-information"
                   >
                     <div class="row">
-                      <div
-                      class="col-10"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-10" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label>Notes:</label>
                           <!--
@@ -641,10 +635,7 @@
                     id="card-lead-information"
                   >
                     <div class="row">
-                      <div
-                      class="col-10"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-10" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">Notes:</label>
                           <!--

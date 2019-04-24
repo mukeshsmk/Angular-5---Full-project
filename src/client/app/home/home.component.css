@@ -11,14 +11,14 @@ ul {
   list-style-type: none;
   padding: 0 0 0 8px;
 }
-.table-list{
+.table-list {
   margin-left: 85px;
 }
-.headerComponent{
-  margin-top:55px
+.headerComponent {
+  margin-top: 55px;
 }
-.mainComponent{
-  float:left;
-  margin-left: 67px;
-  width: calc( 100% - 85px);
+.mainComponent {
+  float: left;
+  margin-left: 83px;
+  width: calc(100% - 83px);
 }

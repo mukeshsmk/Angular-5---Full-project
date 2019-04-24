@@ -1,0 +1,65 @@
+<ul class="nav nav-tabs">
+  <!-- Dropdown -->
+  <li
+    *ngFor="let tab of tabs"
+    (click)="selectTab(tab)"
+    class="selectTab"
+    [class.active]="tab.active"
+    class="nav-item dropdown"
+  >
+    <a
+      class="nav-link dropdown-toggle pull-right"
+      href="#"
+      id="navbardrop"
+      data-toggle="dropdown"
+    >
+      {{ selectedModule }}
+    </a>
+    <div class="dropdown-menu pull-left">
+      <a
+        *ngFor="let module of listModules"
+        class="dropdown-item"
+        href="#"
+        (click)="moduleChanged($event, module)"
+        >{{ module.title }}</a
+      >
+    </div>
+  </li>
+  <!-- dynamic tabs -->
+  <li
+    *ngFor="let tab of dynamicTabs"
+    (click)="selectTab(tab)"
+    class="nav-item ml-1"
+    [class.active]="tab.active"
+  >
+    <a class="nav-link" href="#"
+      >{{ tab.title }}
+      <span class="tab-close" *ngIf="tab.isCloseable" (click)="closeTab(tab)"
+        >X</span
+      ></a
+    >
+  </li>
+
+  <!-- Hidden tabs -->
+  <li *ngIf="hiddenTabs.length > 0" class="nav-item ml-1 pull-right">
+    <a
+      class="nav-link dropdown-toggle "
+      href="#"
+      id="navbardrop"
+      data-toggle="dropdown"
+    >
+      Select
+    </a>
+    <div class="dropdown-menu pull-left">
+      <a
+        *ngFor="let tab of hiddenTabs; let i = index"
+        class="dropdown-item"
+        href="#"
+        (click)="selectHiddenTab(i)"
+        >{{ tab.title }}</a
+      >
+    </div>
+  </li>
+</ul>
+<ng-content></ng-content>
+<ng-template dynamic-tabs #container></ng-template>

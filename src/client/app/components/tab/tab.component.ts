@@ -29,8 +29,9 @@ import { Component, Input } from "@angular/core";
 })
 export class TabComponent {
   @Input("tabTitle") title: string;
+  @Input() tabId: string = "";
   @Input() active = false;
   @Input() isCloseable = false;
-  @Input() template:any;
-  @Input() dataContext:any;
+  @Input() template: any;
+  @Input() dataContext: any;
 }
