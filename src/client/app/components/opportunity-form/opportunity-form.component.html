@@ -7,7 +7,10 @@
               href="#card-lead-information"
               aria-expanded="true"
               aria-controls="card-lead-information"
+              (click)="visibleOne = !visibleOne"
             >
+              <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
+              <i class="fa fa-angle-down" *ngIf="!visibleOne"></i>
               Lead Information
             </a>
           </div>
@@ -355,8 +358,11 @@
               href="#address-information"
               aria-expanded="false"
               aria-controls="address-information"
-              ><span class="glyphicon glyphicon-menu-down"></span> Address
-              Information</a
+              (click)="visibletwo = !visibletwo"
+              >
+                <i class="fa fa-angle-right" *ngIf="visibletwo"></i>
+                <i class="fa fa-angle-down" *ngIf="!visibletwo"></i>
+                 Address  Information</a
             >
           </div>
           <div
@@ -449,7 +455,11 @@
               href="#customer-insight"
               aria-expanded="false"
               aria-controls="customer-insight"
-              ><span class="glyphicon glyphicon-menu-down"></span>Customer Insight</a
+              (click)="visibleThree = !visibleThree"
+              >
+                <i class="fa fa-angle-right" *ngIf="visibleThree"></i>
+                <i class="fa fa-angle-down" *ngIf="!visibleThree"></i>
+                Customer Insight</a
             >
           </div>
           <div
@@ -508,8 +518,10 @@
         <div class="card mt-3"  *ngIf="type=='edit'">
           <div class="card-header pointer">
             <a data-toggle="collapse" href="#addtional-information"
-              ><span class="glyphicon glyphicon-menu-down"></span>
-              &nbsp;Addtional Information
+            (click)="visibleFour = !visibleFour"
+            >
+              <i class="fa fa-angle-right" *ngIf="visibleFour"></i>
+              <i class="fa fa-angle-down" *ngIf="!visibleFour"></i>Addtional Information
             </a>
           </div>
           <div
@@ -549,7 +561,9 @@
         <div class="card mt-3 mb-3">
           <div class="card-header pointer">
             <a data-toggle="collapse" href="#system-information"
-              ><span class="glyphicon glyphicon-menu-down"></span>System
+            >
+              <i class="fa fa-angle-right" *ngIf="visibleFive"></i>
+              <i class="fa fa-angle-down" *ngIf="!visibleFive"></i>System
               Information</a
             >
           </div>

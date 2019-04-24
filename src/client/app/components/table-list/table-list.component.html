@@ -4,13 +4,37 @@
       <div class="container-fluid">
         <div class="card">
           <div class="row mb-2">
-            <div class="col-3">
-              <select class="form-control form-list">
-                <option value="allLeads" selected="">All</option>
-                <option value="allocated">Allocated Leads</option>
-                <option value="unAllocated">Un Allocated Leads</option>
-              </select>
+            <div  [ngSwitch]="module">
+              <ng-template [ngSwitchCase]="'opportunities'">
+                  <img class="module_logo_book" src="/assets/images/book.png"><span style="font-size:18px;" >Opportunity</span>
+                  <div class="col-3">
+                      <select class="form-control form-list">
+                        <option value="allLeads" selected="">All</option>
+                        <option value="allocated">Allocated Leads</option>
+                        <option value="unAllocated">Un Allocated Leads</option>
+                      </select>
+                    </div>
+              </ng-template>
+              <ng-template [ngSwitchCase]="'vehicle_stocks'">
+                  <img class="module_logo" src="/assets/images/stock.png"><span style="font-size:18px;" >Vehicle Stock</span>
+                  <div class="col-3">
+                      <select class="form-control form-list">
+                        <option value="all" selected="">All</option>
+                        <option value="new">New Vehicle</option>
+                        <option value="used">Used Vehicle</option>
+                        <option value="demo">Demo</option>
+                      </select>
+                    </div>
+              </ng-template>
+              <ng-template [ngSwitchCase]="'drivers'">
+                  <img class="module_logo" src="/assets/images/driver.png"><span style="font-size:18px;" >Driver</span>
+              </ng-template>
+              <ng-template [ngSwitchCase]="'customers'">
+                  <img class="module_logo" src="/assets/images/customer.png"><span style="font-size:18px;" >Customer</span>
+              </ng-template>
             </div>
+              
+           
             <div class="col">
               <button
                 onclick="trigger_change()"
@@ -51,7 +75,7 @@
           </div>
           <div class="row">
             <div class="col-sm-6">
-              <div class="dataTables_length mt-4 mb-4" id="example_length">
+              <div class="dataTables_length mt-4 mb-2" id="example_length">
                 <label class="d-flex align-top"
                   >Show
                   <select
@@ -89,7 +113,7 @@
               <div class="card-body" [ngSwitch]="module">
                 <ng-template [ngSwitchCase]="'opportunities'">
                   <div class="table-responsive">
-                    <table class="table">
+                    <table class="table mt-4">
                       <thead class=" text-primary pointer">
                         <th>
                           <input type="checkbox" id="blahA" value="1" />
@@ -192,7 +216,7 @@
 
                 <ng-template [ngSwitchCase]="'vehicle_stocks'">
                   <div class="table-responsive">
-                    <table class="table">
+                    <table class="table mt-4">
                       <thead class=" text-primary pointer">
                         <th>
                           <input type="checkbox" id="blahA" value="1" />
@@ -305,7 +329,7 @@
 
                 <ng-template [ngSwitchCase]="'drivers'">
                   <div class="table-responsive">
-                    <table class="table">
+                    <table class="table mt-4">
                       <thead class=" text-primary pointer">
                         <th>
                           <input type="checkbox" id="blahA" value="1" />
@@ -417,7 +441,7 @@
 
                 <ng-template [ngSwitchCase]="'customers'">
                   <div class="table-responsive">
-                    <table class="table">
+                    <table class="table mt-4">
                       <thead class=" text-primary pointer">
                         <th>
                           <!--<input type="checkbox" id="blahA" value="1" />-->
@@ -574,22 +598,26 @@
           class="dataTables_paginate paging_simple_numbers d-flex float-right"
           id="example_paginate"
         >
+        
           <ul class="pagination">
             <ul class="pagination justify-content-end">
-              <li class="page-item">
+              <li class="page-item" [ngClass]="{disabled:opportunityListData.current_page === 1}">
                 <a class="page-link" href="">Previous</a>
               </li>
-              <li
+              <li 
                 class="page-item "
                 [ngClass]="{
                   'active bg-dark': opportunityListData.current_page == i + 1
                 }"
-                *ngFor="let i of opportunityListData.last_page"
+                *ngFor="let i of opportunityListData.lastPage"
                 (click)="pageNumber(i + 1)"
               >
                 <a class="page-link">{{ i + 1 }}</a>
               </li>
-              <li class="page-item"><a class="page-link" href="">Next</a></li>
+              
+              <li class="page-item"  [ngClass]="{disabled:opportunityListData.current_page === opportunityListData.last_page }">
+                <a class="page-link" href="">Next</a></li>
+                
             </ul>
           </ul>
         </div>

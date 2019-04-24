@@ -59,7 +59,7 @@ export class TableListComponent {
       .get<{ success: object }>(Config.BASE_URL + "api/" + type + "?" + params)
       .subscribe((response: any) => {
         this.opportunityListData = response;
-        this.opportunityListData.last_page = Array(
+        this.opportunityListData.lastPage = Array(
           this.opportunityListData.last_page
         )
           .fill(1)
