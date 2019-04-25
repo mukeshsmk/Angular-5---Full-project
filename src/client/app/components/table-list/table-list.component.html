@@ -26,11 +26,11 @@
                   >Vehicle Stock</span
                 >
                 <div class="col-3">
-                  <select class="form-control form-list">
+                  <select class="form-control form-list" (change)="vehicleStockType($event.target.value)" name="vehicleType">
                     <option value="all" selected="">All</option>
-                    <option value="new">New Vehicle</option>
-                    <option value="used">Used Vehicle</option>
-                    <option value="demo">Demo</option>
+                    <option value="New">New Vehicle</option>
+                    <option value="Used">Used Vehicle</option>
+                    <option value="Demo">Demo</option>
                   </select>
                 </div>
               </ng-template>
@@ -637,10 +637,88 @@
               <li
                 class="page-item"
                 [ngClass]="{ disabled: opportunityListData.current_page === 1 }"
+                (click)="pageNumber(opportunityListData.current_page - 1)"
               >
-                <a class="page-link" href="">Previous</a>
+                <a class="page-link">Previous</a>
               </li>
               <li
+                class="page-item"
+                [ngClass]="{
+                  'active bg-dark': opportunityListData.current_page == 1
+                }"
+                (click)="pageNumber(1)"
+              >
+                <a class="page-link">1</a>
+              </li>
+              <li
+                class="page-item"
+                *ngIf = "opportunityListData.current_page>=5"
+              >
+                <a class="page-link">...</a>
+              </li>
+              <li
+                class="page-item"
+                *ngIf = "opportunityListData.current_page>=5"
+                (click)="pageNumber(opportunityListData.current_page - 1)"
+              >
+                <a class="page-link">{{ opportunityListData.current_page - 1 }}</a>
+              </li>
+              <li
+                class="page-item active bg-dark"
+                *ngIf = "opportunityListData.current_page>=5 && (opportunityListData.last_page != opportunityListData.current_page)"
+                (click)="pageNumber(opportunityListData.current_page)"
+              >
+              <a class="page-link">{{ opportunityListData.current_page }}</a>
+              </li>
+              <li
+                class="page-item"
+                *ngIf = "opportunityListData.current_page>=5 && opportunityListData.current_page!=opportunityListData.last_page && (
+                  opportunityListData.current_page + 1)!=opportunityListData.last_page"
+                (click)="pageNumber(opportunityListData.current_page + 1)"
+              >
+              <a class="page-link">{{ opportunityListData.current_page + 1 }}</a>
+              </li>
+              <li
+                class="page-item"
+                [ngClass]="{
+                  'active bg-dark': opportunityListData.current_page == 2
+                }"
+                *ngIf = "opportunityListData.current_page < 5 && opportunityListData.last_page > 2"
+                (click)="pageNumber(2)"
+              >
+              <a class="page-link">2</a>
+              </li>
+              <li
+                class="page-item"
+                [ngClass]="{
+                  'active bg-dark': opportunityListData.current_page == 3
+                }"
+                *ngIf = "opportunityListData.current_page < 5 && opportunityListData.last_page > 3"
+                (click)="pageNumber(3)"
+              >
+              <a class="page-link">3</a>
+              </li>
+              <li
+                class="page-item"
+                [ngClass]="{
+                  'active bg-dark': opportunityListData.current_page == 4
+                }"
+                *ngIf = "opportunityListData.current_page < 5 && opportunityListData.last_page > 4"
+                (click)="pageNumber(4)"
+              >
+              <a class="page-link">4</a>
+              </li>
+              <li
+              class="page-item"
+              [ngClass]="{
+                'active bg-dark': opportunityListData.current_page == 5
+              }"
+              *ngIf = "opportunityListData.current_page < 5 && opportunityListData.last_page > 5"
+              (click)="pageNumber(5)"
+            >
+            <a class="page-link">5</a>
+            </li>
+              <!-- <li
                 class="page-item "
                 [ngClass]="{
                   'active bg-dark': opportunityListData.current_page == i + 1
@@ -649,8 +727,72 @@
                 (click)="pageNumber(i + 1)"
               >
                 <a class="page-link">{{ i + 1 }}</a>
+              </li> -->
+              <!-- <li
+                class="page-item"
+                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<=5 && opportunityListData.last_page > (opportunityListData.current_page + 5)"
+                (click)="pageNumber(opportunityListData.last_page - 5)"
+              >
+                <a class="page-link">{{ opportunityListData.last_page - 5 }}</a>
               </li>
-
+              <li
+                class="page-item"
+                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<=5 && opportunityListData.last_page > (opportunityListData.current_page + 4)"
+                (click)="pageNumber(opportunityListData.last_page - 4)"
+              >
+                <a class="page-link">{{ opportunityListData.last_page - 4 }}</a>
+              </li>
+              <li
+                class="page-item"
+                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<=5 && opportunityListData.last_page > (opportunityListData.current_page + 3)"
+                (click)="pageNumber(opportunityListData.last_page - 3)"
+              >
+                <a class="page-link">{{ opportunityListData.last_page - 3 }}</a>
+              </li>
+              <li
+                class="page-item"
+                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<=5 && opportunityListData.last_page > (opportunityListData.current_page + 2)"
+                (click)="pageNumber(opportunityListData.last_page - 2)"
+              >
+                <a class="page-link">{{ opportunityListData.last_page - 2 }}</a>
+              </li>
+              <li
+                class="page-item"
+                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<=5 && opportunityListData.last_page > (opportunityListData.current_page + 1)"
+                (click)="pageNumber(opportunityListData.last_page - 1)"
+              >
+                <a class="page-link">{{ opportunityListData.last_page - 1}}</a>
+              </li> -->
+              <!-- <li
+                class="page-item"
+                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<5 && opportunityListData.last_page == opportunityListData.current_page"
+              >
+                <a class="page-link">{{ opportunityListData.last_page - opportunityListData.current_page }}</a>
+              </li> -->
+              <li
+                class="page-item"
+                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)>1 && (opportunityListData.last_page )>5"
+              >
+                <a class="page-link">...</a>
+              </li>
+              <!-- <li
+                class="page-item"
+                
+                (click)="pageNumber(opportunityListData.last_page)"
+                *ngIf = "opportunityListData.current_page != opportunityListData.last_page && (opportunityListData.last_page - opportunityListData.current_page) < 1"
+              >
+                <a class="page-link">{{ opportunityListData.current_page }}</a>
+              </li> -->
+              <li
+                class="page-item"
+                [ngClass]="{
+                  'active bg-dark': opportunityListData.current_page == opportunityListData.last_page
+                }"
+                (click)="pageNumber(opportunityListData.last_page)"
+                *ngIf = "opportunityListData.current_page != opportunityListData.last_page"
+              >
+                <a class="page-link">{{ opportunityListData.last_page }}</a>
+              </li>
               <li
                 class="page-item"
                 [ngClass]="{
@@ -658,8 +800,9 @@
                     opportunityListData.current_page ===
                     opportunityListData.last_page
                 }"
+                (click)="pageNumber(opportunityListData.current_page + 1)"
               >
-                <a class="page-link" href="">Next</a>
+                <a class="page-link">Next</a>
               </li>
             </ul>
           </ul>

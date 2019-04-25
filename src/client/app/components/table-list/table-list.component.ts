@@ -108,6 +108,15 @@ export class TableListComponent {
     };
     this.loadData(this.module, params);
   }
+  vehicleStockType(type:any ){
+    this.search = type;
+    let params = {
+      page: 1,
+      limit: this.limit,
+      search: this.search
+    };
+    this.loadData(this.module, params);
+  }
   activateClass(i: any) {
     i.active = !i.current_page;
   }
