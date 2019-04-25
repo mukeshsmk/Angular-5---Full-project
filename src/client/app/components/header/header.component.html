@@ -18,7 +18,9 @@
 
             </div>
 
-            <div class="user-area dropdown float-right" (click)='logout()'>
+
+            <div class="user-area dropdown float-right">
+
                 <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="user-avatar" style="border-radius:50%!important;" src="https://app-retail-gjaya79.c9users.io/final/assets/images/admin.jpg" alt="User Avatar">
                 </a>
@@ -29,8 +31,9 @@
                         <em class="nav-link" href="#">Dealership Manager</em>
                     </div>
                     <a class="nav-link other_source_menu" showtab="Profile" ref="Login/profile"><i class="fas fa-user"></i>My Profile</a>
-                    <a class="nav-link" href="" ><i class="fa fa-power-off"></i>Logout</a>
+                    <a class="nav-link" href="" (click)='logout()' ><i class="fa fa-power-off"></i>Logout</a>
                 </div>
+
             </div>
         </div>
     </div>

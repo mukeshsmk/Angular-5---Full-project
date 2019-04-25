@@ -41,3 +41,77 @@ input[type=submit] {
     background-color: #31b0d5;
     border-color: #269abc;
 }
+
+
+
+#accordion .card-head a.collapsed:before {
+    content: "\f105";
+    color: #0747a6;
+    background: #fff;
+    border: 1px solid #6e8898;
+}
+.card-head{
+    height: 30px;
+    width: 350px;
+}
+
+#accordion .card-head a:before, #accordion .panel-title a.collapsed:before {
+    font-family: FontAwesome;
+    content: "\f046";
+    font-weight: 900;
+    width: 40px;
+    line-height: 40px;
+    font-size: 17px;
+    color: #fff;
+    text-align: center;
+    background: #0747a6;
+    border-radius: 3px;
+    border: 1px solid #0747a6;
+    position: absolute;
+    transition: all 0.3s ease 0s;
+}
+#accordion .card-body {
+    padding: 10px 10px 10px;
+    margin-left: 40px;
+    margin-top: 18px;
+    border-top: none;
+    background: #eee;
+    width: 270px;
+    font-size: 15px;
+    color: #1b1414;
+    line-height: 28px;
+    letter-spacing: 1px;
+}
+
+.card1 {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+#accordion .card1:before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    border: 1px dashed #6e8898;
+    top: 40px;
+    left: 18px;
+    position: absolute;
+}
+
+.card-head a span{
+    font-weight: 200;
+    color: #1d3557;
+    position: relative;
+    text-decoration: none;
+    letter-spacing: 1px;
+    left: 60px;
+    top: 10px;
+}
+.card-head a:hover{
+    text-decoration: none;
+    color:red;
+}
