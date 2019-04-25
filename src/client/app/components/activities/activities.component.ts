@@ -21,10 +21,13 @@ export class ActivitiesComponent implements OnInit {
   inserteventsuccess:Boolean = false;
   insertemailsuccess:Boolean = false;
 
+  loaderOne: Boolean = false;
+
   @Input() opportunity: any;
   constructor(private http: HttpClient, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    
     this.getNotificationdata();
     this.userData = JSON.parse(localStorage.getItem("user_data"));
     this.taskForm = this.formBuilder.group({
@@ -66,6 +69,7 @@ export class ActivitiesComponent implements OnInit {
       type__c: ["Email"],
       opportunity__c: [this.opportunity.sfid]
     });
+    
   }
 
   get f() {
@@ -73,6 +77,9 @@ export class ActivitiesComponent implements OnInit {
   }
 
   onSubmit(form: any) {
+
+    this.loaderOne = true;
+
     // stop here if form is invalid
     if (form.invalid) {
       return;
@@ -94,9 +101,12 @@ export class ActivitiesComponent implements OnInit {
         if(form.value.type__c == 'Email'){
           this.insertemailsuccess = true;
         }
+        this.loaderOne = false;
         form.reset();
+        this.ngOnInit();
         this.getNotificationdata();
       });
+    
   }
   getNotificationdata(){
     this.http

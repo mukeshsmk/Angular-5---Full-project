@@ -85,7 +85,7 @@
                     </div>
                 </div>
               </div>
-              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;" *ngIf="type=='edit'">
                 <div class="form-group">
                   <label>Lead Record Type</label>
                   <input
@@ -114,8 +114,8 @@
                 </div>
               </div>
             </div>
-            <div class="row" *ngIf="type=='edit'">
-              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;" *ngIf="type=='edit'">
                 <div class="form-group">
                   <label>Source</label>
                   <select
@@ -629,4 +629,5 @@
           </button>
           <button type="submit" class="btn btn-info" >Save</button>
         </div>
+        
 </form>
