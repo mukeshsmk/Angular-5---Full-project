@@ -51,7 +51,6 @@ input[type=submit] {
     border: 1px solid #6e8898;
 }
 .card-head{
-    height: 30px;
     width: 350px;
 }
 
@@ -82,6 +81,10 @@ input[type=submit] {
     line-height: 28px;
     letter-spacing: 1px;
 }
+
+/* #accordion .card1:before:last-child {
+    top:15px;
+  } */
 
 .card1 {
     border: none;
