@@ -15,11 +15,17 @@ export class ActivitiesComponent implements OnInit {
   emailForm: FormGroup;
   submitted = false;
   userData: any;
+  notifications: any;
+  inserttasksuccess:Boolean = false;
+  insertcalllogsuccess:Boolean = false;
+  inserteventsuccess:Boolean = false;
+  insertemailsuccess:Boolean = false;
 
   @Input() opportunity: any;
   constructor(private http: HttpClient, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    this.getNotificationdata();
     this.userData = JSON.parse(localStorage.getItem("user_data"));
     this.taskForm = this.formBuilder.group({
       name: [this.opportunity.first_name__c],
@@ -76,7 +82,29 @@ export class ActivitiesComponent implements OnInit {
       .post<{ success: object }>(Config.BASE_URL + "api/activities", form.value)
       .subscribe((response: any) => {
         this.submitted = true;
+        if(form.value.type__c == 'Task'){
+          this.inserttasksuccess = true;
+        }
+        if(form.value.type__c == 'Log a Call'){
+          this.insertcalllogsuccess = true;
+        }
+        if(form.value.type__c == 'Event'){
+          this.inserteventsuccess = true;
+        }
+        if(form.value.type__c == 'Email'){
+          this.insertemailsuccess = true;
+        }
         form.reset();
+        this.getNotificationdata();
+      });
+  }
+  getNotificationdata(){
+    this.http
+      .post<{ success: object }>(Config.BASE_URL + "api/notification", {"opportunity__c":this.opportunity.sfid})
+      .subscribe((response: any) => {
+        console.log(response)
+        this.notifications = response.success;
+        console.log(this.notifications)
       });
   }
 }
