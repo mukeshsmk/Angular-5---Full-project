@@ -6,7 +6,7 @@ import {
   FormControl
 } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
-import GeneralService from "../../shared/services/GeneralService";
+import { GeneralService } from "../../shared/services/GeneralService";
 import Config from "../../shared/config";
 /**
  * This class represents the lazy loaded AboutComponent.

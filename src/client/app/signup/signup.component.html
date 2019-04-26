@@ -1,22 +1,37 @@
-<form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
+<form (ngSubmit)="onSubmit()">
   <div class="container">
-    
     <h1>Signup</h1>
-   
+
     <label for="name"><b>Name</b></label>
-    <input type="text" placeholder="Enter Name" [(ngModel)]='user.name' #name='ngModel' name='name' required minlength="6">
-    <div *ngIf='name.invalid && (name.dirty || name.touched)'>
+    <input
+      type="text"
+      placeholder="Enter Name"
+      [(ngModel)]="user.name"
+      #name="ngModel"
+      name="name"
+      required
+      minlength="6"
+    />
+    <div *ngIf="name.invalid && (name.dirty || name.touched)">
       <p class="error-box margin-top-0" *ngIf="name.hasError('required')">
         UserName is Required
       </p>
       <p class="error-box margin-top-0" *ngIf="name.hasError('minlength')">
-       Minimum 6 Characters are Required
+        Minimum 6 Characters are Required
       </p>
     </div>
 
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" [(ngModel)]='user.email' #email='ngModel' name='email' required email>
-    <div *ngIf='email.invalid && (email.dirty || email.touched)'>
+    <input
+      type="text"
+      placeholder="Enter Email"
+      [(ngModel)]="user.email"
+      #email="ngModel"
+      name="email"
+      required
+      email
+    />
+    <div *ngIf="email.invalid && (email.dirty || email.touched)">
       <p class="error-box margin-top-0" *ngIf="email.hasError('required')">
         Email is Required
       </p>
@@ -26,29 +41,52 @@
     </div>
     <p class="error-box margin-top-0" *ngIf="duplicateEmail">
       {{ duplicateEmail }}
-     </p>
+    </p>
 
     <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter password" [(ngModel)]='user.password' #password='ngModel' name='password' required minlength="6">
-    <div *ngIf='password.invalid && (password.dirty || password.touched)'>
+    <input
+      type="password"
+      placeholder="Enter password"
+      [(ngModel)]="user.password"
+      #password="ngModel"
+      name="password"
+      required
+      minlength="6"
+    />
+    <div *ngIf="password.invalid && (password.dirty || password.touched)">
       <p class="error-box margin-top-0" *ngIf="password.hasError('required')">
         Password is Required
       </p>
       <p class="error-box margin-top-0" *ngIf="password.hasError('minlength')">
-       Minimum 6 Characters are Required
+        Minimum 6 Characters are Required
       </p>
     </div>
 
-
     <label for="confirm_password"><b>Confirm Password</b></label>
-    <input type="password" placeholder="Enter Confirm Password" [(ngModel)]='user.confirm_password' #confirm_password='ngModel' name='confirm_password' required minlength="6">
-    <div *ngIf='confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)'>
-      <p class="error-box margin-top-0" *ngIf="confirm_password.hasError('required')">
+    <input
+      type="password"
+      placeholder="Enter Confirm Password"
+      [(ngModel)]="user.confirm_password"
+      #confirm_password="ngModel"
+      name="confirm_password"
+      required
+      minlength="6"
+    />
+    <div
+      *ngIf="
+        confirm_password.invalid &&
+        (confirm_password.dirty || confirm_password.touched)
+      "
+    >
+      <p
+        class="error-box margin-top-0"
+        *ngIf="confirm_password.hasError('required')"
+      >
         Confirm Password is Required
-      </p>    
+      </p>
     </div>
     <p class="error-box margin-top-0" *ngIf="notSame">
-     {{ notSame }}
+      {{ notSame }}
     </p>
 
     <!-- <label for="confirm_password"><b>Confirm Password</b></label>
@@ -61,14 +99,27 @@
        Minimum 6 Characters are Required
       </p>
     </div> -->
-  
-   
-    <button type="submit" class="registerbtn" name="submit" [disabled]="!registerForm.valid">Register</button> <button type="button" [routerLink]="['/login']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" class="login">Login</button>
-  
-    <div class="success">
-        <span *ngIf="infoMessage.length > 0">{{ infoMessage }}</span>
-    </div>
 
+    <button
+      type="submit"
+      class="registerbtn"
+      name="submit"
+      [disabled]="!registerForm.valid"
+    >
+      Register
+    </button>
+    <button
+      type="button"
+      [routerLink]="['/login']"
+      [routerLinkActive]="['router-link-active']"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="login"
+    >
+      Login
+    </button>
+
+    <div class="success">
+      <span *ngIf="infoMessage.length > 0">{{ infoMessage }}</span>
+    </div>
   </div>
-  
 </form>

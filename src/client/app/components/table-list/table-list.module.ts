@@ -15,9 +15,10 @@ import { OpportunityFormComponent } from "./../opportunity-form/opportunity-form
 import { DriverFormComponent } from "./../driver-form/driver-form.component";
 import { CustomerFormComponent } from "./../customer-form/customer-form.component";
 import { VehicleStockFormComponent } from "./../vehiclestock-form/vehiclestock-form.component";
-import { NavFormComponent } from './../nav-form/nav-form.component';
+import { NavFormComponent } from "./../nav-form/nav-form.component";
 import { ActivitiesComponent } from "./../activities/activities.component";
-import { NavigationBarComponent } from './../navigation-bar/navigation-bar.component';
+import { NavigationBarComponent } from "./../navigation-bar/navigation-bar.component";
+import { GeneralService } from "../../shared/services/GeneralService";
 
 @NgModule({
   imports: [
@@ -45,6 +46,7 @@ import { NavigationBarComponent } from './../navigation-bar/navigation-bar.compo
     NavigationBarComponent
   ],
   exports: [TableListComponent],
-  entryComponents: [TabComponent]
+  entryComponents: [TabComponent],
+  providers: [GeneralService]
 })
 export class TableListModule {}

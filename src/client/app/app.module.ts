@@ -20,7 +20,7 @@ import { TableListModule } from "./components/table-list/table-list.module";
 import { HeaderModule } from "./components/header/header.module";
 import { ModalModule } from "./components/modal/modal.module";
 
-import GeneralService from "./shared/services/GeneralService";
+import { GeneralService } from "./shared/services/GeneralService";
 import { AuthService } from "./shared/services/AuthService";
 import { AuthGuardService } from "./shared/services/AuthGuardService";
 
@@ -54,7 +54,6 @@ import { AuthGuardService } from "./shared/services/AuthGuardService";
   providers: [
     {
       provide: APP_BASE_HREF,
-
       useValue: "<%= APP_BASE %>"
     },
     AuthGuardService,

@@ -2,7 +2,7 @@ import { Component, ViewChild } from "@angular/core";
 
 import { TabsComponent } from "../tab/tabs.component";
 import { HttpClient } from "@angular/common/http";
-import GeneralService from "../../shared/services/GeneralService";
+import { GeneralService } from "../../shared/services/GeneralService";
 import Config from "../../shared/config";
 
 @Component({
@@ -108,7 +108,7 @@ export class TableListComponent {
     };
     this.loadData(this.module, params);
   }
-  vehicleStockType(type:any ){
+  vehicleStockType(type: any) {
     this.search = type;
     let params = {
       page: 1,
