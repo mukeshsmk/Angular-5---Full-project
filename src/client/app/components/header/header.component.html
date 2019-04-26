@@ -27,8 +27,8 @@
 
                 <div class="user-menu dropdown-menu">
                     <div class="headerName">
-                        <em class="nav-link text-center" href="#"> Manikandan Gunasekar</em>
-                        <em class="nav-link" href="#">Dealership Manager</em>
+                        <em class="nav-link text-center" href="#"> {{ userData.dealer }}</em>
+                        <em class="nav-link" href="#">{{ userData.rolename }}</em>
                     </div>
                     <a class="nav-link other_source_menu" showtab="Profile" ref="Login/profile"><i class="fas fa-user"></i>My Profile</a>
                     <a class="nav-link" href="" (click)='logout()' ><i class="fa fa-power-off"></i>Logout</a>

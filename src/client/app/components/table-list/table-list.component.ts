@@ -37,6 +37,7 @@ export class TableListComponent {
   responseData:any;
   permission:any;
   vsType:any='';
+  userData:any;
 
   searchTerm: string;
   constructor(private http: HttpClient, public generalService: GeneralService) {
@@ -57,6 +58,7 @@ export class TableListComponent {
       console.log("Loading data", this.module);
     });
     this.loadData(this.module, params);
+    this.userData = JSON.parse(localStorage.getItem("user_data"))
   }
 
   //  onClose(){
