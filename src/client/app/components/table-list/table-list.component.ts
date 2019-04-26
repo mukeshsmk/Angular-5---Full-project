@@ -31,13 +31,22 @@ export class TableListComponent {
   opportunityOpen: boolean = true;
   modalData: any = [];
   formType: any;
+  responseData:any;
+  permission:any;
+  vsType:any='';
 
   searchTerm: string;
   constructor(private http: HttpClient, public generalService: GeneralService) {
+    this.permission = {
+      "create_permission": 0,
+      "edit_permission": 0,
+      "delete_permission": 0,
+    }
     let params = {
       page: this.page,
       limit: this.limit,
-      search: this.search
+      search: this.search,
+      type:this.vsType
     };
     this.generalService.emitter.subscribe((response: string) => {
       this.module = response;
@@ -51,30 +60,43 @@ export class TableListComponent {
     let params = {
       page: this.page,
       limit: this.limit,
-      search: this.search
+      search: this.search,
+      type:this.vsType
     };
     this.loadData;
     this.loadData(this.module, params);
   }
   loadData(type: string, params: any) {
     this.loaderOne = true;
-    params =
-      "page=" +
-      params.page +
-      "&limit=" +
-      params.limit +
-      "&search=" +
-      params.search;
+    // params =
+    //   "page=" +
+    //   params.page +
+    //   "&limit=" +
+    //   params.limit +
+    //   "&search=" +
+    //   params.search;
+    params.userData = JSON.parse(localStorage.getItem("user_data"));
     this.http
-      .get<{ success: object }>(Config.BASE_URL + "api/" + type + "?" + params)
+      .post<{ success: object }>(Config.BASE_URL + "api/" + type , params)
       .subscribe((response: any) => {
-        this.opportunityListData = response;
+        this.responseData = response;
+        this.opportunityListData = response.list;
+        if (type == 'opportunities') {
+          for (var i = 0; i < response.list.data.length; i++) {
+            if (this.responseData.sfid[this.opportunityListData.data[i].app_retail_user__c] != undefined) {
+              response.list.data[i].lead_owner_data = this.responseData.sfid[this.opportunityListData.data[i].app_retail_user__c];
+            } else {
+              response.list.data[i].lead_owner_data = '-';
+            }
+          }
+          this.permission = response.permission[0];
+        }       
         this.opportunityListData.lastPage = Array(
           this.opportunityListData.last_page
         )
           .fill(1)
           .map((x, i) => i);
-        this.opportunityList = response.data;
+        this.opportunityList = response.list.data;
         this.loaderOne = false;
       });
   }
@@ -84,7 +106,8 @@ export class TableListComponent {
       let params = {
         page: 1,
         limit: this.limit,
-        search: this.search
+        search: this.search,
+        type:this.vsType
       };
       this.loadData(this.module, params);
     }
@@ -94,7 +117,8 @@ export class TableListComponent {
     let params = {
       page: 1,
       limit: this.limit,
-      search: this.search
+      search: this.search,
+      type:this.vsType
     };
 
     this.loadData(this.module, params);
@@ -104,16 +128,18 @@ export class TableListComponent {
     let params = {
       page: this.page,
       limit: this.limit,
-      search: this.search
+      search: this.search,
+      type:this.vsType
     };
     this.loadData(this.module, params);
   }
   vehicleStockType(type:any ){
-    this.search = type;
+    this.vsType = type;
     let params = {
       page: 1,
       limit: this.limit,
-      search: this.search
+      search: this.search,
+      type:this.vsType
     };
     this.loadData(this.module, params);
   }

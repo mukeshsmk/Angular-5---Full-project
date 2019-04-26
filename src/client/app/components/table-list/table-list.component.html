@@ -27,7 +27,7 @@
                 >
                 <div class="col-3">
                   <select class="form-control form-list" (change)="vehicleStockType($event.target.value)" name="vehicleType">
-                    <option value="all" selected="">All</option>
+                    <option value="" selected="">All</option>
                     <option value="New">New Vehicle</option>
                     <option value="Used">Used Vehicle</option>
                     <option value="Demo">Demo</option>
@@ -66,7 +66,7 @@
                 id="createNewLead"
                 type="button"
                 class="btn btn-secondary pull-right mr-1"
-                *ngIf="module == 'customers'"
+                *ngIf="module == 'customers' && permission.create_permission==1"
                 (click)="openNewCustomerModal()"
               >
                 <i
@@ -80,7 +80,7 @@
                 id="createNewLead"
                 type="button"
                 class="btn btn-secondary pull-right mr-1"
-                *ngIf="module == 'drivers'"
+                *ngIf="module == 'drivers' && permission.create_permission==1"
                 (click)="openNewCustomerModal()"
               >
                 <i
@@ -93,7 +93,7 @@
               <button
                 type="button"
                 class="btn btn-secondary pull-right mr-1"
-                *ngIf="module == 'opportunities'"
+                *ngIf="module == 'opportunities' && permission.create_permission==1"
                 (click)="openNewOpportunityModal()"
               >
                 <i
@@ -197,7 +197,7 @@
                           </a>
                           LeadOwner
                         </th>
-                        <th>
+                        <th *ngIf="permission.edit_permission==1">
                           <a href="#"> </a>
                           Edit
                         </th>
@@ -234,9 +234,9 @@
                             {{ opportunity.email__c }}
                           </td>
                           <td>
-                            {{ opportunity.leadowner }}
+                            {{ opportunity.lead_owner_data }}
                           </td>
-                          <td>
+                          <td *ngIf="permission.edit_permission==1">
                             <span
                               class="fas fa-edit pointer"
                               (click)="openOpportunityModal(opportunity)"
@@ -312,7 +312,7 @@
                           <a href="#"> </a>
                           Model
                         </th>
-                        <th>
+                        <th *ngIf="permission.edit_permission==1">
                           <a href="#"> </a>
                           Edit
                         </th>
@@ -333,10 +333,10 @@
                             >
                           </td>
                           <td>
-                            {{ opportunity.rego_no__c }}
+                            {{ opportunity.vin__c }}
                           </td>
                           <td>
-                            {{ opportunity.vin__c }}
+                            {{ opportunity.rego_no__c }}
                           </td>
                           <td>
                             {{ opportunity.vehicle_type__c }}
@@ -350,7 +350,7 @@
                           <td>
                             {{ opportunity.model_name__c }}
                           </td>
-                          <td>
+                          <td *ngIf="permission.edit_permission==1">
                             <span
                               class="fas fa-edit pointer"
                               (click)="updatevehicleStockModal(opportunity)"
@@ -426,7 +426,7 @@
                           </a>
                           Created Date
                         </th>
-                        <th>
+                        <th *ngIf="permission.edit_permission==1">
                           <a href="#"> </a>
                           Edit
                         </th>
@@ -461,7 +461,7 @@
                           <td>
                             {{ opportunity.createddate }}
                           </td>
-                          <td>
+                          <td *ngIf="permission.edit_permission==1">
                             <span
                               class="fas fa-edit pointer"
                               (click)="updateDriverModal(opportunity)"
@@ -555,7 +555,7 @@
                           </a>
                           PostalCode
                         </th>
-                        <th>
+                        <th *ngIf="permission.edit_permission==1">
                           <a href="#"> </a>
                           Edit
                         </th>
@@ -576,7 +576,7 @@
                             >
                           </td>
                           <td>
-                            {{ opportunity.email }}
+                            {{ opportunity.business_email__c }}
                           </td>
                           <td>
                             {{ opportunity.mobile__c }}
@@ -596,7 +596,7 @@
                           <td>
                             {{ opportunity.billing_postcode__c }}
                           </td>
-                          <td>
+                          <td *ngIf="permission.edit_permission==1">
                             <span
                               class="fas fa-edit pointer"
                               (click)="updateCustomerModal(opportunity)"
