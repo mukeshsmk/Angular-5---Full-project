@@ -23,6 +23,8 @@ export class OpportunityFormComponent implements OnInit {
   // visibleSix: Boolean = true;
   // visibleSeven: Boolean = true;
 
+  @Output() closeModalEvent = new EventEmitter<boolean>();
+
   submitted = false;
 
   @Input() opportunity: any;
@@ -73,8 +75,14 @@ export class OpportunityFormComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    console.log(this.opportunityForm);
+  onCloseModal(event: any){
+    this.closeModalEvent.emit(event);  
+    console.log("Check")
+   }
+
+   
+  onSubmit(){
+    console.log(this.opportunityForm)
     this.submitted = true;
 
     if (this.opportunityForm.invalid) {

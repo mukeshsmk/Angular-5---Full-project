@@ -13,7 +13,7 @@
                   src="/assets/images/book.png"
                 /><span style="font-size:18px;">Opportunity</span>
                 <div class="col-3">
-                  <select class="form-control form-list">
+                  <select class="form-control form-list" *ngIf="userData.roleid == 3">
                     <option value="allLeads" selected="">All</option>
                     <option value="allocated">Allocated Leads</option>
                     <option value="unAllocated">Un Allocated Leads</option>
@@ -27,7 +27,7 @@
                 >
                 <div class="col-3">
                   <select class="form-control form-list" (change)="vehicleStockType($event.target.value)" name="vehicleType">
-                    <option value="all" selected="">All</option>
+                    <option value="" selected="">All</option>
                     <option value="New">New Vehicle</option>
                     <option value="Used">Used Vehicle</option>
                     <option value="Demo">Demo</option>
@@ -66,7 +66,7 @@
                 id="createNewLead"
                 type="button"
                 class="btn btn-secondary pull-right mr-1"
-                *ngIf="module == 'customers'"
+                *ngIf="module == 'customers' && permission.create_permission==1"
                 (click)="openNewCustomerModal()"
               >
                 <i
@@ -80,7 +80,7 @@
                 id="createNewLead"
                 type="button"
                 class="btn btn-secondary pull-right mr-1"
-                *ngIf="module == 'drivers'"
+                *ngIf="module == 'drivers' && permission.create_permission==1"
                 (click)="openNewCustomerModal()"
               >
                 <i
@@ -93,7 +93,7 @@
               <button
                 type="button"
                 class="btn btn-secondary pull-right mr-1"
-                *ngIf="module == 'opportunities'"
+                *ngIf="module == 'opportunities' && permission.create_permission==1"
                 (click)="openNewOpportunityModal()"
               >
                 <i
@@ -149,14 +149,14 @@
                         <th>
                           <input type="checkbox" id="blahA" value="1" />
                         </th>
-                        <th (click)="sort('id')">
+                        <th (click)="sortData('id')">
                           Id
                         </th>
                         <th>
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('name')"
+                              (click)="sortData('name')"
                             ></i>
                           </a>
                           Name
@@ -165,7 +165,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('company')"
+                              (click)="sortData('company__c')"
                             ></i>
                           </a>
                           Company
@@ -174,7 +174,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('phone')"
+                              (click)="sortData('phone__c')"
                             ></i>
                           </a>
                           Phone
@@ -183,7 +183,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('email')"
+                              (click)="sortData('email__c')"
                             ></i>
                           </a>
                           Email
@@ -192,12 +192,12 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('leadowner')"
+                              (click)="sortData('name')"
                             ></i>
                           </a>
                           LeadOwner
                         </th>
-                        <th>
+                        <th *ngIf="permission.edit_permission==1">
                           <a href="#"> </a>
                           Edit
                         </th>
@@ -234,9 +234,9 @@
                             {{ opportunity.email__c }}
                           </td>
                           <td>
-                            {{ opportunity.leadowner }}
+                            {{ opportunity.lead_owner_data }}
                           </td>
-                          <td>
+                          <td *ngIf="permission.edit_permission==1">
                             <span
                               class="fas fa-edit pointer"
                               (click)="openOpportunityModal(opportunity)"
@@ -256,14 +256,14 @@
                         <!-- <th>
                           <input type="checkbox" id="blahA" value="1" />
                         </th> -->
-                        <th>
+                        <th (click)="sortData('id')">
                           id
                         </th>
                         <th>
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('name')"
+                              (click)="sortData('name')"
                             ></i>
                           </a>
                           StockNumber
@@ -272,7 +272,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('company')"
+                              (click)="sortData('vin__c')"
                             ></i>
                           </a>
                           VIN
@@ -281,7 +281,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('phone')"
+                              (click)="sortData('rego_no__c')"
                             ></i>
                           </a>
                           REG No.
@@ -290,7 +290,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('email')"
+                              (click)="sortData('vehicle_type__c')"
                             ></i>
                           </a>
                           VehicleType
@@ -299,20 +299,30 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('leadowner')"
+                              (click)="sortData('fuel_type__c')"
                             ></i>
                           </a>
                           FuelType
                         </th>
                         <th>
-                          <a href="#"> </a>
+                          <a href="#">
+                              <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sortData('make__c')"
+                            ></i>
+                          </a>
                           Make
                         </th>
                         <th>
-                          <a href="#"> </a>
+                          <a href="#">
+                              <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sortData('model_name__c')"
+                            ></i>
+                           </a>
                           Model
                         </th>
-                        <th>
+                        <th *ngIf="permission.edit_permission==1">
                           <a href="#"> </a>
                           Edit
                         </th>
@@ -333,10 +343,10 @@
                             >
                           </td>
                           <td>
-                            {{ opportunity.rego_no__c }}
+                            {{ opportunity.vin__c }}
                           </td>
                           <td>
-                            {{ opportunity.vin__c }}
+                            {{ opportunity.rego_no__c }}
                           </td>
                           <td>
                             {{ opportunity.vehicle_type__c }}
@@ -350,7 +360,7 @@
                           <td>
                             {{ opportunity.model_name__c }}
                           </td>
-                          <td>
+                          <td *ngIf="permission.edit_permission==1">
                             <span
                               class="fas fa-edit pointer"
                               (click)="updatevehicleStockModal(opportunity)"
@@ -369,14 +379,14 @@
                         <!-- <th>
                           <input type="checkbox" id="blahA" value="1" />
                         </th> -->
-                        <th>
+                        <th (click)="sortData('id')">
                           ID
                         </th>
                         <th>
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('name')"
+                              (click)="sortData('name')"
                             ></i>
                           </a>
                           Name
@@ -385,7 +395,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('company')"
+                              (click)="sortData('customer_type__c')"
                             ></i>
                           </a>
                           CustomerType
@@ -394,7 +404,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('phone')"
+                              (click)="sortData('email')"
                             ></i>
                           </a>
                           Email
@@ -403,7 +413,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('email')"
+                              (click)="sortData('phone')"
                             ></i>
                           </a>
                           Mobile
@@ -412,7 +422,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('leadowner')"
+                              (click)="sortData('accountid')"
                             ></i>
                           </a>
                           AccountNumber
@@ -421,12 +431,12 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('leadowner')"
+                              (click)="sortData('createddate')"
                             ></i>
                           </a>
                           Created Date
                         </th>
-                        <th>
+                        <th *ngIf="permission.edit_permission==1">
                           <a href="#"> </a>
                           Edit
                         </th>
@@ -461,7 +471,7 @@
                           <td>
                             {{ opportunity.createddate }}
                           </td>
-                          <td>
+                          <td *ngIf="permission.edit_permission==1">
                             <span
                               class="fas fa-edit pointer"
                               (click)="updateDriverModal(opportunity)"
@@ -487,7 +497,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('name')"
+                              (click)="sortData('name')"
                             ></i>
                           </a>
                           Name
@@ -496,7 +506,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('company')"
+                              (click)="sortData('business_email__c')"
                             ></i>
                           </a>
                           Email
@@ -505,7 +515,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('phone')"
+                              (click)="sortData('mobile__c')"
                             ></i>
                           </a>
                           MobilePhone
@@ -514,7 +524,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('email')"
+                              (click)="sortData('account__c')"
                             ></i>
                           </a>
                           Account
@@ -523,7 +533,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('leadowner')"
+                              (click)="sortData('accountnumber')"
                             ></i>
                           </a>
                           AccountNumber
@@ -532,7 +542,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('leadowner')"
+                              (click)="sortData('phone')"
                             ></i>
                           </a>
                           Phone
@@ -541,7 +551,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('leadowner')"
+                              (click)="sortData('state__c')"
                             ></i>
                           </a>
                           State
@@ -550,12 +560,12 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('leadowner')"
+                              (click)="sortData('billing_postcode__c')"
                             ></i>
                           </a>
                           PostalCode
                         </th>
-                        <th>
+                        <th *ngIf="permission.edit_permission==1">
                           <a href="#"> </a>
                           Edit
                         </th>
@@ -576,7 +586,7 @@
                             >
                           </td>
                           <td>
-                            {{ opportunity.email }}
+                            {{ opportunity.business_email__c }}
                           </td>
                           <td>
                             {{ opportunity.mobile__c }}
@@ -596,7 +606,7 @@
                           <td>
                             {{ opportunity.billing_postcode__c }}
                           </td>
-                          <td>
+                          <td *ngIf="permission.edit_permission==1">
                             <span
                               class="fas fa-edit pointer"
                               (click)="updateCustomerModal(opportunity)"
@@ -718,71 +728,14 @@
             >
             <a class="page-link">5</a>
             </li>
-              <!-- <li
-                class="page-item "
-                [ngClass]="{
-                  'active bg-dark': opportunityListData.current_page == i + 1
-                }"
-                *ngFor="let i of opportunityListData.lastPage"
-                (click)="pageNumber(i + 1)"
-              >
-                <a class="page-link">{{ i + 1 }}</a>
-              </li> -->
-              <!-- <li
-                class="page-item"
-                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<=5 && opportunityListData.last_page > (opportunityListData.current_page + 5)"
-                (click)="pageNumber(opportunityListData.last_page - 5)"
-              >
-                <a class="page-link">{{ opportunityListData.last_page - 5 }}</a>
-              </li>
-              <li
-                class="page-item"
-                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<=5 && opportunityListData.last_page > (opportunityListData.current_page + 4)"
-                (click)="pageNumber(opportunityListData.last_page - 4)"
-              >
-                <a class="page-link">{{ opportunityListData.last_page - 4 }}</a>
-              </li>
-              <li
-                class="page-item"
-                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<=5 && opportunityListData.last_page > (opportunityListData.current_page + 3)"
-                (click)="pageNumber(opportunityListData.last_page - 3)"
-              >
-                <a class="page-link">{{ opportunityListData.last_page - 3 }}</a>
-              </li>
-              <li
-                class="page-item"
-                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<=5 && opportunityListData.last_page > (opportunityListData.current_page + 2)"
-                (click)="pageNumber(opportunityListData.last_page - 2)"
-              >
-                <a class="page-link">{{ opportunityListData.last_page - 2 }}</a>
-              </li>
-              <li
-                class="page-item"
-                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<=5 && opportunityListData.last_page > (opportunityListData.current_page + 1)"
-                (click)="pageNumber(opportunityListData.last_page - 1)"
-              >
-                <a class="page-link">{{ opportunityListData.last_page - 1}}</a>
-              </li> -->
-              <!-- <li
-                class="page-item"
-                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<5 && opportunityListData.last_page == opportunityListData.current_page"
-              >
-                <a class="page-link">{{ opportunityListData.last_page - opportunityListData.current_page }}</a>
-              </li> -->
+              
               <li
                 class="page-item"
                 *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)>1 && (opportunityListData.last_page )>5"
               >
                 <a class="page-link">...</a>
               </li>
-              <!-- <li
-                class="page-item"
-                
-                (click)="pageNumber(opportunityListData.last_page)"
-                *ngIf = "opportunityListData.current_page != opportunityListData.last_page && (opportunityListData.last_page - opportunityListData.current_page) < 1"
-              >
-                <a class="page-link">{{ opportunityListData.current_page }}</a>
-              </li> -->
+            
               <li
                 class="page-item"
                 [ngClass]="{
@@ -815,6 +768,7 @@
       class="modal full-size"
       tabindex="-1"
       role="dialog"
+     
       [ngClass]="{ fade: opportunityOpen, 'd-flex': !opportunityOpen }"
     >
       <div class="modal-dialog" role="document">
@@ -835,6 +789,7 @@
             <ng-template [ngSwitchCase]="'opportunities'">
               <div *ngIf="!opportunityOpen">
                 <sd-opportunity-form
+                  (closeModalEvent)="onClose($event)"
                   [opportunity]="modalData"
                   [type]="formType"
                   (updateOpportunity)="updateOpportunity($event)"
@@ -842,8 +797,9 @@
               </div>
             </ng-template>
             <ng-template [ngSwitchCase]="'vehicle_stocks'">
-              <div *ngIf="!opportunityOpen">
-                <sd-vehiclestock-form
+              <div *ngIf="!opportunityOpen" >
+                <sd-vehiclestock-form  
+                  (closeModalEvent)="onClose($event)"
                   [vehicleStock]="modalData"
                   [type]="formType"
                   (updatevehicleStock)="updatevehicleStock($event)"
@@ -853,6 +809,7 @@
             <ng-template [ngSwitchCase]="'drivers'">
               <div *ngIf="!opportunityOpen">
                 <sd-driver-form
+                (closeModalEvent)="onClose($event)"
                   [driver]="modalData"
                   [type]="formType"
                   (updateDriver)="updateDriver($event)"
@@ -862,6 +819,7 @@
             <ng-template [ngSwitchCase]="'customers'">
               <div *ngIf="!opportunityOpen">
                 <sd-customer-form
+                  (closeModalEvent)="onClose($event)"
                   [customer]="modalData"
                   [type]="formType"
                   (updateCustomer)="updateCustomer($event)"

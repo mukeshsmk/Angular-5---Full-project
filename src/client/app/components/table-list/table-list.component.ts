@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, ViewChild,Output,EventEmitter } from "@angular/core";
 
 import { TabsComponent } from "../tab/tabs.component";
 import { HttpClient } from "@angular/common/http";
@@ -13,6 +13,8 @@ import Config from "../../shared/config";
 })
 export class TableListComponent {
   p: number = 1;
+
+ 
 
   @ViewChild(TabsComponent) tabsComponent: any;
   @ViewChild("personDetails") persondetailsTemplate: any;
@@ -29,15 +31,28 @@ export class TableListComponent {
   search: any = "";
   showEdit: boolean = false;
   opportunityOpen: boolean = true;
+  vehicleStock : boolean = false;
   modalData: any = [];
   formType: any;
+  responseData:any;
+  permission:any;
+  vsType:any='';
+  userData:any;
+  sort:any='id';
 
   searchTerm: string;
   constructor(private http: HttpClient, public generalService: GeneralService) {
+    this.permission = {
+      "create_permission": 0,
+      "edit_permission": 0,
+      "delete_permission": 0,
+    }
     let params = {
       page: this.page,
       limit: this.limit,
-      search: this.search
+      search: this.search,
+      type:this.vsType,
+      sort:this.sort
     };
     this.generalService.emitter.subscribe((response: string) => {
       this.module = response;
@@ -45,36 +60,59 @@ export class TableListComponent {
       console.log("Loading data", this.module);
     });
     this.loadData(this.module, params);
+    this.userData = JSON.parse(localStorage.getItem("user_data"))
   }
+
+  //  onClose(){
+  //   this.opportunityOpen = false;
+  //  }
+
+   onClose(event: any){
+     console.log(event)
+     this.closeModal();
+   }
 
   refresh() {
     let params = {
       page: this.page,
       limit: this.limit,
-      search: this.search
+      search: this.search,
+      type:this.vsType,
+      sort:this.sort
     };
-    this.loadData;
     this.loadData(this.module, params);
   }
   loadData(type: string, params: any) {
     this.loaderOne = true;
-    params =
-      "page=" +
-      params.page +
-      "&limit=" +
-      params.limit +
-      "&search=" +
-      params.search;
+    // params =
+    //   "page=" +
+    //   params.page +
+    //   "&limit=" +
+    //   params.limit +
+    //   "&search=" +
+    //   params.search;
+    params.userData = JSON.parse(localStorage.getItem("user_data"));
     this.http
-      .get<{ success: object }>(Config.BASE_URL + "api/" + type + "?" + params)
+      .post<{ success: object }>(Config.BASE_URL + "api/" + type , params)
       .subscribe((response: any) => {
-        this.opportunityListData = response;
+        this.responseData = response;
+        this.opportunityListData = response.list;
+        if (type == 'opportunities') {
+          for (var i = 0; i < response.list.data.length; i++) {
+            if (this.responseData.sfid[this.opportunityListData.data[i].app_retail_user__c] != undefined) {
+              response.list.data[i].lead_owner_data = this.responseData.sfid[this.opportunityListData.data[i].app_retail_user__c];
+            } else {
+              response.list.data[i].lead_owner_data = '-';
+            }
+          }
+          this.permission = response.permission[0];
+        }       
         this.opportunityListData.lastPage = Array(
           this.opportunityListData.last_page
         )
           .fill(1)
           .map((x, i) => i);
-        this.opportunityList = response.data;
+        this.opportunityList = response.list.data;
         this.loaderOne = false;
       });
   }
@@ -84,7 +122,9 @@ export class TableListComponent {
       let params = {
         page: 1,
         limit: this.limit,
-        search: this.search
+        search: this.search,
+        type:this.vsType,
+        sort:this.sort
       };
       this.loadData(this.module, params);
     }
@@ -94,7 +134,9 @@ export class TableListComponent {
     let params = {
       page: 1,
       limit: this.limit,
-      search: this.search
+      search: this.search,
+      type:this.vsType,
+      sort:this.sort
     };
 
     this.loadData(this.module, params);
@@ -104,115 +146,36 @@ export class TableListComponent {
     let params = {
       page: this.page,
       limit: this.limit,
-      search: this.search
+      search: this.search,
+      type:this.vsType,
+      sort:this.sort
     };
     this.loadData(this.module, params);
   }
-  vehicleStockType(type: any) {
-    this.search = type;
+  vehicleStockType(type:any ){
+    this.vsType = type;
     let params = {
       page: 1,
       limit: this.limit,
-      search: this.search
+      search: this.search,
+      type:this.vsType,
+      sort:this.sort
     };
     this.loadData(this.module, params);
   }
   activateClass(i: any) {
     i.active = !i.current_page;
   }
-  sort(arg: any) {
-    switch (arg) {
-      case "name":
-        this.opportunityList = this.opportunityList.sort(function(
-          a: any,
-          b: any
-        ) {
-          var x = a.name.toLowerCase();
-          var y = b.name.toLowerCase();
-          if (x < y) {
-            return -1;
-          }
-          if (x > y) {
-            return 1;
-          }
-          return 0;
-        });
-        break;
-      case "company":
-        this.opportunityList = this.opportunityList.sort(function(
-          a: any,
-          b: any
-        ) {
-          var x = a.company__c.toLowerCase();
-          var y = b.company__c.toLowerCase();
-          if (x < y) {
-            return -1;
-          }
-          if (x > y) {
-            return 1;
-          }
-          return 0;
-        });
-        break;
-      case "phone":
-        this.opportunityList = this.opportunityList.sort(function(
-          a: any,
-          b: any
-        ) {
-          var x = a.phone__c;
-          var y = b.phone__c;
-          return x - y;
-        });
-        break;
-      case "email":
-        this.opportunityList = this.opportunityList.sort(function(
-          a: any,
-          b: any
-        ) {
-          var x = a.email__c.toLowerCase();
-          var y = b.email__c.toLowerCase();
-          if (x < y) {
-            return -1;
-          }
-          if (x > y) {
-            return 1;
-          }
-          return 0;
-        });
-        break;
-      case "leadowner":
-        this.opportunityList = this.opportunityList.sort(function(
-          a: any,
-          b: any
-        ) {
-          var x = a.leadowner.toLowerCase();
-          var y = b.leadowner.toLowerCase();
-          if (x < y) {
-            return -1;
-          }
-          if (x > y) {
-            return 1;
-          }
-          return 0;
-        });
-        break;
-      case "id":
-        this.opportunityList = this.opportunityList.sort(function(
-          a: any,
-          b: any
-        ) {
-          var x = a.id;
-          var y = b.id;
-          if (x < y) {
-            return -1;
-          }
-          if (x > y) {
-            return 1;
-          }
-          return 0;
-        });
-        break;
-    }
+  sortData(sort: any) {
+    this.sort = sort;
+    let params = {
+      page: 1,
+      limit: this.limit,
+      search: this.search,
+      type:this.vsType,
+      sort:this.sort
+    };
+    this.loadData(this.module, params);
   }
   viewPersondetails(data: any) {
     this.loaderOne = true;
@@ -348,5 +311,6 @@ export class TableListComponent {
         this.modalData = [];
       });
   }
+  
   //https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fpeople%2Fperson-edit.component.ts
 }

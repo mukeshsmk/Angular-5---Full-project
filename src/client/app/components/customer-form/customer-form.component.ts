@@ -20,7 +20,9 @@ export class CustomerFormComponent implements OnInit {
   visibleTwo: Boolean = true;
   visibleThree: Boolean = true;
   visibleFour: Boolean = true;
-
+ 
+  @Output() closeModalEvent = new EventEmitter<boolean>();
+  
   @Input() customer: any;
   @Input() type: any;
   @Output("updateCustomer") send = new EventEmitter<any>();
@@ -71,7 +73,14 @@ export class CustomerFormComponent implements OnInit {
       phone2__c: [this.customer.phone2__c]
     });
   }
-  onSubmit() {
+
+  onCloseModal(event: any){
+    this.closeModalEvent.emit(event);  
+    console.log("Check")
+   }
+   
+
+  onSubmit(){
     this.submitted = true;
     console.log(this.customerForm);
 

@@ -102,11 +102,16 @@ export class ActivitiesComponent implements OnInit {
           this.insertemailsuccess = true;
         }
         this.loaderOne = false;
-        form.reset();
+       form.reset ();
         this.ngOnInit();
         this.getNotificationdata();
       });
     
+  }
+  onClose(form: any){
+    form.reset();
+    this.ngOnInit();
+
   }
   getNotificationdata(){
     this.http

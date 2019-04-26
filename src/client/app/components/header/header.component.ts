@@ -10,11 +10,15 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ["header.component.css"]
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router: Router) {}
+  userData:any;
+  constructor(private router: Router) {
+    this.userData = JSON.parse(localStorage.getItem("user_data"))
+  }
 
   ngOnInit() {}
   logout() {
     localStorage.removeItem("access_token");
+    localStorage.removeItem("user_data");
     this.router.navigate(["/login"]);
   }
 }
