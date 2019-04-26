@@ -779,6 +779,7 @@
             <ng-template [ngSwitchCase]="'opportunities'">
               <div *ngIf="!opportunityOpen">
                 <sd-opportunity-form
+                  (closeModalEvent)="onClose($event)"
                   [opportunity]="modalData"
                   [type]="formType"
                   (updateOpportunity)="updateOpportunity($event)"
@@ -788,7 +789,7 @@
             <ng-template [ngSwitchCase]="'vehicle_stocks'">
               <div *ngIf="!opportunityOpen" >
                 <sd-vehiclestock-form  
-                (closeModalEvent)="onClose($event)"
+                  (closeModalEvent)="onClose($event)"
                   [vehicleStock]="modalData"
                   [type]="formType"
                   (updatevehicleStock)="updatevehicleStock($event)"
