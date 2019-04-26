@@ -18,7 +18,8 @@ export class VehicleStockFormComponent implements OnInit {
   visibleFive: Boolean = true;
   visibleSix: Boolean = true;
   
- 
+  @Output() closeModalEvent = new EventEmitter<boolean>();
+
   @Input() vehicleStock: any;
   @Input() type:any;
   @Output('updatevehicleStock') send = new EventEmitter<any>();
@@ -54,7 +55,12 @@ export class VehicleStockFormComponent implements OnInit {
       stock_image__c: [this.vehicleStock.stock_image__c]
     })
   }
-  
+  onCloseModal(event: any){
+    this.closeModalEvent.emit(event);  
+    console.log("Check")
+   }
+
+
   onSubmit(){
     this.submitted = true;
     console.log(this.vehicleStockForm)

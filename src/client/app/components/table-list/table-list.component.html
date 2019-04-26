@@ -718,71 +718,14 @@
             >
             <a class="page-link">5</a>
             </li>
-              <!-- <li
-                class="page-item "
-                [ngClass]="{
-                  'active bg-dark': opportunityListData.current_page == i + 1
-                }"
-                *ngFor="let i of opportunityListData.lastPage"
-                (click)="pageNumber(i + 1)"
-              >
-                <a class="page-link">{{ i + 1 }}</a>
-              </li> -->
-              <!-- <li
-                class="page-item"
-                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<=5 && opportunityListData.last_page > (opportunityListData.current_page + 5)"
-                (click)="pageNumber(opportunityListData.last_page - 5)"
-              >
-                <a class="page-link">{{ opportunityListData.last_page - 5 }}</a>
-              </li>
-              <li
-                class="page-item"
-                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<=5 && opportunityListData.last_page > (opportunityListData.current_page + 4)"
-                (click)="pageNumber(opportunityListData.last_page - 4)"
-              >
-                <a class="page-link">{{ opportunityListData.last_page - 4 }}</a>
-              </li>
-              <li
-                class="page-item"
-                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<=5 && opportunityListData.last_page > (opportunityListData.current_page + 3)"
-                (click)="pageNumber(opportunityListData.last_page - 3)"
-              >
-                <a class="page-link">{{ opportunityListData.last_page - 3 }}</a>
-              </li>
-              <li
-                class="page-item"
-                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<=5 && opportunityListData.last_page > (opportunityListData.current_page + 2)"
-                (click)="pageNumber(opportunityListData.last_page - 2)"
-              >
-                <a class="page-link">{{ opportunityListData.last_page - 2 }}</a>
-              </li>
-              <li
-                class="page-item"
-                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<=5 && opportunityListData.last_page > (opportunityListData.current_page + 1)"
-                (click)="pageNumber(opportunityListData.last_page - 1)"
-              >
-                <a class="page-link">{{ opportunityListData.last_page - 1}}</a>
-              </li> -->
-              <!-- <li
-                class="page-item"
-                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)<5 && opportunityListData.last_page == opportunityListData.current_page"
-              >
-                <a class="page-link">{{ opportunityListData.last_page - opportunityListData.current_page }}</a>
-              </li> -->
+              
               <li
                 class="page-item"
                 *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)>1 && (opportunityListData.last_page )>5"
               >
                 <a class="page-link">...</a>
               </li>
-              <!-- <li
-                class="page-item"
-                
-                (click)="pageNumber(opportunityListData.last_page)"
-                *ngIf = "opportunityListData.current_page != opportunityListData.last_page && (opportunityListData.last_page - opportunityListData.current_page) < 1"
-              >
-                <a class="page-link">{{ opportunityListData.current_page }}</a>
-              </li> -->
+            
               <li
                 class="page-item"
                 [ngClass]="{
@@ -815,6 +758,7 @@
       class="modal full-size"
       tabindex="-1"
       role="dialog"
+     
       [ngClass]="{ fade: opportunityOpen, 'd-flex': !opportunityOpen }"
     >
       <div class="modal-dialog" role="document">
@@ -842,8 +786,9 @@
               </div>
             </ng-template>
             <ng-template [ngSwitchCase]="'vehicle_stocks'">
-              <div *ngIf="!opportunityOpen">
-                <sd-vehiclestock-form
+              <div *ngIf="!opportunityOpen" >
+                <sd-vehiclestock-form  
+                (closeModalEvent)="onClose($event)"
                   [vehicleStock]="modalData"
                   [type]="formType"
                   (updatevehicleStock)="updatevehicleStock($event)"
@@ -853,6 +798,7 @@
             <ng-template [ngSwitchCase]="'drivers'">
               <div *ngIf="!opportunityOpen">
                 <sd-driver-form
+                (closeModalEvent)="onClose($event)"
                   [driver]="modalData"
                   [type]="formType"
                   (updateDriver)="updateDriver($event)"
@@ -862,6 +808,7 @@
             <ng-template [ngSwitchCase]="'customers'">
               <div *ngIf="!opportunityOpen">
                 <sd-customer-form
+                  (closeModalEvent)="onClose($event)"
                   [customer]="modalData"
                   [type]="formType"
                   (updateCustomer)="updateCustomer($event)"

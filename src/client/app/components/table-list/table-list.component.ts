@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, ViewChild,Output,EventEmitter } from "@angular/core";
 
 import { TabsComponent } from "../tab/tabs.component";
 import { HttpClient } from "@angular/common/http";
@@ -13,6 +13,8 @@ import Config from "../../shared/config";
 })
 export class TableListComponent {
   p: number = 1;
+
+ 
 
   @ViewChild(TabsComponent) tabsComponent: any;
   @ViewChild("personDetails") persondetailsTemplate: any;
@@ -29,6 +31,7 @@ export class TableListComponent {
   search: any = "";
   showEdit: boolean = false;
   opportunityOpen: boolean = true;
+  vehicleStock : boolean = false;
   modalData: any = [];
   formType: any;
 
@@ -46,6 +49,15 @@ export class TableListComponent {
     });
     this.loadData(this.module, params);
   }
+
+  //  onClose(){
+  //   this.opportunityOpen = false;
+  //  }
+
+   onClose(event: any){
+     console.log(event)
+     this.closeModal();
+   }
 
   refresh() {
     let params = {
@@ -348,5 +360,6 @@ export class TableListComponent {
         this.modalData = [];
       });
   }
+  
   //https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fpeople%2Fperson-edit.component.ts
 }

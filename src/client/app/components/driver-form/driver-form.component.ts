@@ -18,6 +18,8 @@ export class DriverFormComponent implements OnInit {
   visibleSix: Boolean = true;
   visibleSeven: Boolean = true;
 
+  @Output() closeModalEvent = new EventEmitter<boolean>();
+
   @Input() driver: any;
   @Input() type:any;
   @Output('updateDriver') send = new EventEmitter<any>();
@@ -69,6 +71,11 @@ export class DriverFormComponent implements OnInit {
     console.log(this.driver)
   }
   
+  onCloseModal(event: any){
+    this.closeModalEvent.emit(event);  
+    console.log("Check")
+   }
+   
   onSubmit(){
     this.submitted = true;
     console.log(this.driverForm)

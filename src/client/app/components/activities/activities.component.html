@@ -145,7 +145,10 @@
                   </div>
                 </div>
                 <div class="card-footer text-right">
-                  <button type="button" class="btn btn-default mr-2">
+                  <button type="button"
+                   class="btn btn-default mr-2"
+                   (click)="onClose(taskForm)"
+                   >
                     Cancel
                   </button>
                   <input
@@ -233,6 +236,7 @@
                     type="button"
                     class="btn btn-default"
                     data-dismiss="modal"
+                    (click)="onClose(callForm)"
                   >
                     Cancel
                   </button>
@@ -416,6 +420,7 @@
                       type="button"
                       class="btn btn-default"
                       data-dismiss="modal"
+                      (click)="onClose(eventForm)"
                     >
                       Cancel
                     </button>
@@ -533,7 +538,10 @@
                   </div>
 
                   <div class="card-footer text-right">
-                    <button type="button" class="btn btn-default">
+                    <button type="button" 
+                    class="btn btn-default"
+                    (click)="onClose(emailForm)"
+                    >
                       Cancel
                     </button>
                     <input
