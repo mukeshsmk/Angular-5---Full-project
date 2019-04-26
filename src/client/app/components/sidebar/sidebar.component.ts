@@ -9,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  constructor() { }
+  userData:any;
+  role:any = 0;
+  constructor() {
+    
+   }
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem("user_data"));
+    this.role = this.userData.roleid;
   }
 
 }
