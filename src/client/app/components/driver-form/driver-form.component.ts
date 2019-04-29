@@ -73,7 +73,6 @@ export class DriverFormComponent implements OnInit {
   
   onCloseModal(event: any){
     this.closeModalEvent.emit(event);  
-    console.log("Check")
    }
    
   onSubmit(){

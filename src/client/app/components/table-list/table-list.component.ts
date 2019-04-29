@@ -14,8 +14,6 @@ import Config from "../../shared/config";
 export class TableListComponent {
   p: number = 1;
 
- 
-
   @ViewChild(TabsComponent) tabsComponent: any;
   @ViewChild("personDetails") persondetailsTemplate: any;
   @ViewChild("stockDetails") stockdetailsTemplate: any;
@@ -59,11 +57,7 @@ export class TableListComponent {
     });
     this.loadData(this.module, params);
     this.userData = JSON.parse(localStorage.getItem("user_data"))
-  }
-
-  //  onClose(){
-  //   this.opportunityOpen = false;
-  //  }
+  } 
 
    onClose(event: any){
      console.log(event)

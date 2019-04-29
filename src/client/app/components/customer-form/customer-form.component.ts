@@ -76,7 +76,6 @@ export class CustomerFormComponent implements OnInit {
 
   onCloseModal(event: any){
     this.closeModalEvent.emit(event);  
-    console.log("Check")
    }
    
 
