@@ -275,3 +275,10 @@ a:hover {
   display: initial;
 }
 .not-allowed {cursor: not-allowed;}
+li.page-item.disabled {
+  color: #6c757d;
+  pointer-events: none;
+  cursor: not-allowed;
+  background-color: #fff;
+  border-color: #dee2e6;
+}

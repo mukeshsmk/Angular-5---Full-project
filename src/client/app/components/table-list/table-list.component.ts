@@ -37,6 +37,8 @@ export class TableListComponent {
   vsType:any='';
   userData:any;
   sort:any='id';
+  allocated:any='';
+  unallocated:any='';
 
  
 
@@ -74,7 +76,9 @@ export class TableListComponent {
       limit: this.limit,
       search: this.search,
       type:this.vsType,
-      sort:this.sort
+      sort:this.sort,
+      allocated : this.allocated,
+      unallocated : this.unallocated
     };
     this.loadData(this.module, params);
   }
@@ -112,6 +116,25 @@ export class TableListComponent {
         this.loaderOne = false;
       });
   }
+  allocate(arg:any){
+    if(arg == "allocated"){
+      this.allocated = 'allocated';
+      this.unallocated = '';
+    } else if(arg == "unallocated"){
+      this.unallocated = 'unallocated';
+      this.allocated = '';
+    } 
+    let params = {
+      page: 1,
+      limit: this.limit,
+      search: this.search,
+      type:this.vsType,
+      sort:this.sort,
+      allocated : this.allocated,
+      unallocated : this.unallocated
+    };
+    this.loadData(this.module, params);
+  }
   searchList(searchData: any) {
     if (searchData.length >= 3 || searchData.length == 0) {
       this.search = searchData;
@@ -132,7 +155,9 @@ export class TableListComponent {
       limit: this.limit,
       search: this.search,
       type:this.vsType,
-      sort:this.sort
+      sort:this.sort,
+      allocated : this.allocated,
+      unallocated : this.unallocated
     };
 
     this.loadData(this.module, params);
@@ -144,7 +169,9 @@ export class TableListComponent {
       limit: this.limit,
       search: this.search,
       type:this.vsType,
-      sort:this.sort
+      sort:this.sort,
+      allocated : this.allocated,
+      unallocated : this.unallocated
     };
     this.loadData(this.module, params);
   }
@@ -169,7 +196,9 @@ export class TableListComponent {
       limit: this.limit,
       search: this.search,
       type:this.vsType,
-      sort:this.sort
+      sort:this.sort,
+      allocated : this.allocated,
+      unallocated : this.unallocated
     };
     this.loadData(this.module, params);
   }

@@ -13,10 +13,10 @@
                   src="/assets/images/book.png"
                 /><span style="font-size:18px;">Opportunity</span>
                 <div class="col-3">
-                  <select class="form-control form-list" *ngIf="userData.roleid == 3">
+                  <select class="form-control form-list" (change)="allocate($event.target.value)" *ngIf="userData.roleid == 3">
                     <option value="allLeads" selected="">All</option>
                     <option value="allocated">Allocated Leads</option>
-                    <option value="unAllocated">Un Allocated Leads</option>
+                    <option value="unallocated">Un Allocated Leads</option>
                   </select>
                 </div>
               </ng-template>
@@ -656,6 +656,7 @@
                 [ngClass]="{
                   'active bg-dark': opportunityListData.current_page == 1
                 }"
+                *ngIf = "opportunityListData.current_page != opportunityListData.last_page"
                 (click)="pageNumber(1)"
               >
                 <a class="page-link">1</a>
@@ -742,21 +743,18 @@
                   'active bg-dark': opportunityListData.current_page == opportunityListData.last_page
                 }"
                 (click)="pageNumber(opportunityListData.last_page)"
-                *ngIf = "opportunityListData.current_page != opportunityListData.last_page"
               >
                 <a class="page-link">{{ opportunityListData.last_page }}</a>
               </li>
               <li
                 class="page-item"
                 [ngClass]="{
-                  disabled:
-                    opportunityListData.current_page ===
-                    opportunityListData.last_page
+                  disabled: opportunityListData.current_page === opportunityListData.last_page
                 }"
                 (click)="pageNumber(opportunityListData.current_page + 1)"
               >
                 <a class="page-link">Next</a>
-              </li>
+              </li>              
             </ul>
           </ul>
         </div>

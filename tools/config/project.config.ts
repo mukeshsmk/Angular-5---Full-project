@@ -1,7 +1,7 @@
 import { join } from 'path';
 
 import { SeedConfig } from './seed.config';
-// import { ExtendPackages } from './seed.config.interfaces';
+import { ExtendPackages } from './seed.config.interfaces';
 
 /**
  * This class extends the basic seed configuration, allowing for project specific overrides. A few examples can be found
@@ -22,6 +22,7 @@ export class ProjectConfig extends SeedConfig {
     // Add `NPM` third-party libraries to be injected/bundled.
     this.NPM_DEPENDENCIES = [
       ...this.NPM_DEPENDENCIES,
+      { src: 'chart.js/dist/Chart.bundle.min.js', inject: 'libs'}
       // {src: 'jquery/dist/jquery.min.js', inject: 'libs'},
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
     ];
@@ -39,9 +40,13 @@ export class ProjectConfig extends SeedConfig {
 
     this.ROLLUP_NAMED_EXPORTS = [
       ...this.ROLLUP_NAMED_EXPORTS,
-      //{'node_modules/immutable/dist/immutable.js': [ 'Map' ]},
+      { 'node_modules/chart.js/src/chart.js': ['Chart'] }
     ];
 
+    // Add packages
+    const additionalPackages: ExtendPackages[] = [
+      { name: 'chart.js', path: 'node_modules/chart.js/dist/Chart.bundle.min.js' }
+    ];
     // Add packages (e.g. ng2-translate)
     // const additionalPackages: ExtendPackages[] = [{
     //   name: 'ng2-translate',
@@ -49,7 +54,7 @@ export class ProjectConfig extends SeedConfig {
     //   path: 'node_modules/ng2-translate/bundles/ng2-translate.umd.js'
     // }];
     //
-    // this.addPackagesBundles(additionalPackages);
+     this.addPackagesBundles(additionalPackages);
 
     /* Add proxy middleware */
     // this.PROXY_MIDDLEWARE = [
