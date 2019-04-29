@@ -1,5 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl
+} from "@angular/forms";
 
 /**
  * This class represents the lazy loaded AboutComponent.
@@ -21,23 +26,19 @@ export class VehicleStockFormComponent implements OnInit {
   @Output() closeModalEvent = new EventEmitter<boolean>();
 
   @Input() vehicleStock: any;
-  @Input() type:any;
-  @Output('updatevehicleStock') send = new EventEmitter<any>();
+  @Input() type: any;
+  @Output("updatevehicleStock") send = new EventEmitter<any>();
 
   vehicleStockForm: FormGroup;
-  submitted:boolean = false;
+  submitted: boolean = false;
 
-  constructor(
-    private formBuilder: FormBuilder,
-  ){
-    
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.vehicleStockForm = this.formBuilder.group({
       name: [this.vehicleStock.name, Validators.required],
       selling_dealer__c: [this.vehicleStock.selling_dealer__c],
-      vin__c:[this.vehicleStock.vin__c],
+      vin__c: [this.vehicleStock.vin__c],
       vehicle_type__c: [this.vehicleStock.vehicle_type__c],
       fuel_type__c: [this.vehicleStock.fuel_type__c],
       rego_no__c: [this.vehicleStock.rego_no__c],
@@ -53,7 +54,7 @@ export class VehicleStockFormComponent implements OnInit {
       egc_price__c: [this.vehicleStock.egc_price__c],
       series_c__c: [this.vehicleStock.series_c__c],
       stock_image__c: [this.vehicleStock.stock_image__c]
-    })
+    });
   }
   onCloseModal(event: any){
     this.closeModalEvent.emit(event);  
@@ -62,15 +63,16 @@ export class VehicleStockFormComponent implements OnInit {
 
   onSubmit(){
     this.submitted = true;
-    console.log(this.vehicleStockForm)
+    console.log(this.vehicleStockForm);
 
     if (this.vehicleStockForm.invalid) {
-        return;
+      return;
     }
-    if(this.type == 'edit'){
+    if (this.type == "edit") {
       this.vehicleStockForm.value.id = this.vehicleStock.id;
-    } 
+    }
 
-    this.send.emit(this.vehicleStockForm.value); 
+    this.send.emit(this.vehicleStockForm.value);
   }
+  closeOpportunityModal() {}
 }

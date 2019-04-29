@@ -1,609 +1,695 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="driverForm">
-<div class="container-fluid">
-  <div class="card mt-3">
-    <div class="card-header">
-      <a
-        data-toggle="collapse"
-        href="#card-lead-information"
-        aria-expanded="true"
-        aria-controls="card-lead-information"
-      >
-        Driver Information
-      </a>
-    </div>
-    <div class="card-body collapse show" id="card-lead-information">
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label
-              >Lead Owner<b class="mx-2"><br>Manikandan Gunasekar</b></label
-            >
+  <div class="container-fluid">
+    <div class="card mt-3">
+      <div class="card-header">
+        <a
+          data-toggle="collapse"
+          href="#card-lead-information"
+          aria-expanded="true"
+          aria-controls="card-lead-information"
+        >
+          Driver Information
+        </a>
+      </div>
+      <div class="card-body collapse show" id="card-lead-information">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label
+                >Lead Owner<b class="mx-2"><br />Manikandan Gunasekar</b></label
+              >
+            </div>
           </div>
-          
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label><span class="red_star">*</span>Name</label>
-            <input
-              name="name"
-              pattern="[a-zA-Z\sàèéìòù]+"
-              type="text"
-              class="form-control"
-              id="first_name__c_lead"
-              formControlName="name"
-              required=""
-            />
-            <div *ngIf="submitted && driverForm.controls.name.errors" class="error">
-              <div *ngIf="driverForm.controls.name.errors.required">
-                <p class="error-box margin-top-0">
-                  Name is Required
-                </p>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label><span class="red_star">*</span>Name</label>
+              <input
+                name="name"
+                pattern="[a-zA-Z\sàèéìòù]+"
+                type="text"
+                class="form-control"
+                id="first_name__c_lead"
+                formControlName="name"
+                required=""
+              />
+              <div
+                *ngIf="submitted && driverForm.controls.name.errors"
+                class="error"
+              >
+                <div *ngIf="driverForm.controls.name.errors.required">
+                  <p class="error-box margin-top-0">
+                    Name is Required
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-      </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Parent Account </label>
-            <select
-              class="selcet form-control"
-              id="parent_account"
-              name="parent_account"
-              formControlName="parent_account"
-            >
-              <option value="">-- SELECT --</option>
-            </select>
-
-          </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Account Number</label>
-            <input
-              type="text"
-              name="accountid"
-              id="accountid"
-              class="form-control"
-              required=""
-              formControlName="accountid"
-            />
-            <div *ngIf="submitted && driverForm.controls.accountid.errors" class="error">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Parent Account </label>
+              <select
+                class="selcet form-control"
+                id="parent_account"
+                name="parent_account"
+                formControlName="parent_account"
+              >
+                <option value="">-- SELECT --</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Account Number</label>
+              <input
+                type="text"
+                name="accountid"
+                id="accountid"
+                class="form-control"
+                required=""
+                formControlName="accountid"
+              />
+              <div
+                *ngIf="submitted && driverForm.controls.accountid.errors"
+                class="error"
+              >
                 <div *ngIf="driverForm.controls.accountid.errors.required">
                   <p class="error-box margin-top-0">
-                      Account Number is Required
+                    Account Number is Required
                   </p>
                 </div>
               </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Title </label>
-            <select
-              class="selcet form-control"
-              id="title"
-              name="title"
-              formControlName="title"
-            >
-              <option value="Mr">Mr</option>
-              <option value="Miss">Miss</option>
-              <option value="Mrs">Mrs</option>
-            </select>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Title </label>
+              <select
+                class="selcet form-control"
+                id="title"
+                name="title"
+                formControlName="title"
+              >
+                <option value="Mr">Mr</option>
+                <option value="Miss">Miss</option>
+                <option value="Mrs">Mrs</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>BirthDate:</label>
+              <input
+                type="text"
+                name="birthdate"
+                id="birthdate"
+                class="form-control"
+                placeholder="YYYY/MM/DD"
+                formControlName="birthdate"
+              />
+            </div>
           </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>BirthDate:</label>
-            <input
-              type="text"
-              name="birthdate"
-              id="birthdate"
-              class="form-control"
-              placeholder="YYYY/MM/DD"
-              formControlName="birthdate"
-            />
-            
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Customer Type </label>
+              <select
+                class="selcet form-control"
+                id="customer_type__c"
+                name="customer_type__c"
+                formControlName="customer_type__c"
+              >
+                <option value="">-- SELECT --</option>
+                <option value="">Primary</option>
+                <option value="">Driver</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Record Type </label>
+              <select
+                class="selcet form-control"
+                id="record_type"
+                name="record_type"
+                formControlName="record_type"
+              >
+                <option value="">-- SELECT --</option>
+                <option value="">Primary</option>
+              </select>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Customer Type </label>
-            <select
-              class="selcet form-control"
-              id="customer_type__c"
-              name="customer_type__c"
-              formControlName="customer_type__c"
-            >
-              <option value="">-- SELECT --</option>
-              <option value="">Primary</option>
-              <option value="">Driver</option>
-            </select>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Selling Dealer </label>
+              <select
+                class="selcet form-control"
+                id="selling_dealer"
+                name="selling_dealer"
+                formControlName="selling_dealer"
+              >
+                <option value="">-- SELECT --</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Service Dealer Name</label>
+              <select
+                class="selcet form-control"
+                name="service_dealer"
+                id="service_dealer"
+                formControlName="service_dealer"
+              >
+                <option value="">-- SELECT --</option>
+              </select>
+            </div>
           </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Record Type </label>
-            <select
-              class="selcet form-control"
-              id="record_type"
-              name="record_type"
-              formControlName="record_type"
-            >
-              <option value="">-- SELECT --</option>
-              <option value="">Primary</option>
-            </select>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Request Type </label>
+              <select
+                class="selcet form-control"
+                id="customer_type"
+                name="customer_type"
+                formControlName="customer_type"
+              >
+                <option value="">-- SELECT --</option>
+                <option value="">Test Drive</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label for="Make">Do Not Contact</label><br />
+              <input
+                type="radio"
+                value=""
+                name="do_not_contact__c"
+                formControlName="do_not_contact__c"
+                checked=""
+                data-parsley-multiple="do_not_contact__c"
+              />
+              no
+              <input
+                type="radio"
+                value=""
+                name="do_not_contact__c"
+                formControlName="do_not_contact__c"
+                data-parsley-multiple="do_not_contact__c"
+              />
+              yes
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Selling Dealer </label>
-            <select
-              class="selcet form-control"
-              id="selling_dealer"
-              name="selling_dealer"
-              formControlName="selling_dealer"
-            >
-              <option value="">-- SELECT --</option>
-             
-            </select>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>FAX</label>
+              <input
+                type="text"
+                name="fax"
+                id="fax"
+                class="form-control"
+                formControlName="fax"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Business Phone</label>
+              <input
+                pattern="\d{1,15}"
+                type="text"
+                class="form-control"
+                name="business_phone__c"
+                id="business_phone__c"
+                formControlName="business_phone__c"
+              />
+            </div>
           </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Service Dealer Name</label>
-            <select
-              class="selcet form-control"
-              name="service_dealer"
-              id="service_dealer"
-              formControlName="service_dealer"
-            >
-              <option value="">-- SELECT --</option>
-      
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Request Type </label>
-            <select
-              class="selcet form-control"
-              id="customer_type"
-              name="customer_type"
-              formControlName="customer_type"
-            >
-              <option value="">-- SELECT --</option>
-              <option value="">Test Drive</option>
-             
-            </select>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label for="Make">Do Not Contact</label><br>
-            <input type="radio" value="" name="do_not_contact__c" formControlName="do_not_contact__c" checked="" data-parsley-multiple="do_not_contact__c"> no
-            <input type="radio" value="" name="do_not_contact__c" formControlName="do_not_contact__c" data-parsley-multiple="do_not_contact__c"> yes
-         </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>FAX</label>
-            <input
-              type="text"
-              name="fax"
-              id="fax"
-              class="form-control"
-              formControlName="fax"
-            />
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Business Phone</label>
-            <input
-              pattern="\d{1,15}"
-              type="text"
-              class="form-control"
-              name="business_phone__c"
-              id="business_phone__c"
-              formControlName="business_phone__c"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Business Email:</label>
-            <input
-              type="email"
-              name="business_email__c"
-              id="business_email__c"
-              class="form-control"
-              required=""
-              formControlName="business_email__c"
-            />
-            <div *ngIf="submitted && driverForm.controls.business_email__c.errors" class="error">
-                <div *ngIf="driverForm.controls.business_email__c.errors.required">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Business Email:</label>
+              <input
+                type="email"
+                name="business_email__c"
+                id="business_email__c"
+                class="form-control"
+                required=""
+                formControlName="business_email__c"
+              />
+              <div
+                *ngIf="
+                  submitted && driverForm.controls.business_email__c.errors
+                "
+                class="error"
+              >
+                <div
+                  *ngIf="driverForm.controls.business_email__c.errors.required"
+                >
                   <p class="error-box margin-top-0">
-                      Business Email is Required
+                    Business Email is Required
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Business Phone Service Type</label>
+              <input
+                type="text"
+                class="form-control"
+                name="business_phone_service_type__c"
+                id="business_phone_service_type__c"
+                formControlName="business_phone_service_type__c"
+              />
+            </div>
           </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Business Phone Service Type</label>
-            <input
-            
-              type="text"
-              class="form-control"
-              name="business_phone_service_type__c"
-              id="business_phone_service_type__c"
-              formControlName="business_phone_service_type__c"
-            />
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label for="usr">Business Email Valid</label><br />
+              <input
+                type="radio"
+                value=""
+                name="business_email_valid__c"
+                formControlName="business_email_valid__c"
+                checked=""
+                data-parsley-multiple="business_email_valid__c"
+              />
+              no
+              <input
+                type="radio"
+                value=""
+                name="business_email_valid__c"
+                formControlName="business_email_valid__c"
+                data-parsley-multiple="business_email_valid__c"
+              />
+              yes
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label for="usr">Business Phone Valid</label><br />
+              <input
+                type="radio"
+                value=""
+                name="business_phone_valid__c"
+                formControlName="business_phone_valid__c"
+                checked=""
+                data-parsley-multiple="business_phone_valid__c"
+              />
+              no
+              <input
+                type="radio"
+                value=""
+                name="business_phone_valid__c"
+                formControlName="business_phone_valid__c"
+                data-parsley-multiple="business_phone_valid__c"
+              />
+              yes
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label for="usr">Business Email Valid</label><br>
-            <input type="radio" value="" name="business_email_valid__c" formControlName="business_email_valid__c" checked="" data-parsley-multiple="business_email_valid__c"> no
-            <input type="radio" value="" name="business_email_valid__c" formControlName="business_email_valid__c" data-parsley-multiple="business_email_valid__c"> yes                     
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label for="usr">Business Phone Valid</label><br>
-            <input type="radio" value="" name="business_phone_valid__c" formControlName="business_phone_valid__c" checked="" data-parsley-multiple="business_phone_valid__c"> no
-            <input type="radio" value="" name="business_phone_valid__c" formControlName="business_phone_valid__c" data-parsley-multiple="business_phone_valid__c"> yes                     
-        </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Home Email</label>
-            <input
-              type="email"
-              name="home_email__c"
-              id="home_email__c"
-              class="form-control"
-              required=""
-              formControlName="home_email__c"
-            />
-            <div *ngIf="submitted && driverForm.controls.home_email__c.errors" class="error">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Home Email</label>
+              <input
+                type="email"
+                name="home_email__c"
+                id="home_email__c"
+                class="form-control"
+                required=""
+                formControlName="home_email__c"
+              />
+              <div
+                *ngIf="submitted && driverForm.controls.home_email__c.errors"
+                class="error"
+              >
                 <div *ngIf="driverForm.controls.home_email__c.errors.required">
                   <p class="error-box margin-top-0">
-                      Home Email is Required
+                    Home Email is Required
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label for="usr">Home Phone</label>
+              <input
+                type="text"
+                pattern="\d{1,15}"
+                name="homephone"
+                class="form-control"
+                id="homephone"
+                formControlName="homephone"
+              />
+            </div>
           </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label for="usr">Home Phone</label>
-            <input type="text" 
-            pattern="\d{1,15}" 
-            name="homephone" 
-            class="form-control" 
-            id="homephone"
-            formControlName="homephone" 
-            >
-         </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label for="usr">Home Phone Service Type</label>
-            <input type="text" 
-            name="home_phone_service_type__c" 
-            id="home_phone_service_type__c" 
-            class="form-control"
-            formControlName="home_phone_service_type__c" 
-            >
-         </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label for="usr">Home Phone Service Type</label>
+              <input
+                type="text"
+                name="home_phone_service_type__c"
+                id="home_phone_service_type__c"
+                class="form-control"
+                formControlName="home_phone_service_type__c"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label for="usr">Home Phone Valid</label><br />
+              <input
+                type="radio"
+                name="home_phone_valid__c"
+                formControlName="home_phone_valid__c"
+                value=""
+                checked=""
+                data-parsley-multiple="home_phone_valid__c"
+              />
+              no
+              <input
+                type="radio"
+                name="home_phone_valid__c"
+                formControlName="home_phone_valid__c"
+                value=""
+                data-parsley-multiple="home_phone_valid__c"
+              />
+              yes
+            </div>
+          </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label for="usr">Home Phone Valid</label><br>
-            <input type="radio" name="home_phone_valid__c" formControlName="home_phone_valid__c" value="" checked="" data-parsley-multiple="home_phone_valid__c"> no
-            <input type="radio" name="home_phone_valid__c" formControlName="home_phone_valid__c" value="" data-parsley-multiple="home_phone_valid__c"> yes
-         </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label for="usr">Email:</label>
-            <input type="email"
-             class="form-control" 
-             id="email"  
-             name="email"
-             formControlName="email"
-             >
-         </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label for="usr">Email:</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                formControlName="email"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>MobilePhone:</label>
+              <input
+                type="number"
+                pattern="\d{1,15}"
+                id="mobilephone"
+                name="mobilephone"
+                formControlName="mobilephone"
+                class="form-control"
+              />
+            </div>
+          </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-        <div class="form-group">
-          <label>MobilePhone:</label>
-          <input type="number" pattern="\d{1,15}" id="mobilephone" name="mobilephone" formControlName="mobilephone" class="form-control">
-       </div>
-       </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label for="usr">Model:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="interest_of_model__c"
+                autocomplete="off"
+              />
+              <!--<span onclick="showSearchModal('name','interest_of_model__c')" class="glyphicon glyphicon-search"></span>-->
+              <!-- <div style="display:none;" id="interest_of_model__c_error"> </div> -->
+              <!-- <input type="hidden" id="in_model__c" name="interest_of_model__c" value="">						 -->
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Make:</label>
+              <input
+                type="text"
+                id="interest_of_make__c"
+                name="interest_of_make__c"
+                class="form-control"
+                formControlName="interest_of_make__c"
+              />
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label for="usr">Model:</label>
-            <input type="text" class="form-control" id="interest_of_model__c" autocomplete="off">
-            <!--<span onclick="showSearchModal('name','interest_of_model__c')" class="glyphicon glyphicon-search"></span>-->
-            <!-- <div style="display:none;" id="interest_of_model__c_error"> </div> -->
-            <!-- <input type="hidden" id="in_model__c" name="interest_of_model__c" value="">						 -->
-         </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Make:</label>
-            <input type="text" 
-            id="interest_of_make__c"
-             name="interest_of_make__c" 
-             class="form-control"
-             formControlName="interest_of_make__c"
-             >
-         </div>
-        </div>
-      </div>
-     
-    
     </div>
-  </div>
-  <div class="card mt-3">
-    <div class="card-header">
-      <a
-        data-toggle="collapse"
-        href="#address-information"
-        aria-expanded="false"
-        aria-controls="address-information"
-        (click)="visibleOne = !visibleOne"
+    <div class="card mt-3">
+      <div class="card-header">
+        <a
+          data-toggle="collapse"
+          href="#address-information"
+          aria-expanded="false"
+          aria-controls="address-information"
+          (click)="visibleOne = !visibleOne"
         >
           <i class="fa fa-angle-down" *ngIf="visibleOne"></i>
           <i class="fa fa-angle-right" *ngIf="!visibleOne"></i>
-           Address Information</a
+          Address Information</a
+        >
+      </div>
+      <div
+        id="address-information"
+        class="card-body collapse"
+        aria-expanded="true"
       >
-    </div>
-    <div
-      id="address-information"
-      class="card-body collapse"
-      aria-expanded="true"
-    >
-      <div class="row"></div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Billing Address</label>
-            <textarea
-              id="billing_address__c"
-              name="billing_address__c"
-              class="form-control"
-              cols="2"
-              row="20"
-              formControlName="billing_address__c"
-            >
-            </textarea>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Billing Suburb</label>
-            <input
-              id="billing_suburb__c"
-              name="billing_suburb__c"
-              class="form-control"
-              formControlName="billing_suburb__c"
-              >
-           
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label for="usr">Billing State</label>
-            <input type="text" 
-            id="billing_state__c" 
-            name="billing_state__c" 
-            class="form-control"
-            formControlName="billing_state__c" 
-            >
-         </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Billing Postcode</label>
-            <input type="text" 
-            id="billing_post_code__c" 
-            name="billing_post_code__c"
-             maxlength="4" 
-             class="form-control"
-             formControlName="billing_post_code__c"
-             >
-         </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label for="usr">Billing Country</label>
-            <input 
-            type="text"
-             id="billing_country__c"
-              name="billing_country__c"
-               class="form-control"
-               formControlName="billing_country__c"
-               >
-         </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Billing DPID</label>
-            <input 
-             type="text"
-             id="billingdpid__c"
-             name="billingdpid__c" 
-             class="form-control"
-             formControlName="billingdpid__c" 
-             >
-         </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label for="usr">Billing Latitute</label>
-            <input 
-            type="text" 
-            name="billing_latitude__c" 
-            id="billing_latitude__c" 
-            class="form-control"
-            formControlName="billing_latitude__c" 
-            >
-         </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Billing Longitute</label>
-            <input 
-            type="text" 
-            name="billing_longitude__c" 
-            id="billing_longitude__c" 
-            class="form-control"
-            formControlName="billing_longitude__c" 
-            >
-         </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-         <div class="form-group">
-            <label for="usr">Physical Address</label>
-              <!-- <input type="text" id="copyphysicaladdresstobillingaddress__c" name="copyphysicaladdresstobillingaddress__c" class="form-control"> -->
-          </div>
-        </div>
-      </div>
-      <!--- end of row -->
-    </div>
-  </div>
-
-
-  <div class="card mt-3">
-    <div class="card-header">
-      <a data-toggle="collapse" href="#addtional-information"
-      (click)="visibleTwo = !visibleTwo"
-      >
-        <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
-        <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i>
-        &nbsp;Additional Information
-      </a>
-    </div>
-    <div
-      id="addtional-information"
-      class="card-body collapse in"
-      aria-expanded="false"
-    >
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label for="usr">Sales Life Time Value:</label>
-            <input type="text" class="form-control">
-         </div>
-        </div>
-
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-          <div class="form-group">
-            <label>Service Life Time Value:</label>
-            <input type="text" class="form-control">
-         </div>
-        </div>
-      </div>
-      <div class="row">
+        <div class="row"></div>
+        <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-              <div class="form-group">
-                  <label for="usr">Webapp Token:</label>
-                  <input type="number" class="form-control">
-               </div>
-          </div>
-      </div>
-
-     
-      <!--- end of row -->
-    </div>
-  </div>
-  <div class="card mt-3 mb-3">
-    <div class="card-header">
-      <a data-toggle="collapse" href="#system-information"
-      (click)="visibleThree = !visibleThree"
-      >
-        <i class="fa fa-angle-right" *ngIf="visibleThree"></i>
-        <i class="fa fa-angle-down" *ngIf="!visibleThree"></i>
-        System Information</a
-      >
-    </div>
-    <div
-      id="system-information"
-      class="collapse in card-body"
-      aria-expanded="true"
-    >
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
-                <label>Created by</label>
-                 <div id="createdby_lead"></div>	
-               </div>
+              <label>Billing Address</label>
+              <textarea
+                id="billing_address__c"
+                name="billing_address__c"
+                class="form-control"
+                cols="2"
+                row="20"
+                formControlName="billing_address__c"
+              >
+              </textarea>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Billing Suburb</label>
+              <input
+                id="billing_suburb__c"
+                name="billing_suburb__c"
+                class="form-control"
+                formControlName="billing_suburb__c"
+              />
+            </div>
+          </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+        <div class="row">
+          <div class="col-lg-6 col-md-6col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label for="usr">Billing State</label>
+              <input
+                type="text"
+                id="billing_state__c"
+                name="billing_state__c"
+                class="form-control"
+                formControlName="billing_state__c"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Billing Postcode</label>
+              <input
+                type="text"
+                id="billing_post_code__c"
+                name="billing_post_code__c"
+                maxlength="4"
+                class="form-control"
+                formControlName="billing_post_code__c"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label for="usr">Billing Country</label>
+              <input
+                type="text"
+                id="billing_country__c"
+                name="billing_country__c"
+                class="form-control"
+                formControlName="billing_country__c"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Billing DPID</label>
+              <input
+                type="text"
+                id="billingdpid__c"
+                name="billingdpid__c"
+                class="form-control"
+                formControlName="billingdpid__c"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label for="usr">Billing Latitute</label>
+              <input
+                type="text"
+                name="billing_latitude__c"
+                id="billing_latitude__c"
+                class="form-control"
+                formControlName="billing_latitude__c"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Billing Longitute</label>
+              <input
+                type="text"
+                name="billing_longitude__c"
+                id="billing_longitude__c"
+                class="form-control"
+                formControlName="billing_longitude__c"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label for="usr">Physical Address</label>
+              <!-- <input type="text" id="copyphysicaladdresstobillingaddress__c" name="copyphysicaladdresstobillingaddress__c" class="form-control"> -->
+            </div>
+          </div>
+        </div>
+        <!--- end of row -->
+      </div>
+    </div>
+
+    <div class="card mt-3">
+      <div class="card-header">
+        <a
+          data-toggle="collapse"
+          href="#addtional-information"
+          (click)="visibleTwo = !visibleTwo"
+        >
+          <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
+          <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i>
+          &nbsp;Additional Information
+        </a>
+      </div>
+      <div
+        id="addtional-information"
+        class="card-body collapse in"
+        aria-expanded="false"
+      >
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label for="usr">Sales Life Time Value:</label>
+              <input type="text" class="form-control" />
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Service Life Time Value:</label>
+              <input type="text" class="form-control" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label for="usr">Webapp Token:</label>
+              <input type="number" class="form-control" />
+            </div>
+          </div>
+        </div>
+
+        <!--- end of row -->
+      </div>
+    </div>
+    <div class="card mt-3 mb-3">
+      <div class="card-header">
+        <a
+          data-toggle="collapse"
+          href="#system-information"
+          (click)="visibleThree = !visibleThree"
+        >
+          <i class="fa fa-angle-right" *ngIf="visibleThree"></i>
+          <i class="fa fa-angle-down" *ngIf="!visibleThree"></i>
+          System Information</a
+        >
+      </div>
+      <div
+        id="system-information"
+        class="collapse in card-body"
+        aria-expanded="true"
+      >
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+            <div class="form-group">
+              <label>Created by</label>
+              <div id="createdby_lead"></div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label>Last modified by</label>
-              <div id="lastmodifiedby_lead"></div>	
+              <div id="lastmodifiedby_lead"></div>
             </div>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label>Created Date</label>
-              <div id="createddate_lead"></div>		
+              <div id="createddate_lead"></div>
             </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label>Last modified date</label>
-              <div id="lastmodifiedbyid_lead"></div>	
+              <div id="lastmodifiedbyid_lead"></div>
             </div>
+          </div>
         </div>
+        <!--- end of row -->
       </div>
-      <!--- end of row -->
     </div>
   </div>
-</div>
 
-<div class="modal-footer">
+  <div class="modal-footer">
     <button
       type="button"
       class="btn btn-default"
@@ -612,6 +698,8 @@
     >
       Cancel
     </button>
-    <button type="button" class="btn btn-info" (click)="onSubmit(opportunity)">Save</button>
+    <button type="button" class="btn btn-info" (click)="onSubmit()">
+      Save
+    </button>
   </div>
 </form>

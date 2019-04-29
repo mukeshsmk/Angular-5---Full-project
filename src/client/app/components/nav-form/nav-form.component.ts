@@ -11,21 +11,13 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
   styleUrls: ["nav-form.component.css"]
 })
 export class NavFormComponent implements OnInit {
-
-
   opportunityForm: FormGroup;
 
-  constructor(
-    private formBuilder: FormBuilder,
-  ){
-    
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit() {
-    
-  }
-  
-  onSubmit(){
-  }
-  
+  ngOnInit() {}
+
+  onSubmit() {}
+
+  closeModal() {}
 }

@@ -2,7 +2,7 @@ import { Component, ViewChild,Output,EventEmitter } from "@angular/core";
 
 import { TabsComponent } from "../tab/tabs.component";
 import { HttpClient } from "@angular/common/http";
-import GeneralService from "../../shared/services/GeneralService";
+import { GeneralService } from "../../shared/services/GeneralService";
 import Config from "../../shared/config";
 
 @Component({
@@ -36,6 +36,7 @@ export class TableListComponent {
   permission:any;
   vsType:any='';
   userData:any;
+  sort:any='id';
 
   searchTerm: string;
   constructor(private http: HttpClient, public generalService: GeneralService) {
@@ -48,7 +49,8 @@ export class TableListComponent {
       page: this.page,
       limit: this.limit,
       search: this.search,
-      type:this.vsType
+      type:this.vsType,
+      sort:this.sort
     };
     this.generalService.emitter.subscribe((response: string) => {
       this.module = response;
@@ -69,9 +71,9 @@ export class TableListComponent {
       page: this.page,
       limit: this.limit,
       search: this.search,
-      type:this.vsType
+      type:this.vsType,
+      sort:this.sort
     };
-    this.loadData;
     this.loadData(this.module, params);
   }
   loadData(type: string, params: any) {
@@ -115,7 +117,8 @@ export class TableListComponent {
         page: 1,
         limit: this.limit,
         search: this.search,
-        type:this.vsType
+        type:this.vsType,
+        sort:this.sort
       };
       this.loadData(this.module, params);
     }
@@ -126,7 +129,8 @@ export class TableListComponent {
       page: 1,
       limit: this.limit,
       search: this.search,
-      type:this.vsType
+      type:this.vsType,
+      sort:this.sort
     };
 
     this.loadData(this.module, params);
@@ -137,7 +141,8 @@ export class TableListComponent {
       page: this.page,
       limit: this.limit,
       search: this.search,
-      type:this.vsType
+      type:this.vsType,
+      sort:this.sort
     };
     this.loadData(this.module, params);
   }
@@ -147,106 +152,24 @@ export class TableListComponent {
       page: 1,
       limit: this.limit,
       search: this.search,
-      type:this.vsType
+      type:this.vsType,
+      sort:this.sort
     };
     this.loadData(this.module, params);
   }
   activateClass(i: any) {
     i.active = !i.current_page;
   }
-  sort(arg: any) {
-    switch (arg) {
-      case "name":
-        this.opportunityList = this.opportunityList.sort(function(
-          a: any,
-          b: any
-        ) {
-          var x = a.name.toLowerCase();
-          var y = b.name.toLowerCase();
-          if (x < y) {
-            return -1;
-          }
-          if (x > y) {
-            return 1;
-          }
-          return 0;
-        });
-        break;
-      case "company":
-        this.opportunityList = this.opportunityList.sort(function(
-          a: any,
-          b: any
-        ) {
-          var x = a.company__c.toLowerCase();
-          var y = b.company__c.toLowerCase();
-          if (x < y) {
-            return -1;
-          }
-          if (x > y) {
-            return 1;
-          }
-          return 0;
-        });
-        break;
-      case "phone":
-        this.opportunityList = this.opportunityList.sort(function(
-          a: any,
-          b: any
-        ) {
-          var x = a.phone__c;
-          var y = b.phone__c;
-          return x - y;
-        });
-        break;
-      case "email":
-        this.opportunityList = this.opportunityList.sort(function(
-          a: any,
-          b: any
-        ) {
-          var x = a.email__c.toLowerCase();
-          var y = b.email__c.toLowerCase();
-          if (x < y) {
-            return -1;
-          }
-          if (x > y) {
-            return 1;
-          }
-          return 0;
-        });
-        break;
-      case "leadowner":
-        this.opportunityList = this.opportunityList.sort(function(
-          a: any,
-          b: any
-        ) {
-          var x = a.leadowner.toLowerCase();
-          var y = b.leadowner.toLowerCase();
-          if (x < y) {
-            return -1;
-          }
-          if (x > y) {
-            return 1;
-          }
-          return 0;
-        });
-        break;
-      case "id":
-        this.opportunityList = this.opportunityList.sort(function(
-          a: any,
-          b: any
-        ) {
-          var x = a.id;
-          var y = b.id;
-          if (x < y) {
-            return -1;
-          }
-          if (x > y) {
-            return 1;
-          }
-          return 0;
-        });
-        break;
-    }
+  sortData(sort: any) {
+    this.sort = sort;
+    let params = {
+      page: 1,
+      limit: this.limit,
+      search: this.search,
+      type:this.vsType,
+      sort:this.sort
+    };
+    this.loadData(this.module, params);
   }
   viewPersondetails(data: any) {
     this.loaderOne = true;

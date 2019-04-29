@@ -1,11 +1,18 @@
-
-<form (ngSubmit)="onSubmit(forgetForm)" #forgetForm="ngForm">
+<form (ngSubmit)="onSubmit()">
   <div class="container">
     <h1>Forget password</h1>
- 
+
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" [(ngModel)]='user.email' #email='ngModel' name='email' required email>
-    <div *ngIf='email.invalid && (email.dirty || email.touched)'>
+    <input
+      type="text"
+      placeholder="Enter Email"
+      [(ngModel)]="user.email"
+      #email="ngModel"
+      name="email"
+      required
+      email
+    />
+    <div *ngIf="email.invalid && (email.dirty || email.touched)">
       <p class="error-box margin-top-0" *ngIf="email.hasError('required')">
         Email is Required
       </p>
@@ -14,11 +21,12 @@
       </p>
     </div>
     <p class="error-box margin-top-0" *ngIf="isEmailError">
-        Email address is incorrect
-     </p>
+      Email address is incorrect
+    </p>
 
     <!-- <button type="submit" class="registerbtn">Send</button>  -->
-    <button type="submit" [disabled]="!forgetForm.valid" class="login">Send</button> 
+    <button type="submit" [disabled]="!forgetForm.valid" class="login">
+      Send
+    </button>
   </div>
-  
 </form>

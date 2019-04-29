@@ -1,5 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl
+} from "@angular/forms";
 /**
  * This class represents the lazy loaded AboutComponent.
  */
@@ -21,23 +26,19 @@ export class DriverFormComponent implements OnInit {
   @Output() closeModalEvent = new EventEmitter<boolean>();
 
   @Input() driver: any;
-  @Input() type:any;
-  @Output('updateDriver') send = new EventEmitter<any>();
+  @Input() type: any;
+  @Output("updateDriver") send = new EventEmitter<any>();
 
   driverForm: FormGroup;
-  submitted:boolean = false;
+  submitted: boolean = false;
 
-  constructor(
-    private formBuilder: FormBuilder,
-  ){
-    
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.driverForm = this.formBuilder.group({
       name: [this.driver.name, Validators.required],
       parent_account: [this.driver.parent_account],
-      accountid:[this.driver.accountid],
+      accountid: [this.driver.accountid],
       title: [this.driver.title],
       birthdate: [this.driver.birthdate],
       customer_type__c: [this.driver.customer_type__c],
@@ -49,7 +50,9 @@ export class DriverFormComponent implements OnInit {
       fax: [this.driver.fax],
       business_phone__c: [this.driver.business_phone__c],
       business_email__c: [this.driver.business_email__c],
-      business_phone_service_type__c: [this.driver.business_phone_service_type__c],
+      business_phone_service_type__c: [
+        this.driver.business_phone_service_type__c
+      ],
       business_email_valid__c: [this.driver.business_email_valid__c],
       business_phone_valid__c: [this.driver.business_phone_valid__c],
       home_email__c: [this.driver.home_email__c],
@@ -64,11 +67,11 @@ export class DriverFormComponent implements OnInit {
       billing_state__c: [this.driver.billing_state__c],
       billing_post_code__c: [this.driver.billing_post_code__c],
       billing_country__c: [this.driver.billing_country__c],
-      billingdpid__c: [this.driver.billingdpid__c], 
-      billing_latitude__c:[this.driver.billing_latitude__c],
+      billingdpid__c: [this.driver.billingdpid__c],
+      billing_latitude__c: [this.driver.billing_latitude__c],
       billing_longitude__c: [this.driver.billing_longitude__c]
-    })
-    console.log(this.driver)
+    });
+    console.log(this.driver);
   }
   
   onCloseModal(event: any){
@@ -77,15 +80,16 @@ export class DriverFormComponent implements OnInit {
    
   onSubmit(){
     this.submitted = true;
-    console.log(this.driverForm)
+    console.log(this.driverForm);
 
     if (this.driverForm.invalid) {
-        return;
+      return;
     }
-    if(this.type == 'edit'){
+    if (this.type == "edit") {
       this.driverForm.value.id = this.driver.id;
-    } 
+    }
 
-    this.send.emit(this.driverForm.value); 
+    this.send.emit(this.driverForm.value);
   }
+  closeOpportunityModal() {}
 }

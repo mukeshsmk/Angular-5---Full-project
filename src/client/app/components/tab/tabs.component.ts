@@ -16,7 +16,7 @@ import {
 import { TabComponent } from "./tab.component";
 import { DynamicTabsDirective } from "./dynamic-tabs.directive";
 
-import GeneralService from "../../shared/services/GeneralService";
+import { GeneralService } from "../../shared/services/GeneralService";
 import { isComponentInstance } from "@angular/core/src/render3/context_discovery";
 
 @Component({

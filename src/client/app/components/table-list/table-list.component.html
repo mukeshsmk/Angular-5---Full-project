@@ -149,14 +149,14 @@
                         <th>
                           <input type="checkbox" id="blahA" value="1" />
                         </th>
-                        <th (click)="sort('id')">
+                        <th (click)="sortData('id')">
                           Id
                         </th>
                         <th>
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('name')"
+                              (click)="sortData('name')"
                             ></i>
                           </a>
                           Name
@@ -165,7 +165,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('company')"
+                              (click)="sortData('company__c')"
                             ></i>
                           </a>
                           Company
@@ -174,7 +174,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('phone')"
+                              (click)="sortData('phone__c')"
                             ></i>
                           </a>
                           Phone
@@ -183,7 +183,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('email')"
+                              (click)="sortData('email__c')"
                             ></i>
                           </a>
                           Email
@@ -192,7 +192,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('leadowner')"
+                              (click)="sortData('name')"
                             ></i>
                           </a>
                           LeadOwner
@@ -256,14 +256,14 @@
                         <!-- <th>
                           <input type="checkbox" id="blahA" value="1" />
                         </th> -->
-                        <th>
+                        <th (click)="sortData('id')">
                           id
                         </th>
                         <th>
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('name')"
+                              (click)="sortData('name')"
                             ></i>
                           </a>
                           StockNumber
@@ -272,7 +272,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('company')"
+                              (click)="sortData('vin__c')"
                             ></i>
                           </a>
                           VIN
@@ -281,7 +281,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('phone')"
+                              (click)="sortData('rego_no__c')"
                             ></i>
                           </a>
                           REG No.
@@ -290,7 +290,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('email')"
+                              (click)="sortData('vehicle_type__c')"
                             ></i>
                           </a>
                           VehicleType
@@ -299,17 +299,27 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('leadowner')"
+                              (click)="sortData('fuel_type__c')"
                             ></i>
                           </a>
                           FuelType
                         </th>
                         <th>
-                          <a href="#"> </a>
+                          <a href="#">
+                              <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sortData('make__c')"
+                            ></i>
+                          </a>
                           Make
                         </th>
                         <th>
-                          <a href="#"> </a>
+                          <a href="#">
+                              <i
+                              class="fas fa-sort-amount-down"
+                              (click)="sortData('model_name__c')"
+                            ></i>
+                           </a>
                           Model
                         </th>
                         <th *ngIf="permission.edit_permission==1">
@@ -369,14 +379,14 @@
                         <!-- <th>
                           <input type="checkbox" id="blahA" value="1" />
                         </th> -->
-                        <th>
+                        <th (click)="sortData('id')">
                           ID
                         </th>
                         <th>
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('name')"
+                              (click)="sortData('name')"
                             ></i>
                           </a>
                           Name
@@ -385,7 +395,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('company')"
+                              (click)="sortData('customer_type__c')"
                             ></i>
                           </a>
                           CustomerType
@@ -394,7 +404,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('phone')"
+                              (click)="sortData('email')"
                             ></i>
                           </a>
                           Email
@@ -403,7 +413,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('email')"
+                              (click)="sortData('phone')"
                             ></i>
                           </a>
                           Mobile
@@ -412,7 +422,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('leadowner')"
+                              (click)="sortData('accountid')"
                             ></i>
                           </a>
                           AccountNumber
@@ -421,7 +431,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('leadowner')"
+                              (click)="sortData('createddate')"
                             ></i>
                           </a>
                           Created Date
@@ -487,7 +497,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('name')"
+                              (click)="sortData('name')"
                             ></i>
                           </a>
                           Name
@@ -496,7 +506,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('company')"
+                              (click)="sortData('business_email__c')"
                             ></i>
                           </a>
                           Email
@@ -505,7 +515,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('phone')"
+                              (click)="sortData('mobile__c')"
                             ></i>
                           </a>
                           MobilePhone
@@ -514,7 +524,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('email')"
+                              (click)="sortData('account__c')"
                             ></i>
                           </a>
                           Account
@@ -523,7 +533,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('leadowner')"
+                              (click)="sortData('accountnumber')"
                             ></i>
                           </a>
                           AccountNumber
@@ -532,7 +542,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('leadowner')"
+                              (click)="sortData('phone')"
                             ></i>
                           </a>
                           Phone
@@ -541,7 +551,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('leadowner')"
+                              (click)="sortData('state__c')"
                             ></i>
                           </a>
                           State
@@ -550,7 +560,7 @@
                           <a href="#">
                             <i
                               class="fas fa-sort-amount-down"
-                              (click)="sort('leadowner')"
+                              (click)="sortData('billing_postcode__c')"
                             ></i>
                           </a>
                           PostalCode

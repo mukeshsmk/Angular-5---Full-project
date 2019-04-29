@@ -1,50 +1,74 @@
+<div class="bg_img">
+  <div class="login_container">
+    <div class="login_box">
+      <img
+        src="/assets/images/logo.png"
+        class="modal-img"
+        style="margin: 10px 0;;height: 60px"
+      />
+      <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+        <div>
+          <br />
+          <input
+            type="text"
+            placeholder="Email"
+            [(ngModel)]="user.email"
+            #email="ngModel"
+            name="email"
+            required
+            email
+          />
+          <div *ngIf="email.invalid && (email.dirty || email.touched)">
+            <p
+              class="error-box margin-top-0"
+              *ngIf="email.hasError('required')"
+            >
+              Email is Required
+            </p>
+            <p class="error-box margin-top-0" *ngIf="email.errors.email">
+              Email must be a valid email address
+            </p>
+            <p class="error-box margin-top-0" *ngIf="submitted && email.errors">
+              email address incorrect
+            </p>
+          </div>
 
-<div class="bg_img"> 
-  <div class="login_container" >
-      <div class="login_box">
-        <img src="/assets/images/logo.png" class="modal-img" style="margin: 10px 0;;height: 60px">
-        <form (ngSubmit)="onSubmit(loginForm)" #registerForm="ngForm">
-            <div>
-              <br>
-              <input type="text" placeholder="Email" [(ngModel)]='user.email' #email='ngModel' name='email' required email>
-              <div *ngIf='email.invalid && (email.dirty || email.touched)'>
-                <p class="error-box margin-top-0" *ngIf="email.hasError('required')">
-                  Email is Required
-                </p>
-                <p class="error-box margin-top-0" *ngIf="email.errors.email">
-                  Email must be a valid email address
-                </p>
-                <p class="error-box margin-top-0" *ngIf="submitted && email.errors"> 
-                   email address incorrect
-                </p>
-              </div>
-          
-              <br>
+          <br />
 
-              <input type="password" placeholder="Password" [(ngModel)]='user.password' #password='ngModel' name='password' required minlength="6">
-              <div *ngIf='password.invalid && (password.dirty || password.touched)'>
-                <p class="error-box margin-top-0" *ngIf="password.hasError('required')">
-                  Password is Required
-                </p>
-                <!-- <p class="error-box margin-top-0" *ngIf="password.hasError('minlength')">
+          <input
+            type="password"
+            placeholder="Password"
+            [(ngModel)]="user.password"
+            #password="ngModel"
+            name="password"
+            required
+            minlength="6"
+          />
+          <div *ngIf="password.invalid && (password.dirty || password.touched)">
+            <p
+              class="error-box margin-top-0"
+              *ngIf="password.hasError('required')"
+            >
+              Password is Required
+            </p>
+            <!-- <p class="error-box margin-top-0" *ngIf="password.hasError('minlength')">
                  Minimum 6 Characters are Required
                 </p> -->
-              </div>
-          
-              <p *ngIf="isLoginError" class="error-box margin-top-0">
-                Incorrect username or password
-              </p>
-          
-              <br>
+          </div>
 
-              <button type="submit"  [disabled]="!registerForm.valid" class="login">Sign In</button>  
-            </div>
-            
-          
-            <div class="loader" *ngIf="loaderOne"></div>
-           
-          
-          </form> 
-      </div>
-    </div> 
+          <p *ngIf="isLoginError" class="error-box margin-top-0">
+            Incorrect username or password
+          </p>
+
+          <br />
+
+          <button type="submit" [disabled]="!registerForm.valid" class="login">
+            Sign In
+          </button>
+        </div>
+
+        <div class="loader" *ngIf="loaderOne"></div>
+      </form>
+    </div>
   </div>
+</div>

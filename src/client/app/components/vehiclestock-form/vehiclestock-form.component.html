@@ -25,13 +25,16 @@
                 id="name"
                 required=""
               />
-              <div *ngIf="submitted && vehicleStockForm.controls.name.errors" class="error">
-                  <div *ngIf="vehicleStockForm.controls.name.errors.required">
-                    <p class="error-box margin-top-0">
-                        Stock Number is Required
-                    </p>
-                  </div>
+              <div
+                *ngIf="submitted && vehicleStockForm.controls.name.errors"
+                class="error"
+              >
+                <div *ngIf="vehicleStockForm.controls.name.errors.required">
+                  <p class="error-box margin-top-0">
+                    Stock Number is Required
+                  </p>
                 </div>
+              </div>
             </div>
           </div>
         </div>
@@ -81,13 +84,22 @@
                 <option value="Demo"> Demo </option>
                 <option value="Used"> Used </option>
               </select>
-              <div *ngIf="submitted && vehicleStockForm.controls.vehicle_type__c.errors" class="error">
-                  <div *ngIf="vehicleStockForm.controls.vehicle_type__c.errors.required">
-                    <p class="error-box margin-top-0">
-                        Vehicle type is Required
-                    </p>
-                  </div>
+              <div
+                *ngIf="
+                  submitted && vehicleStockForm.controls.vehicle_type__c.errors
+                "
+                class="error"
+              >
+                <div
+                  *ngIf="
+                    vehicleStockForm.controls.vehicle_type__c.errors.required
+                  "
+                >
+                  <p class="error-box margin-top-0">
+                    Vehicle type is Required
+                  </p>
                 </div>
+              </div>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -182,13 +194,16 @@
                 id="make__c"
                 required=""
               />
-              <div *ngIf="submitted && vehicleStockForm.controls.make__c.errors" class="error">
-                  <div *ngIf="vehicleStockForm.controls.make__c.errors.required">
-                    <p class="error-box margin-top-0">
-                      Make is Required
-                    </p>
-                  </div>
+              <div
+                *ngIf="submitted && vehicleStockForm.controls.make__c.errors"
+                class="error"
+              >
+                <div *ngIf="vehicleStockForm.controls.make__c.errors.required">
+                  <p class="error-box margin-top-0">
+                    Make is Required
+                  </p>
                 </div>
+              </div>
             </div>
           </div>
         </div>
@@ -296,8 +311,10 @@
 
     <div class="card mt-3 mb-3">
       <div class="card-header">
-        <a data-toggle="collapse" href="#system-information"
-        (click)="visibleOne = !visibleOne"
+        <a
+          data-toggle="collapse"
+          href="#system-information"
+          (click)="visibleOne = !visibleOne"
         >
           <i class="fa fa-angle-down" *ngIf="visibleOne"></i>
           <i class="fa fa-angle-right" *ngIf="!visibleOne"></i>
@@ -348,7 +365,7 @@
     >
       Cancel
     </button>
-    <button type="button" class="btn btn-info" (click)="onSubmit(opportunity)">
+    <button type="button" class="btn btn-info" (click)="onSubmit()">
       Save
     </button>
   </div>

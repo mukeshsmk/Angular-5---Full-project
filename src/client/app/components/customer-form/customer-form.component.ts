@@ -1,6 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
-import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl
+} from "@angular/forms";
 /**
  * This class represents the lazy loaded AboutComponent.
  */
@@ -19,25 +24,20 @@ export class CustomerFormComponent implements OnInit {
   @Output() closeModalEvent = new EventEmitter<boolean>();
   
   @Input() customer: any;
-  @Input() type:any;
-  @Output('updateCustomer') send = new EventEmitter<any>();
+  @Input() type: any;
+  @Output("updateCustomer") send = new EventEmitter<any>();
 
   customerForm: FormGroup;
-  submitted:boolean = false;
+  submitted: boolean = false;
 
-  constructor(
-    private formBuilder: FormBuilder,
-  ){
-    
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    
     this.customerForm = this.formBuilder.group({
-      first_name__c: [this.customer.first_name__c,Validators.required],
-      last_name__c: [this.customer.last_name__c ,Validators.required],
-      parent_account:[this.customer.parent_account],
-      accountnumber:[this.customer.accountnumber],
+      first_name__c: [this.customer.first_name__c, Validators.required],
+      last_name__c: [this.customer.last_name__c, Validators.required],
+      parent_account: [this.customer.parent_account],
+      accountnumber: [this.customer.accountnumber],
       account_record: [this.customer.account_record],
       selling_dealer: [this.customer.selling_dealer],
       service_dealer: [this.customer.service_dealer],
@@ -70,7 +70,7 @@ export class CustomerFormComponent implements OnInit {
       license_number__c: [this.customer.license_number__c],
       license_expiry_date__c: [this.customer.license_expiry_date__c],
       numberoflocations__c: [this.customer.numberoflocations__c],
-      phone2__c:[this.customer.phone2__c]
+      phone2__c: [this.customer.phone2__c]
     });
   }
 
@@ -81,16 +81,17 @@ export class CustomerFormComponent implements OnInit {
 
   onSubmit(){
     this.submitted = true;
-    console.log(this.customerForm)
+    console.log(this.customerForm);
 
     if (this.customerForm.invalid) {
-        return;
+      return;
     }
-    if(this.type == 'edit'){
+    if (this.type == "edit") {
       this.customerForm.value.id = this.customer.id;
-    } 
+    }
 
-    this.send.emit(this.customerForm.value); 
-}
+    this.send.emit(this.customerForm.value);
+  }
 
+  closeModal() {}
 }
