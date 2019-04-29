@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 /**
  * This class represents the lazy loaded AboutComponent.
  */
@@ -11,13 +12,19 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   userData:any;
   role:any = 0;
-  constructor() {
-    
-   }
+
+   constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem("user_data"));
     this.role = this.userData.roleid;
+  }
+
+  godashboard() {
+    this.router.navigate(["/dashboard"]);
+    console.log("check")
   }
 
 }

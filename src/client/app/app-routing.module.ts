@@ -3,6 +3,7 @@ import { RouterModule, CanActivate } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
 import { AuthGuardService as AuthGuard } from "./shared/services/AuthGuardService";
 import { LoginComponent } from "./login/login.component";
+import { DashboardComponent } from './components/dashboard/dashboard.component'
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { LoginComponent } from "./login/login.component";
         canActivate: [AuthGuard]
       },
       { path: "login", component: LoginComponent },
-      { path: "**", redirectTo: "" }
+      { path: "**", redirectTo: "" },
+      { path: "dashboard", component: DashboardComponent },
     ])
   ],
   exports: [RouterModule]
