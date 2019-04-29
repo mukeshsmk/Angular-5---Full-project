@@ -38,6 +38,8 @@ export class TableListComponent {
   userData:any;
   sort:any='id';
 
+ 
+
   searchTerm: string;
   constructor(private http: HttpClient, public generalService: GeneralService) {
     this.permission = {
