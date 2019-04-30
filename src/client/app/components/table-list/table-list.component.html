@@ -13,7 +13,11 @@
                   src="/assets/images/book.png"
                 /><span style="font-size:18px;">Opportunity</span>
                 <div class="col-3">
-                  <select class="form-control form-list" (change)="allocate($event.target.value)" *ngIf="userData.roleid == 3">
+                  <select
+                    class="form-control form-list"
+                    (change)="allocate($event.target.value)"
+                    *ngIf="userData.roleid == 3"
+                  >
                     <option value="allLeads" selected="">All</option>
                     <option value="allocated">Allocated Leads</option>
                     <option value="unallocated">Un Allocated Leads</option>
@@ -26,7 +30,11 @@
                   >Vehicle Stock</span
                 >
                 <div class="col-3">
-                  <select class="form-control form-list" (change)="vehicleStockType($event.target.value)" name="vehicleType">
+                  <select
+                    class="form-control form-list"
+                    (change)="vehicleStockType($event.target.value)"
+                    name="vehicleType"
+                  >
                     <option value="" selected="">All</option>
                     <option value="New">New Vehicle</option>
                     <option value="Used">Used Vehicle</option>
@@ -66,7 +74,9 @@
                 id="createNewLead"
                 type="button"
                 class="btn btn-secondary pull-right mr-1"
-                *ngIf="module == 'customers' && permission.create_permission==1"
+                *ngIf="
+                  module == 'customers' && permission.create_permission == 1
+                "
                 (click)="openNewCustomerModal()"
               >
                 <i
@@ -80,7 +90,7 @@
                 id="createNewLead"
                 type="button"
                 class="btn btn-secondary pull-right mr-1"
-                *ngIf="module == 'drivers' && permission.create_permission==1"
+                *ngIf="module == 'drivers' && permission.create_permission == 1"
                 (click)="openNewCustomerModal()"
               >
                 <i
@@ -93,7 +103,9 @@
               <button
                 type="button"
                 class="btn btn-secondary pull-right mr-1"
-                *ngIf="module == 'opportunities' && permission.create_permission==1"
+                *ngIf="
+                  module == 'opportunities' && permission.create_permission == 1
+                "
                 (click)="openNewOpportunityModal()"
               >
                 <i
@@ -102,6 +114,14 @@
                   class="fa fa-bolt"
                 >
                 </i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary pull-right mr-1"
+                *ngIf="changeLead"
+                (click)="getSearchModal()"
+              >
+                <i class="fa fa-user"></i>
               </button>
             </div>
           </div>
@@ -147,7 +167,7 @@
                     <table class="table mt-4">
                       <thead class=" text-primary pointer">
                         <th>
-                          <input type="checkbox" id="blahA" value="1" />
+                          <input type="checkbox" (change)="checkedall($event)" id="blahA" value="all" />
                         </th>
                         <th (click)="sortData('id')">
                           Id
@@ -197,7 +217,7 @@
                           </a>
                           LeadOwner
                         </th>
-                        <th *ngIf="permission.edit_permission==1">
+                        <th *ngIf="permission.edit_permission == 1">
                           <a href="#"> </a>
                           Edit
                         </th>
@@ -205,7 +225,7 @@
                       <tbody>
                         <tr *ngFor="let opportunity of opportunityList">
                           <td>
-                            <input type="checkbox" id="blahA" value="1" />
+                            <input type="checkbox" id="blahB" name="selected" value='{{ opportunity.id }}' (change)="checked()"/>
                           </td>
                           <td>
                             {{ opportunity.id }}
@@ -236,7 +256,7 @@
                           <td>
                             {{ opportunity.lead_owner_data }}
                           </td>
-                          <td *ngIf="permission.edit_permission==1">
+                          <td *ngIf="permission.edit_permission == 1">
                             <span
                               class="fas fa-edit pointer"
                               (click)="openOpportunityModal(opportunity)"
@@ -306,7 +326,7 @@
                         </th>
                         <th>
                           <a href="#">
-                              <i
+                            <i
                               class="fas fa-sort-amount-down"
                               (click)="sortData('make__c')"
                             ></i>
@@ -315,14 +335,14 @@
                         </th>
                         <th>
                           <a href="#">
-                              <i
+                            <i
                               class="fas fa-sort-amount-down"
                               (click)="sortData('model_name__c')"
                             ></i>
-                           </a>
+                          </a>
                           Model
                         </th>
-                        <th *ngIf="permission.edit_permission==1">
+                        <th *ngIf="permission.edit_permission == 1">
                           <a href="#"> </a>
                           Edit
                         </th>
@@ -360,7 +380,7 @@
                           <td>
                             {{ opportunity.model_name__c }}
                           </td>
-                          <td *ngIf="permission.edit_permission==1">
+                          <td *ngIf="permission.edit_permission == 1">
                             <span
                               class="fas fa-edit pointer"
                               (click)="updatevehicleStockModal(opportunity)"
@@ -436,7 +456,7 @@
                           </a>
                           Created Date
                         </th>
-                        <th *ngIf="permission.edit_permission==1">
+                        <th *ngIf="permission.edit_permission == 1">
                           <a href="#"> </a>
                           Edit
                         </th>
@@ -471,7 +491,7 @@
                           <td>
                             {{ opportunity.createddate }}
                           </td>
-                          <td *ngIf="permission.edit_permission==1">
+                          <td *ngIf="permission.edit_permission == 1">
                             <span
                               class="fas fa-edit pointer"
                               (click)="updateDriverModal(opportunity)"
@@ -565,7 +585,7 @@
                           </a>
                           PostalCode
                         </th>
-                        <th *ngIf="permission.edit_permission==1">
+                        <th *ngIf="permission.edit_permission == 1">
                           <a href="#"> </a>
                           Edit
                         </th>
@@ -606,7 +626,7 @@
                           <td>
                             {{ opportunity.billing_postcode__c }}
                           </td>
-                          <td *ngIf="permission.edit_permission==1">
+                          <td *ngIf="permission.edit_permission == 1">
                             <span
                               class="fas fa-edit pointer"
                               (click)="updateCustomerModal(opportunity)"
@@ -656,91 +676,125 @@
                 [ngClass]="{
                   'active bg-dark': opportunityListData.current_page == 1
                 }"
-                *ngIf = "opportunityListData.current_page != opportunityListData.last_page"
+                *ngIf="
+                  opportunityListData.current_page !=
+                  opportunityListData.last_page
+                "
                 (click)="pageNumber(1)"
               >
                 <a class="page-link">1</a>
               </li>
               <li
                 class="page-item"
-                *ngIf = "opportunityListData.current_page>=5"
+                *ngIf="opportunityListData.current_page >= 5"
               >
                 <a class="page-link">...</a>
               </li>
               <li
                 class="page-item"
-                *ngIf = "opportunityListData.current_page>=5"
+                *ngIf="opportunityListData.current_page >= 5"
                 (click)="pageNumber(opportunityListData.current_page - 1)"
               >
-                <a class="page-link">{{ opportunityListData.current_page - 1 }}</a>
+                <a class="page-link">{{
+                  opportunityListData.current_page - 1
+                }}</a>
               </li>
               <li
                 class="page-item active bg-dark"
-                *ngIf = "opportunityListData.current_page>=5 && (opportunityListData.last_page != opportunityListData.current_page)"
+                *ngIf="
+                  opportunityListData.current_page >= 5 &&
+                  opportunityListData.last_page !=
+                    opportunityListData.current_page
+                "
                 (click)="pageNumber(opportunityListData.current_page)"
               >
-              <a class="page-link">{{ opportunityListData.current_page }}</a>
+                <a class="page-link">{{ opportunityListData.current_page }}</a>
               </li>
               <li
                 class="page-item"
-                *ngIf = "opportunityListData.current_page>=5 && opportunityListData.current_page!=opportunityListData.last_page && (
-                  opportunityListData.current_page + 1)!=opportunityListData.last_page"
+                *ngIf="
+                  opportunityListData.current_page >= 5 &&
+                  opportunityListData.current_page !=
+                    opportunityListData.last_page &&
+                  opportunityListData.current_page + 1 !=
+                    opportunityListData.last_page
+                "
                 (click)="pageNumber(opportunityListData.current_page + 1)"
               >
-              <a class="page-link">{{ opportunityListData.current_page + 1 }}</a>
+                <a class="page-link">{{
+                  opportunityListData.current_page + 1
+                }}</a>
               </li>
               <li
                 class="page-item"
                 [ngClass]="{
                   'active bg-dark': opportunityListData.current_page == 2
                 }"
-                *ngIf = "opportunityListData.current_page < 5 && opportunityListData.last_page > 2"
+                *ngIf="
+                  opportunityListData.current_page < 5 &&
+                  opportunityListData.last_page > 2
+                "
                 (click)="pageNumber(2)"
               >
-              <a class="page-link">2</a>
+                <a class="page-link">2</a>
               </li>
               <li
                 class="page-item"
                 [ngClass]="{
                   'active bg-dark': opportunityListData.current_page == 3
                 }"
-                *ngIf = "opportunityListData.current_page < 5 && opportunityListData.last_page > 3"
+                *ngIf="
+                  opportunityListData.current_page < 5 &&
+                  opportunityListData.last_page > 3
+                "
                 (click)="pageNumber(3)"
               >
-              <a class="page-link">3</a>
+                <a class="page-link">3</a>
               </li>
               <li
                 class="page-item"
                 [ngClass]="{
                   'active bg-dark': opportunityListData.current_page == 4
                 }"
-                *ngIf = "opportunityListData.current_page < 5 && opportunityListData.last_page > 4"
+                *ngIf="
+                  opportunityListData.current_page < 5 &&
+                  opportunityListData.last_page > 4
+                "
                 (click)="pageNumber(4)"
               >
-              <a class="page-link">4</a>
+                <a class="page-link">4</a>
               </li>
-              <li
-              class="page-item"
-              [ngClass]="{
-                'active bg-dark': opportunityListData.current_page == 5
-              }"
-              *ngIf = "opportunityListData.current_page < 5 && opportunityListData.last_page > 5"
-              (click)="pageNumber(5)"
-            >
-            <a class="page-link">5</a>
-            </li>
-              
-              <li
-                class="page-item"
-                *ngIf = "(opportunityListData.last_page - opportunityListData.current_page)>1 && (opportunityListData.last_page )>5"
-              >
-                <a class="page-link">...</a>
-              </li>
-            
               <li
                 class="page-item"
                 [ngClass]="{
-                  'active bg-dark': opportunityListData.current_page == opportunityListData.last_page
+                  'active bg-dark': opportunityListData.current_page == 5
+                }"
+                *ngIf="
+                  opportunityListData.current_page < 5 &&
+                  opportunityListData.last_page > 5
+                "
+                (click)="pageNumber(5)"
+              >
+                <a class="page-link">5</a>
+              </li>
+
+              <li
+                class="page-item"
+                *ngIf="
+                  opportunityListData.last_page -
+                    opportunityListData.current_page >
+                    1 && opportunityListData.last_page > 5
+                "
+              >
+                <a class="page-link">...</a>
+              </li>
+
+              <li
+                class="page-item"
+                [ngClass]="{
+                  'active bg-dark':
+                    opportunityListData.current_page ==
+                    opportunityListData.last_page
                 }"
                 (click)="pageNumber(opportunityListData.last_page)"
               >
@@ -749,12 +803,14 @@
               <li
                 class="page-item"
                 [ngClass]="{
-                  disabled: opportunityListData.current_page === opportunityListData.last_page
+                  disabled:
+                    opportunityListData.current_page ===
+                    opportunityListData.last_page
                 }"
                 (click)="pageNumber(opportunityListData.current_page + 1)"
               >
                 <a class="page-link">Next</a>
-              </li>              
+              </li>
             </ul>
           </ul>
         </div>
@@ -766,7 +822,6 @@
       class="modal full-size"
       tabindex="-1"
       role="dialog"
-     
       [ngClass]="{ fade: opportunityOpen, 'd-flex': !opportunityOpen }"
     >
       <div class="modal-dialog" role="document">
@@ -778,7 +833,7 @@
               class="close"
               data-dismiss="modal"
               aria-label="Close"
-              (click)="closeModal()"
+              (click)="searchOpen = false"
             >
               <span aria-hidden="true">&times;</span>
             </button>
@@ -795,8 +850,8 @@
               </div>
             </ng-template>
             <ng-template [ngSwitchCase]="'vehicle_stocks'">
-              <div *ngIf="!opportunityOpen" >
-                <sd-vehiclestock-form  
+              <div *ngIf="!opportunityOpen">
+                <sd-vehiclestock-form
                   (closeModalEvent)="onClose($event)"
                   [vehicleStock]="modalData"
                   [type]="formType"
@@ -807,7 +862,7 @@
             <ng-template [ngSwitchCase]="'drivers'">
               <div *ngIf="!opportunityOpen">
                 <sd-driver-form
-                (closeModalEvent)="onClose($event)"
+                  (closeModalEvent)="onClose($event)"
                   [driver]="modalData"
                   [type]="formType"
                   (updateDriver)="updateDriver($event)"
@@ -828,6 +883,49 @@
         </div>
       </div>
     </div>
+    <div
+      class="modal full-size"
+      tabindex="-1"
+      role="dialog"
+      [ngClass]="{ fade: !searchOpen, 'd-flex': searchOpen }"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title text-center w-100">Search</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              (click)="closeModal()"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input [(ngModel)]="sdname" class="form-control w-75 float-left" type="search" /> 
+            <span style="padding: 10px 30px;" class="searchSD fa fa-search w-25 text-right" (click)="searchUserdetails()"></span>
+            <hr />
+            <div class="text-center" *ngIf="Searchwait"><p>Loading...</p></div>
+            <table *ngIf="searchUserData" class="table table-bordered">
+              <tbody>
+                <tr *ngFor="let data of searchUserData">
+                  <td align="center">
+                      <a  class="fillFirstName" href="#" (click)="assign(data.id)">{{data.firstname}}</a>
+                  </td>
+                  <td align="center">{{data.lastname}}</td>
+                  <td>{{data.email}}</td>
+                  <td>{{data.createdate}}</td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!--</ng-template> -->
   </sd-tab>
 </sd-tabs>

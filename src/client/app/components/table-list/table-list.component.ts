@@ -20,6 +20,7 @@ export class TableListComponent {
   @ViewChild("driverDetails") driverdetailsTemplate: any;
   @ViewChild("customerDetails") customerdetailsTemplate: any;
   @ViewChild("oppournityModal") oppournitymodalTemplate: any;
+  @ViewChild("searchModal") searchModalTemplate: any;
   loaderOne: Boolean = false;
   opportunityList: any = [];
   module: string = "opportunities";
@@ -29,6 +30,7 @@ export class TableListComponent {
   search: any = "";
   showEdit: boolean = false;
   opportunityOpen: boolean = true;
+  searchOpen: boolean = false;
   vehicleStock : boolean = false;
   modalData: any = [];
   formType: any;
@@ -39,6 +41,11 @@ export class TableListComponent {
   sort:any='id';
   allocated:any='';
   unallocated:any='';
+  changeLead:boolean=false;
+  aIds:any=[];
+  Searchwait:boolean=false;
+  sdname:any;
+  searchUserData:any;
 
  
 
@@ -63,6 +70,8 @@ export class TableListComponent {
     });
     this.loadData(this.module, params);
     this.userData = JSON.parse(localStorage.getItem("user_data"))
+    this.changeLead = false;
+    this.aIds=[];
   } 
 
    onClose(event: any){
@@ -219,7 +228,7 @@ export class TableListComponent {
         break;
       case "customers":
         template = this.customerdetailsTemplate;
-        break;
+        break;      
     }
     console.log(data);
     this.tabsComponent.openTab(
@@ -338,6 +347,82 @@ export class TableListComponent {
         this.modalData = [];
       });
   }
-  
+
+  checkedall(arg:any){
+    var all_id = document.querySelectorAll('input[name="selected"]');
+    if(arg.target.checked){
+      this.changeLead = true;
+      for(var x = 0, l = all_id.length; x < l;  x++){
+        all_id[x].checked = true
+          this.aIds.push(all_id[x].value);
+      }
+    }else{
+      this.changeLead = false;
+      for(var x = 0, l = all_id.length; x < l;  x++){
+        all_id[x].checked = false
+      }
+      this.aIds = []
+    }
+    console.log(this.aIds)
+  }
+
+  checked(){
+    this.aIds = []
+    var all_id = document.querySelectorAll('input[name="selected"]:checked');
+      for(var x = 0, l = all_id.length; x < l;  x++){
+          this.aIds.push(all_id[x].value);
+      }
+      if(all_id.length > 0){
+        this.changeLead = true;
+      }else{
+        this.changeLead = false;
+        this.aIds = []
+      }
+      console.log(this.aIds)
+  }
+  getSearchModal(){
+      this.searchOpen = true;
+  }
+  searchUserdetails(){
+    if (this.sdname.length != 0) {
+      this.Searchwait = true;
+      console.log(this.sdname)
+      var params = {
+        "keyword":this.sdname
+      }
+      this.http
+        .post<{ success: object }>(Config.BASE_URL + "api/getSearchData", params)
+        .subscribe((response: any) => {
+          this.searchUserData = response;
+          console.log(response)
+          this.Searchwait=false;
+        })
+      }
+  }
+  assign(id:any){
+    this.loaderOne = true;
+    var params = {
+        "id": id,
+        "editID": this.aIds
+    }
+    this.http
+        .post<{ success: object }>(Config.BASE_URL + "api/assignSfid", params)
+        .subscribe((response: any) => {
+          this.searchUserData = [];
+          console.log(response)
+          this.searchOpen = false;
+          let params = {
+            page: this.page,
+            limit: this.limit,
+            search: this.search,
+            type:this.vsType,
+            sort:this.sort,
+            allocated : this.allocated,
+            unallocated : this.unallocated
+          };
+          this.loaderOne = false;
+          this.loadData(this.module, params);
+        })
+      }
   //https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fpeople%2Fperson-edit.component.ts
 }
