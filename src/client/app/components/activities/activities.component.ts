@@ -101,12 +101,14 @@ export class ActivitiesComponent implements OnInit {
         if(form.value.type__c == 'Email'){
           this.insertemailsuccess = true;
         }
-        this.loaderOne = false;
+      
        form.reset ();
         this.ngOnInit();
+        this.loaderOne = false;
         this.getNotificationdata();
+        
       });
-    
+      
   }
   onClose(form: any){
     form.reset();
@@ -114,12 +116,14 @@ export class ActivitiesComponent implements OnInit {
 
   }
   getNotificationdata(){
-    this.http
+    this.loaderOne = true;
+       this.http
       .post<{ success: object }>(Config.BASE_URL + "api/notification", {"opportunity__c":this.opportunity.sfid})
       .subscribe((response: any) => {
         console.log(response)
         this.notifications = response.success;
         console.log(this.notifications)
+        this.loaderOne = false;
       });
   }
 }

@@ -22,6 +22,8 @@ export class NavigationBarComponent implements OnInit {
   navigtionOpen: Boolean = false;
   submitted = false;
 
+  loaderOne: Boolean = false;
+
   @Input() details: any;
   newTaskForm: FormGroup;
   appointmentTaskForm: FormGroup;
@@ -84,14 +86,7 @@ export class NavigationBarComponent implements OnInit {
       });
     }
   }
-  updateData(data: any, endpoint: any) {
-    this.http
-      .post<{ success: object }>(Config.BASE_URL + "api/" + endpoint, data)
-      .subscribe((response: any) => {
-        console.log(response);
-        this.closeModal();
-      });
-  }
+ 
   openNavModal(arg: string) {
     this.module = arg;
     this.navigtionOpen = true;
@@ -101,12 +96,25 @@ export class NavigationBarComponent implements OnInit {
   }
 
   onSubmit(form: any) {
+    this.loaderOne = true;
     this.submitted = true;
     if (form.invalid) {
       return;
     }
     form.value.id = this.details.id;
+    this.loaderOne = false;
     this.updateData(form.value, "updateStage");
+    
+  }
+  updateData(data: any, endpoint: any) {
+    this.loaderOne = true;
+    this.http
+      .post<{ success: object }>(Config.BASE_URL + "api/" + endpoint, data)
+      .subscribe((response: any) => {
+        console.log(response);
+        this.loaderOne = false;
+        this.closeModal();
+      });
   }
   updateFinalize() {
     let finalizeData = {

@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   errorMessage: string;
   names: any[] = [];
 
-  //public home_page = "dashboard";
+  public home_page = "dashboard";
 
   /**
    * Creates an instance of the HomeComponent with the injected

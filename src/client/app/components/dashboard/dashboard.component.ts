@@ -24,22 +24,22 @@ export class DashboardComponent implements OnInit {
 
       //line chart 
 
-    var colors = ['#007bff','#28a745','#333333','#c3e6cb','#dc3545','#6c757d'];
-    var chartData = {
+    var linecolors = ['#ffffff','#abc271','#dbe4cb'];
+    var lineData = {
       labels: ["S", "M", "T", "W", "T", "F", "S"],
       datasets: [
       {
         data: [639, 465, 493, 478, 589, 632, 674],
-        backgroundColor: colors[3],
-        borderColor: colors[1],
-        borderWidth: 4,
-        pointBackgroundColor: colors[1]
+        backgroundColor: linecolors[2],
+        borderColor: linecolors[1],
+        borderWidth: 2,
+        pointBackgroundColor: linecolors[0]
       }]
     };
 
     this.chart1 = new Chart('canvas1', {
       type: 'line',
-      data: chartData,
+      data: lineData,
       options: {
         scales: {
           yAxes: [{
@@ -57,23 +57,23 @@ export class DashboardComponent implements OnInit {
 
     //bar chart 
 
-    var colors1 = ['#007bff','#28a745','#444444','#c3e6cb','#dc3545','#6c757d'];
+    var barcolors = ['#48a496','#b1e1da'];
 
-    var chartData1 = {
+    var chartData = {
       labels: ["S", "M", "T", "W", "T", "F", "S"],
       datasets: [{
         data: [589, 445, 483, 503, 689, 692, 634],
-        backgroundColor: colors1[0]
+        backgroundColor: barcolors[0]
       },
       {
-        data: [209, 245, 383, 403, 589, 692, 580],
-        backgroundColor: colors1[1]
+        data: [430, 245, 383, 403, 589, 692, 580],
+        backgroundColor: barcolors[1]
       }]
     };
 
     this.chart2 = new Chart('canvas2', {
       type: 'bar',
-  data: chartData1,
+  data: chartData,
   options: {
     scales: {
       xAxes: [{
@@ -95,48 +95,46 @@ export class DashboardComponent implements OnInit {
 
    //pie chart 
 
-    var colors2 = ['#007bff','#28a745','#444444','#c3e6cb','#dc3545','#6c757d'];
+    // var colors2 = ['#feea87','#878ab6','#4acab5','#f98153','#dc3545','#6c757d'];
 
-    var chartData2 = {
-      labels: ["S", "M", "T", "W", "T", "F", "S"],
-      datasets: [{
-        data: [589, 445, 483, 503, 689, 692, 634],
-        backgroundColor: colors2[0]
-      },
-      {
-        data: [209, 245, 383, 403, 589, 692, 580],
-        backgroundColor: colors2[1]
-      },
-      {
-        data: [209, 245, 383, 403, 589, 692, 580],
-        backgroundColor: colors2[2]
-      },
-      {
-        data: [209, 245, 383, 403, 589, 692, 580],
-        backgroundColor: colors2[3]
-      }]
-    };
+    // var chartData2 = {
+    //   labels: ["S", "M", "T", "W", "T", "F", "S"],
+    //   datasets: [{
+    //     data: [589, 445, 483, 503, 689, 692, 634],
+    //     backgroundColor: colors2[0]
+    //   },
+    //   {
+    //     data: [209, 245, 383, 403, 589, 692, 580],
+    //     backgroundColor: colors2[1]
+    //   },
+    //   {
+    //     data: [209, 245, 383, 403, 589, 692, 580],
+    //     backgroundColor: colors2[2]
+    //   },
+    //   {
+    //     data: [209, 245, 383, 403, 589, 692, 580],
+    //     backgroundColor: colors2[3]
+    //   }]
+    // };
 
 
     var piedata = {
-      labels: ["match1", "match2", "match3", "match4", "match5"],
+      labels: ["match1", "match2", "match3", "match4"],
       datasets: [
         {
           label: "TeamB Score",
           data: [20, 35, 40, 60, 50],
           backgroundColor: [
-            "#FAEBD7",
-            "#DCDCDC",
-            "#E9967A",
-            "#F5DEB3",
-            "#9ACD32"
+            "#feea87",
+            "#878ab6",
+            "#4acab5",
+            "#f98153",
           ],
           borderColor: [
-            "#E9DAC6",
-            "#CBCBCB",
-            "#D88569",
-            "#E4CDA2",
-            "#89BC21"
+            "#feea87",
+            "#878ab6",
+            "#4acab5",
+            "#f98153",
           ],
           borderWidth: [1, 1, 1, 1, 1]
         }

@@ -29,3 +29,12 @@
   font-size: 15px;
   font-weight: 200;
 }
+.canvas{
+  color: #dddddd;
+  border: 2px solid #e9e7e7;
+  padding: 15px;
+  background-color: #f9f9f9;
+  margin-bottom: 30px;
+  width: 832px;
+  height: 416px; 
+}
