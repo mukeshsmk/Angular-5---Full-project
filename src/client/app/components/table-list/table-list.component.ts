@@ -424,5 +424,8 @@ export class TableListComponent {
           this.loadData(this.module, params);
         })
       }
+      closeSeacrch(){
+        this.searchOpen = false;
+      }
   //https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fpeople%2Fperson-edit.component.ts
 }

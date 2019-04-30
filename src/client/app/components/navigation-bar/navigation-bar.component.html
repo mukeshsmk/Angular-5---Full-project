@@ -8,45 +8,51 @@
       </button>
       <button
         color-index="1"
-        class="color-btn btn showData workingID btn-success"
+        class="color-btn btn showData workingID"
         (click)="openNavModal('New Task')"
+        [ngClass]="{ 'btn-success': colorIndex >= 1,'btn-info' :colorIndex<1}"
       >
         Working
       </button>
       <button
         color-index="2"
-        class="color-btn btn showData workingID btn-success"
+        class="color-btn btn showData workingID"
         type="appointmentModal"
+        [ngClass]="{ 'btn-success': colorIndex >= 2 ,'btn-info' :colorIndex<2}"
         (click)="openNavModal('Appointment Task')"
       >
         Appointment
       </button>
       <button
         color-index="3"
-        class="color-btn btn showDataNon workingID btn-success"
+        class="color-btn btn showDataNon workingID"
         type="quotationModal"
+        [ngClass]="{ 'btn-success': colorIndex >= 3 ,'btn-info' :colorIndex<3}"
         (click)="openNavModal('Quotation Task')"
       >
         Quotation
       </button>
       <button
         color-index="4"
-        class="color-btn btn showData workingID btn-success"
+        class="color-btn btn showData workingID"
         type="negotiationModal"
+        [ngClass]="{ 'btn-success': colorIndex >= 4 ,'btn-info' :colorIndex<4}"
         (click)="openNavModal('Negotiation')"
       >
         Negotiation
       </button>
       <button
         color-index="5"
-        class="color-btn btn showDataNon saveAllModal btn-info"
+        [ngClass]="{ 'btn-success': colorIndex >= 5 ,'btn-info' :colorIndex<5}"
+        class="color-btn btn showDataNon saveAllModal"
         (click)="updateFinalize()"
       >
         Finalize
       </button>
       <button
         color-index="6"
-        class="color-btn btn showData workingID btn-info"
+        [ngClass]="{ 'btn-success': colorIndex >= 6 ,'btn-info' :colorIndex<6}"
+        class="color-btn btn showData workingID"
         type="closedLostModal"
         (click)="openNavModal('Closed Lost')"
       >
@@ -54,7 +60,8 @@
       </button>
       <button
         color-index="6"
-        class="color-btn btn showData workingID btn-info"
+        [ngClass]="{ 'btn-success': colorIndex >= 7 ,'btn-info' :colorIndex<7}"
+        class="color-btn btn showData workingID"
         type="closedWonModal"
         (click)="openNavModal('Close Won')"
       >
@@ -62,7 +69,8 @@
       </button>
       <button
         color-index="7"
-        class="color-btn btn showDataNon workingID btn-info"
+        [ngClass]="{ 'btn-success': colorIndex >= 8 ,'btn-info' :colorIndex<8}"
+        class="color-btn btn showDataNon workingID"
         type="duplicateModal"
         (click)="openNavModal('Duplicate')"
       >
@@ -70,7 +78,8 @@
       </button>
       <button
         color-index="8"
-        class="color-btn btn showDataNon workingID btn-info"
+        [ngClass]="{ 'btn-success': colorIndex >= 9 ,'btn-info' :colorIndex<9}"
+        class="color-btn btn showDataNon workingID"
         type="convertedModal"
         (click)="openNavModal('Converted')"
       >

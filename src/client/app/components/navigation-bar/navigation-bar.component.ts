@@ -21,7 +21,8 @@ export class NavigationBarComponent implements OnInit {
   module: string;
   navigtionOpen: Boolean = false;
   submitted = false;
-
+  colorIndex:any=0;
+  stageName:any=[];
   loaderOne: Boolean = false;
 
   @Input() details: any;
@@ -41,8 +42,16 @@ export class NavigationBarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.colorIndex = 0;
     this.submitted = false;
+    this.stageName = ['new','Working','Appointment','Quotation','Negotiation','Finalize','ClosedLost','ClosedWon','Duplicate','Converted'];
     if (this.details) {
+      for(var i=0;i<this.stageName.length;i++){
+        if(this.details.stagename == this.stageName[i]){
+          this.colorIndex = i;
+        }
+      }
+      
       this.newTaskForm = this.formBuilder.group({
         first_name__c: [this.details.first_name__c],
         last_name__c: [this.details.last_name__c],
@@ -112,7 +121,9 @@ export class NavigationBarComponent implements OnInit {
       .post<{ success: object }>(Config.BASE_URL + "api/" + endpoint, data)
       .subscribe((response: any) => {
         console.log(response);
+       this.details = response;
         this.loaderOne = false;
+        this.ngOnInit();
         this.closeModal();
       });
   }
