@@ -2,19 +2,11 @@
   <div class="container-fluid">
     <div class="card mt-3">
       <div class="card-header pointer">
-        <a
-          data-toggle="collapse"
-          href="#card-lead-information"
-          aria-expanded="true"
-          aria-controls="card-lead-information"
-          (click)="visibleOne = !visibleOne"
-        >
-          <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
-          <i class="fa fa-angle-down" *ngIf="!visibleOne"></i>
+        
           Lead Information
-        </a>
+       
       </div>
-      <div class="card-body collapse show" id="card-lead-information">
+      <div class="card-body" id="card-lead-information" *ngIf="!visibleOne">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
@@ -435,12 +427,7 @@
     </div>
     <div class="card mt-3" *ngIf="type == 'edit'">
       <div class="card-header pointer">
-        <a
-          data-toggle="collapse"
-          href="#address-information"
-          aria-expanded="false"
-          aria-controls="address-information"
-          (click)="visibleTwo = !visibleTwo"
+        <a (click)="visibleTwo = !visibleTwo"
         >
           <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
           <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i>
@@ -449,8 +436,8 @@
       </div>
       <div
         id="address-information"
-        class="card-body collapse"
-        aria-expanded="true"
+        class="card-body"
+        *ngIf="!visibleTwo"
       >
         <div class="row"></div>
         <div class="row">
@@ -538,12 +525,7 @@
 
     <div class="card mt-3" *ngIf="type == 'edit'">
       <div class="card-header pointer">
-        <a
-          data-toggle="collapse"
-          href="#customer-insight"
-          aria-expanded="false"
-          aria-controls="customer-insight"
-          (click)="visibleThree = !visibleThree"
+        <a (click)="visibleThree = !visibleThree"
         >
           <i class="fa fa-angle-right" *ngIf="visibleThree"></i>
           <i class="fa fa-angle-down" *ngIf="!visibleThree"></i>
@@ -552,8 +534,8 @@
       </div>
       <div
         id="customer-insight"
-        class="card-body collapse in"
-        aria-expanded="true"
+        class="card-body"
+        *ngIf="!visibleThree"
       >
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -606,8 +588,6 @@
     <div class="card mt-3" *ngIf="type == 'edit'">
       <div class="card-header pointer">
         <a
-          data-toggle="collapse"
-          href="#addtional-information"
           (click)="visibleFour = !visibleFour"
         >
           <i class="fa fa-angle-right" *ngIf="visibleFour"></i>
@@ -617,8 +597,8 @@
       </div>
       <div
         id="addtional-information"
-        class="card-body collapse in"
-        aria-expanded="false"
+        class="card-body"
+        *ngIf="!visibleFour"
       >
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -657,7 +637,7 @@
     </div>
     <div class="card mt-3 mb-3">
       <div class="card-header pointer">
-        <a data-toggle="collapse" href="#system-information">
+        <a (click)="visibleFive = !visibleFive">
           <i class="fa fa-angle-right" *ngIf="visibleFive"></i>
           <i class="fa fa-angle-down" *ngIf="!visibleFive"></i>System
           Information</a
@@ -666,8 +646,8 @@
     </div>
       <div
         id="system-information"
-        class="collapse in card-body"
-        aria-expanded="true"
+        class="card-body"
+        *ngIf="!visibleFive"
       >
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">

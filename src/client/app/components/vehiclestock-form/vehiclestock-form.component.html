@@ -1,17 +1,12 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="vehicleStockForm">
   <div class="container-fluid">
     <div class="card mt-3">
-      <div class="card-header">
-        <a
-          data-toggle="collapse"
-          href="#card-lead-information"
-          aria-expanded="true"
-          aria-controls="card-lead-information"
-        >
+      <div class="card-header pointer">
+       
           Stock Information
-        </a>
+        
       </div>
-      <div class="card-body collapse show" id="card-lead-information">
+      <div class="card-body" id="card-lead-information">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
@@ -310,21 +305,19 @@
     </div>
 
     <div class="card mt-3 mb-3">
-      <div class="card-header">
+      <div class="card-header pointer">
         <a
-          data-toggle="collapse"
-          href="#system-information"
           (click)="visibleOne = !visibleOne"
         >
-          <i class="fa fa-angle-down" *ngIf="visibleOne"></i>
-          <i class="fa fa-angle-right" *ngIf="!visibleOne"></i>
+          <i class="fa fa-angle-down" *ngIf="!visibleOne"></i>
+          <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
           System Information</a
         >
       </div>
       <div
         id="system-information"
-        class="collapse in card-body"
-        aria-expanded="true"
+        class="card-body"
+        *ngIf="!visibleOne"
       >
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">

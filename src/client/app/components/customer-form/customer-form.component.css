@@ -14,7 +14,7 @@
   .fa{
     float: left;
     font-size: 25px;
-    margin: 0px 10px 0px 0px;
+    margin: 0px 6px 0px 0px;
     color: #0747a6 !important;
   }
   .btn-info {
@@ -27,3 +27,4 @@
   background-color: #31b0d5;
   border-color: #269abc;
 }
+.pointer {cursor: pointer;}
