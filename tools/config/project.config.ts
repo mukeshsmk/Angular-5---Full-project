@@ -40,7 +40,7 @@ export class ProjectConfig extends SeedConfig {
 
     this.ROLLUP_NAMED_EXPORTS = [
       ...this.ROLLUP_NAMED_EXPORTS,
-      { 'node_modules/chart.js/src/chart.js': ['Chart'] }
+      //{ 'node_modules/chart.js/dist/Chart.min.js': ['Chart'] }
     ];
 
     // Add packages
