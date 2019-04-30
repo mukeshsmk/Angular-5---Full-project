@@ -99,10 +99,12 @@ export class TableListComponent {
         this.opportunityListData = response.list;
         if (type == 'opportunities') {
           for (var i = 0; i < response.list.data.length; i++) {
-            if (this.responseData.sfid[this.opportunityListData.data[i].app_retail_user__c] != undefined) {
-              response.list.data[i].lead_owner_data = this.responseData.sfid[this.opportunityListData.data[i].app_retail_user__c];
-            } else {
-              response.list.data[i].lead_owner_data = '-';
+            if(params.userData.roleid != 5 ){
+              if (this.responseData.sfid[this.opportunityListData.data[i].app_retail_user__c] != undefined) {
+                response.list.data[i].lead_owner_data = this.responseData.sfid[this.opportunityListData.data[i].app_retail_user__c];
+              } else {
+                response.list.data[i].lead_owner_data = '-';
+              }
             }
           }
           this.permission = response.permission[0];
