@@ -1,6 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
+//dev
 import { Chart } from 'chart.js';
+//prod
+//import Chart from 'chart.js';
 /**
  * This class represents the lazy loaded AboutComponent.
  */
@@ -97,25 +100,6 @@ export class DashboardComponent implements OnInit {
 
     var colors2 = ['#007bff','#28a745','#444444','#c3e6cb','#dc3545','#6c757d'];
 
-    var chartData2 = {
-      labels: ["S", "M", "T", "W", "T", "F", "S"],
-      datasets: [{
-        data: [589, 445, 483, 503, 689, 692, 634],
-        backgroundColor: colors2[0]
-      },
-      {
-        data: [209, 245, 383, 403, 589, 692, 580],
-        backgroundColor: colors2[1]
-      },
-      {
-        data: [209, 245, 383, 403, 589, 692, 580],
-        backgroundColor: colors2[2]
-      },
-      {
-        data: [209, 245, 383, 403, 589, 692, 580],
-        backgroundColor: colors2[3]
-      }]
-    };
 
 
     var piedata = {
@@ -143,25 +127,6 @@ export class DashboardComponent implements OnInit {
       ]
     };
   
-    //options
-    var pieoptions = {
-      responsive: true,
-      title: {
-        display: true,
-        position: "top",
-        text: "Pie Chart",
-        fontSize: 18,
-        fontColor: "#111"
-      },
-      legend: {
-        display: true,
-        position: "bottom",
-        labels: {
-          fontColor: "#333",
-          fontSize: 16
-        }
-      }
-    };
   
   
     this.chart3 = new Chart('canvas3', {

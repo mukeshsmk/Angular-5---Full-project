@@ -479,7 +479,6 @@ export class SeedConfig {
     },
     paths: {
       [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
-      'ng2-charts' : 'node_modules/ng2-charts/bundles/ng2-charts.umd.min.js',
       "@angular/animations":
         "node_modules/@angular/animations/bundles/animations.umd.js",
       "@angular/platform-browser/animations":
@@ -545,7 +544,8 @@ export class SeedConfig {
     base: this.PROJECT_ROOT,
     packageConfigPaths: [
       join("node_modules", "*", "package.json"),
-      join("node_modules", "@angular", "*", "package.json")
+      join("node_modules", "@angular", "*", "package.json"),
+      join("node_modules","**","package.json")
       // for other modules like @ngx-translate the package.json path needs to updated here
       // otherwise npm run build.prod would fail
       // join('node_modules', '@ngx-translate', '*', 'package.json')
@@ -557,7 +557,6 @@ export class SeedConfig {
       [join(this.TMP_DIR, this.BOOTSTRAP_DIR, "*")]: `${this.TMP_DIR}/${
         this.BOOTSTRAP_DIR
       }/*`,
-      'ng2-charts' : 'node_modules/ng2-charts/bundles/ng2-charts.umd.min.js',
       "@angular/platform-browser/animations":
         "node_modules/@angular/platform-browser/bundles/platform-browser-animations.umd.js",
       "@angular/animations/browser":
