@@ -16,7 +16,7 @@ import {
   styleUrls: ["customer-form.component.css"]
 })
 export class CustomerFormComponent implements OnInit {
-  visibleOne: Boolean = false;
+  visibleOne: Boolean = true;
   visibleTwo: Boolean = true;
   visibleThree: Boolean = true;
   visibleFour: Boolean = true;

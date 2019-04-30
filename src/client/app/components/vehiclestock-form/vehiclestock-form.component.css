@@ -13,6 +13,9 @@
     background-color: #d4d4d4;
     border-color: #8c8c8c;
   }
+
+  .pointer {cursor: pointer;}
+
   .card-header a{
     color: #3e3f44;
     text-decoration: none;
@@ -21,13 +24,13 @@
   .fa-angle-down{
     float: left;
     font-size: 25px;
-    margin: 0px 10px 0px 0px;
+    margin: 0px 6px 0px 0px;
     color: #0747a6 !important;
   }
   .fa-angle-right{
     float: left;
     font-size: 25px;
-    margin: 0px 10px 0px 0px;
+    margin: 0px 6px 0px 0px;
     color: #0747a6 !important;
   }
   .btn-info {

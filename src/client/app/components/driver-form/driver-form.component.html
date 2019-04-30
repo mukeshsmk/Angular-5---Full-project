@@ -1,15 +1,10 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="driverForm">
   <div class="container-fluid">
     <div class="card mt-3">
-      <div class="card-header">
-        <a
-          data-toggle="collapse"
-          href="#card-lead-information"
-          aria-expanded="true"
-          aria-controls="card-lead-information"
-        >
+      <div class="card-header pointer">
+    
           Driver Information
-        </a>
+       
       </div>
       <div class="card-body collapse show" id="card-lead-information">
         <div class="row">
@@ -458,23 +453,19 @@
       </div>
     </div>
     <div class="card mt-3">
-      <div class="card-header">
+      <div class="card-header pointer">
         <a
-          data-toggle="collapse"
-          href="#address-information"
-          aria-expanded="false"
-          aria-controls="address-information"
           (click)="visibleOne = !visibleOne"
-        >
-          <i class="fa fa-angle-down" *ngIf="visibleOne"></i>
-          <i class="fa fa-angle-right" *ngIf="!visibleOne"></i>
-          Address Information</a
+          >
+            <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
+            <i class="fa fa-angle-down" *ngIf="!visibleOne"></i> 
+            Address Information</a
         >
       </div>
       <div
         id="address-information"
-        class="card-body collapse"
-        aria-expanded="true"
+        class="card-body"
+        *ngIf="!visibleOne"
       >
         <div class="row"></div>
         <div class="row">
@@ -596,21 +587,21 @@
     </div>
 
     <div class="card mt-3">
-      <div class="card-header">
-        <a
-          data-toggle="collapse"
-          href="#addtional-information"
-          (click)="visibleTwo = !visibleTwo"
+      <div class="card-header pointer">
+        
+        <a 
+        (click)="visibleTwo = !visibleTwo"
         >
           <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
-          <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i>
-          &nbsp;Additional Information
+          <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i> 
+          
+          Additional Information
         </a>
       </div>
       <div
-        id="addtional-information"
-        class="card-body collapse in"
-        aria-expanded="false"
+      id="addtional-information"
+      class="card-body"
+      *ngIf="!visibleTwo"
       >
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -640,10 +631,8 @@
       </div>
     </div>
     <div class="card mt-3 mb-3">
-      <div class="card-header">
+      <div class="card-header pointer">
         <a
-          data-toggle="collapse"
-          href="#system-information"
           (click)="visibleThree = !visibleThree"
         >
           <i class="fa fa-angle-right" *ngIf="visibleThree"></i>
@@ -653,8 +642,8 @@
       </div>
       <div
         id="system-information"
-        class="collapse in card-body"
-        aria-expanded="true"
+        class="card-body"
+        *ngIf="!visibleThree"
       >
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">

@@ -17,13 +17,13 @@ export class OpportunityComponent implements OnInit {
   visibleSix: Boolean = true;
   visibleSeven: Boolean = true;
 
- loaderOne: Boolean = false;
+
 
   @Input() opportunity: any;
 
   constructor() {}
 
   ngOnInit() {
-    this.visibleOne = true;
+    
   }
 }
