@@ -93,3 +93,9 @@ button:hover {
   background-size: 100px 100px;
   opacity: .8;
 }
+
+
+.modal-back
+{
+  background-color: rgba(0,0,0,0.7);
+}

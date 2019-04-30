@@ -819,7 +819,7 @@
 
     <!--<ng-template let-oppournityModal="data" #oppournityModal>-->
     <div
-      class="modal full-size"
+      class="modal modal-back full-size"
       tabindex="-1"
       role="dialog"
       [ngClass]="{ fade: opportunityOpen, 'd-flex': !opportunityOpen }"
@@ -905,7 +905,7 @@
           </div>
           <div class="modal-body">
             <input [(ngModel)]="sdname" class="form-control w-75 float-left" type="search" /> 
-            <span style="padding: 10px 30px;" class="searchSD fa fa-search w-25 text-right" (click)="searchUserdetails()"></span>
+            <span style="padding: 10px 30px;" class="searchSD fa fa-search w-25 text-right pointer" (click)="searchUserdetails()"></span>
             <hr />
             <div class="text-center" *ngIf="Searchwait"><p>Loading...</p></div>
             <table *ngIf="searchUserData" class="table table-bordered">
