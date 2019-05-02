@@ -1,24 +1,26 @@
-import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 /**
  * This class represents the lazy loaded AboutComponent.
  */
 @Component({
   moduleId: module.id,
-  selector: "sd-header",
-  templateUrl: "header.component.html",
-  styleUrls: ["header.component.css"]
+  selector: 'sd-header',
+  templateUrl: 'header.component.html',
+  styleUrls: ['header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  userData:any;
+  userData: any;
   constructor(private router: Router) {
-    this.userData = JSON.parse(localStorage.getItem("user_data"))
+    this.userData = JSON.parse(localStorage.getItem('user_data'));
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('user_data'));
+  }
   logout() {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("user_data");
-    this.router.navigate(["/login"]);
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user_data');
+    this.router.navigate(['/login']);
   }
 }

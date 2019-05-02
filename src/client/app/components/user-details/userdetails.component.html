@@ -1,11 +1,11 @@
 <section>
   <div class="row">
-      <div class="col-md-9">
+    <div class="col-md-9">
       <div class="card">
         <div class="card-header">
           <a (click)="visibleOne = !visibleOne">
             <i class="fa fa-angle-down"></i>
-            <p> Vehicle Information</p>
+            <p>Vehicle Information</p>
           </a>
         </div>
         <div class="card-block" *ngIf="!visibleOne">
@@ -16,62 +16,125 @@
                   <div class="form-group">
                     <label>Stock No:</label>
                     <!-- $details[0]->sfid-->
-                    <span name="name" dropname="text" type="text" inlinetext="124578A"
-                      class=" form-control-static inlineEditEnb">124578A</span> </div>
+                    <span
+                      name="name"
+                      dropname="text"
+                      type="text"
+                      inlinetext="124578A"
+                      class=" form-control-static inlineEditEnb"
+                      >124578A</span
+                    >
+                  </div>
                   <div class="form-group">
                     <label>Selling Dealer:</label>
-                    <span pattern="[a-zA-Z\sàèéìòù]+" name="selling_dealer__c" dropname="text" type="text"
-                      inlinetext="ABC Berkeley Toyota" class=" form-control-static noEdit">ABC Berkeley Toyota</span>
+                    <span
+                      pattern="[a-zA-Z\sàèéìòù]+"
+                      name="selling_dealer__c"
+                      dropname="text"
+                      type="text"
+                      inlinetext="ABC Berkeley Toyota"
+                      class=" form-control-static noEdit"
+                      >ABC Berkeley Toyota</span
+                    >
                   </div>
                 </div>
 
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label>Vin:</label>
-                    <span name="vin__c" dropname="text" type="text" inlinetext="1234"
-                      class=" form-control-static inlineEditEnb">1234</span> <span
-                      class="form-control-static">1234</span>
+                    <span
+                      name="vin__c"
+                      dropname="text"
+                      type="text"
+                      inlinetext="1234"
+                      class=" form-control-static inlineEditEnb"
+                      >1234</span
+                    >
+                    <span class="form-control-static">1234</span>
                   </div>
                   <div class="form-group">
                     <label>Reg No: </label>
-                    <span name="rego_no__c" dropname="text" type="text" inlinetext=""
-                      class=" form-control-static inlineEditEnb"></span> </div>
+                    <span
+                      name="rego_no__c"
+                      dropname="text"
+                      type="text"
+                      inlinetext=""
+                      class=" form-control-static inlineEditEnb"
+                    ></span>
+                  </div>
                 </div>
 
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label>Manafacture Year:</label>
-                    <span name="manufacture_year__c" dropname="text" type="text" inlinetext=""
-                      class=" form-control-static inlineEditEnb"></span> </div>
+                    <span
+                      name="manufacture_year__c"
+                      dropname="text"
+                      type="text"
+                      inlinetext=""
+                      class=" form-control-static inlineEditEnb"
+                    ></span>
+                  </div>
                   <div class="form-group">
                     <label>Body type:</label>
-                    <span name="body_type__c" dropname="text" type="text" inlinetext=""
-                      class=" form-control-static inlineEditEnb"></span> </div>
+                    <span
+                      name="body_type__c"
+                      dropname="text"
+                      type="text"
+                      inlinetext=""
+                      class=" form-control-static inlineEditEnb"
+                    ></span>
+                  </div>
                 </div>
 
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label>Body Color:</label>
-                    <span name="body_colour__c" dropname="text" type="text" inlinetext="Red"
-                      class=" form-control-static inlineEditEnb">Red</span> </div>
+                    <span
+                      name="body_colour__c"
+                      dropname="text"
+                      type="text"
+                      inlinetext="Red"
+                      class=" form-control-static inlineEditEnb"
+                      >Red</span
+                    >
+                  </div>
                   <div class="form-group">
                     <label>Price:</label>
-                    <span name="egc_price__c" dropname="text" type="text" inlinetext=""
-                      class=" form-control-static inlineEditEnb"></span> </div>
+                    <span
+                      name="egc_price__c"
+                      dropname="text"
+                      type="text"
+                      inlinetext=""
+                      class=" form-control-static inlineEditEnb"
+                    ></span>
+                  </div>
                 </div>
 
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label>Series:</label>
-                    <span name="series_c__c" dropname="text" type="text" inlinetext=""
-                      class=" form-control-static inlineEditEnb"></span> </div>
+                    <span
+                      name="series_c__c"
+                      dropname="text"
+                      type="text"
+                      inlinetext=""
+                      class=" form-control-static inlineEditEnb"
+                    ></span>
+                  </div>
                 </div>
 
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label>Vehicle Type</label>
-                    <span name="vehicle_type__c" dropname="text" type="text" inlinetext="New"
-                      class=" form-control-static inlineEditEnb">New</span>
+                    <span
+                      name="vehicle_type__c"
+                      dropname="text"
+                      type="text"
+                      inlinetext="New"
+                      class=" form-control-static inlineEditEnb"
+                      >New</span
+                    >
                     <span class="form-control-static">New</span>
                   </div>
                 </div>
@@ -79,35 +142,59 @@
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label>Fuel Type</label>
-                    <span name="fuel_type__c" dropname="text" type="text" inlinetext=""
-                      class=" form-control-static inlineEditEnb"></span> </div>
+                    <span
+                      name="fuel_type__c"
+                      dropname="text"
+                      type="text"
+                      inlinetext=""
+                      class=" form-control-static inlineEditEnb"
+                    ></span>
+                  </div>
                 </div>
 
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label>Make</label>
-                    <span name="make__c" dropname="text" type="text" inlinetext=""
-                      class=" form-control-static inlineEditEnb"></span> </div>
+                    <span
+                      name="make__c"
+                      dropname="text"
+                      type="text"
+                      inlinetext=""
+                      class=" form-control-static inlineEditEnb"
+                    ></span>
+                  </div>
                 </div>
 
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label>Model</label>
 
-                    <span name="model__c" dropname="text" type="text" inlinetext=""
-                      class=" form-control-static inlineEditEnb"></span> </div>
+                    <span
+                      name="model__c"
+                      dropname="text"
+                      type="text"
+                      inlinetext=""
+                      class=" form-control-static inlineEditEnb"
+                    ></span>
+                  </div>
                 </div>
               </div>
             </div>
 
             <div class="col-md-3">
-                <div class="row">
-                   <div class="col-md-12">
-                      <!-- Indicators -->
-                                   <img src="https://app-retail-gjaya79.c9users.io/final/assets/images/Default_Image.jpg" class="img-rounded" alt="Cinque Terre" width="250px" height="150px">
+              <div class="row">
+                <div class="col-md-12">
+                  <!-- Indicators -->
+                  <img
+                    src="https://app-retail-gjaya79.c9users.io/final/assets/images/Default_Image.jpg"
+                    class="img-rounded"
+                    alt="Cinque Terre"
+                    width="250px"
+                    height="150px"
+                  />
 
-                   <!-- Left and right controls -->
-                   <!--
+                  <!-- Left and right controls -->
+                  <!--
                       <a class="left carousel-control" href="#myCarousel" data-slide="prev">
                            <span class="glyphicon glyphicon-chevron-left"></span>
                            <span class="sr-only">Previous</span>
@@ -118,19 +205,17 @@
                          </a>
                       -->
                 </div>
-             </div>
+              </div>
+            </div>
           </div>
+        </div>
       </div>
-      </div>
-      
-      </div>
-
 
       <div class="card">
         <div class="card-header">
           <a (click)="visibleTwo = !visibleTwo">
             <i class="fa fa-angle-down"></i>
-            <p> System Information</p>
+            <p>System Information</p>
           </a>
         </div>
         <div class="card-block" *ngIf="!visibleTwo">

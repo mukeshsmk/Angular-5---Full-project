@@ -8,12 +8,10 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 @NgModule({
   imports: [RouterModule],
   declarations: [NavbarComponent, ToolbarComponent],
-  exports: [RouterModule,
-    NavbarComponent, ToolbarComponent]
+  exports: [RouterModule, NavbarComponent, ToolbarComponent]
 })
 export class CoreModule {
-
-  constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
     throwIfAlreadyLoaded(parentModule, 'CoreModule');
   }
 }

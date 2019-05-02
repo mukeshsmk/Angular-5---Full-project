@@ -4,10 +4,8 @@ import { CustomerComponent } from './customer.component';
 
 @NgModule({
   imports: [
-    RouterModule.forChild([
-      { path: 'customer', component: CustomerComponent }
-    ])
+    RouterModule.forChild([{ path: 'customer', component: CustomerComponent }])
   ],
   exports: [RouterModule]
 })
-export class CustomerRoutingModule { }
+export class CustomerRoutingModule {}

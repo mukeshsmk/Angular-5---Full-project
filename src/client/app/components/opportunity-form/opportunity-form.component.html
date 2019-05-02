@@ -2,9 +2,7 @@
   <div class="container-fluid">
     <div class="card mt-3">
       <div class="card-header pointer">
-        
-          Lead Information
-       
+        Lead Information
       </div>
       <div class="card-body" id="card-lead-information" *ngIf="!visibleOne">
         <div class="row">
@@ -427,18 +425,13 @@
     </div>
     <div class="card mt-3" *ngIf="type == 'edit'">
       <div class="card-header pointer">
-        <a (click)="visibleTwo = !visibleTwo"
-        >
+        <a (click)="visibleTwo = !visibleTwo">
           <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
           <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i>
           Address Information</a
         >
       </div>
-      <div
-        id="address-information"
-        class="card-body"
-        *ngIf="!visibleTwo"
-      >
+      <div id="address-information" class="card-body" *ngIf="!visibleTwo">
         <div class="row"></div>
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -525,18 +518,13 @@
 
     <div class="card mt-3" *ngIf="type == 'edit'">
       <div class="card-header pointer">
-        <a (click)="visibleThree = !visibleThree"
-        >
+        <a (click)="visibleThree = !visibleThree">
           <i class="fa fa-angle-right" *ngIf="visibleThree"></i>
           <i class="fa fa-angle-down" *ngIf="!visibleThree"></i>
           Customer Insight</a
         >
       </div>
-      <div
-        id="customer-insight"
-        class="card-body"
-        *ngIf="!visibleThree"
-      >
+      <div id="customer-insight" class="card-body" *ngIf="!visibleThree">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
@@ -587,19 +575,13 @@
 
     <div class="card mt-3" *ngIf="type == 'edit'">
       <div class="card-header pointer">
-        <a
-          (click)="visibleFour = !visibleFour"
-        >
+        <a (click)="visibleFour = !visibleFour">
           <i class="fa fa-angle-right" *ngIf="visibleFour"></i>
           <i class="fa fa-angle-down" *ngIf="!visibleFour"></i>Additional
           Information
         </a>
       </div>
-      <div
-        id="addtional-information"
-        class="card-body"
-        *ngIf="!visibleFour"
-      >
+      <div id="addtional-information" class="card-body" *ngIf="!visibleFour">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
@@ -644,60 +626,55 @@
         >
       </div>
     </div>
-      <div
-        id="system-information"
-        class="card-body"
-        *ngIf="!visibleFive"
-      >
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label>Created by</label>
-              <div id="createdby_lead">
-                <b>{{ opportunity.createdbyid }}</b>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label>Last modified by</label>
-              <div id="lastmodifiedby_lead">
-                <b>{{ opportunity.lastmodifiedbyid }}</b>
-              </div>
+    <div id="system-information" class="card-body" *ngIf="!visibleFive">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+          <div class="form-group">
+            <label>Created by</label>
+            <div id="createdby_lead">
+              <b>{{ opportunity.createdbyid }}</b>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label>Created Date</label>
-              <div id="createddate_lead">
-                <b>{{ opportunity.createddate }}</b>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label>Last modified date</label>
-              <div id="lastmodifiedbyid_lead">
-                {{ opportunity.lastmodifieddate }}
-              </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+          <div class="form-group">
+            <label>Last modified by</label>
+            <div id="lastmodifiedby_lead">
+              <b>{{ opportunity.lastmodifiedbyid }}</b>
             </div>
           </div>
         </div>
-        <!--- end of row -->
       </div>
-      <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-default"
-            data-dismiss="modal"
-            (click)="onCloseModal($event)"
-          >
-            Cancel
-          </button>
-          <button type="submit" class="btn btn-info" >Save</button>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+          <div class="form-group">
+            <label>Created Date</label>
+            <div id="createddate_lead">
+              <b>{{ opportunity.createddate }}</b>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+          <div class="form-group">
+            <label>Last modified date</label>
+            <div id="lastmodifiedbyid_lead">
+              {{ opportunity.lastmodifieddate }}
+            </div>
+          </div>
+        </div>
       </div>
+      <!--- end of row -->
     </div>
-      
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-default"
+        data-dismiss="modal"
+        (click)="onCloseModal($event)"
+      >
+        Cancel
+      </button>
+      <button type="submit" class="btn btn-info">Save</button>
+    </div>
+  </div>
 </form>

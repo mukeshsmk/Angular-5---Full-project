@@ -1,25 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 /**
  * This class represents the lazy loaded AboutComponent.
  */
 @Component({
   moduleId: module.id,
-  selector: "sd-modal",
-  templateUrl: "modal.component.html",
-  styleUrls: ["modal.component.css"]
+  selector: 'sd-modal',
+  templateUrl: 'modal.component.html',
+  styleUrls: ['modal.component.css']
 })
-export class ModalComponent implements OnInit {
-
+export class ModalComponent {
   private bodyText: string;
-  constructor(private router: Router ) {}
-
-  ngOnInit() {
-
-
-}
-
-
-
+  constructor(private router: Router) {}
 }

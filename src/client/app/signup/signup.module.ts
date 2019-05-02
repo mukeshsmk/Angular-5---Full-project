@@ -5,15 +5,13 @@ import { SignupRoutingModule } from './signup-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule,
-     SignupRoutingModule,
-     ReactiveFormsModule,
-     FormsModule,
-
-    ],
+  imports: [
+    CommonModule,
+    SignupRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
+  ],
   declarations: [SignupComponent],
   exports: [SignupComponent]
 })
-export class SignupModule { 
-  
-}
+export class SignupModule {}

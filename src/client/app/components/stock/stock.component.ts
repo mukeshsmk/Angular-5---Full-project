@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 /**
  * This class represents the lazy loaded AboutComponent.
  */
@@ -8,18 +8,13 @@ import { Component, OnInit ,Input} from '@angular/core';
   templateUrl: 'stock.component.html',
   styleUrls: ['stock.component.css']
 })
-export class StockComponent implements OnInit {
-  visibleOne : Boolean = false;
-  visibleTwo : Boolean = true;
-  
-  @Input() stock:any;
+export class StockComponent {
+  visibleOne: Boolean = false;
+  visibleTwo: Boolean = true;
+
+  @Input() stock: any;
 
   constructor() {
-    console.log(this.stock)
-   }
-
-  ngOnInit() {
-    
+    console.log(this.stock);
   }
-
 }

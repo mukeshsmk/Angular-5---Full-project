@@ -1,10 +1,10 @@
-import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { map } from "rxjs/operators";
-import { HttpErrorResponse } from "@angular/common/http";
-import { Router, ActivatedRoute } from "@angular/router";
-import { AuthService } from "../shared/services/AuthService";
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../shared/services/AuthService';
 import Config from '../shared/config';
 
 /**
@@ -12,20 +12,20 @@ import Config from '../shared/config';
  */
 @Component({
   moduleId: module.id,
-  selector: "sd-login",
-  templateUrl: "login.component.html",
-  styleUrls: ["login.component.css"],
+  selector: 'sd-login',
+  templateUrl: 'login.component.html',
+  styleUrls: ['login.component.css'],
   providers: [AuthService]
 })
 export class LoginComponent implements OnInit {
   loaderOne: Boolean = false;
   public _token: any;
   user = {
-    email: "",
-    password: ""
+    email: '',
+    password: ''
   };
-  isLoginError: boolean = false;
-  infoMessage = "";
+  isLoginError: Boolean = false;
+  infoMessage = '';
   loginForm: FormGroup;
 
   constructor(
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (this.authService.isAuthenticated()) {
-      this.router.navigate(["/home"]);
+      this.router.navigate(['/home']);
     }
   }
 
@@ -46,34 +46,34 @@ export class LoginComponent implements OnInit {
     if (this.user) {
       this.loaderOne = true;
       this.http
-        .post<{ success: object }>(Config.BASE_URL + "api/login", this.user)
+        .post<{ success: object }>(Config.BASE_URL + 'api/login', this.user)
         .subscribe(
           response => {
             this._token = response.success;
-            console.log("Token", response.success);
+            console.log('Token', response.success);
             localStorage.setItem(
-              "access_token",
+              'access_token',
               JSON.stringify(this._token.access_token)
             );
             localStorage.setItem(
-              "user_data",
+              'user_data',
               JSON.stringify(this._token.userData)
             );
-            console.log(JSON.stringify(this._token.userData))
-            
-            this.infoMessage = "Login Success!";
-            this.loaderOne=false;
-            this.router.navigate(["/home"]);
+            console.log(JSON.stringify(this._token.userData));
+
+            this.infoMessage = 'Login Success!';
+            this.loaderOne = false;
+            this.router.navigate(['/home']);
             setTimeout(() => {
-              console.log("hide");
-              this.infoMessage = "";
+              console.log('hide');
+              this.infoMessage = '';
             }, 5000);
           },
           (err: HttpErrorResponse) => {
             this.isLoginError = true;
-            this.loaderOne=false;
+            this.loaderOne = false;
             setTimeout(() => {
-              console.log("hide");
+              console.log('hide');
               this.isLoginError = false;
             }, 5000);
           }

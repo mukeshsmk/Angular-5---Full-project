@@ -1,34 +1,34 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import {
   FormGroup,
   FormBuilder,
   Validators,
   FormControl
-} from "@angular/forms";
+} from '@angular/forms';
 /**
  * This class represents the lazy loaded AboutComponent.
  */
 @Component({
   moduleId: module.id,
-  selector: "sd-customer-form",
-  templateUrl: "customer-form.component.html",
-  styleUrls: ["customer-form.component.css"]
+  selector: 'sd-customer-form',
+  templateUrl: 'customer-form.component.html',
+  styleUrls: ['customer-form.component.css']
 })
 export class CustomerFormComponent implements OnInit {
   visibleOne: Boolean = true;
   visibleTwo: Boolean = true;
   visibleThree: Boolean = true;
   visibleFour: Boolean = true;
- 
-  @Output() closeModalEvent = new EventEmitter<boolean>();
-  
+
+  @Output() closeModalEvent = new EventEmitter<Boolean>();
+
   @Input() customer: any;
   @Input() type: any;
-  @Output("updateCustomer") send = new EventEmitter<any>();
+  @Output('updateCustomer') send = new EventEmitter<any>();
 
   customerForm: FormGroup;
-  submitted: boolean = false;
+  submitted: Boolean = false;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -74,24 +74,21 @@ export class CustomerFormComponent implements OnInit {
     });
   }
 
-  onCloseModal(event: any){
-    this.closeModalEvent.emit(event);  
-   }
-   
+  onCloseModal(event: any) {
+    this.closeModalEvent.emit(event);
+  }
 
-  onSubmit(){
+  onSubmit() {
     this.submitted = true;
     console.log(this.customerForm);
 
     if (this.customerForm.invalid) {
       return;
     }
-    if (this.type == "edit") {
+    if (this.type === 'edit') {
       this.customerForm.value.id = this.customer.id;
     }
 
     this.send.emit(this.customerForm.value);
   }
-
-  closeModal() {}
 }

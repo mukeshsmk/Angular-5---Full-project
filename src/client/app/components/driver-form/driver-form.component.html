@@ -2,9 +2,7 @@
   <div class="container-fluid">
     <div class="card mt-3">
       <div class="card-header pointer">
-    
-          Driver Information
-       
+        Driver Information
       </div>
       <div class="card-body collapse show" id="card-lead-information">
         <div class="row">
@@ -454,19 +452,13 @@
     </div>
     <div class="card mt-3">
       <div class="card-header pointer">
-        <a
-          (click)="visibleOne = !visibleOne"
-          >
-            <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
-            <i class="fa fa-angle-down" *ngIf="!visibleOne"></i> 
-            Address Information</a
+        <a (click)="visibleOne = !visibleOne">
+          <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
+          <i class="fa fa-angle-down" *ngIf="!visibleOne"></i>
+          Address Information</a
         >
       </div>
-      <div
-        id="address-information"
-        class="card-body"
-        *ngIf="!visibleOne"
-      >
+      <div id="address-information" class="card-body" *ngIf="!visibleOne">
         <div class="row"></div>
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -588,21 +580,14 @@
 
     <div class="card mt-3">
       <div class="card-header pointer">
-        
-        <a 
-        (click)="visibleTwo = !visibleTwo"
-        >
+        <a (click)="visibleTwo = !visibleTwo">
           <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
-          <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i> 
-          
+          <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i>
+
           Additional Information
         </a>
       </div>
-      <div
-      id="addtional-information"
-      class="card-body"
-      *ngIf="!visibleTwo"
-      >
+      <div id="addtional-information" class="card-body" *ngIf="!visibleTwo">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
@@ -632,19 +617,13 @@
     </div>
     <div class="card mt-3 mb-3">
       <div class="card-header pointer">
-        <a
-          (click)="visibleThree = !visibleThree"
-        >
+        <a (click)="visibleThree = !visibleThree">
           <i class="fa fa-angle-right" *ngIf="visibleThree"></i>
           <i class="fa fa-angle-down" *ngIf="!visibleThree"></i>
           System Information</a
         >
       </div>
-      <div
-        id="system-information"
-        class="card-body"
-        *ngIf="!visibleThree"
-      >
+      <div id="system-information" class="card-body" *ngIf="!visibleThree">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">

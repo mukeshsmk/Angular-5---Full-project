@@ -4,10 +4,8 @@ import { ForgetComponent } from './forget.component';
 
 @NgModule({
   imports: [
-    RouterModule.forChild([
-      { path: 'forget', component: ForgetComponent }
-    ])
+    RouterModule.forChild([{ path: 'forget', component: ForgetComponent }])
   ],
   exports: [RouterModule]
 })
-export class ForgetRoutingModule { }
+export class ForgetRoutingModule {}

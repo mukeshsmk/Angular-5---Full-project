@@ -1,6 +1,5 @@
 <div class="loader" *ngIf="loaderOne"></div>
 
-
 <div class="card">
   <div class="card-body p-0">
     <ul class="nav nav-tabs">
@@ -145,10 +144,11 @@
                   </div>
                 </div>
                 <div class="card-footer text-right">
-                  <button type="button"
-                   class="btn btn-default mr-2"
-                   (click)="onClose(taskForm)"
-                   >
+                  <button
+                    type="button"
+                    class="btn btn-default mr-2"
+                    (click)="onClose(taskForm)"
+                  >
                     Cancel
                   </button>
                   <input
@@ -538,9 +538,10 @@
                   </div>
 
                   <div class="card-footer text-right">
-                    <button type="button" 
-                    class="btn btn-default"
-                    (click)="onClose(emailForm)"
+                    <button
+                      type="button"
+                      class="btn btn-default"
+                      (click)="onClose(emailForm)"
                     >
                       Cancel
                     </button>

@@ -4,10 +4,8 @@ import { ModalComponent } from './modal.component';
 
 @NgModule({
   imports: [
-    RouterModule.forChild([
-      { path: 'modal', component: ModalComponent }
-    ])
+    RouterModule.forChild([{ path: 'modal', component: ModalComponent }])
   ],
   exports: [RouterModule]
 })
-export class ModalRoutingModule { }
+export class ModalRoutingModule {}

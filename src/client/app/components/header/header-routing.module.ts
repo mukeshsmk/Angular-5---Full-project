@@ -4,10 +4,8 @@ import { HeaderComponent } from './header.component';
 
 @NgModule({
   imports: [
-    RouterModule.forChild([
-      { path: 'header', component: HeaderComponent }
-    ])
+    RouterModule.forChild([{ path: 'header', component: HeaderComponent }])
   ],
   exports: [RouterModule]
 })
-export class HeaderRoutingModule { }
+export class HeaderRoutingModule {}

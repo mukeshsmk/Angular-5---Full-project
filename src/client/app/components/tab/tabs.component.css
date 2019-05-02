@@ -1,14 +1,17 @@
 nav-tabs ul {
   background: #ccc;
 }
+
 .nav {
   margin-top: 0;
   padding-left: 5px;
   padding-right: 5px;
 }
+
 .pointer {
   cursor: pointer;
 }
+
 .tab-close {
   color: gray;
   text-align: right;
@@ -16,9 +19,11 @@ nav-tabs ul {
   margin: 0 5px;
   font-weight: bold;
 }
+
 .tab.active {
   background: #ccc;
 }
+
 .nav-tabs select {
   background: #fff;
   word-wrap: normal;
@@ -26,13 +31,16 @@ nav-tabs ul {
   padding: 10px 35px;
   font-size: 14px;
 }
+
 .nav-tabs {
   border-bottom: 1px solid #ccc !important;
 }
+
 .nav-tabs ul {
   margin: 0px 0 0;
   padding: 0 0 0 20px;
 }
+
 .nav-link {
   color: #000;
   border-left-color: #e9ecef;
@@ -62,6 +70,7 @@ nav-tabs ul {
   color: #000 !important;
   margin: 0px 3px 0 0px;
 }
+
 .active {
   font-weight: bolder;
   background: #efefef;
@@ -71,10 +80,12 @@ nav-tabs ul {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
+
 .dynamicTabs a {
   color: #828383;
   text-decoration: none;
 }
+
 sd-tabs ul {
   margin: 0;
 }

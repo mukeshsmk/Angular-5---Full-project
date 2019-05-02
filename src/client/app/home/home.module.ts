@@ -8,8 +8,15 @@ import { HeaderModule } from '../components/header/header.module';
 import { DashboardModule } from '../components/dashboard/dashboard.module';
 
 @NgModule({
-  imports: [HomeRoutingModule, SharedModule, SidebarModule, TableListModule, HeaderModule,DashboardModule],
+  imports: [
+    HomeRoutingModule,
+    SharedModule,
+    SidebarModule,
+    TableListModule,
+    HeaderModule,
+    DashboardModule
+  ],
   declarations: [HomeComponent],
   exports: [HomeComponent]
 })
-export class HomeModule { }
+export class HomeModule {}
