@@ -137,3 +137,115 @@ select.form-control:not([size]):not([multiple]) {
     background-color: #e6e6e6;
     border-color: #adadad;
 }
+
+.card-default>.card-heading {
+  border: 1px solid #efefef;
+  background-color: #f9f9f9;
+}
+.padding-head{
+  padding: 6px 15px;
+}
+.card-title {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 16px;
+  color: inherit;
+}
+.card-body {
+  padding: 15px;
+}
+.pull-left {
+  float: left!important;
+}
+.pull-right {
+  float: right!important;
+}
+.card-default>.card-heading {
+  border: 1px solid #efefef;
+  background-color: #f9f9f9;
+  padding: 6px 15px;
+}
+.card-body {
+  padding: 15px;
+}
+div.dataTables_wrapper div.dataTables_filter {
+  text-align: right;
+}
+div.dataTables_wrapper div.dataTables_length label {
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+}
+div.dataTables_wrapper div.dataTables_filter input {
+  margin-left: 0.5em;
+  display: inline-block;
+  width: auto !important;
+  margin: 0px 15px 0px 15px;
+  height: 27px;
+  font-size: 12px;
+  padding: 15px 25px;
+}
+div.dataTables_wrapper div.dataTables_length select {
+  padding: 0!important;
+  display: inline-block;
+  width: auto !important;
+  margin: -4px 12px;
+  height: 27px;
+  font-size: 12px;
+  
+}
+select.input-sm {
+  height: 30px;
+  line-height: 30px;
+}
+.form-inline{
+  display: inline;
+}
+.form-inline label {
+ display: inline-flex;
+}
+.fas {
+  color: #a9a9a9 !important;
+}
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+}
+.page-link {
+  position: relative; 
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #0f0f10;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+.page-link :active {
+  color: #fff;
+  background-color: #0f0f10;
+}
+.page-link:hover {
+  color: #fff !important;
+  background-color: #0f0f10;
+}
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #191b1c;
+  border: none;
+}
+.dataTables_paginate ul {
+  margin: 0;
+}
+
+
+
+
+
+
+

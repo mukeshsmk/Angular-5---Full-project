@@ -12,6 +12,12 @@ export class StockComponent implements OnInit {
   visibleOne : Boolean = false;
   visibleTwo : Boolean = true;
   
+  visibleDetail : Boolean = false;
+  visibleEdit : Boolean = true;
+  visibleRealted :Boolean = true;
+
+  visible1:Boolean = false;
+  visible2:Boolean = true;
   @Input() stock:any;
 
   constructor() {
