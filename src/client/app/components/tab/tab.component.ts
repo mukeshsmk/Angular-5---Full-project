@@ -4,10 +4,10 @@
  * and ngTemplateOutletContext directives.
  */
 
-import { Component, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: "sd-tab",
+  selector: 'sd-tab',
   styles: [
     `
       .pane {
@@ -16,20 +16,20 @@ import { Component, Input } from "@angular/core";
     `
   ],
   template: `
-    <div [hidden]="!active" class="pane">
+    <div [hidden]='!active' class='pane'>
       <ng-content></ng-content>
       <ng-container
-        *ngIf="template"
-        [ngTemplateOutlet]="template"
-        [ngTemplateOutletContext]="{ data: dataContext }"
+        *ngIf='template'
+        [ngTemplateOutlet]='template'
+        [ngTemplateOutletContext]='{ data: dataContext }'
       >
       </ng-container>
     </div>
   `
 })
 export class TabComponent {
-  @Input("tabTitle") title: string;
-  @Input() tabId: string = "";
+  @Input('tabTitle') title: string;
+  @Input() tabId: string = '';
   @Input() active = false;
   @Input() isCloseable = false;
   @Input() template: any;

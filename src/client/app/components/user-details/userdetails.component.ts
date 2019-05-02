@@ -8,15 +8,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: 'userdetails.component.html',
   styleUrls: ['userdetails.component.css']
 })
-export class UserdetailsComponent implements OnInit {
-  visibleOne : Boolean = false;
-  visibleTwo : Boolean = true;
-  
-  
-  constructor() { }
-
-  ngOnInit() {
-    
-  }
- 
+export class UserdetailsComponent {
+  visibleOne: Boolean = false;
+  visibleTwo: Boolean = true;
 }

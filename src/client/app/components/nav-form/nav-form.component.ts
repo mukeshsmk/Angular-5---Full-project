@@ -1,14 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 /**
  * This class represents the lazy loaded AboutComponent.
  */
 @Component({
   moduleId: module.id,
-  selector: "sd-nav-form",
-  templateUrl: "nav-form.component.html",
-  styleUrls: ["nav-form.component.css"]
+  selector: 'sd-nav-form',
+  templateUrl: 'nav-form.component.html',
+  styleUrls: ['nav-form.component.css']
 })
 export class NavFormComponent implements OnInit {
   opportunityForm: FormGroup;

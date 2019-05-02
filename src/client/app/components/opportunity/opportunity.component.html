@@ -1,6 +1,4 @@
-
 <sd-navigation-bar [details]="opportunity"></sd-navigation-bar>
-
 
 <section>
   <div class="row">
@@ -8,8 +6,8 @@
       <div class="card">
         <div class="card-header pointer">
           <a (click)="visibleOne = !visibleOne">
-              <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
-              <i class="fa fa-angle-down" *ngIf="!visibleOne"></i>
+            <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
+            <i class="fa fa-angle-down" *ngIf="!visibleOne"></i>
             <p>Lead Information</p>
           </a>
         </div>
@@ -26,7 +24,8 @@
                     type="text"
                     inlinetext="xxxx"
                     class=" form-control-static inlineEditEnb"
-                    > {{ opportunity.first_name__c }}</span
+                  >
+                    {{ opportunity.first_name__c }}</span
                   ></span
                 >
               </div>
@@ -39,7 +38,8 @@
                   type="email"
                   inlinetext="xxxx@gmail.com"
                   class=" form-control-static inlineEditEnb"
-                  > {{ opportunity.email__c }}</span
+                >
+                  {{ opportunity.email__c }}</span
                 >
               </div>
               <div class="form-group">
@@ -51,7 +51,8 @@
                   type="text"
                   inlinetext="0123456789"
                   class=" form-control-static inlineEditEnb"
-                  > {{ opportunity.mobile__c }}</span
+                >
+                  {{ opportunity.mobile__c }}</span
                 >
               </div>
             </div>
@@ -65,7 +66,8 @@
                   type="text"
                   inlinetext="R"
                   class=" form-control-static inlineEditEnb"
-                  > {{ opportunity.last_name__c }}</span
+                >
+                  {{ opportunity.last_name__c }}</span
                 >
               </div>
               <div class="form-group">
@@ -77,7 +79,8 @@
                   type="text"
                   inlinetext="test"
                   class=" form-control-static inlineEditEnb"
-                  > {{ opportunity.company__c }}</span
+                >
+                  {{ opportunity.company__c }}</span
                 >
               </div>
               <div class="form-group">
@@ -89,7 +92,8 @@
                   type="text"
                   inlinetext="0123456789"
                   class=" form-control-static inlineEditEnb"
-                  > {{ opportunity.phone__c }}</span
+                >
+                  {{ opportunity.phone__c }}</span
                 >
               </div>
             </div>
@@ -99,8 +103,8 @@
       <div class="card">
         <div class="card-header pointer">
           <a (click)="visibleTwo = !visibleTwo">
-              <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
-              <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i>
+            <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
+            <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i>
             <p>Lead Details</p>
           </a>
         </div>
@@ -115,7 +119,8 @@
                   type="Request_Type__c"
                   inlinetext="Digital Brochure Request"
                   class=" form-control-static inlineEditSelect"
-                  > {{ opportunity.request_type__c }}</span
+                >
+                  {{ opportunity.request_type__c }}</span
                 >
               </div>
               <div class="form-group">
@@ -127,7 +132,8 @@
                   type="email"
                   inlinetext="xxxx@gmail.com"
                   class=" form-control-static inlineEditEnb"
-                  > {{ opportunity.email__c }}</span
+                >
+                  {{ opportunity.email__c }}</span
                 >
               </div>
               <div class="form-group">
@@ -138,7 +144,8 @@
                   type="lead_source__c"
                   inlinetext=""
                   class=" form-control-static inlineEditSelect"
-                  > {{ opportunity.lead_source__c }}</span
+                >
+                  {{ opportunity.lead_source__c }}</span
                 >
               </div>
               <div class="form-group">
@@ -155,7 +162,8 @@
                   type="text"
                   inlinetext="ABC Berkeley Toyota"
                   class=" form-control-static noEdit"
-                  > {{ opportunity.selling_dealer__c }}</span
+                >
+                  {{ opportunity.selling_dealer__c }}</span
                 >
               </div>
               <div class="form-group">
@@ -166,7 +174,8 @@
                   type="text"
                   inlinetext=""
                   class=" form-control-static inlineEditEnb"
-                  > {{ opportunity.stock_number__c }}</span
+                >
+                  {{ opportunity.stock_number__c }}</span
                 >
               </div>
               <div class="form-group">
@@ -177,7 +186,8 @@
                   type="lead_status__c"
                   inlinetext=""
                   class=" form-control-static inlineEditSelect"
-                  > {{ opportunity.lead_status__c }}</span
+                >
+                  {{ opportunity.lead_status__c }}</span
                 >
               </div>
             </div>
@@ -187,8 +197,8 @@
       <div class="card">
         <div class="card-header pointer">
           <a (click)="visibleThree = !visibleThree">
-              <i class="fa fa-angle-right" *ngIf="visibleThree"></i>
-              <i class="fa fa-angle-down" *ngIf="!visibleThree"></i>
+            <i class="fa fa-angle-right" *ngIf="visibleThree"></i>
+            <i class="fa fa-angle-down" *ngIf="!visibleThree"></i>
             <p>Address Details</p>
           </a>
         </div>
@@ -203,7 +213,8 @@
                   type="text"
                   inlinetext=""
                   class=" form-control-static inlineEditEnb"
-                  > {{ opportunity.street__c }}</span
+                >
+                  {{ opportunity.street__c }}</span
                 >
               </div>
               <div class="form-group">
@@ -225,7 +236,8 @@
                   type="text"
                   inlinetext=""
                   class=" form-control-static inlineEditEnb"
-                  > {{ opportunity.lead_source__c }}</span
+                >
+                  {{ opportunity.lead_source__c }}</span
                 >
               </div>
             </div>
@@ -238,7 +250,8 @@
                   type="text"
                   inlinetext=""
                   class=" form-control-static inlineEditEnb"
-                  > {{ opportunity.state_province__c }}</span
+                >
+                  {{ opportunity.state_province__c }}</span
                 >
               </div>
               <div class="form-group">
@@ -249,7 +262,8 @@
                   type="text"
                   inlinetext="560099"
                   class=" form-control-static inlineEditEnb"
-                  > {{ opportunity.zip_postal_code__c }}</span
+                >
+                  {{ opportunity.zip_postal_code__c }}</span
                 >
               </div>
             </div>
@@ -260,8 +274,8 @@
       <div class="card">
         <div class="card-header pointer">
           <a (click)="visibleFour = !visibleFour">
-              <i class="fa fa-angle-right" *ngIf="visibleFour"></i>
-              <i class="fa fa-angle-down" *ngIf="!visibleFour"></i>
+            <i class="fa fa-angle-right" *ngIf="visibleFour"></i>
+            <i class="fa fa-angle-down" *ngIf="!visibleFour"></i>
             <p>Customer Insight</p>
           </a>
         </div>
@@ -276,7 +290,8 @@
                   type="text"
                   inlinetext="0037F00001MT9zFQAT"
                   class=" form-control-static inlineEditEnb"
-                  > {{ opportunity.previous_customer_name__c }}</span
+                >
+                  {{ opportunity.previous_customer_name__c }}</span
                 >
               </div>
             </div>
@@ -288,7 +303,8 @@
                 type="text"
                 inlinetext="70"
                 class=" form-control-static inlineEditEnb"
-                > {{ opportunity.customer_data_completeness_score__c }}</span
+              >
+                {{ opportunity.customer_data_completeness_score__c }}</span
               >
             </div>
             <div class="col-sm-6">
@@ -300,7 +316,8 @@
                   type="text"
                   inlinetext="2"
                   class=" form-control-static inlineEditEnb"
-                  > {{ opportunity.activity_score__c }}</span
+                >
+                  {{ opportunity.activity_score__c }}</span
                 >
               </div>
             </div>
@@ -311,8 +328,8 @@
       <div class="card">
         <div class="card-header pointer">
           <a (click)="visibleSix = !visibleSix">
-              <i class="fa fa-angle-right" *ngIf="visibleSix"></i>
-              <i class="fa fa-angle-down" *ngIf="!visibleSix"></i>
+            <i class="fa fa-angle-right" *ngIf="visibleSix"></i>
+            <i class="fa fa-angle-down" *ngIf="!visibleSix"></i>
             <p>Additional Information</p>
           </a>
         </div>
@@ -327,7 +344,8 @@
                   type="primary__c"
                   inlinetext=""
                   class=" form-control-static inlineEditSelect"
-                  > {{ opportunity.primary__c }}</span
+                >
+                  {{ opportunity.primary__c }}</span
                 >
               </div>
             </div>
@@ -335,12 +353,11 @@
         </div>
       </div>
 
-  
       <div class="card">
         <div class="card-header pointer">
           <a (click)="visibleSeven = !visibleSeven">
-              <i class="fa fa-angle-right" *ngIf="visibleSeven"></i>
-              <i class="fa fa-angle-down" *ngIf="!visibleSeven"></i>
+            <i class="fa fa-angle-right" *ngIf="visibleSeven"></i>
+            <i class="fa fa-angle-down" *ngIf="!visibleSeven"></i>
             <p>System Information</p>
           </a>
         </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit,  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NameListService } from '../shared/name-list/name-list.service';
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -7,15 +7,14 @@ import { NameListService } from '../shared/name-list/name-list.service';
   moduleId: module.id,
   selector: 'sd-home',
   templateUrl: 'home.component.html',
-  styleUrls: ['home.component.css'],
+  styleUrls: ['home.component.css']
 })
 export class HomeComponent implements OnInit {
-
   newName = '';
   errorMessage: string;
   names: any[] = [];
 
-  public home_page = "dashboard";
+  public home_page = 'dashboard';
 
   /**
    * Creates an instance of the HomeComponent with the injected
@@ -30,32 +29,28 @@ export class HomeComponent implements OnInit {
    */
   ngOnInit() {
     this.getNames();
-    
   }
-  
-
 
   /**
    * Handle the nameListService observable
    */
   getNames() {
-    this.nameListService.get()
+    this.nameListService
+      .get()
       .subscribe(
-        names => this.names = names,
-        error => this.errorMessage = <any>error
+        names => (this.names = names),
+        error => (this.errorMessage = <any>error)
       );
   }
 
   /**
    * Pushes a new name onto the names array
-   * @return {boolean} false to prevent default form submit behavior to refresh the page.
+   * @return {Boolean} false to prevent default form submit behavior to refresh the page.
    */
-  addName(): boolean {
+  addName(): Boolean {
     // TODO: implement nameListService.post
     this.names.push(this.newName);
     this.newName = '';
     return false;
   }
-
-
 }

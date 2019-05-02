@@ -1,106 +1,127 @@
-
-
 <div class="card-head">
-      <div class="row">
-          <div class="col-sm-6">
-              <div class="pt-1 pl-2">
-                  <img class="mr-2" src="/assets/images/customer.png"> <span style="font-size:18px;">XYZ Pty Ltd.</span>
-                 </div>
-          </div>
-          <div class="col-sm-6">
-              <div class=" row pull-right">			
-                 <button type="button" title="Details" id="btn1170" class="btn btn-md btn-primary mr-2 ml-2">
-                    <i class="fas fa-th"></i> Details
-                 </button>
-                 <button title="Activity" type="button" id="btn2170" class="btn btn-default btn-md mr-1">
-                    <i class="fas fa-th-list"></i> Related
-                 </button>
-              </div>
-           </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="pt-1 pl-2">
+        <img class="mr-2" src="/assets/images/customer.png" />
+        <span style="font-size:18px;">XYZ Pty Ltd.</span>
       </div>
+    </div>
+    <div class="col-sm-6">
+      <div class=" row pull-right">
+        <button
+          type="button"
+          title="Details"
+          id="btn1170"
+          class="btn btn-md btn-primary mr-2 ml-2"
+        >
+          <i class="fas fa-th"></i> Details
+        </button>
+        <button
+          title="Activity"
+          type="button"
+          id="btn2170"
+          class="btn btn-default btn-md mr-1"
+        >
+          <i class="fas fa-th-list"></i> Related
+        </button>
+      </div>
+    </div>
   </div>
+</div>
 
 <section>
   <div class="row">
-    <div class="col-md-12"> 
+    <div class="col-md-12">
       <div class="card">
         <div class="card-header pointer ">
           <a (click)="visibleOne = !visibleOne">
-              <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
-              <i class="fa fa-angle-down" *ngIf="!visibleOne"></i>
-            <p> Customer Information</p>
+            <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
+            <i class="fa fa-angle-down" *ngIf="!visibleOne"></i>
+            <p>Customer Information</p>
           </a>
         </div>
         <div class="card-block" *ngIf="!visibleOne">
           <div class="row">
             <div class="col-sm-3">
               <div class="form-group">
-                 <label>Name : </label>
-                 <span class="form-control-static"> {{ customer.name }}</span>
+                <label>Name : </label>
+                <span class="form-control-static"> {{ customer.name }}</span>
               </div>
               <div class="form-group">
-                 <label>First Name :</label>
-                 <span class="form-control-static"> {{ customer.first_name__c }}</span>
+                <label>First Name :</label>
+                <span class="form-control-static">
+                  {{ customer.first_name__c }}</span
+                >
               </div>
               <div class="form-group">
-                 <label>Last Name :</label>
-                 <span class="form-control-static"> {{ customer.last_name__c }}</span>
-              </div>	
+                <label>Last Name :</label>
+                <span class="form-control-static">
+                  {{ customer.last_name__c }}</span
+                >
+              </div>
               <div class="form-group">
-                 <label>Business Email :</label>
-                 <span class="form-control-static"> {{ customer.business_email__c }}</span>
-              </div>							
-  
-           </div>
-  
-           <div class="col-sm-3">
-            <div class="form-group">
-               <label>Mobile :</label>
-               <span class="form-control-static"> {{ customer.mobile__c }}</span>
-            </div>
-            <div class="form-group">
-               <label>Phone : </label>
-               <span class="form-control-static"> {{ customer.phone }}</span>
-            </div>
-            <div class="form-group">
-               <label>State :</label>
-               <span class="form-control-static"> {{ customer.state__c }}</span>
+                <label>Business Email :</label>
+                <span class="form-control-static">
+                  {{ customer.business_email__c }}</span
+                >
+              </div>
             </div>
 
-         </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label>Mobile :</label>
+                <span class="form-control-static">
+                  {{ customer.mobile__c }}</span
+                >
+              </div>
+              <div class="form-group">
+                <label>Phone : </label>
+                <span class="form-control-static"> {{ customer.phone }}</span>
+              </div>
+              <div class="form-group">
+                <label>State :</label>
+                <span class="form-control-static">
+                  {{ customer.state__c }}</span
+                >
+              </div>
+            </div>
 
-         <div class="col-sm-3">
-          <div class="form-group">
-             <label>Billing postcode :</label>
-             <span class="form-control-static"> {{ customer.billing_postcode__c }}</span>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label>Billing postcode :</label>
+                <span class="form-control-static">
+                  {{ customer.billing_postcode__c }}</span
+                >
+              </div>
+              <div class="form-group">
+                <label>Billing state :</label>
+                <span class="form-control-static">
+                  {{ customer.billing_state__c }}</span
+                >
+              </div>
+              <div class="form-group">
+                <label>Account :</label>
+                <span class="form-control-static">
+                  {{ customer.account__c }}</span
+                >
+              </div>
+              <div class="form-group">
+                <label>Account Number :</label>
+                <span class="form-control-static">
+                  {{ customer.accountnumber }}</span
+                >
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-             <label>Billing state :</label>
-             <span class="form-control-static"> {{ customer.billing_state__c }}</span>
-          </div>
-          <div class="form-group">
-             <label>Account :</label>
-             <span class="form-control-static"> {{ customer.account__c }}</span>
-          </div>
-          <div class="form-group">
-             <label>Account Number :</label>
-             <span class="form-control-static"> {{ customer.accountnumber }}</span>
-          </div>						
-       </div>
-
-  
-  
-         </div>
         </div>
       </div>
-
 
       <div class="card">
         <div class="card-header pointer">
           <a (click)="visibleTwo = !visibleTwo">
-              <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
-              <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i>
-            <p> System Information</p>
+            <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
+            <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i>
+            <p>System Information</p>
           </a>
         </div>
         <div class="card-block" *ngIf="!visibleTwo">
@@ -108,33 +129,26 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label>Created by :</label>
-                <span class="form-control-static" ></span>
-             </div>
-             <div class="form-group">
+                <span class="form-control-static"></span>
+              </div>
+              <div class="form-group">
                 <label>Created Date :</label>
                 <span class="form-control-static"> 2019-04-12 07:22:00</span>
-             </div>
+              </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <label>Last modified by :</label>
                 <span class="form-control-static"></span>
-             </div>
-             <div class="form-group">
+              </div>
+              <div class="form-group">
                 <label>Last modified date :</label>
                 <span class="form-control-static"> </span>
-             </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-
-
-    
-      
-      
     </div>
   </div>
 </section>
-  

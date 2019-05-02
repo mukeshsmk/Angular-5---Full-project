@@ -4,10 +4,8 @@ import { SidebarComponent } from './sidebar.component';
 
 @NgModule({
   imports: [
-    RouterModule.forChild([
-      { path: 'sidebar', component: SidebarComponent }
-    ])
+    RouterModule.forChild([{ path: 'sidebar', component: SidebarComponent }])
   ],
   exports: [RouterModule]
 })
-export class SidebarRoutingModule { }
+export class SidebarRoutingModule {}

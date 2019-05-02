@@ -7,6 +7,4 @@ import { DriverRoutingModule } from './driver-routing.module';
   declarations: [DriverComponent],
   exports: [DriverComponent]
 })
-export class DriverModule { 
-
-}
+export class DriverModule {}

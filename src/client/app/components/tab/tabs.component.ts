@@ -11,37 +11,37 @@ import {
   AfterContentInit,
   ViewChild,
   ComponentFactoryResolver
-} from "@angular/core";
+} from '@angular/core';
 
-import { TabComponent } from "./tab.component";
-import { DynamicTabsDirective } from "./dynamic-tabs.directive";
+import { TabComponent } from './tab.component';
+import { DynamicTabsDirective } from './dynamic-tabs.directive';
 
-import { GeneralService } from "../../shared/services/GeneralService";
-import { isComponentInstance } from "@angular/core/src/render3/context_discovery";
+import { GeneralService } from '../../shared/services/GeneralService';
+import { isComponentInstance } from '@angular/core/src/render3/context_discovery';
 
 @Component({
   moduleId: module.id,
-  selector: "sd-tabs",
-  templateUrl: "tabs.component.html",
-  styleUrls: ["tabs.component.css"]
+  selector: 'sd-tabs',
+  templateUrl: 'tabs.component.html',
+  styleUrls: ['tabs.component.css']
 })
 export class TabsComponent implements OnInit, AfterContentInit {
   listModules: any[] = [
     {
-      id: "opportunities",
-      title: "Opportunity"
+      id: 'opportunities',
+      title: 'Opportunity'
     },
     {
-      id: "vehicle_stocks",
-      title: "Vehicle Stocks"
+      id: 'vehicle_stocks',
+      title: 'Vehicle Stocks'
     },
     {
-      id: "drivers",
-      title: "Drivers"
+      id: 'drivers',
+      title: 'Drivers'
     },
     {
-      id: "customers",
-      title: "Customers"
+      id: 'customers',
+      title: 'Customers'
     }
   ];
   dynamicTabs: TabComponent[] = [];
@@ -177,7 +177,7 @@ export class TabsComponent implements OnInit, AfterContentInit {
         this.dynamicTabs.splice(i, 1);
 
         // destroy our dynamically created component again
-        let viewContainerRef = this.dynamicTabPlaceholder.viewContainer;
+        const viewContainerRef = this.dynamicTabPlaceholder.viewContainer;
         // let viewContainerRef = this.dynamicTabPlaceholder;
         viewContainerRef.remove(i);
 

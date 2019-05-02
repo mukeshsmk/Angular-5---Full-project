@@ -2,9 +2,7 @@
   <div class="container-fluid">
     <div class="card mt-3">
       <div class="card-header pointer">
-       
-          Stock Information
-        
+        Stock Information
       </div>
       <div class="card-body" id="card-lead-information">
         <div class="row">
@@ -306,19 +304,13 @@
 
     <div class="card mt-3 mb-3">
       <div class="card-header pointer">
-        <a
-          (click)="visibleOne = !visibleOne"
-        >
+        <a (click)="visibleOne = !visibleOne">
           <i class="fa fa-angle-down" *ngIf="!visibleOne"></i>
           <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
           System Information</a
         >
       </div>
-      <div
-        id="system-information"
-        class="card-body"
-        *ngIf="!visibleOne"
-      >
+      <div id="system-information" class="card-body" *ngIf="!visibleOne">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">

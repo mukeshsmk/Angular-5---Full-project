@@ -10,4 +10,4 @@ import { TableListComponent } from './table-list.component';
   ],
   exports: [RouterModule]
 })
-export class TableListRoutingModule { }
+export class TableListRoutingModule {}

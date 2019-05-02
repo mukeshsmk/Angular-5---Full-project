@@ -1,18 +1,18 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
   Validators,
   FormControl
-} from "@angular/forms";
+} from '@angular/forms';
 /**
  * This class represents the lazy loaded AboutComponent.
  */
 @Component({
   moduleId: module.id,
-  selector: "sd-opportunity-form",
-  templateUrl: "opportunity-form.component.html",
-  styleUrls: ["opportunity-form.component.css"]
+  selector: 'sd-opportunity-form',
+  templateUrl: 'opportunity-form.component.html',
+  styleUrls: ['opportunity-form.component.css']
 })
 export class OpportunityFormComponent implements OnInit {
   visibleOne: Boolean = false;
@@ -23,13 +23,13 @@ export class OpportunityFormComponent implements OnInit {
   // visibleSix: Boolean = true;
   // visibleSeven: Boolean = true;
 
-  @Output() closeModalEvent = new EventEmitter<boolean>();
+  @Output() closeModalEvent = new EventEmitter<Boolean>();
 
   submitted = false;
 
   @Input() opportunity: any;
   @Input() type: any;
-  @Output("updateOpportunity") send = new EventEmitter<any>();
+  @Output('updateOpportunity') send = new EventEmitter<any>();
 
   opportunityForm: FormGroup;
 
@@ -75,23 +75,20 @@ export class OpportunityFormComponent implements OnInit {
     });
   }
 
-  onCloseModal(event: any){
-    this.closeModalEvent.emit(event);  
-   }
+  onCloseModal(event: any) {
+    this.closeModalEvent.emit(event);
+  }
 
-   
-  onSubmit(){
-    console.log(this.opportunityForm)
+  onSubmit() {
+    console.log(this.opportunityForm);
     this.submitted = true;
 
     if (this.opportunityForm.invalid) {
       return;
     }
-    if (this.type == "edit") {
+    if (this.type === 'edit') {
       this.opportunityForm.value.id = this.opportunity.id;
     }
     this.send.emit(this.opportunityForm.value);
   }
-
-  closeModal() {}
 }

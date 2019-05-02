@@ -12,9 +12,10 @@ h2 {
 }
 
 form {
-  margin:0 auto;
-  width:300px
+  margin: 0 auto;
+  width: 300px
 }
+
 input {
   margin: 15px 0;
   width: 100%;
@@ -26,8 +27,9 @@ input {
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: .25rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s;
+  transition: border-color .15s ease-in-out, box-shadow .15s;
 }
+
 button {
   display: inline-block;
   font-weight: 400;
@@ -43,42 +45,51 @@ button {
   font-size: 1rem;
   line-height: 1.5;
   border-radius: .25rem;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
 label {
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    font-size: 1rem;
-    font-weight: 400 !important;
-    line-height: 1.5;
-    color: #212529;
-    text-align: left;
-    font-size: 16px;
-    background-color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 400 !important;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  font-size: 16px;
+  background-color: #fff;
 }
+
 #form-switch {
-  display:none
+  display: none
 }
+
 #register-form {
-  display:none
+  display: none
 }
+
 #form-switch:checked~#register-form {
-  display:block
+  display: block
 }
+
 #form-switch:checked~#login-form {
-  display:none
+  display: none
 }
+
 form[_ngcontent-c3] {
   margin: 0 auto;
   width: 30%;
 }
+
 form[_ngcontent-c4] {
   margin: 0 auto;
   width: 30%;
 }
+
 form[_ngcontent-c5] {
   margin: 0 auto;
   width: 30%;
 }
+
 .register {
   font-size: 1rem;
   line-height: 1.5;
@@ -89,6 +100,6 @@ form[_ngcontent-c5] {
   padding: 0 25px;
 }
 
-.margin-top-0{
-  margin-top:0px;
+.margin-top-0 {
+  margin-top: 0px;
 }

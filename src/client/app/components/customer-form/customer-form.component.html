@@ -2,9 +2,7 @@
   <div class="container-fluid">
     <div class="card mt-3">
       <div class="card-header pointer">
-       
-          Customer Information
-    
+        Customer Information
       </div>
       <div class="card-body collapse show" id="card-lead-information">
         <div class="row">
@@ -19,8 +17,13 @@
                 required=""
                 formControlName="first_name__c"
               />
-              <div *ngIf="submitted && customerForm.controls.first_name__c.errors" class="error">
-                <div *ngIf="customerForm.controls.first_name__c.errors.required">
+              <div
+                *ngIf="submitted && customerForm.controls.first_name__c.errors"
+                class="error"
+              >
+                <div
+                  *ngIf="customerForm.controls.first_name__c.errors.required"
+                >
                   <p class="error-box margin-top-0">
                     First name is Required
                   </p>
@@ -39,7 +42,10 @@
                 required=""
                 formControlName="last_name__c"
               />
-              <div *ngIf="submitted && customerForm.controls.last_name__c.errors" class="error">
+              <div
+                *ngIf="submitted && customerForm.controls.last_name__c.errors"
+                class="error"
+              >
                 <div *ngIf="customerForm.controls.last_name__c.errors.required">
                   <p class="error-box margin-top-0">
                     Last name is Required
@@ -74,13 +80,18 @@
                 required=""
                 formControlName="accountnumber"
               />
-              <div *ngIf="submitted && customerForm.controls.accountnumber.errors" class="error">
-                  <div *ngIf="customerForm.controls.accountnumber.errors.required">
-                    <p class="error-box margin-top-0">
-                      Account Number is Required
-                    </p>
-                  </div>
+              <div
+                *ngIf="submitted && customerForm.controls.accountnumber.errors"
+                class="error"
+              >
+                <div
+                  *ngIf="customerForm.controls.accountnumber.errors.required"
+                >
+                  <p class="error-box margin-top-0">
+                    Account Number is Required
+                  </p>
                 </div>
+              </div>
             </div>
           </div>
         </div>
@@ -209,13 +220,22 @@
                 required=""
                 formControlName="business_email__c"
               />
-              <div *ngIf="submitted && customerForm.controls.business_email__c.errors" class="error">
-                  <div *ngIf="customerForm.controls.business_email__c.errors.required">
-                    <p class="error-box margin-top-0">
-                      Email is Required
-                    </p>
-                  </div>
+              <div
+                *ngIf="
+                  submitted && customerForm.controls.business_email__c.errors
+                "
+                class="error"
+              >
+                <div
+                  *ngIf="
+                    customerForm.controls.business_email__c.errors.required
+                  "
+                >
+                  <p class="error-box margin-top-0">
+                    Email is Required
+                  </p>
                 </div>
+              </div>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -288,13 +308,16 @@
                 name="email"
                 formControlName="email"
               />
-              <div *ngIf="submitted && customerForm.controls.email.errors" class="error">
-                  <div *ngIf="customerForm.controls.email.errors.required">
-                    <p class="error-box margin-top-0">
-                      Email is Required
-                    </p>
-                  </div>
+              <div
+                *ngIf="submitted && customerForm.controls.email.errors"
+                class="error"
+              >
+                <div *ngIf="customerForm.controls.email.errors.required">
+                  <p class="error-box margin-top-0">
+                    Email is Required
+                  </p>
                 </div>
+              </div>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -380,19 +403,13 @@
     </div>
     <div class="card mt-3">
       <div class="card-header pointer">
-        <a
-          (click)="visibleOne = !visibleOne"
-          >
-            <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
-            <i class="fa fa-angle-down" *ngIf="!visibleOne"></i> 
-            Address Information</a
+        <a (click)="visibleOne = !visibleOne">
+          <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
+          <i class="fa fa-angle-down" *ngIf="!visibleOne"></i>
+          Address Information</a
         >
       </div>
-      <div
-        id="address-information"
-        class="card-body"
-        *ngIf="!visibleOne"
-      >
+      <div id="address-information" class="card-body" *ngIf="!visibleOne">
         <div class="row"></div>
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -608,20 +625,14 @@
 
     <div class="card mt-3">
       <div class="card-header pointer">
-        <a 
-        (click)="visibleTwo = !visibleTwo"
-        >
+        <a (click)="visibleTwo = !visibleTwo">
           <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
-          <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i> 
-          
+          <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i>
+
           Additional Information
         </a>
       </div>
-      <div
-        id="addtional-information"
-        class="card-body"
-        *ngIf="!visibleTwo"
-      >
+      <div id="addtional-information" class="card-body" *ngIf="!visibleTwo">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
@@ -671,19 +682,13 @@
     </div>
     <div class="card mt-3 mb-3">
       <div class="card-header pointer">
-        <a 
-        (click)="visibleThree = !visibleThree"
-        >
+        <a (click)="visibleThree = !visibleThree">
           <i class="fa fa-angle-right" *ngIf="visibleThree"></i>
-          <i class="fa fa-angle-down" *ngIf="!visibleThree"></i> 
+          <i class="fa fa-angle-down" *ngIf="!visibleThree"></i>
           System Information</a
         >
       </div>
-      <div
-        id="system-information"
-        class="card-body"
-        *ngIf="!visibleThree"
-      >
+      <div id="system-information" class="card-body" *ngIf="!visibleThree">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">

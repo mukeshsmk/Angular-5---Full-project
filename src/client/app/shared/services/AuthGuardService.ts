@@ -1,8 +1,8 @@
 // src/app/auth/auth-guard.service.ts
 
-import { Injectable } from "@angular/core";
-import { Router, CanActivate } from "@angular/router";
-import { AuthService } from "./AuthService";
+import { Injectable } from '@angular/core';
+import { Router, CanActivate } from '@angular/router';
+import { AuthService } from './AuthService';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
@@ -10,8 +10,8 @@ export class AuthGuardService implements CanActivate {
 
   canActivate(): boolean {
     if (!this.auth.isAuthenticated()) {
-      console.log("I am redirecting to login");
-      this.router.navigate(["login"]);
+      console.log('I am redirecting to login');
+      this.router.navigate(['login']);
       return false;
     }
     return true;

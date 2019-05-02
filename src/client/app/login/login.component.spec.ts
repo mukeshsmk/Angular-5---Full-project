@@ -15,19 +15,16 @@ export function main() {
       });
     });
 
-    it(
-      'should work',
-      async(() => {
-        TestBed.compileComponents().then(() => {
-          const fixture = TestBed.createComponent(TestComponent);
-          const loginDOMEl = fixture.debugElement.children[0].nativeElement;
+    it('should work', async(() => {
+      TestBed.compileComponents().then(() => {
+        const fixture = TestBed.createComponent(TestComponent);
+        const loginDOMEl = fixture.debugElement.children[0].nativeElement;
 
-          expect(loginDOMEl.querySelectorAll('h2')[0].textContent).toEqual(
-            'Features'
-          );
-        });
-      })
-    );
+        expect(loginDOMEl.querySelectorAll('h2')[0].textContent).toEqual(
+          'Features'
+        );
+      });
+    }));
   });
 }
 

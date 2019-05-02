@@ -1,18 +1,18 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
   Validators,
   FormControl
-} from "@angular/forms";
+} from '@angular/forms';
 /**
  * This class represents the lazy loaded AboutComponent.
  */
 @Component({
   moduleId: module.id,
-  selector: "sd-driver-form",
-  templateUrl: "driver-form.component.html",
-  styleUrls: ["driver-form.component.css"]
+  selector: 'sd-driver-form',
+  templateUrl: 'driver-form.component.html',
+  styleUrls: ['driver-form.component.css']
 })
 export class DriverFormComponent implements OnInit {
   visibleOne: Boolean = true;
@@ -23,14 +23,14 @@ export class DriverFormComponent implements OnInit {
   visibleSix: Boolean = true;
   visibleSeven: Boolean = true;
 
-  @Output() closeModalEvent = new EventEmitter<boolean>();
+  @Output() closeModalEvent = new EventEmitter<Boolean>();
 
   @Input() driver: any;
   @Input() type: any;
-  @Output("updateDriver") send = new EventEmitter<any>();
+  @Output('updateDriver') send = new EventEmitter<any>();
 
   driverForm: FormGroup;
-  submitted: boolean = false;
+  submitted: Boolean = false;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -73,23 +73,22 @@ export class DriverFormComponent implements OnInit {
     });
     console.log(this.driver);
   }
-  
-  onCloseModal(event: any){
-    this.closeModalEvent.emit(event);  
-   }
-   
-  onSubmit(){
+
+  onCloseModal(event: any) {
+    this.closeModalEvent.emit(event);
+  }
+
+  onSubmit() {
     this.submitted = true;
     console.log(this.driverForm);
 
     if (this.driverForm.invalid) {
       return;
     }
-    if (this.type == "edit") {
+    if (this.type === 'edit') {
       this.driverForm.value.id = this.driver.id;
     }
 
     this.send.emit(this.driverForm.value);
   }
-  closeOpportunityModal() {}
 }

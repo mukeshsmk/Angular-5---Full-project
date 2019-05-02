@@ -10,4 +10,4 @@ import { ResetPasswordComponent } from './resetpassword.component';
   ],
   exports: [RouterModule]
 })
-export class ResetPasswordRoutingModule { }
+export class ResetPasswordRoutingModule {}

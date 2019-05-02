@@ -1,28 +1,34 @@
-.btn-default{
+.btn-default {
   color: #333;
   border-color: #8c8c8c;
 }
+
 .btn-default:hover {
   background-color: #d4d4d4;
   border-color: #8c8c8c;
 }
 
-.pointer {cursor: pointer;}
+.pointer {
+  cursor: pointer;
+}
 
-.card-header a{
+.card-header a {
   color: #3e3f44;
   text-decoration: none;
   background-color: transparent;
 }
-.card-header a:hover{
+
+.card-header a:hover {
   color: #3e3f44;
   text-decoration: none;
 }
+
 label {
   display: inline-block;
   margin-bottom: 5px;
   font-size: 14px;
 }
+
 .form-control {
   display: block;
   width: 100%;
@@ -36,14 +42,17 @@ label {
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: .25rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
 .form-group {
   margin-bottom: 5px;
 }
-.modal.full-size .modal-dialog{
+
+.modal.full-size .modal-dialog {
   width: 600px !important;
-  max-width: 600px !important;;
+  max-width: 600px !important;
+  ;
 }
 
 .modal-content {
@@ -56,25 +65,29 @@ label {
   pointer-events: auto;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid rgba(0,0,0,.2);
+  border: 1px solid rgba(0, 0, 0, .2);
   border-radius: .3rem;
   outline: 0;
   height: 621px !important;
 }
-.fa{
+
+.fa {
   float: left;
   font-size: 25px;
   margin: 0px 6px 0px 0px;
   color: #0747a6 !important;
 }
-.text_area{
-  height:auto !important;
+
+.text_area {
+  height: auto !important;
 }
-.btn-info{
+
+.btn-info {
   color: #fff;
   background-color: #5bc0de;
   border-color: #46b8da;
 }
+
 .btn-info:hover {
   color: #fff;
   background-color: #31b0d5;

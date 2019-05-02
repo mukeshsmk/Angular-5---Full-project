@@ -1,19 +1,19 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
   Validators,
   FormControl
-} from "@angular/forms";
+} from '@angular/forms';
 
 /**
  * This class represents the lazy loaded AboutComponent.
  */
 @Component({
   moduleId: module.id,
-  selector: "sd-vehiclestock-form",
-  templateUrl: "vehiclestock-form.component.html",
-  styleUrls: ["vehiclestock-form.component.css"]
+  selector: 'sd-vehiclestock-form',
+  templateUrl: 'vehiclestock-form.component.html',
+  styleUrls: ['vehiclestock-form.component.css']
 })
 export class VehicleStockFormComponent implements OnInit {
   visibleOne: Boolean = false;
@@ -22,15 +22,15 @@ export class VehicleStockFormComponent implements OnInit {
   visibleFour: Boolean = true;
   visibleFive: Boolean = true;
   visibleSix: Boolean = true;
-  
-  @Output() closeModalEvent = new EventEmitter<boolean>();
+
+  @Output() closeModalEvent = new EventEmitter<Boolean>();
 
   @Input() vehicleStock: any;
   @Input() type: any;
-  @Output("updatevehicleStock") send = new EventEmitter<any>();
+  @Output('updatevehicleStock') send = new EventEmitter<any>();
 
   vehicleStockForm: FormGroup;
-  submitted: boolean = false;
+  submitted: Boolean = false;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -56,23 +56,21 @@ export class VehicleStockFormComponent implements OnInit {
       stock_image__c: [this.vehicleStock.stock_image__c]
     });
   }
-  onCloseModal(event: any){
-    this.closeModalEvent.emit(event);  
-   }
+  onCloseModal(event: any) {
+    this.closeModalEvent.emit(event);
+  }
 
-
-  onSubmit(){
+  onSubmit() {
     this.submitted = true;
     console.log(this.vehicleStockForm);
 
     if (this.vehicleStockForm.invalid) {
       return;
     }
-    if (this.type == "edit") {
+    if (this.type === 'edit') {
       this.vehicleStockForm.value.id = this.vehicleStock.id;
     }
 
     this.send.emit(this.vehicleStockForm.value);
   }
-  closeOpportunityModal() {}
 }

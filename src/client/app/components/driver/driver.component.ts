@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 /**
  * This class represents the lazy loaded AboutComponent.
  */
@@ -9,15 +9,10 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['driver.component.css']
 })
 export class DriverComponent implements OnInit {
-  visibleOne : Boolean = false;
-  visibleTwo : Boolean = true;
-  
-  @Input() driver:any;
+  visibleOne: Boolean = false;
+  visibleTwo: Boolean = true;
 
-  constructor() { }
+  @Input() driver: any;
 
-  ngOnInit() {
-    
-  }
-
+  ngOnInit() {}
 }

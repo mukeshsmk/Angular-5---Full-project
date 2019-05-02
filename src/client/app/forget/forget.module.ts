@@ -5,11 +5,13 @@ import { ForgetRoutingModule } from './forget-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, 
+  imports: [
+    CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    ForgetRoutingModule],
+    ForgetRoutingModule
+  ],
   declarations: [ForgetComponent],
   exports: [ForgetComponent]
 })
-export class ForgetModule { }
+export class ForgetModule {}

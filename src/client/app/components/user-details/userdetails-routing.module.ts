@@ -10,4 +10,4 @@ import { UserdetailsComponent } from './userdetails.component';
   ],
   exports: [RouterModule]
 })
-export class UserdetailsRoutingModule { }
+export class UserdetailsRoutingModule {}

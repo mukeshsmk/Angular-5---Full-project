@@ -167,7 +167,12 @@
                     <table class="table mt-4">
                       <thead class=" text-primary pointer">
                         <th>
-                          <input type="checkbox" (change)="checkedall($event)" id="blahA" value="all" />
+                          <input
+                            type="checkbox"
+                            (change)="checkedall($event)"
+                            id="blahA"
+                            value="all"
+                          />
                         </th>
                         <th (click)="sortData('id')">
                           Id
@@ -225,7 +230,15 @@
                       <tbody>
                         <tr *ngFor="let opportunity of opportunityList">
                           <td>
-                            <input type="checkbox" id="blahB" name="selected" value='{{ opportunity.id }}' (change)="checked()"/>
+                            <input
+                              type="checkbox"
+                              id="blahB"
+                              name="selected"
+                              value="{{ opportunity.id }}"
+                              (change)="checked()"
+                              class="checkBox"
+                              #checkedAll
+                            />
                           </td>
                           <td>
                             {{ opportunity.id }}
@@ -695,9 +708,7 @@
                 *ngIf="opportunityListData.current_page >= 5"
                 (click)="pageNumber(opportunityListData.current_page - 1)"
               >
-                <a class="page-link">{{
-                  opportunityListData.current_page - 1
-                }}</a>
+                <a class="page-link">{{ opportunityListData.current_page - 1 }}</a>
               </li>
               <li
                 class="page-item active bg-dark"
@@ -721,9 +732,7 @@
                 "
                 (click)="pageNumber(opportunityListData.current_page + 1)"
               >
-                <a class="page-link">{{
-                  opportunityListData.current_page + 1
-                }}</a>
+                <a class="page-link">{{ opportunityListData.current_page + 1 }}</a>
               </li>
               <li
                 class="page-item"
@@ -892,7 +901,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-              <h4 class="modal-title text-center w-100">Search</h4>
+            <h4 class="modal-title text-center w-100">Search</h4>
             <button
               type="button"
               class="close"
@@ -904,20 +913,32 @@
             </button>
           </div>
           <div class="modal-body">
-            <input [(ngModel)]="sdname" class="form-control w-75 float-left" type="search" /> 
-            <span style="padding: 10px 30px;" class="searchSD fa fa-search w-25 text-right pointer" (click)="searchUserdetails()"></span>
+            <input
+              [(ngModel)]="sdname"
+              class="form-control w-75 float-left"
+              type="search"
+            />
+            <span
+              style="padding: 10px 30px;"
+              class="searchSD fa fa-search w-25 text-right pointer"
+              (click)="searchUserdetails()"
+            ></span>
             <hr />
             <div class="text-center" *ngIf="Searchwait"><p>Loading...</p></div>
             <table *ngIf="searchUserData" class="table table-bordered">
               <tbody>
                 <tr *ngFor="let data of searchUserData">
                   <td align="center">
-                      <a  class="fillFirstName" href="#" (click)="assign(data.id)">{{data.firstname}}</a>
+                    <a
+                      class="fillFirstName"
+                      href="#"
+                      (click)="assign(data.id)"
+                      >{{ data.firstname }}</a
+                    >
                   </td>
-                  <td align="center">{{data.lastname}}</td>
-                  <td>{{data.email}}</td>
-                  <td>{{data.createdate}}</td>
-
+                  <td align="center">{{ data.lastname }}</td>
+                  <td>{{ data.email }}</td>
+                  <td>{{ data.createdate }}</td>
                 </tr>
               </tbody>
             </table>
