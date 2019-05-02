@@ -130,7 +130,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 @media (min-width: 1200px) {
-  .container {
+  .container { 
     width: 100%;
   }
 }
@@ -146,7 +146,7 @@ select.form-control:not([size]):not([multiple]) {
   border-radius: 4px;
 }
 
-.fas {
+.fa-th {
   color: #0747a6 !important;
 }
 
@@ -275,4 +275,40 @@ select.input-sm {
 }
 .dataTables_paginate ul {
   margin: 0;
+}
+
+input[type=file]{
+  display: none;
+}
+
+.input-area{
+  padding: 15% 30%;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 0;
+  color: #5d5959;
+  cursor: pointer;
+}
+
+.input-border{
+  border: none;
+  padding: 0;
+}
+.modal-dialog {
+    max-width: 600px;
+    margin: 1.75rem auto;
+    width: 600px;
+    margin: 30px auto;
+}
+input[type=button]{
+  background-color: DodgerBlue;
+}
+.btn-info{
+    background-color: DodgerBlue;
+    color: #fff;
+    cursor: pointer;
+}
+.btn-info:hover{
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #269abc;
 }
