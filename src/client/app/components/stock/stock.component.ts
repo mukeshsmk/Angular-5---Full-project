@@ -12,15 +12,37 @@ export class StockComponent {
   visibleOne: Boolean = false;
   visibleTwo: Boolean = true;
 
-  visibleDetail: Boolean = false;
-  visibleEdit: Boolean = true;
-  visibleRealted: Boolean = true;
+  visibleDetail: Boolean = true;
+  visibleEdit: Boolean = false;
+  visibleRelated: Boolean = false;
+  attachmentOpen:Boolean = false;
 
-  visible1: Boolean = false;
-  visible2: Boolean = true;
+
   @Input() stock: any;
 
   constructor() {
     console.log(this.stock);
   }
+  viewEdit(){
+    this.visibleDetail = false;
+    this.visibleEdit = true;
+    this.visibleRelated = false;
+  }
+  viewDetail(){
+    this.visibleDetail = true;
+    this.visibleEdit = false;
+    this.visibleRelated = false;
+  }
+  viewRelated(){
+    this.visibleDetail = false;
+    this.visibleEdit = false;
+    this.visibleRelated = true;
+  }
+  addAttachment(){
+    this.attachmentOpen = true;
+  }
+  close(){
+    this.attachmentOpen = false;
+  }
 }
+ 
