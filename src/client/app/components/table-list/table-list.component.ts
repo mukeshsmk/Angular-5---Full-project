@@ -139,6 +139,9 @@ export class TableListComponent {
     } else if (arg === 'unallocated') {
       this.unallocated = 'unallocated';
       this.allocated = '';
+    }else{
+      this.unallocated = '';
+      this.allocated = '';
     }
     this.changeLead = false;
     const params = {
@@ -400,7 +403,7 @@ export class TableListComponent {
       };
       this.http
         .post<{ success: object }>(
-          Config.BASE_URL + 'api/assignSfid',
+          Config.BASE_URL + 'api/getSearchData',
           assignSfidparams
         )
         .subscribe((response: any) => {
