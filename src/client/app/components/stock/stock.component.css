@@ -146,7 +146,7 @@ select.form-control:not([size]):not([multiple]) {
   border-radius: 4px;
 }
 
-.fa-th {
+.fas {
   color: #0747a6 !important;
 }
 
@@ -238,9 +238,6 @@ select.input-sm {
 }
 .form-inline label {
   display: inline-flex;
-}
-.fas {
-  color: #a9a9a9 !important;
 }
 .table thead th {
   vertical-align: bottom;

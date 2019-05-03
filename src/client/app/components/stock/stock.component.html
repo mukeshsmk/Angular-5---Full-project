@@ -1,5 +1,13 @@
 <sd-navigation-bar></sd-navigation-bar>
-
+<div class="loader" *ngIf="loaderOne"></div>
+<div class="container alert alert-success" *ngIf="updateSuccess">
+  <strong>Success! </strong> Stock Updated
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+</div>
+<div class="container alert alert-danger" *ngIf="updateFailure">
+  <strong>Failed! </strong> Operation Failed.
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+</div>
 <div class="card-head">
   <div class="row">
     <div class="col-sm-6">
@@ -23,7 +31,7 @@
           type="button"
           title="Edit"
           class="btn btn-default inlineEditBtn170"
-          (click)="viewEdit()"
+          (click)="onSubmitUpdate()"
           *ngIf="visibleEdit"
         >
           Save
@@ -35,7 +43,10 @@
           type="button"
           title="Details"
           id="btn1170"
-          class="btn btn-md btn-primary mr-2 ml-2"
+          class="btn btn-md btn-default mr-2 ml-2"
+          [ngClass]="{
+            'btn-primary': visibleDetail
+          }"
           (click)="viewDetail()"
         >
           <i class="fas fa-th"></i> Details
@@ -46,6 +57,9 @@
           id="btn2170"
           class="btn btn-default btn-md mr-1"
           (click)="viewRelated()"
+          [ngClass]="{
+            'btn-primary': visibleRelated
+          }"
         >
           <i class="fas fa-th-list"></i> Related
         </button>
@@ -56,7 +70,7 @@
 
 <section *ngIf="visibleDetail">
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-9">
       <div class="card">
         <div class="card-header pointer">
           <a (click)="visibleOne = !visibleOne">
@@ -321,281 +335,235 @@
 </section>
 
 <section *ngIf="visibleEdit">
-  <div class="row">
-    <div class="col-md-10">
-      <div class="card">
-        <div class="card-header pointer">
-          <a (click)="visibleOne = !visibleOne">
-            <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
-            <i class="fa fa-angle-down" *ngIf="!visibleOne"></i>
-            <p>Vehicle Information</p>
-          </a>
-        </div>
-        <div class="card-block" *ngIf="!visibleOne">
-          <div class="row">
-            <div class="col-md-9">
-              <div class="row">
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label>Stock No:</label>
-                    <!-- $details[0]->sfid-->
-                    <span
-                      name="name"
-                      dropname="text"
-                      type="text"
-                      inlinetext="124578A"
-                      class=" form-control-static inlineEditEnb"
-                      ><input
-                        name="name"
-                        class="mainLoop form-control"
-                        type="text"
-                        value="124578A"
-                    /></span>
+  <form (ngSubmit)="onSubmitUpdate()" [formGroup]="vehicleStockForm">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-header pointer">
+            <a (click)="visibleOne = !visibleOne">
+              <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
+              <i class="fa fa-angle-down" *ngIf="!visibleOne"></i>
+              <p>Vehicle Information</p>
+            </a>
+          </div>
+          <div class="card-block" *ngIf="!visibleOne">
+            <div class="row">
+              <div class="col-md-9">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Stock No:</label>
+                      <!-- $details[0]->sfid-->
+                      <span class=" form-control-static inlineEditEnb"
+                        ><input
+                          type="text"
+                          pattern="[a-zA-Z0-9\sàèéìòù]+"
+                          formControlName="name"
+                          name="name"
+                          class="form-control"
+                          required=""
+                      /></span>
+                      <div
+                        *ngIf="
+                          submitted && vehicleStockForm.controls.name.errors
+                        "
+                        class="error"
+                      >
+                        <div
+                          *ngIf="vehicleStockForm.controls.name.errors.required"
+                        >
+                          <p class="error-box margin-top-0">
+                            Stock Number is Required
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Selling Dealer:</label>
+                      <span class=" form-control-static noEdit">{{
+                        this.stock.selling_dealer__c
+                      }}</span>
+                    </div>
                   </div>
-                  <div class="form-group">
-                    <label>Selling Dealer:</label>
-                    <span
-                      pattern="[a-zA-Z\sàèéìòù]+"
-                      name="selling_dealer__c"
-                      dropname="text"
-                      type="text"
-                      inlinetext="ABC Berkeley Toyota"
-                      class=" form-control-static noEdit"
-                      >ABC Berkeley Toyota</span
-                    >
-                  </div>
-                </div>
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label>Vin:</label>
-                    <span
-                      name="vin__c"
-                      dropname="text"
-                      type="text"
-                      inlinetext="1234"
-                      class=" form-control-static inlineEditEnb"
-                      ><input
-                        name="vin__c"
-                        class="mainLoop form-control"
-                        type="text"
-                        value="1234"
-                    /></span>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Vin:</label>
+                      <span class=" form-control-static inlineEditEnb"
+                        ><input
+                          name="vin__c"
+                          class="mainLoop form-control"
+                          type="text"
+                          formControlName="vin__c"
+                      /></span>
 
-                    <!-- <span class="form-control-static">1234</span> -->
+                      <!-- <span class="form-control-static">1234</span> -->
+                    </div>
+                    <div class="form-group">
+                      <label>Reg No: </label>
+                      <span class=" form-control-static inlineEditEnb"
+                        ><input
+                          name="rego_no__c"
+                          class="mainLoop form-control"
+                          type="text"
+                          formControlName="rego_no__c"
+                      /></span>
+                    </div>
                   </div>
-                  <div class="form-group">
-                    <label>Reg No: </label>
-                    <span
-                      name="rego_no__c"
-                      dropname="text"
-                      type="text"
-                      inlinetext=""
-                      class=" form-control-static inlineEditEnb"
-                      ><input
-                        name="rego_no__c"
-                        class="mainLoop form-control"
-                        type="text"
-                        value=""
-                    /></span>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Manafacture Year:</label>
+                      <span class=" form-control-static inlineEditEnb"
+                        ><input
+                          formControlName="manufacture_year__c"
+                          name="manufacture_year__c"
+                          class="mainLoop form-control"
+                          type="text"
+                      /></span>
+                    </div>
+                    <div class="form-group">
+                      <label>Body type:</label>
+                      <span class=" form-control-static inlineEditEnb"
+                        ><input
+                          name="body_type__c"
+                          class="mainLoop form-control"
+                          type="text"
+                          formControlName="body_type__c"
+                      /></span>
+                    </div>
                   </div>
-                </div>
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label>Manafacture Year:</label>
-                    <span
-                      name="manufacture_year__c"
-                      dropname="text"
-                      type="text"
-                      inlinetext=""
-                      class=" form-control-static inlineEditEnb"
-                      ><input
-                        name="manufacture_year__c"
-                        class="mainLoop form-control"
-                        type="text"
-                        value=""
-                    /></span>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Body Color:</label>
+                      <span class=" form-control-static inlineEditEnb"
+                        ><input
+                          name="body_colour__c"
+                          class="mainLoop form-control"
+                          type="text"
+                          formControlName="body_colour__c"
+                      /></span>
+                    </div>
+                    <div class="form-group">
+                      <label>Price:</label>
+                      <span class=" form-control-static inlineEditEnb"
+                        ><input
+                          name="egc_price__c"
+                          class="mainLoop form-control"
+                          type="text"
+                          formControlName="egc_price__c"
+                      /></span>
+                    </div>
                   </div>
-                  <div class="form-group">
-                    <label>Body type:</label>
-                    <span
-                      name="body_type__c"
-                      dropname="text"
-                      type="text"
-                      inlinetext=""
-                      class=" form-control-static inlineEditEnb"
-                      ><input
-                        name="body_type__c"
-                        class="mainLoop form-control"
-                        type="text"
-                        value=""
-                    /></span>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Series:</label>
+                      <span class=" form-control-static inlineEditEnb"
+                        ><input
+                          name="series_c__c"
+                          class="mainLoop form-control"
+                          type="text"
+                          formControlName="series_c__c"
+                      /></span>
+                    </div>
                   </div>
-                </div>
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label>Body Color:</label>
-                    <span
-                      name="body_colour__c"
-                      dropname="text"
-                      type="text"
-                      inlinetext="Red"
-                      class=" form-control-static inlineEditEnb"
-                      ><input
-                        name="body_colour__c"
-                        class="mainLoop form-control"
-                        type="text"
-                        value="Red"
-                    /></span>
-                  </div>
-                  <div class="form-group">
-                    <label>Price:</label>
-                    <span
-                      name="egc_price__c"
-                      dropname="text"
-                      type="text"
-                      inlinetext=""
-                      class=" form-control-static inlineEditEnb"
-                      ><input
-                        name="egc_price__c"
-                        class="mainLoop form-control"
-                        type="text"
-                        value=""
-                    /></span>
-                  </div>
-                </div>
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label>Series:</label>
-                    <span
-                      name="series_c__c"
-                      dropname="text"
-                      type="text"
-                      inlinetext=""
-                      class=" form-control-static inlineEditEnb"
-                      ><input
-                        name="series_c__c"
-                        class="mainLoop form-control"
-                        type="text"
-                        value=""
-                    /></span>
-                  </div>
-                </div>
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label>Vehicle Type</label>
-                    <span
-                      name="vehicle_type__c"
-                      dropname="text"
-                      type="text"
-                      inlinetext="New"
-                      class=" form-control-static inlineEditEnb"
-                      ><input
-                        name="vehicle_type__c"
-                        class="mainLoop form-control"
-                        type="text"
-                        value="New"
-                    /></span>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Vehicle Type</label>
+                      <span class=" form-control-static inlineEditEnb"
+                        ><input
+                          name="vehicle_type__c"
+                          class="mainLoop form-control"
+                          type="text"
+                          formControlName="vehicle_type__c"
+                      /></span>
 
-                    <!-- <span class="form-control-static">New</span> -->
+                      <!-- <span class="form-control-static">New</span> -->
+                    </div>
                   </div>
-                </div>
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label>Fuel Type</label>
-                    <span
-                      name="fuel_type__c"
-                      dropname="text"
-                      type="text"
-                      inlinetext=""
-                      class=" form-control-static inlineEditEnb"
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Fuel Type</label>
+                      <span class=" form-control-static inlineEditEnb"
+                        ><input
+                          name="fuel_type__c"
+                          class="mainLoop form-control"
+                          type="text"
+                          formControlName="fuel_type__c"
+                      /></span>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Make</label>
+                      <span class=" form-control-static inlineEditEnb"
+                        ><input
+                          name="make__c"
+                          class="mainLoop form-control"
+                          type="text"
+                          formControlName="make__c"
+                      /></span>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Model</label>
+                    </div>
+                    <span class=" form-control-static inlineEditEnb"
                       ><input
-                        name="fuel_type__c"
+                        name="model__c"
                         class="mainLoop form-control"
                         type="text"
-                        value=""
+                        formControlName="model__c"
                     /></span>
                   </div>
-                </div>
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label>Make</label>
-                    <span
-                      name="make__c"
-                      dropname="text"
-                      type="text"
-                      inlinetext=""
-                      class=" form-control-static inlineEditEnb"
-                      ><input
-                        name="make__c"
-                        class="mainLoop form-control"
-                        type="text"
-                        value=""
-                    /></span>
-                  </div>
-                </div>
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label>Model</label>
-                  </div>
-                  <span
-                    name="model__c"
-                    dropname="text"
-                    type="text"
-                    inlinetext=""
-                    class=" form-control-static inlineEditEnb"
-                    ><input
-                      name="model__c"
-                      class="mainLoop form-control"
-                      type="text"
-                      value=""
-                  /></span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="card">
-        <div class="card-header pointer">
-          <a (click)="visibleTwo = !visibleTwo">
-            <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
-            <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i>
-            <p>System Information</p>
-          </a>
-        </div>
-        <div class="card-block" *ngIf="!visibleTwo">
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label>Created by :</label>
-                <span class="form-control-static"></span>
+        <div class="card">
+          <div class="card-header pointer">
+            <a (click)="visibleTwo = !visibleTwo">
+              <i class="fa fa-angle-right" *ngIf="visibleTwo"></i>
+              <i class="fa fa-angle-down" *ngIf="!visibleTwo"></i>
+              <p>System Information</p>
+            </a>
+          </div>
+          <div class="card-block" *ngIf="!visibleTwo">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Created by :</label>
+                  <span class="form-control-static"></span>
+                </div>
+                <div class="form-group">
+                  <label>Created Date :</label>
+                  <span class="form-control-static">{{
+                    vehicleStockForm.createddate
+                  }}</span>
+                </div>
               </div>
-              <div class="form-group">
-                <label>Created Date :</label>
-                <span class="form-control-static"> 2019-04-12 07:22:00</span>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label>Last modified by :</label>
-                <span class="form-control-static"></span>
-              </div>
-              <div class="form-group">
-                <label>Last modified date :</label>
-                <span class="form-control-static"></span>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Last modified by :</label>
+                  <span class="form-control-static"></span>
+                </div>
+                <div class="form-group">
+                  <label>Last modified date :</label>
+                  <span class="form-control-static"></span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
 </section>
 
 <section *ngIf="visibleRelated">
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-9">
       <div class="card">
         <div class="card-header padding-head pointer">
           <h4 class="card-title pull-left" style="padding-top: 7.5px;">
@@ -615,7 +583,7 @@
           class="card-heading"
           style="background-color:#fff;border-bottom:1px  solid #ddd;"
         >
-          Vehicle Stock History (1)
+          Vehicle Stock History ({{ relatedListData.total }})
         </div>
         <div class="card-body">
           <div
@@ -631,6 +599,7 @@
                       name="example3_length"
                       aria-controls="example3"
                       class="form-control input-sm"
+                      (change)="pageCount($event.target.value)"
                     >
                       <option value="10">10</option>
                       <option value="25">25</option>
@@ -646,6 +615,7 @@
                   <label
                     >Search:<input
                       type="search"
+                      (keyup)="searchList($event.target.value)"
                       class="form-control input-sm"
                       placeholder=""
                       aria-controls="example3"
@@ -662,14 +632,14 @@
                   aria-describedby="example3_info"
                 >
                   <thead class=" text-primary pointer">
-                    <th (click)="sortData('id')">
+                    <th (click)="sortData('createddate')">
                       Date
                     </th>
                     <th>
                       <a href="#">
                         <i
                           class="fas fa-sort-amount-down"
-                          (click)="sortData('name')"
+                          (click)="sortData('field')"
                         ></i>
                       </a>
                       Field
@@ -678,7 +648,7 @@
                       <a href="#">
                         <i
                           class="fas fa-sort-amount-down"
-                          (click)="sortData('company__c')"
+                          (click)="sortData('createddate')"
                         ></i>
                       </a>
                       User
@@ -687,7 +657,7 @@
                       <a href="#">
                         <i
                           class="fas fa-sort-amount-down"
-                          (click)="sortData('phone__c')"
+                          (click)="sortData('oldvalue')"
                         ></i>
                       </a>
                       Original value
@@ -696,49 +666,192 @@
                       <a href="#">
                         <i
                           class="fas fa-sort-amount-down"
-                          (click)="sortData('email__c')"
+                          (click)="sortData('newvalue')"
                         ></i>
                       </a>
                       New Value
                     </th>
                   </thead>
                   <tbody>
-                    <tr role="row" class="odd">
-                      <td class="sorting_1">2019-03-26 12:46:00</td>
-                      <td>created</td>
-                      <td>2019-03-26 12:46:00</td>
-                      <td></td>
-                      <td class=""></td>
+                    <tr *ngFor="let related of relatedListData.data">
+                      <td>{{ related.createddate }}</td>
+                      <td>{{ related.field }}</td>
+                      <td>{{ related.createddate }}</td>
+                      <td>{{ related.oldvalue }}</td>
+                      <td>{{ related.newvalue }}</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
-            <div class="row">
-              <div class="col-sm-5 mt-2">
-                <div
-                  class="dataTables_info"
-                  id="example3_info"
-                  role="status"
-                  aria-live="polite"
-                >
-                  Showing 1 to 1 of 1 entries
+            <div class="row w-auto">
+                <div class="col-sm-5 p-0">
+                  <div
+                    class="dataTables_info mt-4"
+                    id="example_info"
+                    role="status"
+                    aria-live="polite"
+                  >
+                    Showing {{ relatedListData.from }} to
+                    {{ relatedListData.to }} of
+                    {{ relatedListData.total }} entries
+                  </div>
+                </div>
+                <div class="col-sm-7">
+                  <div
+                    class="dataTables_paginate paging_simple_numbers d-flex float-right pointer"
+                    id="example_paginate"
+                  >
+                    <ul class="pagination">
+                      <ul class="pagination justify-content-end">
+                        <li
+                          class="page-item"
+                          [ngClass]="{ disabled: relatedListData.current_page === 1 }"
+                          (click)="pageNumber(relatedListData.current_page - 1)"
+                        >
+                          <a class="page-link">Previous</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          [ngClass]="{
+                            'active bg-dark': relatedListData.current_page == 1
+                          }"
+                          *ngIf="
+                            relatedListData.current_page !=
+                            relatedListData.last_page
+                          "
+                          (click)="pageNumber(1)"
+                        >
+                          <a class="page-link">1</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          *ngIf="relatedListData.current_page >= 5"
+                        >
+                          <a class="page-link">...</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          *ngIf="relatedListData.current_page >= 5"
+                          (click)="pageNumber(relatedListData.current_page - 1)"
+                        >
+                          <a class="page-link">{{ relatedListData.current_page - 1 }}</a>
+                        </li>
+                        <li
+                          class="page-item active bg-dark"
+                          *ngIf="
+                            relatedListData.current_page >= 5 &&
+                            relatedListData.last_page !=
+                              relatedListData.current_page
+                          "
+                          (click)="pageNumber(relatedListData.current_page)"
+                        >
+                          <a class="page-link">{{ relatedListData.current_page }}</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          *ngIf="
+                            relatedListData.current_page >= 5 &&
+                            relatedListData.current_page !=
+                              relatedListData.last_page &&
+                            relatedListData.current_page + 1 !=
+                              relatedListData.last_page
+                          "
+                          (click)="pageNumber(relatedListData.current_page + 1)"
+                        >
+                          <a class="page-link">{{ relatedListData.current_page + 1 }}</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          [ngClass]="{
+                            'active bg-dark': relatedListData.current_page == 2
+                          }"
+                          *ngIf="
+                            relatedListData.current_page < 5 &&
+                            relatedListData.last_page > 2
+                          "
+                          (click)="pageNumber(2)"
+                        >
+                          <a class="page-link">2</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          [ngClass]="{
+                            'active bg-dark': relatedListData.current_page == 3
+                          }"
+                          *ngIf="
+                            relatedListData.current_page < 5 &&
+                            relatedListData.last_page > 3
+                          "
+                          (click)="pageNumber(3)"
+                        >
+                          <a class="page-link">3</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          [ngClass]="{
+                            'active bg-dark': relatedListData.current_page == 4
+                          }"
+                          *ngIf="
+                            relatedListData.current_page < 5 &&
+                            relatedListData.last_page > 4
+                          "
+                          (click)="pageNumber(4)"
+                        >
+                          <a class="page-link">4</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          [ngClass]="{
+                            'active bg-dark': relatedListData.current_page == 5
+                          }"
+                          *ngIf="
+                            relatedListData.current_page < 5 &&
+                            relatedListData.last_page > 5
+                          "
+                          (click)="pageNumber(5)"
+                        >
+                          <a class="page-link">5</a>
+                        </li>
+          
+                        <li
+                          class="page-item"
+                          *ngIf="
+                            relatedListData.last_page -
+                              relatedListData.current_page >
+                              1 && relatedListData.last_page > 5
+                          "
+                        >
+                          <a class="page-link">...</a>
+                        </li>
+          
+                        <li
+                          class="page-item"
+                          [ngClass]="{
+                            'active bg-dark':
+                              relatedListData.current_page ==
+                              relatedListData.last_page
+                          }"
+                          (click)="pageNumber(relatedListData.last_page)"
+                        >
+                          <a class="page-link">{{ relatedListData.last_page }}</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          [ngClass]="{
+                            disabled:
+                              relatedListData.current_page ===
+                              relatedListData.last_page
+                          }"
+                          (click)="pageNumber(relatedListData.current_page + 1)"
+                        >
+                          <a class="page-link">Next</a>
+                        </li>
+                      </ul>
+                    </ul>
+                  </div>
                 </div>
               </div>
-              <div class="col-sm-7">
-                <div
-                  class="dataTables_paginate paging_simple_numbers"
-                  id="example3_paginate"
-                >
-                  <ul class="pagination justify-content-end">
-                    <li class="page-item"><a class="page-link">Previous</a></li>
-                    <li class="page-item"><a class="page-link">1</a></li>
-                    <li class="page-item"><a class="page-link">2</a></li>
-                    <li class="page-item"><a class="page-link">Next</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -781,7 +894,9 @@
                   </a>
                 </div>
                 <div>
-                  <label class="pointer" for="file">Drop files here to upload</label>
+                  <label class="pointer" for="file"
+                    >Drop files here to upload</label
+                  >
                   <input type="file" id="file" />
                 </div>
               </div>
@@ -793,7 +908,7 @@
                 data-dismiss="modal"
                 (click)="close()"
               >
-                cancel
+                Cancel
               </button>
               <button type="button" class="btn btn-info" (click)="onSubmit()">
                 Save

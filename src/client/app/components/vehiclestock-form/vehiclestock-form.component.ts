@@ -4,7 +4,7 @@ import {
   FormBuilder,
   Validators,
   FormControl
-} from '@angular/forms';
+} from "@angular/forms";
 
 /**
  * This class represents the lazy loaded AboutComponent.

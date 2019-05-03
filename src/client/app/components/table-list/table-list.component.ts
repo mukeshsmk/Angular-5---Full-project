@@ -183,17 +183,19 @@ export class TableListComponent {
     this.loadData(this.module, params);
   }
   pageNumber(page: any) {
-    this.page = page;
-    const params = {
-      page: this.page,
-      limit: this.limit,
-      search: this.search,
-      type: this.vsType,
-      sort: this.sort,
-      allocated: this.allocated,
-      unallocated: this.unallocated
-    };
-    this.loadData(this.module, params);
+    if(page >= 1 && page <= this.opportunityListData.last_page){
+      this.page = page;
+      const params = {
+        page: this.page,
+        limit: this.limit,
+        search: this.search,
+        type: this.vsType,
+        sort: this.sort,
+        allocated: this.allocated,
+        unallocated: this.unallocated
+      };
+      this.loadData(this.module, params);
+    }
   }
   vehicleStockType(type: any) {
     this.vsType = type;
