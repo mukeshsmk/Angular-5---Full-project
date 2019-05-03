@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 //dev
 //import { Chart } from 'chart.js';
@@ -9,9 +9,9 @@ import Chart from 'chart.js';
  */
 @Component({
   moduleId: module.id,
-  selector: 'sd-dashboard',
-  templateUrl: 'dashboard.component.html',
-  styleUrls: ['dashboard.component.css']
+  selector: "sd-dashboard",
+  templateUrl: "dashboard.component.html",
+  styleUrls: ["dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
   visibleOne: Boolean = false;
@@ -24,9 +24,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     //line chart
 
-    let linecolors = ['#ffffff', '#abc271', '#dbe4cb'];
+    let linecolors = ["#ffffff", "#abc271", "#dbe4cb"];
     let lineData = {
-      labels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+      labels: ["S", "M", "T", "W", "T", "F", "S"],
       datasets: [
         {
           data: [639, 465, 493, 478, 589, 632, 674],
@@ -38,8 +38,8 @@ export class DashboardComponent implements OnInit {
       ]
     };
 
-    this.chart1 = new Chart('canvas1', {
-      type: 'line',
+    this.chart1 = new Chart("canvas1", {
+      type: "line",
       data: lineData,
       options: {
         scales: {
@@ -59,10 +59,10 @@ export class DashboardComponent implements OnInit {
 
     //bar chart
 
-    let barcolors = ['#48a496', '#b1e1da'];
+    let barcolors = ["#48a496", "#b1e1da"];
 
     let chartData = {
-      labels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+      labels: ["S", "M", "T", "W", "T", "F", "S"],
       datasets: [
         {
           data: [589, 445, 483, 503, 689, 692, 634],
@@ -75,8 +75,8 @@ export class DashboardComponent implements OnInit {
       ]
     };
 
-    this.chart2 = new Chart('canvas2', {
-      type: 'bar',
+    this.chart2 = new Chart("canvas2", {
+      type: "bar",
       data: chartData,
       options: {
         scales: {
@@ -102,20 +102,20 @@ export class DashboardComponent implements OnInit {
 
     //pie chart
     let piedata = {
-      labels: ['match1', 'match2', 'match3', 'match4'],
+      labels: ["match1", "match2", "match3", "match4"],
       datasets: [
         {
-          label: 'TeamB Score',
+          label: "TeamB Score",
           data: [20, 35, 40, 60, 50],
-          backgroundColor: ['#feea87', '#878ab6', '#4acab5', '#f98153'],
-          borderColor: ['#feea87', '#878ab6', '#4acab5', '#f98153'],
+          backgroundColor: ["#feea87", "#878ab6", "#4acab5", "#f98153"],
+          borderColor: ["#feea87", "#878ab6", "#4acab5", "#f98153"],
           borderWidth: [1, 1, 1, 1, 1]
         }
       ]
     };
 
-    this.chart3 = new Chart('canvas3', {
-      type: 'pie',
+    this.chart3 = new Chart("canvas3", {
+      type: "pie",
       data: piedata
     });
   }
