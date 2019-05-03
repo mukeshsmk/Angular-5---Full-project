@@ -72,6 +72,7 @@ export class StockComponent implements OnInit{
       }
     this.relatedStocks(params);
   }
+  onSubmit(){}
   relatedStocks(params:any){    
     this.loaderOne = true;
     this.http
