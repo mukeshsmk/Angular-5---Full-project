@@ -590,7 +590,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form (ngSubmit)="onSubmit(newTaskForm)" [formGroup]="newTaskForm">
+            <form>
               <div class="container-fluid">
                 <div class="card mt-3">
                   <div class="card-header">
@@ -886,7 +886,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <form (ngSubmit)="onSubmit(newTaskForm)" [formGroup]="newTaskForm">
+              <form (ngSubmit)="onSubmit(customerForm)" [formGroup]="customerForm">
                   <div class="container-fluid">
                       <div class="card mt-3">
                         <div class="card-header pointer">
