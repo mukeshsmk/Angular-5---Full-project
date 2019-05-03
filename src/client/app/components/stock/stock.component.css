@@ -149,6 +149,9 @@ select.form-control:not([size]):not([multiple]) {
 .fas {
   color: #0747a6 !important;
 }
+.fa-sort-amount-down{
+  color: #85888d !important;
+}
 
 .btn-default {
   color: #333;
