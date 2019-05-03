@@ -1,34 +1,34 @@
-import { Component, ViewChild, QueryList, ViewChildren } from '@angular/core';
+import { Component, ViewChild, QueryList, ViewChildren } from "@angular/core";
 
-import { TabsComponent } from '../tab/tabs.component';
-import { HttpClient } from '@angular/common/http';
-import { GeneralService } from '../../shared/services/GeneralService';
-import Config from '../../shared/config';
+import { TabsComponent } from "../tab/tabs.component";
+import { HttpClient } from "@angular/common/http";
+import { GeneralService } from "../../shared/services/GeneralService";
+import Config from "../../shared/config";
 
 @Component({
   moduleId: module.id,
-  selector: 'sd-table-list',
-  templateUrl: 'table-list.component.html',
-  styleUrls: ['table-list.component.css']
+  selector: "sd-table-list",
+  templateUrl: "table-list.component.html",
+  styleUrls: ["table-list.component.css"]
 })
 export class TableListComponent {
   p: number = 1;
   @ViewChild(TabsComponent) tabsComponent: any;
-  @ViewChild('personDetails') persondetailsTemplate: any;
-  @ViewChild('stockDetails') stockdetailsTemplate: any;
-  @ViewChild('driverDetails') driverdetailsTemplate: any;
-  @ViewChild('customerDetails') customerdetailsTemplate: any;
-  @ViewChild('oppournityModal') oppournitymodalTemplate: any;
-  @ViewChild('searchModal') searchModalTemplate: any;
-  @ViewChildren('checkedAll') checkedAll: QueryList<any>;
+  @ViewChild("personDetails") persondetailsTemplate: any;
+  @ViewChild("stockDetails") stockdetailsTemplate: any;
+  @ViewChild("driverDetails") driverdetailsTemplate: any;
+  @ViewChild("customerDetails") customerdetailsTemplate: any;
+  @ViewChild("oppournityModal") oppournitymodalTemplate: any;
+  @ViewChild("searchModal") searchModalTemplate: any;
+  @ViewChildren("checkedAll") checkedAll: QueryList<any>;
 
   loaderOne: Boolean = false;
   opportunityList: any = [];
-  module: string = 'opportunities';
+  module: string = "opportunities";
   opportunityListData: any = [];
   page: number = 1;
   limit: number = 10;
-  search: any = '';
+  search: any = "";
   showEdit: Boolean = false;
   opportunityOpen: Boolean = true;
   searchOpen: Boolean = false;
@@ -37,16 +37,24 @@ export class TableListComponent {
   formType: any;
   responseData: any;
   permission: any;
-  vsType: any = '';
+  vsType: any = "";
   userData: any;
-  sort: any = 'id';
-  allocated: any = '';
-  unallocated: any = '';
+  sort: any = "id";
+  allocated: any = "";
+  unallocated: any = "";
   changeLead: Boolean = false;
   aIds: any = [];
   Searchwait: Boolean = false;
   sdname: any;
   searchUserData: any;
+  oppCompany: Boolean = false;
+  oppPhone: Boolean = false;
+  oppEmail: Boolean = false;
+  opp_Company: any;
+  opp_Phone: any;
+  opp_Email: any;
+  editId: any;
+  editTag: any;
 
   searchTerm: string;
   constructor(private http: HttpClient, public generalService: GeneralService) {
@@ -65,9 +73,9 @@ export class TableListComponent {
     this.generalService.emitter.subscribe((response: string) => {
       this.module = response;
       this.loadData(this.module, params);
-      console.log('Loading data', this.module);
+      console.log("Loading data", this.module);
     });
-    this.userData = JSON.parse(localStorage.getItem('user_data'));
+    this.userData = JSON.parse(localStorage.getItem("user_data"));
     this.changeLead = false;
     this.aIds = [];
     this.loadData(this.module, params);
@@ -99,13 +107,13 @@ export class TableListComponent {
     //   params.limit +
     //   '&search=' +
     //   params.search;
-    params.userData = JSON.parse(localStorage.getItem('user_data'));
+    params.userData = JSON.parse(localStorage.getItem("user_data"));
     this.http
-      .post<{ success: object }>(Config.BASE_URL + 'api/' + type, params)
+      .post<{ success: object }>(Config.BASE_URL + "api/" + type, params)
       .subscribe((response: any) => {
         this.responseData = response;
         this.opportunityListData = response.list;
-        if (type === 'opportunities') {
+        if (type === "opportunities") {
           for (let i = 0; i < response.list.data.length; i++) {
             if (params.userData.roleid !== 5) {
               if (
@@ -117,7 +125,7 @@ export class TableListComponent {
                   this.opportunityListData.data[i].app_retail_user__c
                 ];
               } else {
-                response.list.data[i].lead_owner_data = '-';
+                response.list.data[i].lead_owner_data = "-";
               }
             }
           }
@@ -133,15 +141,15 @@ export class TableListComponent {
       });
   }
   allocate(arg: any) {
-    if (arg === 'allocated') {
-      this.allocated = 'allocated';
-      this.unallocated = '';
-    } else if (arg === 'unallocated') {
-      this.unallocated = 'unallocated';
-      this.allocated = '';
-    }else{
-      this.unallocated = '';
-      this.allocated = '';
+    if (arg === "allocated") {
+      this.allocated = "allocated";
+      this.unallocated = "";
+    } else if (arg === "unallocated") {
+      this.unallocated = "unallocated";
+      this.allocated = "";
+    } else {
+      this.unallocated = "";
+      this.allocated = "";
     }
     this.changeLead = false;
     const params = {
@@ -183,7 +191,7 @@ export class TableListComponent {
     this.loadData(this.module, params);
   }
   pageNumber(page: any) {
-    if(page >= 1 && page <= this.opportunityListData.last_page){
+    if (page >= 1 && page <= this.opportunityListData.last_page) {
       this.page = page;
       const params = {
         page: this.page,
@@ -228,16 +236,16 @@ export class TableListComponent {
     this.loaderOne = true;
     let template;
     switch (this.module) {
-      case 'opportunities':
+      case "opportunities":
         template = this.persondetailsTemplate;
         break;
-      case 'vehicle_stocks':
+      case "vehicle_stocks":
         template = this.stockdetailsTemplate;
         break;
-      case 'drivers':
+      case "drivers":
         template = this.driverdetailsTemplate;
         break;
-      case 'customers':
+      case "customers":
         template = this.customerdetailsTemplate;
         break;
     }
@@ -247,7 +255,7 @@ export class TableListComponent {
       template,
       data,
       true,
-      this.module + '-' + data.id
+      this.module + "-" + data.id
     );
     this.loaderOne = false;
   }
@@ -256,11 +264,11 @@ export class TableListComponent {
   openOpportunityModal(data: any) {
     console.log(data);
     this.modalData = data;
-    this.formType = 'edit';
+    this.formType = "edit";
     this.opportunityOpen = false;
   }
   openNewOpportunityModal() {
-    this.formType = 'new';
+    this.formType = "new";
     this.opportunityOpen = false;
   }
   closeModal() {
@@ -270,16 +278,16 @@ export class TableListComponent {
   updateOpportunity(event: any) {
     console.log(JSON.stringify(event));
     let endpoint: any;
-    if (this.formType === 'edit') {
-      endpoint = 'leadUpdate';
+    if (this.formType === "edit") {
+      endpoint = "leadUpdate";
     }
-    if (this.formType === 'new') {
-      endpoint = 'quickLeadInsert';
+    if (this.formType === "new") {
+      endpoint = "quickLeadInsert";
       //event = JSON.stringify(event)
     }
 
     this.http
-      .post<{ success: object }>(Config.BASE_URL + 'api/' + endpoint, event)
+      .post<{ success: object }>(Config.BASE_URL + "api/" + endpoint, event)
       .subscribe((response: any) => {
         console.log(response);
         this.opportunityOpen = true;
@@ -289,20 +297,20 @@ export class TableListComponent {
   //vehicleStock Modal
   updatevehicleStockModal(data: any) {
     this.modalData = data;
-    this.formType = 'edit';
+    this.formType = "edit";
     this.opportunityOpen = false;
   }
   updatevehicleStock(event: any) {
     console.log(event);
     let endpoint: any;
-    if (this.formType === 'edit') {
-      endpoint = 'vehicle_stockUpdate';
+    if (this.formType === "edit") {
+      endpoint = "vehicle_stockUpdate";
     }
-    if (this.formType === 'new') {
+    if (this.formType === "new") {
       //endpoint = 'createCustomer';
     }
     this.http
-      .post<{ success: object }>(Config.BASE_URL + 'api/' + endpoint, event)
+      .post<{ success: object }>(Config.BASE_URL + "api/" + endpoint, event)
       .subscribe((response: any) => {
         console.log(response);
         this.opportunityOpen = true;
@@ -312,20 +320,20 @@ export class TableListComponent {
   //Driver modal
   updateDriverModal(data: any) {
     this.modalData = data;
-    this.formType = 'edit';
+    this.formType = "edit";
     this.opportunityOpen = false;
   }
   updateDriver(event: any) {
     console.log(event);
     let endpoint: any;
-    if (this.formType === 'edit') {
-      endpoint = 'driverUpdate';
+    if (this.formType === "edit") {
+      endpoint = "driverUpdate";
     }
-    if (this.formType === 'new') {
+    if (this.formType === "new") {
       //endpoint = 'createCustomer';
     }
     this.http
-      .post<{ success: object }>(Config.BASE_URL + 'api/' + endpoint, event)
+      .post<{ success: object }>(Config.BASE_URL + "api/" + endpoint, event)
       .subscribe((response: any) => {
         console.log(response);
         this.opportunityOpen = true;
@@ -334,24 +342,24 @@ export class TableListComponent {
   }
   //customer modal
   openNewCustomerModal() {
-    this.formType = 'new';
+    this.formType = "new";
     this.opportunityOpen = false;
   }
   updateCustomerModal(data: any) {
     this.modalData = data;
-    this.formType = 'edit';
+    this.formType = "edit";
     this.opportunityOpen = false;
   }
   updateCustomer(event: any) {
     let endpoint: any;
-    if (this.formType === 'edit') {
-      endpoint = 'customerUpdate';
+    if (this.formType === "edit") {
+      endpoint = "customerUpdate";
     }
-    if (this.formType === 'new') {
-      endpoint = 'createCustomer';
+    if (this.formType === "new") {
+      endpoint = "createCustomer";
     }
     this.http
-      .post<{ success: object }>(Config.BASE_URL + 'api/' + endpoint, event)
+      .post<{ success: object }>(Config.BASE_URL + "api/" + endpoint, event)
       .subscribe((response: any) => {
         console.log(response);
         this.opportunityOpen = true;
@@ -364,7 +372,7 @@ export class TableListComponent {
     if (arg.target.checked) {
       this.changeLead = true;
       for (let x = 0, l = this.checkedAll.toArray().length; x < l; x++) {
-       this.checkedAll.toArray()[x].nativeElement.checked = true;
+        this.checkedAll.toArray()[x].nativeElement.checked = true;
         this.aIds.push(this.checkedAll.toArray()[x].nativeElement.value);
       }
     } else {
@@ -383,7 +391,7 @@ export class TableListComponent {
     const all_id = document.querySelectorAll("input[name='selected']:checked");
     for (let x = 0, l = this.checkedAll.toArray().length; x < l; x++) {
       if (this.checkedAll.toArray()[x].nativeElement.checked === true)
-      this.aIds.push(this.checkedAll.toArray()[x].nativeElement.value);
+        this.aIds.push(this.checkedAll.toArray()[x].nativeElement.value);
     }
     if (all_id.length > 0) {
       this.changeLead = true;
@@ -405,7 +413,7 @@ export class TableListComponent {
       };
       this.http
         .post<{ success: object }>(
-          Config.BASE_URL + 'api/getSearchData',
+          Config.BASE_URL + "api/getSearchData",
           assignSfidparams
         )
         .subscribe((response: any) => {
@@ -422,9 +430,10 @@ export class TableListComponent {
       editID: this.aIds
     };
     this.http
-      .post<{ success: object }>(Config.BASE_URL + 'api/assignSfid', assignSfid)
+      .post<{ success: object }>(Config.BASE_URL + "api/assignSfid", assignSfid)
       .subscribe((response: any) => {
         this.searchUserData = [];
+        this.sdname = "";
         console.log(response);
         this.searchOpen = false;
         const params = {
@@ -442,7 +451,31 @@ export class TableListComponent {
       });
   }
   closeSeacrch() {
+    this.searchUserData = [];
+    this.sdname = "";
     this.searchOpen = false;
   }
+  inLineEdit(text: any) {
+    this.opp_Company = text.company__c;
+    this.opp_Phone = text.phone__c;
+    this.opp_Email = text.email__c;
+    this.editId = text.id;
+  }
+  updateLead(details:any){
+    this.loaderOne=true;
+    details.company__c = this.opp_Company;
+    details.phone__c = this.opp_Phone;
+    details.email__c = this.opp_Email;
+    console.log(details)
+    this.http
+      .post<{ success: object }>(Config.BASE_URL + "api/inlineUpdate" , details)
+      .subscribe((response: any) => {
+        console.log(response);
+        this.editId = "";
+        this.loaderOne=false;
+      });
+    
+  }
+
   //https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fpeople%2Fperson-edit.component.ts
 }
