@@ -17,6 +17,8 @@ import Config from "../../shared/config";
   styleUrls: ["customer.component.css"]
 })
 export class CustomerComponent implements OnInit {
+  driver:any={};
+  submitted:Boolean=false;
   visibleOne: Boolean = false;
   visibleTwo: Boolean = true;
 
@@ -47,71 +49,46 @@ export class CustomerComponent implements OnInit {
   ahSearch: any = "";
   ahSort: any = "id";
 
+  userData:any;
   @Input() customer: any;
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('user_data'));
     this.customerForm = this.formBuilder.group({
-      name: [""],
-      accountid: [""],
-      title: [""],
-      birthdate: [""],
-      record_type: [""],
-      do_not_contact__c: [""],
-      business_phone__c: [""],
-      business_phone_service_type__c: [""],
-      business_email_valid__c: [""],
-      business_phone_valid__c: [""],
-      home_email__c: [""],
-      homephone: [""],
-      home_phone_service_type__c: [""],
-      home_phone_valid__c: [""],
-      mobilephone: [""],
-      interest_of_make__c: [""],
-      billing_address__c: [""],
-      billing_suburb__c: [""],
-      billing_post_code__c: [""],
-      billing_country__c: [""],
-      billingdpid__c: [""],
-      billing_latitude__c: [""],
-      billing_longitude__c: [""],
-      first_name__c: ["", Validators.required],
-      last_name__c: ["", Validators.required],
-      customer_type__c: [""],
-      parent_account: [""],
-      accountnumber: [""],
-      account_record: [""],
-      selling_dealer: [""],
-      service_dealer: [""],
-      customer_type: [""],
-      fax: [""],
-      phone1__c: [""],
-      business_email__c: [""],
-      phone1_service_type__c: [""],
-      phone1_valid__c: [""],
-      email: [""],
-      phone2_service_type__c: [""],
-      phone2_valid__c: [""],
-      web_site: [""],
-      phone: [""],
-      billing_address: [""],
-      billing_subrub: [""],
-      billing_state__c: [""],
-      billing_postcode__c: [""],
-      billing_country: [""],
-      billing_dpid: [""],
-      billing_lat: [""],
-      billing_lng: [""],
-      physical_address__c: [""],
-      physical_state__c: [""],
-      physical_post_code__c: [""],
-      physical_country__c: [""],
-      physicaldpid__c: [""],
-      physical_latitude__c: [""],
-      physical_longitude__c: [""],
-      license_number__c: [""],
-      license_expiry_date__c: [""],
-      numberoflocations__c: [""],
-      phone2__c: [""]
+      name: [this.driver.name, Validators.required],
+      parent_account: [this.driver.parent_account],
+      accountid: [this.driver.accountid],
+      title: [this.driver.title],
+      birthdate: [this.driver.birthdate],
+      customer_type__c: [this.driver.customer_type__c],
+      record_type: [this.driver.record_type],
+      selling_dealer: [this.driver.selling_dealer],
+      service_dealer: [this.driver.service_dealer],
+      customer_type: [this.driver.customer_type],
+      do_not_contact__c: [this.driver.do_not_contact__c],
+      fax: [this.driver.fax],
+      business_phone__c: [this.driver.business_phone__c],
+      business_email__c: [this.driver.business_email__c],
+      business_phone_service_type__c: [
+        this.driver.business_phone_service_type__c
+      ],
+      business_email_valid__c: [this.driver.business_email_valid__c],
+      business_phone_valid__c: [this.driver.business_phone_valid__c],
+      home_email__c: [this.driver.home_email__c],
+      homephone: [this.driver.homephone],
+      home_phone_service_type__c: [this.driver.home_phone_service_type__c],
+      home_phone_valid__c: [this.driver.home_phone_valid__c],
+      email: [this.driver.email],
+      mobilephone: [this.driver.mobilephone],
+      interest_of_make__c: [this.driver.interest_of_make__c],
+      billing_address__c: [this.driver.billing_address__c],
+      billing_suburb__c: [this.driver.billing_suburb__c],
+      billing_state__c: [this.driver.billing_state__c],
+      billing_post_code__c: [this.driver.billing_post_code__c],
+      billing_country__c: [this.driver.billing_country__c],
+      billingdpid__c: [this.driver.billingdpid__c],
+      billing_latitude__c: [this.driver.billing_latitude__c],
+      billing_longitude__c: [this.driver.billing_longitude__c]
     });
     const params = {
       ddPage: this.ddPage,
@@ -294,5 +271,19 @@ export class CustomerComponent implements OnInit {
   viewRelated() {
     this.visibleDetail = false;
     this.visibleRelated = true;
+  }
+  onSubmit(form:any){
+    this.submitted = true;
+    console.log(form.value)
+    if (form.invalid) {
+      return;
+    }
+
+    this.http
+      .post<{ success: object }>(Config.BASE_URL + "api/createDriver" , form.value)
+      .subscribe((response: any) => {
+        console.log(response);
+        this.close();
+      });
   }
 }

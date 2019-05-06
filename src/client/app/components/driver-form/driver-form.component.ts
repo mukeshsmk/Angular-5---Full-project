@@ -22,7 +22,7 @@ export class DriverFormComponent implements OnInit {
   visibleFive: Boolean = true;
   visibleSix: Boolean = true;
   visibleSeven: Boolean = true;
-
+  userData:any;
   @Output() closeModalEvent = new EventEmitter<Boolean>();
 
   @Input() driver: any;
@@ -35,6 +35,7 @@ export class DriverFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('user_data'));
     this.driverForm = this.formBuilder.group({
       name: [this.driver.name, Validators.required],
       parent_account: [this.driver.parent_account],

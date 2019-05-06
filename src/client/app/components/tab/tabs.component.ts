@@ -18,6 +18,8 @@ import { DynamicTabsDirective } from './dynamic-tabs.directive';
 
 import { GeneralService } from '../../shared/services/GeneralService';
 import { isComponentInstance } from '@angular/core/src/render3/context_discovery';
+import { HttpClient } from "@angular/common/http";
+import Config from "../../shared/config";
 
 @Component({
   moduleId: module.id,
@@ -48,7 +50,7 @@ export class TabsComponent implements OnInit, AfterContentInit {
   hiddenTabs: TabComponent[] = [];
   selectedHiddenTab: number;
   selectedModule: string;
-
+  userData:any;
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
 
   @ViewChild(DynamicTabsDirective) dynamicTabPlaceholder: DynamicTabsDirective;
@@ -62,12 +64,46 @@ export class TabsComponent implements OnInit, AfterContentInit {
 
   constructor(
     private _componentFactoryResolver: ComponentFactoryResolver,
-    public generalService: GeneralService
+    public generalService: GeneralService,
+    private http: HttpClient
   ) {}
 
   ngOnInit() {
-    this.selectedModule = this.listModules[0].title;
-    this.generalService.changeModule(this.listModules[0].id);
+    this.userData = JSON.parse(localStorage.getItem('user_data'));
+    const params = {
+      "group_id":this.userData.group_id,
+      "company_id":this.userData.company_id
+    }
+    this.http
+      .post<{ success: object }>(Config.BASE_URL + "api/home-getDropdownData", params)
+      .subscribe((response: any) => {
+        response = response.reduce((acc:any, cur:any) => [
+          ...acc.filter((obj:any) => obj.id !== cur.id), cur
+        ], []);
+        for(var i=0;i<response.length;i++){          
+          if(response[i].lable_name == "Lead"){
+            response[i].title = "Opportunity"
+            response[i].id = "opportunities";
+          }else if(response[i].lable_name == "Stock"){
+            response[i].title = "Vehicle Stock"
+            response[i].id = "vehicle_stocks";
+          }else if(response[i].lable_name == "Driver"){
+            response[i].title = "Driver"
+            response[i].id = "drivers";
+          }else if(response[i].lable_name == "Customer"){
+            response[i].title = "Customer"
+            response[i].id = "customers";
+          }else{
+            response[i].title = response[i].modulename;
+            response[i].id = response[i].modulename;
+          }
+
+        }
+        this.listModules = response;
+        this.selectedModule = this.listModules[0].title;
+        this.generalService.changeModule(this.listModules[0].id);
+      });
+    
   }
 
   // contentChildren are set
