@@ -341,10 +341,18 @@ li.page-item.disabled {
   }
  
   .modal.full-size .modal-dialog {
-    width: 100%;
+    width: 85%;
   }
   .container-fluid{
    padding-top:15px;
   }
+  .form-list{
+    width: 150px;
+  }
+  .page-link {
+   padding: 0.5rem !important;
+   
+}
+
   }
   

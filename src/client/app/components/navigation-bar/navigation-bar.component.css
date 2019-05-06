@@ -266,7 +266,7 @@ label {
   display: inline-block;
   height: auto;
 }
-.modal-dialog[_ngcontent-iof-c15] {
-  width: 90%;
+.modal-dialog {
+  width: 78% !important;
 }
 }
