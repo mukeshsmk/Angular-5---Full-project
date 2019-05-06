@@ -13,6 +13,12 @@ import { Component, Input } from '@angular/core';
       .pane {
         padding: 1em;
       }
+
+      @media (max-width: 768px){
+        .pane {
+          padding: 0;
+        }
+        }
     `
   ],
   template: `

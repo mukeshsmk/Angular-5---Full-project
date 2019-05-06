@@ -219,51 +219,13 @@
                 value=" {{ opportunity.lead_type__c }}"
               >
                 <option value="">-- SELECT --</option>
-                <option
-                  *ngIf="opportunityForm.value.lead_source__c == 'Internet'"
-                  value="Gumtree"
-                  >Gumtree</option
-                >
-                <option
-                  *ngIf="opportunityForm.value.lead_source__c == 'Internet'"
-                  value="Carsales"
-                  >Carsales</option
-                >
-                <option
-                  *ngIf="opportunityForm.value.lead_source__c == 'Internet'"
-                  value="Facebook"
-                  >Facebook</option
-                >
-                <option
-                  *ngIf="opportunityForm.value.lead_source__c == 'Phone'"
-                  value="Online"
-                  >Online</option
-                >
-                <option
-                  *ngIf="opportunityForm.value.lead_source__c == 'Phone'"
-                  value="Radio"
-                  >Radio</option
-                >
-                <option
-                  *ngIf="opportunityForm.value.lead_source__c == 'Phone'"
-                  value="Edm"
-                  >Edm</option
-                >
-                <option
-                  *ngIf="opportunityForm.value.lead_source__c == 'Walk-In'"
-                  value="Online"
-                  >Online</option
-                >
-                <option
-                  *ngIf="opportunityForm.value.lead_source__c == 'Walk-In'"
-                  value="Radio"
-                  >Radio</option
-                >
-                <option
-                  *ngIf="opportunityForm.value.lead_source__c == 'Walk-In'"
-                  value="Edm"
-                  >Edm</option
-                >
+                <option value="Gumtree">Gumtree</option>
+                <option value="Carsales">Carsales</option>
+                <option value="Facebook">Facebook</option>
+                <option value="Online">Online</option>
+                <option value="Edm">Edm</option>
+                <option value="Radio">Radio</option >
+                
               </select>
               <div
                 *ngIf="

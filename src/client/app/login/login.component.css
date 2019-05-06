@@ -156,3 +156,15 @@ form[_ngcontent-c1] {
   color: #6c35a8;
   font-size: 18px;
 }
+
+
+
+@media (max-width: 768px){
+  .login_container {
+    width: 90% !important;
+}
+form{
+  margin: 0 15px;
+  width: 90%;
+}
+}
