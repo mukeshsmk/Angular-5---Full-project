@@ -22,3 +22,12 @@ ul {
   margin-left: 83px;
   width: calc(100% - 83px);
 }
+
+
+@media (max-width: 768px){
+
+  .mainComponent{
+    margin-left: 0 !important;
+    width:100%;
+  }
+  }

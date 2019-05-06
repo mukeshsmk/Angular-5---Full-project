@@ -177,3 +177,9 @@ body {
   background-color: #171717;
 
 }
+
+@media (max-width: 768px){
+#sidebar-wrapper {
+    display: none !important;
+}
+}

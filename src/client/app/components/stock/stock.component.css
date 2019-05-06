@@ -312,3 +312,18 @@ input[type=button]{
   background-color: #31b0d5;
   border-color: #269abc;
 }
+
+@media (max-width: 768px){
+  .card-head{
+    width: 100% !important;
+  }
+  .input-area[_ngcontent-pst-c12] {
+    padding: 13% 15% !important;
+}
+.modal-dialog {
+  max-width: 82%;
+  margin: 8px;
+  width: 82%;
+
+}
+}

@@ -13,7 +13,7 @@ export class CustomerComponent {
   visibleTwo: Boolean = true;
 
   visible1: Boolean = false;
-  visible2: Boolean = true;
+  visible2: Boolean = false;
   visible3: Boolean = true;
 
   visibleDetail: Boolean = true;
