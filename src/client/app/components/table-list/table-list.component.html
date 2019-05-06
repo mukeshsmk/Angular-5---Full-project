@@ -257,14 +257,56 @@
                               </div>
                             </a>
                           </td>
-                          <td>
-                            {{ opportunity.company__c }}
+                          <td (dblclick)="inLineEdit(opportunity)">
+                            <span
+                              *ngIf="
+                                editId != opportunity.id
+                              "
+                            >
+                              {{ opportunity.company__c }}
+                            </span>
+                            <input
+                              type="text"
+                              [(ngModel)]="opp_Company"
+                              class="form-control"
+                              *ngIf="
+                                editId == opportunity.id
+                              "
+                            />
                           </td>
-                          <td>
+                          <td (dblclick)="inLineEdit(opportunity)">
+                              <span
+                                *ngIf="
+                                  editId != opportunity.id
+                                "
+                              >                            
                             {{ opportunity.phone__c }}
+                            </span>
+                            <input
+                              type="number"
+                              [(ngModel)]="opp_Phone"
+                              class="form-control"
+                              *ngIf="
+                                editId == opportunity.id
+                              "
+                            />
                           </td>
-                          <td>
+                          <td (dblclick)="inLineEdit(opportunity)">
+                          <span
+                                *ngIf="
+                                  editId != opportunity.id
+                                "
+                              >                            
                             {{ opportunity.email__c }}
+                            </span>
+                            <input
+                              type="text"
+                              [(ngModel)]="opp_Email"
+                              class="form-control"
+                              *ngIf="
+                                editId == opportunity.id
+                              "
+                            />
                           </td>
                           <td>
                             {{ opportunity.lead_owner_data }}
@@ -274,6 +316,11 @@
                               class="fas fa-edit pointer"
                               (click)="openOpportunityModal(opportunity)"
                               title="Edit Lead"
+                            ></span>
+                            <span
+                              class="fas fa-check pointer"
+                              (click)="updateLead(opportunity)"                              
+                              *ngIf="(permission.edit_permission == 1) && editId == opportunity.id"
                             ></span>
                           </td>
                         </tr>
@@ -708,7 +755,9 @@
                 *ngIf="opportunityListData.current_page >= 5"
                 (click)="pageNumber(opportunityListData.current_page - 1)"
               >
-                <a class="page-link">{{ opportunityListData.current_page - 1 }}</a>
+                <a class="page-link">{{
+                  opportunityListData.current_page - 1
+                }}</a>
               </li>
               <li
                 class="page-item active bg-dark"
@@ -732,7 +781,9 @@
                 "
                 (click)="pageNumber(opportunityListData.current_page + 1)"
               >
-                <a class="page-link">{{ opportunityListData.current_page + 1 }}</a>
+                <a class="page-link">{{
+                  opportunityListData.current_page + 1
+                }}</a>
               </li>
               <li
                 class="page-item"
@@ -901,7 +952,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title text-center w-100">Search</h4>
+            <h4 class="modal-title text-center w-100">Lead Search</h4>
             <button
               type="button"
               class="close"
