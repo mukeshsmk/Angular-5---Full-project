@@ -27,7 +27,7 @@ ul {
 @media (max-width: 768px){
 
   .mainComponent{
-    margin-left: 0 !important;
-    width:100%;
+    margin-left: 12%;
+    width: 90%;
   }
   }

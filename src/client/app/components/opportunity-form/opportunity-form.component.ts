@@ -26,7 +26,7 @@ export class OpportunityFormComponent implements OnInit {
   @Output() closeModalEvent = new EventEmitter<Boolean>();
 
   submitted = false;
-
+  selected = 'Select';
   @Input() opportunity: any;
   @Input() type: any;
   @Output('updateOpportunity') send = new EventEmitter<any>();

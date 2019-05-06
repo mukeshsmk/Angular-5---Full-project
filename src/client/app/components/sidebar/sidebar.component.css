@@ -179,7 +179,18 @@ body {
 }
 
 @media (max-width: 768px){
-#sidebar-wrapper {
-    display: none !important;
+
+  #wrapper.toggled #sidebar-wrapper {
+    width: 12%;
+}
+.sidebar-nav li {
+  text-indent: 10px;
+  line-height: 40px;
+}
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
 }
 }
