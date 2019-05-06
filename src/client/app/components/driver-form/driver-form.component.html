@@ -144,10 +144,10 @@
               <select
                 class="selcet form-control"
                 id="selling_dealer"
-                name="selling_dealer"
-                formControlName="selling_dealer"
+                
               >
-                <option value="">-- SELECT --</option>
+              <option value="">-- SELECT --</option>
+                <option value="{{ userData.dealer }}">{{ userData.dealer }}</option>
               </select>
             </div>
           </div>
@@ -156,11 +156,10 @@
               <label>Service Dealer Name</label>
               <select
                 class="selcet form-control"
-                name="service_dealer"
-                id="service_dealer"
-                formControlName="service_dealer"
+                
               >
-                <option value="">-- SELECT --</option>
+              <option value="">-- SELECT --</option>
+              <option value="{{ userData.dealer }}">{{ userData.dealer }}</option>
               </select>
             </div>
           </div>
@@ -176,7 +175,7 @@
                 formControlName="customer_type"
               >
                 <option value="">-- SELECT --</option>
-                <option value="">Test Drive</option>
+                <option value="new">Test Drive</option>
               </select>
             </div>
           </div>
@@ -185,16 +184,16 @@
               <label for="Make">Do Not Contact</label><br />
               <input
                 type="radio"
-                value=""
+                value="f"
                 name="do_not_contact__c"
                 formControlName="do_not_contact__c"
-                checked=""
+                checked
                 data-parsley-multiple="do_not_contact__c"
               />
               no
               <input
                 type="radio"
-                value=""
+                value="t"
                 name="do_not_contact__c"
                 formControlName="do_not_contact__c"
                 data-parsley-multiple="do_not_contact__c"
@@ -277,16 +276,16 @@
               <label for="usr">Business Email Valid</label><br />
               <input
                 type="radio"
-                value=""
+                value="f"
                 name="business_email_valid__c"
                 formControlName="business_email_valid__c"
-                checked=""
+                checked
                 data-parsley-multiple="business_email_valid__c"
               />
               no
               <input
                 type="radio"
-                value=""
+                value="t"
                 name="business_email_valid__c"
                 formControlName="business_email_valid__c"
                 data-parsley-multiple="business_email_valid__c"
@@ -299,16 +298,16 @@
               <label for="usr">Business Phone Valid</label><br />
               <input
                 type="radio"
-                value=""
+                value="f"
                 name="business_phone_valid__c"
                 formControlName="business_phone_valid__c"
-                checked=""
+                checked
                 data-parsley-multiple="business_phone_valid__c"
               />
               no
               <input
                 type="radio"
-                value=""
+                value="t"
                 name="business_phone_valid__c"
                 formControlName="business_phone_valid__c"
                 data-parsley-multiple="business_phone_valid__c"
@@ -376,8 +375,8 @@
                 type="radio"
                 name="home_phone_valid__c"
                 formControlName="home_phone_valid__c"
-                value=""
-                checked=""
+                value="f"
+                checked
                 data-parsley-multiple="home_phone_valid__c"
               />
               no
@@ -385,7 +384,7 @@
                 type="radio"
                 name="home_phone_valid__c"
                 formControlName="home_phone_valid__c"
-                value=""
+                value="t"
                 data-parsley-multiple="home_phone_valid__c"
               />
               yes

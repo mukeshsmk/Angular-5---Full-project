@@ -26,13 +26,14 @@ export class CustomerFormComponent implements OnInit {
   @Input() customer: any;
   @Input() type: any;
   @Output('updateCustomer') send = new EventEmitter<any>();
-
+  userData:any;
   customerForm: FormGroup;
   submitted: Boolean = false;
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('user_data'));
     this.customerForm = this.formBuilder.group({
       first_name__c: [this.customer.first_name__c, Validators.required],
       last_name__c: [this.customer.last_name__c, Validators.required],
@@ -70,7 +71,8 @@ export class CustomerFormComponent implements OnInit {
       license_number__c: [this.customer.license_number__c],
       license_expiry_date__c: [this.customer.license_expiry_date__c],
       numberoflocations__c: [this.customer.numberoflocations__c],
-      phone2__c: [this.customer.phone2__c]
+      phone2__c: [this.customer.phone2__c],
+      do_not_contact__c:[this.customer.do_not_contact__c]
     });
   }
 

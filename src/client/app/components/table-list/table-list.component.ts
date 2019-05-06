@@ -325,7 +325,7 @@ export class TableListComponent {
       endpoint = "driverUpdate";
     }
     if (this.formType === "new") {
-      //endpoint = 'createCustomer';
+      endpoint = 'createDriver';
     }
     this.http
       .post<{ success: object }>(Config.BASE_URL + "api/" + endpoint, event)
