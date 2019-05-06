@@ -1,3 +1,4 @@
+<div class="loader" *ngIf="loaderOne"></div>
 <div class="card-head" style="width: 75%;">
   <div class="row">
     <div class="col-sm-6">
@@ -6,7 +7,7 @@
           class="fas fa-user mr-2"
           style="color:#0747A6;font-size:25px;top:8px;"
         ></i>
-        <span style="font-size:18px;">Surya Prakash</span>
+        <span style="font-size:18px;">{{ driver.name }}</span>
       </div>
     </div>
     <div class="col-sm-6">
@@ -193,7 +194,9 @@
               </div>
               <div class="form-group">
                 <label>Created Date :</label>
-                <span class="form-control-static"> 2019-04-12 07:22:00</span>
+                <span class="form-control-static">{{
+                  driver.createddate
+                }}</span>
               </div>
             </div>
             <div class="col-sm-6">
@@ -366,15 +369,10 @@
         <div class="card card-default" style="margin-top: 10px;">
           <div class="card-header padding-head pointer">
             <h4 class="card-title pull-left" style="padding-top: 7.5px;">
-              Campaign History( 0)
+              Campaign History({{ relatedListData.campaign.total }})
             </h4>
             <div class="btn-group pull-right">
-              <a
-                href="#"
-                class="btn btn-default btn-sm"
-                data-toggle="modal"
-                data-target="#stockuploadattachment"
-                (click)="addcampaign()"
+              <a href="#" class="btn btn-default btn-sm" (click)="addcampaign()"
                 >Add to Campaign</a
               >
             </div>
@@ -392,6 +390,7 @@
                       <select
                         name="example3_length"
                         aria-controls="example3"
+                        (change)="chPageCount($event.target.value)"
                         class="form-control input-sm"
                       >
                         <option value="10">10</option>
@@ -411,6 +410,7 @@
                         class="form-control input-sm"
                         placeholder=""
                         aria-controls="example3"
+                        (keyup)="chSearchList($event.target.value)"
                     /></label>
                   </div>
                 </div>
@@ -424,37 +424,65 @@
                     aria-describedby="example3_info"
                   >
                     <thead class=" text-primary pointer">
-                      <th (click)="sortData('id')">
+                      <th>
+                        <a href="#">
+                          <i
+                            class="fas fa-sort-amount-down"
+                            (click)="chSortData('name')"
+                          ></i>
+                        </a>
                         Name
                       </th>
-                      <th>
+                      <th (click)="chSortData('name')">
+                        <a href="#">
+                          <i
+                            class="fas fa-sort-amount-down"
+                            (click)="sortData('createddate')"
+                          ></i>
+                        </a>
                         Campaign Name
                       </th>
                       <th>
+                        <a href="#">
+                          <i
+                            class="fas fa-sort-amount-down"
+                            (click)="chSortData('createddate')"
+                          ></i>
+                        </a>
                         Start Date
                       </th>
                       <th>
+                        <a href="#">
+                          <i
+                            class="fas fa-sort-amount-down"
+                            (click)="chSortData('type')"
+                          ></i>
+                        </a>
                         Type
                       </th>
                       <th>
+                        <a href="#">
+                          <i
+                            class="fas fa-sort-amount-down"
+                            (click)="chSortData('status')"
+                          ></i>
+                        </a>
                         Status
                       </th>
                     </thead>
                     <tbody>
-                      <tr role="row" class="odd">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                      <tr *ngFor="let related of relatedListData.campaign.data">
+                        <td>{{ related.name }}</td>
+                        <td>{{ related.name }}</td>
+                        <td>{{ related.createddate }}</td>
+                        <td>{{ related.type }}</td>
+                        <td>{{ related.status }}</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
-              <div class="row">
+              <div class="row w-auto">
                 <div class="col-sm-5 mt-2">
                   <div
                     class="dataTables_info"
@@ -462,21 +490,198 @@
                     role="status"
                     aria-live="polite"
                   >
-                    Showing 1 to 1 of 1 entries
+                    Showing {{ relatedListData.campaign.from }} to
+                    {{ relatedListData.campaign.to }} of
+                    {{ relatedListData.campaign.total }} entries
                   </div>
                 </div>
                 <div class="col-sm-7">
                   <div
-                    class="dataTables_paginate paging_simple_numbers"
-                    id="example3_paginate"
+                    class="dataTables_paginate paging_simple_numbers d-flex float-right pointer"
+                    id="example_paginate"
                   >
-                    <ul class="pagination justify-content-end">
-                      <li class="page-item">
-                        <a class="page-link">Previous</a>
-                      </li>
-                      <li class="page-item"><a class="page-link">1</a></li>
-                      <li class="page-item"><a class="page-link">2</a></li>
-                      <li class="page-item"><a class="page-link">Next</a></li>
+                    <ul class="pagination">
+                      <ul class="pagination justify-content-end">
+                        <li
+                          class="page-item"
+                          [ngClass]="{
+                            disabled:
+                              relatedListData.campaign.current_page === 1
+                          }"
+                          (click)="
+                            chPageNumber(
+                              relatedListData.campaign.current_page - 1
+                            )
+                          "
+                        >
+                          <a class="page-link">Previous</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          [ngClass]="{
+                            'active bg-dark':
+                              relatedListData.campaign.current_page == 1
+                          }"
+                          *ngIf="
+                            relatedListData.campaign.current_page !=
+                            relatedListData.campaign.last_page
+                          "
+                          (click)="chPageNumber(1)"
+                        >
+                          <a class="page-link">1</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          *ngIf="relatedListData.campaign.current_page >= 5"
+                        >
+                          <a class="page-link">...</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          *ngIf="relatedListData.campaign.current_page >= 5"
+                          (click)="
+                            chPageNumber(
+                              relatedListData.campaign.current_page - 1
+                            )
+                          "
+                        >
+                          <a class="page-link">{{
+                            relatedListData.campaign.current_page - 1
+                          }}</a>
+                        </li>
+                        <li
+                          class="page-item active bg-dark"
+                          *ngIf="
+                            relatedListData.campaign.current_page >= 5 &&
+                            relatedListData.campaign.last_page !=
+                              relatedListData.campaign.current_page
+                          "
+                          (click)="
+                            chPageNumber(relatedListData.campaign.current_page)
+                          "
+                        >
+                          <a class="page-link">{{
+                            relatedListData.campaign.current_page
+                          }}</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          *ngIf="
+                            relatedListData.campaign.current_page >= 5 &&
+                            relatedListData.campaign.current_page !=
+                              relatedListData.campaign.last_page &&
+                            relatedListData.campaign.current_page + 1 !=
+                              relatedListData.campaign.last_page
+                          "
+                          (click)="
+                            chPageNumber(
+                              relatedListData.campaign.current_page + 1
+                            )
+                          "
+                        >
+                          <a class="page-link">{{
+                            relatedListData.campaign.current_page + 1
+                          }}</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          [ngClass]="{
+                            'active bg-dark':
+                              relatedListData.campaign.current_page == 2
+                          }"
+                          *ngIf="
+                            relatedListData.campaign.current_page < 5 &&
+                            relatedListData.campaign.last_page > 2
+                          "
+                          (click)="chPageNumber(2)"
+                        >
+                          <a class="page-link">2</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          [ngClass]="{
+                            'active bg-dark':
+                              relatedListData.campaign.current_page == 3
+                          }"
+                          *ngIf="
+                            relatedListData.campaign.current_page < 5 &&
+                            relatedListData.campaign.last_page > 3
+                          "
+                          (click)="chPageNumber(3)"
+                        >
+                          <a class="page-link">3</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          [ngClass]="{
+                            'active bg-dark':
+                              relatedListData.campaign.current_page == 4
+                          }"
+                          *ngIf="
+                            relatedListData.campaign.current_page < 5 &&
+                            relatedListData.campaign.last_page > 4
+                          "
+                          (click)="chPageNumber(4)"
+                        >
+                          <a class="page-link">4</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          [ngClass]="{
+                            'active bg-dark':
+                              relatedListData.campaign.current_page == 5
+                          }"
+                          *ngIf="
+                            relatedListData.campaign.current_page < 5 &&
+                            relatedListData.campaign.last_page > 5
+                          "
+                          (click)="chPageNumber(5)"
+                        >
+                          <a class="page-link">5</a>
+                        </li>
+
+                        <li
+                          class="page-item"
+                          *ngIf="
+                            relatedListData.campaign.last_page -
+                              relatedListData.campaign.current_page >
+                              1 && relatedListData.campaign.last_page > 5
+                          "
+                        >
+                          <a class="page-link">...</a>
+                        </li>
+
+                        <li
+                          class="page-item"
+                          [ngClass]="{
+                            'active bg-dark':
+                              relatedListData.campaign.current_page ==
+                              relatedListData.campaign.last_page
+                          }"
+                          (click)="
+                            chPageNumber(relatedListData.campaign.last_page)
+                          "
+                        >
+                          <a class="page-link">{{
+                            relatedListData.campaign.last_page
+                          }}</a>
+                        </li>
+                        <li
+                          class="page-item"
+                          [ngClass]="{
+                            disabled:
+                              relatedListData.campaign.current_page ===
+                              relatedListData.campaign.last_page
+                          }"
+                          (click)="
+                            chPageNumber(
+                              relatedListData.campaign.current_page + 1
+                            )
+                          "
+                        >
+                          <a class="page-link">Next</a>
+                        </li>
+                      </ul>
                     </ul>
                   </div>
                 </div>
@@ -669,7 +874,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form >
+            <form>
               <div class="container-fluid">
                 <div class="card mt-3">
                   <div class="card-header">
