@@ -32,10 +32,11 @@ export class OpportunityFormComponent implements OnInit {
   @Output('updateOpportunity') send = new EventEmitter<any>();
 
   opportunityForm: FormGroup;
-
+  userData:any;
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('user_data'));
     this.opportunityForm = this.formBuilder.group({
       first_name__c: [this.opportunity.first_name__c],
       last_name__c: [this.opportunity.last_name__c, Validators.required],

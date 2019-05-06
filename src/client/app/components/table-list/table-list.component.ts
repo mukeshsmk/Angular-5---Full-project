@@ -100,13 +100,8 @@ export class TableListComponent {
   }
   loadData(type: string, params: any) {
     this.loaderOne = true;
-    // params =
-    //   'page=' +
-    //   params.page +
-    //   '&limit=' +
-    //   params.limit +
-    //   '&search=' +
-    //   params.search;
+    this.opportunityList = [];
+    this.opportunityListData=[];
     params.userData = JSON.parse(localStorage.getItem("user_data"));
     this.http
       .post<{ success: object }>(Config.BASE_URL + "api/" + type, params)

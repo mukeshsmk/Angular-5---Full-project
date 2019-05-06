@@ -142,7 +142,7 @@
               </div>
               <div class="form-group">
                 <label>Created Date :</label>
-                <span class="form-control-static"> 2019-04-12 07:22:00</span>
+                <span class="form-control-static">{{ customer.createddate }}</span>
               </div>
             </div>
             <div class="col-sm-6">
@@ -1251,7 +1251,7 @@
                         <div class="form-group">
                           <label
                             >Lead Owner<b class="mx-2">
-                              &nbsp;Manikandan Gunasekar</b
+                              &nbsp;{{ userData.dealer }}</b
                             ></label
                           >
                         </div>
@@ -1264,19 +1264,16 @@
                           <label><span class="red_star">*</span>Name</label>
                           <input
                             name="name"
-                            pattern="[a-zA-Z\sàèéìòù]+"
                             type="text"
                             class="form-control"
-                            id="first_name__c_lead"
                             formControlName="name"
-                            required=""
                           />
                           <div
-                            *ngIf="submitted && driverForm.controls.name.errors"
+                            *ngIf="submitted && customerForm.controls.name.errors"
                             class="error"
                           >
                             <div
-                              *ngIf="driverForm.controls.name.errors.required"
+                              *ngIf="customerForm.controls.name.errors.required"
                             >
                               <p class="error-box margin-top-0">
                                 Name is Required
@@ -1319,13 +1316,13 @@
                           />
                           <div
                             *ngIf="
-                              submitted && driverForm.controls.accountid.errors
+                              submitted && customerForm.controls.accountid.errors
                             "
                             class="error"
                           >
                             <div
                               *ngIf="
-                                driverForm.controls.accountid.errors.required
+                                customerForm.controls.accountid.errors.required
                               "
                             >
                               <p class="error-box margin-top-0">
@@ -1538,13 +1535,13 @@
                           <div
                             *ngIf="
                               submitted &&
-                              driverForm.controls.business_email__c.errors
+                              customerForm.controls.business_email__c.errors
                             "
                             class="error"
                           >
                             <div
                               *ngIf="
-                                driverForm.controls.business_email__c.errors
+                                customerForm.controls.business_email__c.errors
                                   .required
                               "
                             >
@@ -1641,13 +1638,13 @@
                           <div
                             *ngIf="
                               submitted &&
-                              driverForm.controls.home_email__c.errors
+                              customerForm.controls.home_email__c.errors
                             "
                             class="error"
                           >
                             <div
                               *ngIf="
-                                driverForm.controls.home_email__c.errors
+                                customerForm.controls.home_email__c.errors
                                   .required
                               "
                             >
@@ -2052,7 +2049,7 @@
                 >
                   Cancel
                 </button>
-                <button type="button" class="btn btn-info" (click)="onSubmit()">
+                <button type="submit" class="btn btn-info">
                   Save
                 </button>
               </div>
