@@ -12,23 +12,27 @@
     </div>
     <div class="col-sm-6">
       <div class=" row pull-right">
-        <button type="button" 
-        title="Details" 
-        id="btn1170" 
-        (click)="viewDetail()" 
-        [ngClass]="{
-          'btn-primary': visibleDetail
-        }"
-        class="btn btn-md btn-primary mr-2 ml-2"
+        <button
+          type="button"
+          title="Details"
+          id="btn1170"
+          (click)="viewDetail()"
+          [ngClass]="{
+            'btn-primary': visibleDetail
+          }"
+          class="btn btn-md btn-primary mr-2 ml-2"
         >
           <i class="fas fa-th"></i> Details
         </button>
-        <button title="Activity" 
-        type="button" id="btn2170" 
-        (click)="viewRelated()" [ngClass]="{
-          'btn-primary': visibleRelated
-        }"
-        class="btn btn-default btn-md mr-1"
+        <button
+          title="Activity"
+          type="button"
+          id="btn2170"
+          (click)="viewRelated()"
+          [ngClass]="{
+            'btn-primary': visibleRelated
+          }"
+          class="btn btn-default btn-md mr-1"
         >
           <i class="fas fa-th-list"></i> Related
         </button>
@@ -1170,8 +1174,16 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+          <div *ngIf="insertCampaignSuccess">
+            <div class="alert alert-success alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close"
+                >&times;</a
+              >
+              <strong>Success!</strong> Campaign inserted successfully.
+            </div>
+          </div>
           <div class="modal-body">
-            <form>
+            <form (ngSubmit)="onSubmit()" [formGroup]="campaignForm">
               <div class="container-fluid">
                 <div class="card mt-3">
                   <div class="card-header">
@@ -1187,20 +1199,27 @@
                         style="padding-bottom: 1px;"
                       >
                         <div class="form-group">
-                          <input
-                            type="hidden"
-                            name="sfid"
-                            value="0037F00001PNiTAQA1"
-                          />
-
                           <label for="usr">Campaign</label>
                           <input
                             type="text"
-                            name="campaign"
+                            formControlName="name"
                             class="form-control"
-                            id="campaign"
                             required=""
                           />
+                          <div
+                            *ngIf="
+                              submitted && campaignForm.controls.name.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="campaignForm.controls.name.errors.required"
+                            >
+                              <p class="error-box margin-top-0">
+                                Campaign is Required
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div
@@ -1211,7 +1230,7 @@
                           <label for="usr">Campaign Member Status </label>
                           <select
                             class="form-control"
-                            name="campaignmemberstatus"
+                            formControlName="campaignmemberstatus"
                             id="campaignmemberstatus"
                             style="height: 35px;"
                           >
@@ -1239,17 +1258,10 @@
                         style="padding-bottom: 1px;"
                       >
                         <div class="form-group">
-                          <input
-                            type="hidden"
-                            name="sfid"
-                            value="0037F00001PNiTAQA1"
-                          />
-
                           <label for="usr">Campaign Name</label>
                           <select
                             class="form-control"
-                            name="cname"
-                            id="cname"
+                            formControlName="campaign_name__c"
                             style="height: 35px;"
                           >
                             <option value="">-- None--</option>
@@ -1265,12 +1277,12 @@
                       >
                         <div class="form-group">
                           <label for="usr">Driver</label>
-                          <p class="form-control-static">Samson white</p>
-                          <input
+                          <p class="form-control-static">{{ driver.name }}</p>
+                          <!--<input
                             type="hidden"
-                            name="drivername"
+                            formControlName="drivername"
                             value="Samson white"
-                          />
+                          />-->
                         </div>
                       </div>
                     </div>
@@ -1284,8 +1296,7 @@
                           <label>Lead</label>
                           <input
                             type="text"
-                            name="lead"
-                            id="lead"
+                            formControlName="lead"
                             class="form-control"
                           />
                         </div>
@@ -1299,8 +1310,7 @@
 
                           <select
                             class="form-control"
-                            name="leadstatus"
-                            id="leadstatus"
+                            formControlName="status"
                             style="height: 35px;"
                           >
                             <option value="Sent">Sent</option>
@@ -1320,8 +1330,7 @@
 
                           <select
                             class="form-control"
-                            name="requesttype"
-                            id="requesttype"
+                            formControlName="request_type__c"
                             style="height: 35px;"
                           >
                             <option label="Contact Us" value="Contact Us"
@@ -1439,8 +1448,7 @@
                           <label>Comments</label>
                           <input
                             type="text"
-                            name="comments"
-                            id="comments"
+                            formControlName="comments__c"
                             class="form-control"
                           />
                         </div>
@@ -1456,9 +1464,8 @@
                           <label for="usr">VIN</label>
                           <input
                             type="text"
-                            name="vin"
+                            formControlName="vin__c"
                             class="form-control"
-                            id="vin"
                           />
                         </div>
                       </div>
@@ -1470,8 +1477,7 @@
                           <label>Comments_from_Stock__c</label>
                           <input
                             type="text"
-                            name="stockc"
-                            id="stockc"
+                            formControlName="comments_from_stock_c__c"
                             class="form-control"
                           />
                         </div>

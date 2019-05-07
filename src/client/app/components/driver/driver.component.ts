@@ -1,6 +1,12 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import Config from "../../shared/config";
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl
+} from "@angular/forms";
 /**
  * This class represents the lazy loaded AboutComponent.
  */
@@ -11,7 +17,7 @@ import Config from "../../shared/config";
   styleUrls: ["driver.component.css"]
 })
 export class DriverComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private formBuilder: FormBuilder) {}
   visibleOne: Boolean = false;
   visibleTwo: Boolean = true;
 
@@ -40,8 +46,26 @@ export class DriverComponent implements OnInit {
   contactHisSort: any = "id";
 
   @Input() driver: any;
+  userData: any;
+  campaignForm: FormGroup;
+  submitted: Boolean = false;
+  insertCampaignSuccess: Boolean = false;
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem("user_data"));
+    this.campaignForm = this.formBuilder.group({
+      contactid: [this.driver.sfid],
+      status: [""],
+      name: [""],
+      campaignmemberstatus: [""],
+      campaign_name__c: [""],
+      lead: [""],
+      type: ["Lead"],
+      comments__c: [""],
+      request_type__c: [""],
+      vin__c: [""],
+      comments_from_stock_c__c: [""]
+    });
     const params = {
       casePage: this.casePage,
       caseLimit: this.caseLimit,
@@ -172,5 +196,25 @@ export class DriverComponent implements OnInit {
   viewRelated() {
     this.visibleDetail = false;
     this.visibleRelated = true;
+  }
+  onSubmit() {
+    this.submitted = true;
+    console.log(this.campaignForm);
+
+    if (this.campaignForm.invalid) {
+      return;
+    }
+    this.loaderOne = true;
+    this.http
+      .post<{ success: object }>(
+        Config.BASE_URL + "api/createCampaign",
+        this.campaignForm.value
+      )
+      .subscribe((response: any) => {
+        this.loaderOne = false;
+        this.insertCampaignSuccess = true;
+        this.campaignForm.reset();
+        this.submitted = false;
+      });
   }
 }
