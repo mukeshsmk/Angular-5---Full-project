@@ -45,6 +45,9 @@ h2 a {
   font-weight: bold;
 }
 
+.form-select{
+  display: none;
+}
 .navbar-dark .navbar-nav .nav-link {
   color: #fff;
   padding: 6px 6px 6px 10px;
@@ -176,6 +179,10 @@ h2 a {
   border: 1px solid transparent;
 }
 
+.form-mobile{
+  display: none;
+}
+
 .btn-breadcrumb .btn.btn-success:not(:last-child):after {
   border-left: 10px solid #5cb85c;
 }
@@ -262,11 +269,47 @@ label {
 
 @media (max-width: 768px){
 .btn-nav {
-  padding: 6px 12px 6px 24px;
-  display: inline-block;
+  padding:0;
+ 
   height: auto;
 }
-.modal-dialog {
-  width: 78% !important;
+.modal-dialog{
+  width: 100%;
+}
+.btn-nav {
+  height: 20px;
+  position: relative;
+  top: 12px;
+  right: 30px;
+}
+.form-select {
+  width: 75%;
+  margin: 0px;
+  background-color: #d7d7d799;
+  display: grid;
+}
+.form-nav{
+  display: none;
+}
+.form-mobile{
+  display: grid;
+}
+.btn-breadcrumb .btn.btn-success:not(:last-child):after {
+  display: none;
+}
+.btn-breadcrumb .btn.btn-success:not(:last-child):before {
+  display: none;
+}
+
+.btn-breadcrumb .btn.btn-info:not(:last-child):after {
+  display: none;
+}
+.btn-breadcrumb .btn.btn-info:not(:last-child):before {
+  display: none;
+}
+.btn-success{
+  color: #fff;
+  background-color: #5ab75b !important;
+  border: 1px solid #9bcf9c;
 }
 }

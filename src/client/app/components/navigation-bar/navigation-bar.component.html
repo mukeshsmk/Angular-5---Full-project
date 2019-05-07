@@ -1,115 +1,143 @@
 <div class="loader" *ngIf="loaderOne"></div>
 
-<div class="container-fluid">
+
+
+<div class="container-fluid  form-mobile">
+  <div class="col-md-12">
+    <div class="btn-group btn-nav btn-breadcrumb" *ngIf="details">
+      <span color-index="0" class="color-btn btn btn-success">
+
+      </span>
+      <span color-index="1" class="color-btn btn showData workingID" [ngClass]="{
+            'btn-success': colorIndex >= 1,
+            'btn-info': colorIndex < 1
+          }">
+
+      </span>
+      <span color-index="2" class="color-btn btn showData workingID" type="appointmentModal" [ngClass]="{
+            'btn-success': colorIndex >= 2,
+            'btn-info': colorIndex < 2
+          }">
+
+      </span>
+      <span color-index="3" class="color-btn btn showDataNon workingID" type="quotationModal" [ngClass]="{
+            'btn-success': colorIndex >= 3,
+            'btn-info': colorIndex < 3
+          }">
+
+      </span>
+      <span color-index="4" class="color-btn btn showData workingID" type="negotiationModal" [ngClass]="{
+            'btn-success': colorIndex >= 4,
+            'btn-info': colorIndex < 4
+          }">
+      </span>
+      <span color-index="5" [ngClass]="{
+            'btn-success': colorIndex >= 5,
+            'btn-info': colorIndex < 5
+          }" class="color-btn btn showDataNon saveAllModal">
+
+      </span>
+      <span color-index="6" [ngClass]="{
+            'btn-success': colorIndex >= 6,
+            'btn-info': colorIndex < 6
+          }" class="color-btn btn showData workingID" type="closedLostModal">
+
+      </span>
+      <span color-index="6" [ngClass]="{
+            'btn-success': colorIndex >= 7,
+            'btn-info': colorIndex < 7
+          }" class="color-btn btn showData workingID" type="closedWonModal">
+
+      </span>
+      <span color-index="7" [ngClass]="{
+            'btn-success': colorIndex >= 8,
+            'btn-info': colorIndex < 8
+          }" class="color-btn btn showDataNon workingID" type="duplicateModal">
+
+      </span>
+      <span color-index="8" [ngClass]="{
+            'btn-success': colorIndex >= 9,
+            'btn-info': colorIndex < 9
+          }" class="color-btn btn showDataNon workingID" type="convertedModal">
+
+      </span>
+    </div>
+    <br /><br />
+  </div>
+</div>
+
+<select class="form-control form-select" (change)="openNavModal($event.target.value)">
+  <option value="" selected="">New</option>
+  <option value="New Task">Working</option>
+  <option value="Appointment Task">Appointment</option>
+  <option value="Quotation Task">Quotation</option>
+  <option value="Negotiation">Negotiation</option>
+  <option value="">Finalize</option>
+  <option value="Closed Lost">Closed Lost</option>
+  <option value="Closed Won">Closed Won</option>
+  <option value="Duplicate"> Duplicate</option>
+  <option value="Converted">Converted</option>
+</select>
+
+
+<div class="container-fluid  form-nav">
   <div class="col-md-12">
     <div class="btn-group btn-nav btn-breadcrumb" *ngIf="details">
       <button color-index="0" class="color-btn btn btn-success">
         New
       </button>
-      <button
-        color-index="1"
-        class="color-btn btn showData workingID"
-        (click)="openNavModal('New Task')"
-        [ngClass]="{
+      <button color-index="1" class="color-btn btn showData workingID" (click)="openNavModal('New Task')" [ngClass]="{
           'btn-success': colorIndex >= 1,
           'btn-info': colorIndex < 1
-        }"
-      >
+        }">
         Working
       </button>
-      <button
-        color-index="2"
-        class="color-btn btn showData workingID"
-        type="appointmentModal"
-        [ngClass]="{
+      <button color-index="2" class="color-btn btn showData workingID" type="appointmentModal" [ngClass]="{
           'btn-success': colorIndex >= 2,
           'btn-info': colorIndex < 2
-        }"
-        (click)="openNavModal('Appointment Task')"
-      >
+        }" (click)="openNavModal('Appointment Task')">
         Appointment
       </button>
-      <button
-        color-index="3"
-        class="color-btn btn showDataNon workingID"
-        type="quotationModal"
-        [ngClass]="{
+      <button color-index="3" class="color-btn btn showDataNon workingID" type="quotationModal" [ngClass]="{
           'btn-success': colorIndex >= 3,
           'btn-info': colorIndex < 3
-        }"
-        (click)="openNavModal('Quotation Task')"
-      >
+        }" (click)="openNavModal('Quotation Task')">
         Quotation
       </button>
-      <button
-        color-index="4"
-        class="color-btn btn showData workingID"
-        type="negotiationModal"
-        [ngClass]="{
+      <button color-index="4" class="color-btn btn showData workingID" type="negotiationModal" [ngClass]="{
           'btn-success': colorIndex >= 4,
           'btn-info': colorIndex < 4
-        }"
-        (click)="openNavModal('Negotiation')"
-      >
+        }" (click)="openNavModal('Negotiation')">
         Negotiation
       </button>
-      <button
-        color-index="5"
-        [ngClass]="{
+      <button color-index="5" [ngClass]="{
           'btn-success': colorIndex >= 5,
           'btn-info': colorIndex < 5
-        }"
-        class="color-btn btn showDataNon saveAllModal"
-        (click)="updateFinalize()"
-      >
+        }" class="color-btn btn showDataNon saveAllModal" (click)="updateFinalize()">
         Finalize
       </button>
-      <button
-        color-index="6"
-        [ngClass]="{
+      <button color-index="6" [ngClass]="{
           'btn-success': colorIndex >= 6,
           'btn-info': colorIndex < 6
-        }"
-        class="color-btn btn showData workingID"
-        type="closedLostModal"
-        (click)="openNavModal('Closed Lost')"
-      >
+        }" class="color-btn btn showData workingID" type="closedLostModal" (click)="openNavModal('Closed Lost')">
         Closed Lost
       </button>
-      <button
-        color-index="6"
-        [ngClass]="{
+      <button color-index="6" [ngClass]="{
           'btn-success': colorIndex >= 7,
           'btn-info': colorIndex < 7
-        }"
-        class="color-btn btn showData workingID"
-        type="closedWonModal"
-        (click)="openNavModal('Close Won')"
-      >
+        }" class="color-btn btn showData workingID" type="closedWonModal" (click)="openNavModal('Close Won')">
         Closed Won
       </button>
-      <button
-        color-index="7"
-        [ngClass]="{
+      <button color-index="7" [ngClass]="{
           'btn-success': colorIndex >= 8,
           'btn-info': colorIndex < 8
-        }"
-        class="color-btn btn showDataNon workingID"
-        type="duplicateModal"
-        (click)="openNavModal('Duplicate')"
-      >
+        }" class="color-btn btn showDataNon workingID" type="duplicateModal" (click)="openNavModal('Duplicate')">
         Duplicate
       </button>
-      <button
-        color-index="8"
-        [ngClass]="{
+      <button color-index="8" [ngClass]="{
           'btn-success': colorIndex >= 9,
           'btn-info': colorIndex < 9
-        }"
-        class="color-btn btn showDataNon workingID"
-        type="convertedModal"
-        (click)="openNavModal('Converted')"
-      >
+        }" class="color-btn btn showDataNon workingID" type="convertedModal" (click)="openNavModal('Converted')">
         Converted
       </button>
     </div>
@@ -117,23 +145,16 @@
   </div>
 </div>
 
-<div
-  class="modal modal-back full-size"
-  tabindex="-1"
-  role="dialog"
-  [ngClass]="{ fade: !navigtionOpen, 'd-flex': navigtionOpen }"
->
+
+
+
+<div class="modal modal-back full-size" tabindex="-1" role="dialog"
+  [ngClass]="{ fade: !navigtionOpen, 'd-flex': navigtionOpen }">
   <div class="modal-dialog" role="document">
     <div class="h-auto modal-content">
       <div class="modal-header">
         <h5 class="w-100 text-center modal-title">{{ module }}</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-          (click)="closeModal()"
-        >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -144,88 +165,45 @@
               <div class="container-fluid">
                 <div class="card mt-3">
                   <div class="card-header">
-                    <a
-                      data-toggle="collapse"
-                      href="#card-lead-information"
-                      aria-expanded="true"
-                      aria-controls="card-lead-information"
-                      class="card-head"
-                    >
+                    <a data-toggle="collapse" href="#card-lead-information" aria-expanded="true"
+                      aria-controls="card-lead-information" class="card-head">
                       Working Status
                     </a>
                   </div>
-                  <div
-                    class="card-body collapse show"
-                    id="card-lead-information"
-                  >
+                  <div class="card-body collapse show" id="card-lead-information">
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">First Name</label>
-                          <input
-                            type="text"
-                            formControlName="first_name__c"
-                            class="form-control"
-                          />
+                          <input type="text" formControlName="first_name__c" class="form-control" />
                         </div>
                       </div>
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label>Last Name</label>
-                          <input
-                            type="text"
-                            formControlName="last_name__c"
-                            class="form-control"
-                          />
+                          <input type="text" formControlName="last_name__c" class="form-control" />
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">Mobile</label>
-                          <input
-                            type="text"
-                            formControlName="mobile__c"
-                            class="form-control"
-                          />
+                          <input type="text" formControlName="mobile__c" class="form-control" />
                         </div>
                       </div>
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label>Email</label>
-                          <input
-                            type="text"
-                            formControlName="email__c"
-                            class="form-control"
-                          />
+                          <input type="text" formControlName="email__c" class="form-control" />
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">Post Code</label>
-                          <input
-                            type="text"
-                            formControlName="zip_postal_code__c"
-                            class=" form-control"
-                          />
+                          <input type="text" formControlName="zip_postal_code__c" class=" form-control" />
                         </div>
                       </div>
                     </div>
@@ -234,12 +212,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                  (click)="closeModal()"
-                >
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">
                   Cancel
                 </button>
                 <button type="submit" class="btn btn-info">
@@ -251,49 +224,28 @@
         </ng-template>
         <ng-template [ngSwitchCase]="'Appointment Task'">
           <div *ngIf="navigtionOpen">
-            <form
-              (ngSubmit)="onSubmit(appointmentTaskForm)"
-              [formGroup]="appointmentTaskForm"
-            >
+            <form (ngSubmit)="onSubmit(appointmentTaskForm)" [formGroup]="appointmentTaskForm">
               <div class="container-fluid">
                 <div class="card mt-3">
                   <div class="card-header">
-                    <a
-                      data-toggle="collapse"
-                      href="#card-lead-information"
-                      aria-expanded="true"
-                      aria-controls="card-lead-information"
-                      class="card-head"
-                    >
+                    <a data-toggle="collapse" href="#card-lead-information" aria-expanded="true"
+                      aria-controls="card-lead-information" class="card-head">
                       Appointment Status
                     </a>
                   </div>
-                  <div
-                    class="card-body collapse show"
-                    id="card-lead-information"
-                  >
+                  <div class="card-body collapse show" id="card-lead-information">
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">Address</label>
                           <input type="text" class="form-control" />
                         </div>
                       </div>
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label>License Number</label>
-                          <input
-                            type="text"
-                            name="license_number__c"
-                            formControlName="license_number__c"
-                            class="form-control"
-                          />
+                          <input type="text" name="license_number__c" formControlName="license_number__c"
+                            class="form-control" />
                         </div>
                       </div>
                     </div>
@@ -302,12 +254,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                  (click)="closeModal()"
-                >
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">
                   Cancel
                 </button>
                 <button type="submit" class="btn btn-info">
@@ -319,54 +266,29 @@
         </ng-template>
         <ng-template [ngSwitchCase]="'Quotation Task'">
           <div *ngIf="navigtionOpen">
-            <form
-              (ngSubmit)="onSubmit(quotationTaskForm)"
-              [formGroup]="quotationTaskForm"
-            >
+            <form (ngSubmit)="onSubmit(quotationTaskForm)" [formGroup]="quotationTaskForm">
               <div class="container-fluid">
                 <div class="card mt-3">
                   <div class="card-header">
-                    <a
-                      data-toggle="collapse"
-                      href="#card-lead-information"
-                      aria-expanded="true"
-                      aria-controls="card-lead-information"
-                      class="card-head"
-                    >
+                    <a data-toggle="collapse" href="#card-lead-information" aria-expanded="true"
+                      aria-controls="card-lead-information" class="card-head">
                       Quotation Modal Status
                     </a>
                   </div>
-                  <div
-                    class="card-body collapse show"
-                    id="card-lead-information"
-                  >
+                  <div class="card-body collapse show" id="card-lead-information">
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label>Place of work:</label>
-                          <input
-                            type="text"
-                            name="place_of_work__c"
-                            formControlName="place_of_work__c"
-                            class="form-control"
-                          />
+                          <input type="text" name="place_of_work__c" formControlName="place_of_work__c"
+                            class="form-control" />
                         </div>
                       </div>
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label>Family Details:</label>
-                          <input
-                            type="text"
-                            name="family_details__c"
-                            formControlName="family_details__c"
-                            class="form-control"
-                          />
+                          <input type="text" name="family_details__c" formControlName="family_details__c"
+                            class="form-control" />
                         </div>
                       </div>
                     </div>
@@ -374,12 +296,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                  (click)="closeModal()"
-                >
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">
                   Cancel
                 </button>
                 <button type="submit" class="btn btn-info">
@@ -391,40 +308,22 @@
         </ng-template>
         <ng-template [ngSwitchCase]="'Negotiation'">
           <div *ngIf="navigtionOpen">
-            <form
-              (ngSubmit)="onSubmit(negotiationTaskForm)"
-              [formGroup]="negotiationTaskForm"
-            >
+            <form (ngSubmit)="onSubmit(negotiationTaskForm)" [formGroup]="negotiationTaskForm">
               <div class="container-fluid">
                 <div class="card mt-3">
                   <div class="card-header">
-                    <a
-                      data-toggle="collapse"
-                      href="#card-lead-information"
-                      aria-expanded="true"
-                      aria-controls="card-lead-information"
-                      class="card-head"
-                    >
+                    <a data-toggle="collapse" href="#card-lead-information" aria-expanded="true"
+                      aria-controls="card-lead-information" class="card-head">
                       Working Status
                     </a>
                   </div>
-                  <div
-                    class="card-body collapse show"
-                    id="card-lead-information"
-                  >
+                  <div class="card-body collapse show" id="card-lead-information">
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
-                          <label
-                            ><input
-                              type="checkbox"
-                              formControlName="introduction_to_finance_manager__c"
-                            />
-                            <p>Introduction to manager</p></label
-                          >
+                          <label><input type="checkbox" formControlName="introduction_to_finance_manager__c" />
+                            <p>Introduction to manager</p>
+                          </label>
                         </div>
                       </div>
                     </div>
@@ -432,12 +331,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                  (click)="closeModal()"
-                >
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">
                   Cancel
                 </button>
                 <button type="submit" class="btn btn-info">
@@ -449,27 +343,16 @@
         </ng-template>
         <ng-template [ngSwitchCase]="'Closed Lost'">
           <div *ngIf="navigtionOpen">
-            <form
-              (ngSubmit)="onSubmit(closedLostTaskForm)"
-              [formGroup]="closedLostTaskForm"
-            >
+            <form (ngSubmit)="onSubmit(closedLostTaskForm)" [formGroup]="closedLostTaskForm">
               <div class="container-fluid">
                 <div class="card mt-3">
                   <div class="card-header">
-                    <a
-                      data-toggle="collapse"
-                      href="#card-lead-information"
-                      aria-expanded="true"
-                      aria-controls="card-lead-information"
-                      class="card-head"
-                    >
+                    <a data-toggle="collapse" href="#card-lead-information" aria-expanded="true"
+                      aria-controls="card-lead-information" class="card-head">
                       Closed Lost
                     </a>
                   </div>
-                  <div
-                    class="card-body collapse show"
-                    id="card-lead-information"
-                  >
+                  <div class="card-body collapse show" id="card-lead-information">
                     <div class="row">
                       <div class="col-10" style="padding-bottom: 1px;">
                         <div class="form-group">
@@ -477,11 +360,7 @@
                           <!--
                                 <input type="text" name="place_of_work__c" used="place_of_work__c" class="1common_txt_box703Quotation place_of_work__c703 form-control">
                                 -->
-                          <textarea
-                            rows="5"
-                            class="form-control"
-                            formControlName="notes__c"
-                          ></textarea>
+                          <textarea rows="5" class="form-control" formControlName="notes__c"></textarea>
                         </div>
                       </div>
                     </div>
@@ -489,12 +368,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                  (click)="closeModal()"
-                >
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">
                   Cancel
                 </button>
                 <button type="submit" class="btn btn-info">
@@ -506,70 +380,37 @@
         </ng-template>
         <ng-template [ngSwitchCase]="'Close Won'">
           <div *ngIf="navigtionOpen">
-            <form
-              (ngSubmit)="onSubmit(closedWonTaskForm)"
-              [formGroup]="closedWonTaskForm"
-            >
+            <form (ngSubmit)="onSubmit(closedWonTaskForm)" [formGroup]="closedWonTaskForm">
               <div class="container-fluid">
                 <div class="card mt-3">
                   <div class="card-header">
-                    <a
-                      data-toggle="collapse"
-                      href="#card-lead-information"
-                      aria-expanded="true"
-                      aria-controls="card-lead-information"
-                      class="card-head"
-                    >
+                    <a data-toggle="collapse" href="#card-lead-information" aria-expanded="true"
+                      aria-controls="card-lead-information" class="card-head">
                       Working Status
                     </a>
                   </div>
-                  <div
-                    class="card-body collapse show"
-                    id="card-lead-information"
-                  >
+                  <div class="card-body collapse show" id="card-lead-information">
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label>Vin Number:</label>
-                          <input
-                            type="text"
-                            name="vin_number__c"
-                            formControlName="vin_number__c"
-                            class="form-control"
-                          />
+                          <input type="text" name="vin_number__c" formControlName="vin_number__c"
+                            class="form-control" />
                         </div>
                       </div>
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label>Stock Number:</label>
-                          <input
-                            type="text"
-                            name="stock_number__c"
-                            formControlName="stock_number__c"
-                            class="form-control"
-                          />
+                          <input type="text" name="stock_number__c" formControlName="stock_number__c"
+                            class="form-control" />
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label>Mobile</label>
-                          <input
-                            type="text"
-                            name="name"
-                            formControlName="mobile__c"
-                            class="form-control"
-                          />
+                          <input type="text" name="name" formControlName="mobile__c" class="form-control" />
                         </div>
                       </div>
                     </div>
@@ -577,12 +418,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                  (click)="closeModal()"
-                >
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">
                   Cancel
                 </button>
                 <button type="submit" class="btn btn-info">
@@ -594,27 +430,16 @@
         </ng-template>
         <ng-template [ngSwitchCase]="'Duplicate'">
           <div *ngIf="navigtionOpen">
-            <form
-              (ngSubmit)="onSubmit(duplicateTaskForm)"
-              [formGroup]="duplicateTaskForm"
-            >
+            <form (ngSubmit)="onSubmit(duplicateTaskForm)" [formGroup]="duplicateTaskForm">
               <div class="container-fluid">
                 <div class="card mt-3">
                   <div class="card-header">
-                    <a
-                      data-toggle="collapse"
-                      href="#card-lead-information"
-                      aria-expanded="true"
-                      aria-controls="card-lead-information"
-                      class="card-head"
-                    >
+                    <a data-toggle="collapse" href="#card-lead-information" aria-expanded="true"
+                      aria-controls="card-lead-information" class="card-head">
                       DuplicateModal
                     </a>
                   </div>
-                  <div
-                    class="card-body collapse show"
-                    id="card-lead-information"
-                  >
+                  <div class="card-body collapse show" id="card-lead-information">
                     <div class="row">
                       <div class="col-10" style="padding-bottom: 1px;">
                         <div class="form-group">
@@ -622,11 +447,7 @@
                           <!--
                                               <input type="text" name="place_of_work__c" used="place_of_work__c" class="1common_txt_box703Quotation place_of_work__c703 form-control">
                                             -->
-                          <textarea
-                            rows="6"
-                            class="form-control"
-                            formControlName="notes__c"
-                          ></textarea>
+                          <textarea rows="6" class="form-control" formControlName="notes__c"></textarea>
                         </div>
                       </div>
                     </div>
@@ -634,12 +455,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                  (click)="closeModal()"
-                >
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">
                   Cancel
                 </button>
                 <button type="submit" class="btn btn-info">
@@ -651,27 +467,16 @@
         </ng-template>
         <ng-template [ngSwitchCase]="'Converted'">
           <div *ngIf="navigtionOpen">
-            <form
-              (ngSubmit)="onSubmit(convertesTaskForm)"
-              [formGroup]="convertesTaskForm"
-            >
+            <form (ngSubmit)="onSubmit(convertesTaskForm)" [formGroup]="convertesTaskForm">
               <div class="container-fluid">
                 <div class="card mt-3">
                   <div class="card-header">
-                    <a
-                      data-toggle="collapse"
-                      href="#card-lead-information"
-                      aria-expanded="true"
-                      aria-controls="card-lead-information"
-                      class="card-head"
-                    >
+                    <a data-toggle="collapse" href="#card-lead-information" aria-expanded="true"
+                      aria-controls="card-lead-information" class="card-head">
                       Converted
                     </a>
                   </div>
-                  <div
-                    class="card-body collapse show"
-                    id="card-lead-information"
-                  >
+                  <div class="card-body collapse show" id="card-lead-information">
                     <div class="row">
                       <div class="col-10" style="padding-bottom: 1px;">
                         <div class="form-group">
@@ -679,12 +484,7 @@
                           <!--
                                             <input type="text" name="place_of_work__c" used="place_of_work__c" class="1common_txt_box703Quotation place_of_work__c703 form-control">
                                           -->
-                          <textarea
-                            rows="6"
-                            cols="50"
-                            class="form-control"
-                            formControlName="notes__c"
-                          ></textarea>
+                          <textarea rows="6" cols="50" class="form-control" formControlName="notes__c"></textarea>
                         </div>
                       </div>
                     </div>
@@ -692,12 +492,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                  (click)="closeModal()"
-                >
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">
                   Cancel
                 </button>
                 <button type="submit" class="btn btn-info">

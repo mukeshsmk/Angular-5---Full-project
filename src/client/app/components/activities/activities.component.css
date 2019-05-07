@@ -48,9 +48,6 @@ input[type="submit"] {
   background: #fff;
   border: 1px solid #6e8898;
 }
-.card-head {
-  width: 350px;
-}
 
 #accordion .card-head a:before,
 #accordion .panel-title a.collapsed:before {
@@ -74,7 +71,7 @@ input[type="submit"] {
   margin-top: 18px;
   border-top: none;
   background: #eee;
-  width: 270px;
+  width: 100%;
   font-size: 15px;
   color: #1b1414;
   line-height: 28px;

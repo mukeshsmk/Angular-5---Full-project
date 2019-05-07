@@ -142,8 +142,15 @@ select.form-control:not([size]):not([multiple]) {
   .container {
     width: 100%;
   }
+ 
 }
 
 .pointer {
   cursor: pointer;
+}
+
+@media (max-width: 768px){
+  section {
+    padding: 18px 0;
+}
 }

@@ -1,8 +1,24 @@
 <div class="headerComponent">
   <sd-header></sd-header>
 </div>
-<div class="sidebarComponent">
-  <sd-sidebar></sd-sidebar>
+<div class="sidebarComponent toggled-mobile">
+    <nav class="navbar fixed-top navbar-toggleable-sm bg-faded toggled-mobile">
+        <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+            <span> </span>
+            <span> </span>
+            <span> </span>
+        </button>
+        <a class="navbar-brand" href="#">
+           
+        </a>
+        <div class="collapse navbar-collapse" id="collapsingNavbar" data-toggle="collapse" data-target="#collapsingNavbar.show">
+          <sd-sidebar></sd-sidebar>
+        </div>
+    </nav>
+</div>
+
+<div class="sidebarComponent toggled-dekstop">
+    <sd-sidebar></sd-sidebar>
 </div>
 <!-- <div class="mainComponent" [ngSwitch]="home_page">
     <div *ngSwitchCase = "'table-list'"><sd-table-list></sd-table-list></div>
@@ -10,9 +26,11 @@
     
  </div> -->
 
-<div class="mainComponent">
+<div class="mainComponent"  data-toggle="collapse" data-target="#collapsingNavbar.show">
   <sd-table-list></sd-table-list>
   <!-- <div class="mt-5">
                 <sd-dashboard></sd-dashboard>
         </div> -->
 </div>
+
+

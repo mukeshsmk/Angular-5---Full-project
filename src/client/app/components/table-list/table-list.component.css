@@ -327,7 +327,7 @@ li.page-item.disabled {
 @media (max-width: 768px){
 
   .float-right {
-    float: initial  !important;
+    float: right  !important;
   }
   .table-responsive {
     width: 100%;
@@ -337,11 +337,11 @@ li.page-item.disabled {
     border: 1px solid #ddd;
   }
   .pagination {
-    margin: 6px 0px 10px -20px;
+    margin: 6px 0px 10px -12px;
   }
  
   .modal.full-size .modal-dialog {
-    width: 85%;
+    width: 100%;
   }
   .container-fluid{
    padding-top:15px;
