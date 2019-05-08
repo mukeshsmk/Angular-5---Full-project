@@ -243,7 +243,7 @@
               class="dataTables_wrapper form-inline dt-bootstrap no-footer"
             >
               <div class="row mb-3">
-                <div class="col-sm-6">
+                <div class="col-6">
                   <div class="dataTables_length" id="example3_length">
                     <label
                       >Show
@@ -261,9 +261,9 @@
                     >
                   </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-6">
                   <div id="example3_filter" class="dataTables_filter">
-                    <label
+                    <label class="w-auto"
                       >Search:<input
                         type="search"
                         class="form-control input-sm"
@@ -273,8 +273,8 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-sm-9">
+              <div class="row table-desktop" >
+                <div class="col-sm-12">
                   <table
                     class="table table-condensed dataTable no-footer"
                     id="example3"
@@ -318,6 +318,57 @@
                   </table>
                 </div>
               </div>
+
+
+              <div class="table-mobile" >
+                  
+                    <div class="table_row">
+                      <div class="table_small">
+                        <div class="table_cell">  No</div>
+                        <div class="table_cell"></div>
+                      </div>
+                      <div class="table_small">
+                        <div class="table_cell"> Case</div>
+                        <div class="table_cell">
+                          <a href="#" (click)="viewPersondetails(opportunity)"></a>
+                        </div>
+                      </div>
+                      <div class="table_small">
+                        <div class="table_cell">Contact Name</div>
+                        <div class="table_cell"> </div>
+                      </div>
+                      <div class="table_small">
+                        <div class="table_cell"> Subject</div>
+                        <div class="table_cell"></div>
+                      </div>
+            
+                      <div class="table_small">
+                        <div class="table_cell">Phone</div>
+                        <div class="table_cell"> </div>
+                      </div>
+                      <div class="table_small">
+                        <div class="table_cell"> AccountNumber</div>
+                        <div class="table_cell"> </div>
+                      </div>
+                      <div class="table_small">
+                        <div class="table_cell">Phone</div>
+                        <div class="table_cell"> </div>
+                      </div>
+                      <div class="table_small">
+                        <div class="table_cell">Orign</div>
+                        <div class="table_cell"> </div>
+                      </div>
+                      <div class="table_small">
+                        <div class="table_cell"> Created Date</div>
+                        <div class="table_cell"> </div>
+                      </div>
+            
+                    </div>
+                  
+                </div>
+
+
+
               <div class="row">
                 <div class="col-sm-5 mt-2">
                   <div
@@ -389,7 +440,7 @@
               class="dataTables_wrapper form-inline dt-bootstrap no-footer"
             >
               <div class="row mb-3">
-                <div class="col-sm-6">
+                <div class="col-6">
                   <div class="dataTables_length" id="example3_length">
                     <label
                       >Show
@@ -408,7 +459,7 @@
                     >
                   </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-6">
                   <div id="example3_filter" class="dataTables_filter">
                     <label
                       >Search:<input
@@ -421,8 +472,8 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-sm-9">
+              <div class="row table-desktop">
+                <div class="col-sm-12">
                   <table
                     class="table table-condensed dataTable no-footer"
                     id="example3"
@@ -488,6 +539,38 @@
                   </table>
                 </div>
               </div>
+
+
+              <div class="table-mobile" >
+                  
+                  <div class="table_row" *ngFor="let related of relatedListData.campaign.data">
+                    <div class="table_small">
+                      <div class="table_cell"> Name</div>
+                      <div class="table_cell">{{ related.name }}</div>
+                    </div>
+                    <div class="table_small">
+                      <div class="table_cell"> Campaign Name</div>
+                      <div class="table_cell"> {{ related.name }}</div>
+                    </div>
+                    <div class="table_small">
+                      <div class="table_cell"> Start Date</div>
+                      <div class="table_cell">{{ related.createddate }} </div>
+                    </div>
+                    <div class="table_small">
+                      <div class="table_cell"> Type</div>
+                      <div class="table_cell">{{ related.type }}</div>
+                    </div>
+          
+                    <div class="table_small">
+                      <div class="table_cell">Status</div>
+                      <div class="table_cell">{{ related.status }} </div>
+                    </div>
+                    
+                  </div>
+                
+              </div>
+
+
               <div class="row w-auto">
                 <div class="col-sm-5 mt-2">
                   <div
@@ -738,7 +821,7 @@
               class="dataTables_wrapper form-inline dt-bootstrap no-footer"
             >
               <div class="row mb-3">
-                <div class="col-sm-6">
+                <div class="col-6">
                   <div class="dataTables_length" id="example3_length">
                     <label
                       >Show
@@ -756,7 +839,7 @@
                     >
                   </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-6">
                   <div id="example3_filter" class="dataTables_filter">
                     <label
                       >Search:<input
@@ -768,8 +851,8 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-sm-9">
+              <div class="row table-desktop">
+                <div class="col-sm-12">
                   <table
                     class="table table-condensed dataTable no-footer"
                     id="example3"
@@ -807,6 +890,36 @@
                   </table>
                 </div>
               </div>
+
+              <div class="table-mobile" >
+                  
+                  <div class="table_row">
+                    <div class="table_small">
+                      <div class="table_cell"> Date</div>
+                      <div class="table_cell"></div>
+                    </div>
+                    <div class="table_small">
+                      <div class="table_cell">Field</div>
+                      <div class="table_cell"></div>
+                    </div>
+                    <div class="table_small">
+                      <div class="table_cell"> User</div>
+                      <div class="table_cell"></div>
+                    </div>
+                    <div class="table_small">
+                      <div class="table_cell">Original Value</div>
+                      <div class="table_cell"></div>
+                    </div>
+          
+                    <div class="table_small">
+                      <div class="table_cell">New Value</div>
+                      <div class="table_cell"> </div>
+                    </div>
+                    
+                  </div>
+                
+              </div>
+
               <div class="row">
                 <div class="col-sm-5 mt-2">
                   <div
