@@ -283,8 +283,8 @@ label {
   right: 30px;
 }
 .form-select {
-  width: 75%;
-  margin: 0px;
+  width: 65%;
+  margin: 0px auto;
   background-color: #d7d7d799;
   display: grid;
 }
@@ -292,7 +292,9 @@ label {
   display: none;
 }
 .form-mobile{
-  display: grid;
+    display: grid;
+    margin: 0 auto;
+    width: 65%;
 }
 .btn-breadcrumb .btn.btn-success:not(:last-child):after {
   display: none;
