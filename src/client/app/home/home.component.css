@@ -25,7 +25,9 @@ ul {
 .toggled-mobile{
   display: none;
 }
-
+.toggled-dekstop {
+  display: grid;
+}
 @media (max-width: 768px) {
   .mainComponent {
     margin-left: 0%;
@@ -106,5 +108,8 @@ ul {
   .sidebar-nav li {
     text-indent: 8px !important;
     line-height: 40px;
+  }
+  .right-auto{
+    right:auto !important;
   }
 }
