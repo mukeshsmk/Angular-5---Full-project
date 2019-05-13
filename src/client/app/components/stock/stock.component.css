@@ -331,9 +331,9 @@ input[type=button]{
   display: none;
 }
 .modal-dialog {
-  max-width: 82%;
+  max-width: 100%;
   margin: 8px;
-  width: 82%;
+  width: 100%;
 
 }
 .table_small {
