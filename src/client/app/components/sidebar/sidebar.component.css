@@ -43,7 +43,7 @@ body {
 }
 
 #wrapper.toggled #sidebar-wrapper {
-  width: 83px;
+  width:12%;
 }
 
 #page-content-wrapper {
@@ -62,15 +62,15 @@ body {
 
 .sidebar-nav {
   position: absolute;
-  top: 0;
-  width: 83px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .sidebar-nav li {
-  text-indent: 19%;
+  text-indent: 25%;
   line-height: 40px;
 }
 
@@ -78,7 +78,7 @@ body {
   display: block;
   text-decoration: none;
   color: #fff;
-  font-size: 20px;
+  font-size: 16px !important;
 }
 
 .sidebar-nav li a:hover {
@@ -121,12 +121,18 @@ body {
   }
 
   #wrapper.toggled #sidebar-wrapper {
-    width: 83px;
+    width: 5%;
   }
 
   #page-content-wrapper {
     padding: 20px;
     position: relative;
+  }
+  .sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px !important;
   }
 
   #wrapper.toggled #page-content-wrapper {
@@ -141,12 +147,7 @@ body {
   color: #fff;
 }
 
-.sidebar-nav[_ngcontent-c1] li[_ngcontent-c1] a[_ngcontent-c1] {
-  display: block;
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 20px !important;
-}
+
 
 .animated {
   -webkit-animation-duration: .5s;
@@ -185,16 +186,4 @@ body {
 
 }
 
-@media (max-width: 768px){
 
-  #wrapper.toggled #sidebar-wrapper {
-    width: 12%;
-}
-.sidebar-nav li a {
-  display: block;
-  text-decoration: none;
-  color: #fff;
-  font-size: 16px;
-}
-
-}

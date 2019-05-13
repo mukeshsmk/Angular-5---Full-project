@@ -19,7 +19,7 @@ ul {
 }
 .mainComponent {
   float: left;
-  margin-left: 83px;
+  margin-left: 5%;
   width: calc(100% - 83px);
 }
 .toggled-mobile{
