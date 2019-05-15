@@ -27,10 +27,10 @@ export class DashboardComponent implements OnInit {
 
     let linecolors = ["#ffffff", "#abc271", "#dbe4cb"];
     let lineData = {
-      labels: ["S", "M", "T", "W", "T", "F", "S"],
+      labels: ["January", "Feburary", "March", "April", "May", "June"],
       datasets: [
         {
-          data: [639, 465, 493, 478, 589, 632, 674],
+          data: [203, 156, 99, 251, 305, 247],
           backgroundColor: linecolors[2],
           borderColor: linecolors[1],
           borderWidth: 2,
@@ -63,14 +63,14 @@ export class DashboardComponent implements OnInit {
     let barcolors = ["#48a496", "#b1e1da"];
 
     let chartData = {
-      labels: ["S", "M", "T", "W", "T", "F", "S"],
+      labels: ["January", "Feburary", "March", "April", "May", "June"],
       datasets: [
         {
-          data: [589, 445, 483, 503, 689, 692, 634],
+          data: [456, 479, 324, 569, 702, 600],
           backgroundColor: barcolors[0]
         },
         {
-          data: [430, 245, 383, 403, 589, 692, 580],
+          data: [364, 504, 605, 400, 345, 320],
           backgroundColor: barcolors[1]
         }
       ]
@@ -103,11 +103,9 @@ export class DashboardComponent implements OnInit {
 
     //pie chart
     let piedata = {
-      labels: ["match1", "match2", "match3", "match4"],
       datasets: [
         {
-          label: "TeamB Score",
-          data: [20, 35, 40, 60, 50],
+          data: [20, 40, 10, 30],
           backgroundColor: ["#feea87", "#878ab6", "#4acab5", "#f98153"],
           borderColor: ["#feea87", "#878ab6", "#4acab5", "#f98153"],
           borderWidth: [1, 1, 1, 1, 1]
