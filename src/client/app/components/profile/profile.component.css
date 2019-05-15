@@ -29,7 +29,7 @@
   .form-group {
     margin-bottom: 5px;
   }
-  .fa-times {
+  .fa-times, .fa-check {
     color: #0747A6 !important;
   }
   .form-control {

@@ -1,24 +1,24 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, CanActivate } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { AuthGuardService as AuthGuard } from './shared/services/AuthGuardService';
-import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ProfileComponent } from './components/profile/profile.component'
+import { NgModule } from "@angular/core";
+import { RouterModule, CanActivate } from "@angular/router";
+import { HomeComponent } from "./home/home.component";
+import { AuthGuardService as AuthGuard } from "./shared/services/AuthGuardService";
+import { LoginComponent } from "./login/login.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { ProfileComponent } from "./components/profile/profile.component";
 
 @NgModule({
   imports: [
     RouterModule.forRoot([
       {
-        path: '',
+        path: "",
         component: HomeComponent,
         canActivate: [AuthGuard]
       },
-      { path: 'login', component: LoginComponent },
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'profile', component: ProfileComponent },
+      { path: "dashboard", component: DashboardComponent },
+      { path: "profile", component: ProfileComponent },
+      { path: "login", component: LoginComponent },
 
-      { path: '**', redirectTo: '' },
+      { path: "**", redirectTo: "" }
     ])
   ],
   exports: [RouterModule]
