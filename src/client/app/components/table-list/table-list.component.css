@@ -39,7 +39,9 @@
 .fa-sort-amount-down {
   color: grey;
 }
-
+.desktop-row{
+  margin-bottom: 10px;
+}
 table.dataTable thead .sorting:after {
   opacity: 0.2;
   content: "\e150";
@@ -168,6 +170,14 @@ input[type="checkbox"] {
 }
 
 .w-auto {
+  width: 100% !important;
+  margin: -4px 12px;
+  height: 27px;
+  font-size: 12px;
+  padding: 0px 0;
+}
+
+.w-auto-select {
   width: auto !important;
   margin: -4px 12px;
   height: 27px;
@@ -334,6 +344,9 @@ li.page-item.disabled {
   .float-right {
     float: right  !important;
   }
+  .desktop-row{
+    margin-bottom: 0px;
+  }
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;
@@ -438,7 +451,7 @@ li.page-item.disabled {
       display: none;
     }
     .w-auto{
-      width: auto !important;
+      width: 100% !important;
       margin: -5px 2px;
       height: 27px;
       font-size: 12px;

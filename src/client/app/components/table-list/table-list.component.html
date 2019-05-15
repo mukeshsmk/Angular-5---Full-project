@@ -69,12 +69,12 @@
               </button>
             </div>
           </div>
-          <div class="row">
+          <div class="row desktop-row">
             <div class="col-6">
               <div class="dataTables_length mt-4 mb-2" id="example_length">
                 <label class="d-flex align-top">Show
                   <select (change)="pageCount($event.target.value)" name="example_length" aria-controls="example"
-                    class="form-control w-auto input-sm">
+                    class="form-control w-auto-select input-sm">
                     <option value="10">10</option>
                     <option value="25">25</option>
                     <option value="50">50</option>
@@ -83,7 +83,7 @@
                   entries</label>
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-6" style="padding: 0;">
               <div id="example_filter" class="dataTables_filter">
                 <label class="d-flex mt-4 float-right">Search:<input type="search"
                     (keyup)="searchList($event.target.value)" class="form-control  w-auto input-sm" placeholder=""
