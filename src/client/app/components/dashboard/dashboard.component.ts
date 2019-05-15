@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 
 //dev
-//import { Chart } from 'chart.js';
+//import { Chart } from "chart.js";
 //prod
-import Chart from 'chart.js';
+import Chart from "chart.js";
 /**
  * This class represents the lazy loaded AboutComponent.
  */
@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
   chart1: Chart;
   chart2: Chart;
   chart3: Chart;
+  chart4: Chart;
 
   ngOnInit() {
     //line chart
@@ -117,6 +118,40 @@ export class DashboardComponent implements OnInit {
     this.chart3 = new Chart("canvas3", {
       type: "pie",
       data: piedata
+    });
+
+    this.chart4 = new Chart("canvas4", {
+      type: "line",
+      data: lineData,
+      options: {
+        elements: {
+          line: {
+            tension: 0 // disables bezier curves
+          }
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: false
+              },
+              gridLines: {
+                display: false
+              }
+            }
+          ],
+          xAxes: [
+            {
+              gridLines: {
+                display: false
+              }
+            }
+          ]
+        },
+        legend: {
+          display: false
+        }
+      }
     });
   }
 }

@@ -1,45 +1,100 @@
 <div class="container">
-    <div class="col-md-11">
-      <div class="card card-default">
-        <div class="card-heading">
-          <b> Change Password </b>
+  <div class="col-md-11">
+    <div class="card card-default">
+      <div class="card-heading">
+        <b> Change Password </b>
+      </div>
+      <div class="card-body">
+        <div *ngIf="passwordSuccess">
+          <div class="alert alert-success alert-dismissible in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close"
+              >×</a
+            >
+            <strong>Success!</strong>Password changed successfully.
+          </div>
         </div>
-        <div class="card-body">
+        <form (ngSubmit)="onSubmit()" [formGroup]="passwordForm">
+          <div class="form-group">
+            <input
+              type="password"
+              class="input-lg form-control"
+              formControlName="password"
+              id="password1"
+              placeholder="New Password"
+              autocomplete="off"
+              (keyup)="passwordData($event.target.value)"
+            />
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <i class="fa fa-times" aria-hidden="true" *ngIf="!lengthErr"></i>
+              <i class="fa fa-check" aria-hidden="true" *ngIf="lengthErr"></i> 8
+              Characters Long<br />
+              <i
+                class="fa fa-times"
+                aria-hidden="true"
+                *ngIf="!upperCaseErr"
+              ></i>
+              <i
+                class="fa fa-check"
+                aria-hidden="true"
+                *ngIf="upperCaseErr"
+              ></i>
+              One Uppercase Letter
+            </div>
+            <div class="col-sm-6">
+              <i
+                class="fa fa-times"
+                aria-hidden="true"
+                *ngIf="!lowerCaseErr"
+              ></i>
+              <i
+                class="fa fa-check"
+                aria-hidden="true"
+                *ngIf="lowerCaseErr"
+              ></i>
+              One Lowercase Letter<br />
+              <i class="fa fa-times" aria-hidden="true" *ngIf="!numberErr"></i>
+              <i class="fa fa-check" aria-hidden="true" *ngIf="numberErr"></i>
+              One Number
+            </div>
+          </div>
+          <br />
+          <div class="form-group">
+            <input
+              type="password"
+              class="input-lg form-control"
+              formControlName="confirm_password"
+              id="password2"
+              placeholder="Repeat Password"
+              autocomplete="off"
+            />
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <i
+                class="fa fa-times"
+                aria-hidden="true"
+                *ngIf="passwordForm.controls.confirm_password.status != 'VALID'"
+              ></i>
+              <i
+                class="fa fa-check"
+                aria-hidden="true"
+                *ngIf="passwordForm.controls.confirm_password.status == 'VALID'"
+              ></i>
+              Passwords Match
+            </div>
+          </div>
+          <br /><br />
 
-          <form method="post" id="passwordForm">
-            <div class="form-group">
-              <input type="password" class="input-lg form-control" name="password1" id="password1"
-                placeholder="New Password" autocomplete="off">
-            </div>
-            <div class="row">
-              <div class="col-sm-6">
-                  <i class="fa fa-times" aria-hidden="true"></i> 8 Characters Long<br>
-                  <i class="fa fa-times" aria-hidden="true"></i> One Uppercase Letter
-              </div>
-              <div class="col-sm-6">
-                  <i class="fa fa-times" aria-hidden="true"></i> One Lowercase
-                Letter<br>
-                <i class="fa fa-times" aria-hidden="true"></i> One Number
-              </div>
-            </div>
-            <br>
-            <div class="form-group">
-              <input type="password" class="input-lg form-control" name="password2" id="password2"
-                placeholder="Repeat Password" autocomplete="off">
-            </div>
-            <div class="row">
-              <div class="col-sm-12">
-                  <i class="fa fa-times" aria-hidden="true"></i> Passwords Match
-              </div>
-            </div>
-            <br><br>
-      
-            <input type="submit" class="col-xs-6 btn btn-primary btn-load btn-md"
-              data-loading-text="Changing Password.." value="Change Password">
-          </form>
-
-
-        </div>
+          <input
+            type="submit"
+            class="col-xs-6 btn btn-primary btn-load btn-md"
+            data-loading-text="Changing Password.."
+            value="Change Password"
+          />
+        </form>
       </div>
     </div>
   </div>
+</div>
