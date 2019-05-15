@@ -3,7 +3,7 @@
     <div class="navbar-header">
       <a class="navbar-brand" style="padding:7px 15px;" href="./"
         ><img
-          src="https://app-retail-gjaya79.c9users.io/final/assets/images/logo-dark.png"
+          src="/assets/images/logo.png"
           height="40"
           alt="Logo"
       /></a>
@@ -40,7 +40,7 @@
           <img
             class="user-avatar"
             style="border-radius:50%!important;"
-            src="https://app-retail-gjaya79.c9users.io/final/assets/images/admin.jpg"
+            src="/assets/images/admin.jpg"
             alt="User Avatar"
           />
         </a>
@@ -53,12 +53,13 @@
             <em class="nav-link" href="#">{{ userData.rolename }}</em>
           </div>
           <a
-            class="nav-link other_source_menu"
+            class="nav-link nav-link-underline other_source_menu"
             showtab="Profile"
             ref="Login/profile"
+            href="/profile"
             ><i class="fas fa-user"></i>My Profile</a
           >
-          <a class="nav-link" href="" (click)="logout()"
+          <a class="nav-link nav-link-underline" href="" (click)="logout()"
             ><i class="fa fa-power-off"></i>Logout</a
           >
         </div>
