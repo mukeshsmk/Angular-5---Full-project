@@ -3,37 +3,20 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="pt-1 pl-2">
-        <i
-          class="fas fa-user mr-2"
-          style="color:#0747A6;font-size:25px;top:8px;"
-        ></i>
+        <i class="fas fa-user mr-2" style="color:#0747A6;font-size:25px;top:8px;"></i>
         <span style="font-size:18px;">{{ driver.name }}</span>
       </div>
     </div>
     <div class="col-sm-6">
       <div class=" row pull-right">
-        <button 
-          type="button"
-          title="Details"
-          id="btn1170"
-          (click)="viewDetail()"
-          [ngClass]="{
+        <button type="button" title="Details" id="btn1170" (click)="viewDetail()" [ngClass]="{
             'btn-primary': visibleDetail
-          }"
-          class="btn btn-md btn-primary mr-2 ml-2"
-        >
+          }" class="btn btn-md btn-primary mr-2 ml-2">
           <i class="fas fa-th"></i> Details
         </button>
-        <button
-          title="Activity"
-          type="button"
-          id="btn2170"
-          (click)="viewRelated()"
-          [ngClass]="{
+        <button title="Activity" type="button" id="btn2170" (click)="viewRelated()" [ngClass]="{
             'btn-primary': visibleRelated
-          }"
-          class="btn btn-default btn-md mr-1"
-        >
+          }" class="btn btn-default btn-md mr-1">
           <i class="fas fa-th-list"></i> Related
         </button>
       </div>
@@ -66,15 +49,13 @@
               <div class="form-group">
                 <label> Birthdate :</label>
                 <span class="form-control-static">
-                  {{ driver.date_of_birth__c }}</span
-                >
+                  {{ driver.date_of_birth__c }}</span>
               </div>
 
               <div class="form-group">
                 <label>Customer :</label>
                 <span class="form-control-static">
-                  {{ driver.customer_id__c }}</span
-                >
+                  {{ driver.customer_id__c }}</span>
               </div>
             </div>
 
@@ -91,8 +72,7 @@
               <div class="form-group">
                 <label>MobilePhone :</label>
                 <span class="form-control-static">
-                  {{ driver.mobilephone }}</span
-                >
+                  {{ driver.mobilephone }}</span>
               </div>
 
               <div class="form-group">
@@ -107,26 +87,22 @@
               <div class="form-group">
                 <label>Billing Address :</label>
                 <span class="form-control-static">
-                  {{ driver.billing_address__c }}</span
-                >
+                  {{ driver.billing_address__c }}</span>
               </div>
               <div class="form-group">
                 <label>Billing Suburb :</label>
                 <span class="form-control-static">
-                  {{ driver.billing_suburb__c }}</span
-                >
+                  {{ driver.billing_suburb__c }}</span>
               </div>
               <div class="form-group">
                 <label>Billing postcode :</label>
                 <span class="form-control-static">
-                  {{ driver.billing_post_code__c }}</span
-                >
+                  {{ driver.billing_post_code__c }}</span>
               </div>
               <div class="form-group">
                 <label>Billing state :</label>
                 <span class="form-control-static">
-                  {{ driver.billing_state__c }}</span
-                >
+                  {{ driver.billing_state__c }}</span>
               </div>
             </div>
 
@@ -134,26 +110,22 @@
               <div class="form-group">
                 <label>Billing Country :</label>
                 <span class="form-control-static">
-                  {{ driver.billing_country__c }}</span
-                >
+                  {{ driver.billing_country__c }}</span>
               </div>
               <div class="form-group">
                 <label>Billing Longitude :</label>
                 <span class="form-control-static">
-                  {{ driver.billing_longitude__c }}</span
-                >
+                  {{ driver.billing_longitude__c }}</span>
               </div>
               <div class="form-group">
                 <label>Billing Latitude :</label>
                 <span class="form-control-static">
-                  {{ driver.billing_latitude__c }}</span
-                >
+                  {{ driver.billing_latitude__c }}</span>
               </div>
               <div class="form-group">
                 <label>Billing address valid :</label>
                 <span class="form-control-static">
-                  {{ driver.billing_address_valid__c }}</span
-                >
+                  {{ driver.billing_address_valid__c }}</span>
               </div>
             </div>
 
@@ -170,8 +142,7 @@
               <div class="form-group">
                 <label>Languages :</label>
                 <span class="form-control-static">
-                  {{ driver.language_c }}</span
-                >
+                  {{ driver.language_c }}</span>
               </div>
 
               <div class="form-group">
@@ -223,7 +194,7 @@
 </section>
 
 <section *ngIf="visibleRelated">
-  <section class="p-1"> 
+  <section class="p-1">
     <div class="row">
       <div class="col-sm-9">
         <div class="card card-default" style="margin-top: 10px;">
@@ -232,55 +203,35 @@
               Case(0)
             </h4>
             <div class="btn-group pull-right">
-              <a href="#" class="btn btn-default btn-sm" (click)="addnewCase()"
-                >Add to Case</a
-              >
+              <a href="#" class="btn btn-default btn-sm" (click)="addnewCase()">Add to Case</a>
             </div>
           </div>
           <div class="card-body">
-            <div
-              id="example3_wrapper"
-              class="dataTables_wrapper form-inline dt-bootstrap no-footer"
-            >
+            <div id="example3_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
               <div class="row mb-3">
                 <div class="col-6">
                   <div class="dataTables_length" id="example3_length">
-                    <label
-                      >Show
-                      <select
-                        name="example3_length"
-                        aria-controls="example3"
-                        class="form-control input-sm"
-                      >
+                    <label>Show
+                      <select name="example3_length" aria-controls="example3" class="form-control input-sm">
                         <option value="10">10</option>
                         <option value="25">25</option>
                         <option value="50">50</option>
                         <option value="100">100</option>
                       </select>
-                      entries</label
-                    >
+                      entries</label>
                   </div>
                 </div>
                 <div class="col-6">
                   <div id="example3_filter" class="dataTables_filter">
-                    <label class="w-auto"
-                      >Search:<input
-                        type="search"
-                        class="form-control input-sm"
-                        placeholder=""
-                        aria-controls="example3"
-                    /></label>
+                    <label class="w-auto">Search:<input type="search" class="form-control input-sm" placeholder=""
+                        aria-controls="example3" /></label>
                   </div>
                 </div>
               </div>
-              <div class="row table-desktop" >
+              <div class="row table-desktop">
                 <div class="col-sm-12">
-                  <table
-                    class="table table-condensed dataTable no-footer"
-                    id="example3"
-                    role="grid"
-                    aria-describedby="example3_info"
-                  >
+                  <table class="table table-condensed dataTable no-footer" id="example3" role="grid"
+                    aria-describedby="example3_info">
                     <thead class=" text-primary pointer">
                       <th (click)="sortData('id')">
                         No
@@ -320,71 +271,63 @@
               </div>
 
 
-              <div class="table-mobile" >
-                  
-                    <div class="table_row">
-                      <div class="table_small">
-                        <div class="table_cell">  No</div>
-                        <div class="table_cell"></div>
-                      </div>
-                      <div class="table_small">
-                        <div class="table_cell"> Case</div>
-                        <div class="table_cell">
-                          <a href="#" (click)="viewPersondetails(opportunity)"></a>
-                        </div>
-                      </div>
-                      <div class="table_small">
-                        <div class="table_cell">Contact Name</div>
-                        <div class="table_cell"> </div>
-                      </div>
-                      <div class="table_small">
-                        <div class="table_cell"> Subject</div>
-                        <div class="table_cell"></div>
-                      </div>
-            
-                      <div class="table_small">
-                        <div class="table_cell">Phone</div>
-                        <div class="table_cell"> </div>
-                      </div>
-                      <div class="table_small">
-                        <div class="table_cell"> AccountNumber</div>
-                        <div class="table_cell"> </div>
-                      </div>
-                      <div class="table_small">
-                        <div class="table_cell">Phone</div>
-                        <div class="table_cell"> </div>
-                      </div>
-                      <div class="table_small">
-                        <div class="table_cell">Orign</div>
-                        <div class="table_cell"> </div>
-                      </div>
-                      <div class="table_small">
-                        <div class="table_cell"> Created Date</div>
-                        <div class="table_cell"> </div>
-                      </div>
-            
+              <div class="table-mobile">
+
+                <div class="table_row">
+                  <div class="table_small">
+                    <div class="table_cell"> No</div>
+                    <div class="table_cell"></div>
+                  </div>
+                  <div class="table_small">
+                    <div class="table_cell"> Case</div>
+                    <div class="table_cell">
+                      <a href="#" (click)="viewPersondetails(opportunity)"></a>
                     </div>
-                  
+                  </div>
+                  <div class="table_small">
+                    <div class="table_cell">Contact Name</div>
+                    <div class="table_cell"> </div>
+                  </div>
+                  <div class="table_small">
+                    <div class="table_cell"> Subject</div>
+                    <div class="table_cell"></div>
+                  </div>
+
+                  <div class="table_small">
+                    <div class="table_cell">Phone</div>
+                    <div class="table_cell"> </div>
+                  </div>
+                  <div class="table_small">
+                    <div class="table_cell"> AccountNumber</div>
+                    <div class="table_cell"> </div>
+                  </div>
+                  <div class="table_small">
+                    <div class="table_cell">Phone</div>
+                    <div class="table_cell"> </div>
+                  </div>
+                  <div class="table_small">
+                    <div class="table_cell">Orign</div>
+                    <div class="table_cell"> </div>
+                  </div>
+                  <div class="table_small">
+                    <div class="table_cell"> Created Date</div>
+                    <div class="table_cell"> </div>
+                  </div>
+
                 </div>
+
+              </div>
 
 
 
               <div class="row">
                 <div class="col-sm-5 mt-2">
-                  <div
-                    class="dataTables_info"
-                    id="example3_info"
-                    role="status"
-                    aria-live="polite"
-                  >
+                  <div class="dataTables_info" id="example3_info" role="status" aria-live="polite">
                     Showing 1 to 1 of 1 entries
                   </div>
                 </div>
                 <div class="col-sm-7">
-                  <div
-                    class="dataTables_paginate paging_simple_numbers"
-                    id="example3_paginate"
-                  >
+                  <div class="dataTables_paginate paging_simple_numbers" id="example3_paginate">
                     <ul class="pagination justify-content-end">
                       <li class="page-item">
                         <a class="page-link">Previous</a>
@@ -429,100 +372,64 @@
               Campaign History({{ relatedListData.campaign.total }})
             </h4>
             <div class="btn-group pull-right">
-              <a href="#" class="btn btn-default btn-sm" (click)="addcampaign()"
-                >Add to Campaign</a
-              >
+              <a href="#" class="btn btn-default btn-sm" (click)="addcampaign()">Add to Campaign</a>
             </div>
           </div>
           <div class="card-body">
-            <div
-              id="example3_wrapper"
-              class="dataTables_wrapper form-inline dt-bootstrap no-footer"
-            >
+            <div id="example3_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
               <div class="row mb-3">
                 <div class="col-6">
                   <div class="dataTables_length" id="example3_length">
-                    <label
-                      >Show
-                      <select
-                        name="example3_length"
-                        aria-controls="example3"
-                        (change)="chPageCount($event.target.value)"
-                        class="form-control input-sm"
-                      >
+                    <label>Show
+                      <select name="example3_length" aria-controls="example3"
+                        (change)="chPageCount($event.target.value)" class="form-control input-sm">
                         <option value="10">10</option>
                         <option value="25">25</option>
                         <option value="50">50</option>
                         <option value="100">100</option>
                       </select>
-                      entries</label
-                    >
+                      entries</label>
                   </div>
                 </div>
                 <div class="col-6">
                   <div id="example3_filter" class="dataTables_filter">
-                    <label
-                      >Search:<input
-                        type="search"
-                        class="form-control input-sm"
-                        placeholder=""
-                        aria-controls="example3"
-                        (keyup)="chSearchList($event.target.value)"
-                    /></label>
+                    <label>Search:<input type="search" class="form-control input-sm" placeholder=""
+                        aria-controls="example3" (keyup)="chSearchList($event.target.value)" /></label>
                   </div>
                 </div>
               </div>
               <div class="row table-desktop">
                 <div class="col-sm-12">
-                  <table
-                    class="table table-condensed dataTable no-footer"
-                    id="example3"
-                    role="grid"
-                    aria-describedby="example3_info"
-                  >
+                  <table class="table table-condensed dataTable no-footer" id="example3" role="grid"
+                    aria-describedby="example3_info">
                     <thead class=" text-primary pointer">
                       <th>
                         <a href="#">
-                          <i
-                            class="fas fa-sort-amount-down"
-                            (click)="chSortData('name')"
-                          ></i>
+                          <i class="fas fa-sort-amount-down" (click)="chSortData('name')"></i>
                         </a>
                         Name
                       </th>
                       <th (click)="chSortData('name')">
                         <a href="#">
-                          <i
-                            class="fas fa-sort-amount-down"
-                            (click)="sortData('createddate')"
-                          ></i>
+                          <i class="fas fa-sort-amount-down" (click)="sortData('createddate')"></i>
                         </a>
                         Campaign Name
                       </th>
                       <th>
                         <a href="#">
-                          <i
-                            class="fas fa-sort-amount-down"
-                            (click)="chSortData('createddate')"
-                          ></i>
+                          <i class="fas fa-sort-amount-down" (click)="chSortData('createddate')"></i>
                         </a>
                         Start Date
                       </th>
                       <th>
                         <a href="#">
-                          <i
-                            class="fas fa-sort-amount-down"
-                            (click)="chSortData('type')"
-                          ></i>
+                          <i class="fas fa-sort-amount-down" (click)="chSortData('type')"></i>
                         </a>
                         Type
                       </th>
                       <th>
                         <a href="#">
-                          <i
-                            class="fas fa-sort-amount-down"
-                            (click)="chSortData('status')"
-                          ></i>
+                          <i class="fas fa-sort-amount-down" (click)="chSortData('status')"></i>
                         </a>
                         Status
                       </th>
@@ -541,233 +448,171 @@
               </div>
 
 
-              <div class="table-mobile" >
-                  
-                  <div class="table_row" *ngFor="let related of relatedListData.campaign.data">
-                    <div class="table_small">
-                      <div class="table_cell"> Name</div>
-                      <div class="table_cell">{{ related.name }}</div>
-                    </div>
-                    <div class="table_small">
-                      <div class="table_cell"> Campaign Name</div>
-                      <div class="table_cell"> {{ related.name }}</div>
-                    </div>
-                    <div class="table_small">
-                      <div class="table_cell"> Start Date</div>
-                      <div class="table_cell">{{ related.createddate }} </div>
-                    </div>
-                    <div class="table_small">
-                      <div class="table_cell"> Type</div>
-                      <div class="table_cell">{{ related.type }}</div>
-                    </div>
-          
-                    <div class="table_small">
-                      <div class="table_cell">Status</div>
-                      <div class="table_cell">{{ related.status }} </div>
-                    </div>
-                    
+              <div class="table-mobile">
+
+                <div class="table_row" *ngFor="let related of relatedListData.campaign.data">
+                  <div class="table_small">
+                    <div class="table_cell"> Name</div>
+                    <div class="table_cell">{{ related.name }}</div>
                   </div>
-                
+                  <div class="table_small">
+                    <div class="table_cell"> Campaign Name</div>
+                    <div class="table_cell"> {{ related.name }}</div>
+                  </div>
+                  <div class="table_small">
+                    <div class="table_cell"> Start Date</div>
+                    <div class="table_cell">{{ related.createddate }} </div>
+                  </div>
+                  <div class="table_small">
+                    <div class="table_cell"> Type</div>
+                    <div class="table_cell">{{ related.type }}</div>
+                  </div>
+
+                  <div class="table_small">
+                    <div class="table_cell">Status</div>
+                    <div class="table_cell">{{ related.status }} </div>
+                  </div>
+
+                </div>
+
               </div>
 
 
               <div class="row w-auto">
                 <div class="col-sm-5 mt-2">
-                  <div
-                    class="dataTables_info"
-                    id="example3_info"
-                    role="status"
-                    aria-live="polite"
-                  >
+                  <div class="dataTables_info" id="example3_info" role="status" aria-live="polite">
                     Showing {{ relatedListData.campaign.from }} to
                     {{ relatedListData.campaign.to }} of
                     {{ relatedListData.campaign.total }} entries
                   </div>
                 </div>
                 <div class="col-sm-7">
-                  <div
-                    class="dataTables_paginate paging_simple_numbers d-flex float-right pointer"
-                    id="example_paginate"
-                  >
+                  <div class="dataTables_paginate paging_simple_numbers d-flex float-right pointer"
+                    id="example_paginate">
                     <ul class="pagination">
                       <ul class="pagination justify-content-end">
-                        <li
-                          class="page-item"
-                          [ngClass]="{
+                        <li class="page-item" [ngClass]="{
                             disabled:
                               relatedListData.campaign.current_page === 1
-                          }"
-                          (click)="
+                          }" (click)="
                             chPageNumber(
                               relatedListData.campaign.current_page - 1
                             )
-                          "
-                        >
+                          ">
                           <a class="page-link">Previous</a>
                         </li>
-                        <li
-                          class="page-item"
-                          [ngClass]="{
+                        <li class="page-item" [ngClass]="{
                             'active bg-dark':
                               relatedListData.campaign.current_page == 1
-                          }"
-                          *ngIf="
+                          }" *ngIf="
                             relatedListData.campaign.current_page !=
                             relatedListData.campaign.last_page
-                          "
-                          (click)="chPageNumber(1)"
-                        >
+                          " (click)="chPageNumber(1)">
                           <a class="page-link">1</a>
                         </li>
-                        <li
-                          class="page-item"
-                          *ngIf="relatedListData.campaign.current_page >= 5"
-                        >
+                        <li class="page-item" *ngIf="relatedListData.campaign.current_page >= 5">
                           <a class="page-link">...</a>
                         </li>
-                        <li
-                          class="page-item"
-                          *ngIf="relatedListData.campaign.current_page >= 5"
-                          (click)="
+                        <li class="page-item" *ngIf="relatedListData.campaign.current_page >= 5" (click)="
                             chPageNumber(
                               relatedListData.campaign.current_page - 1
                             )
-                          "
-                        >
+                          ">
                           <a class="page-link">{{
                             relatedListData.campaign.current_page - 1
                           }}</a>
                         </li>
-                        <li
-                          class="page-item active bg-dark"
-                          *ngIf="
+                        <li class="page-item active bg-dark" *ngIf="
                             relatedListData.campaign.current_page >= 5 &&
                             relatedListData.campaign.last_page !=
                               relatedListData.campaign.current_page
-                          "
-                          (click)="
+                          " (click)="
                             chPageNumber(relatedListData.campaign.current_page)
-                          "
-                        >
+                          ">
                           <a class="page-link">{{
                             relatedListData.campaign.current_page
                           }}</a>
                         </li>
-                        <li
-                          class="page-item"
-                          *ngIf="
+                        <li class="page-item" *ngIf="
                             relatedListData.campaign.current_page >= 5 &&
                             relatedListData.campaign.current_page !=
                               relatedListData.campaign.last_page &&
                             relatedListData.campaign.current_page + 1 !=
                               relatedListData.campaign.last_page
-                          "
-                          (click)="
+                          " (click)="
                             chPageNumber(
                               relatedListData.campaign.current_page + 1
                             )
-                          "
-                        >
+                          ">
                           <a class="page-link">{{
                             relatedListData.campaign.current_page + 1
                           }}</a>
                         </li>
-                        <li
-                          class="page-item"
-                          [ngClass]="{
+                        <li class="page-item" [ngClass]="{
                             'active bg-dark':
                               relatedListData.campaign.current_page == 2
-                          }"
-                          *ngIf="
+                          }" *ngIf="
                             relatedListData.campaign.current_page < 5 &&
                             relatedListData.campaign.last_page > 2
-                          "
-                          (click)="chPageNumber(2)"
-                        >
+                          " (click)="chPageNumber(2)">
                           <a class="page-link">2</a>
                         </li>
-                        <li
-                          class="page-item"
-                          [ngClass]="{
+                        <li class="page-item" [ngClass]="{
                             'active bg-dark':
                               relatedListData.campaign.current_page == 3
-                          }"
-                          *ngIf="
+                          }" *ngIf="
                             relatedListData.campaign.current_page < 5 &&
                             relatedListData.campaign.last_page > 3
-                          "
-                          (click)="chPageNumber(3)"
-                        >
+                          " (click)="chPageNumber(3)">
                           <a class="page-link">3</a>
                         </li>
-                        <li
-                          class="page-item"
-                          [ngClass]="{
+                        <li class="page-item" [ngClass]="{
                             'active bg-dark':
                               relatedListData.campaign.current_page == 4
-                          }"
-                          *ngIf="
+                          }" *ngIf="
                             relatedListData.campaign.current_page < 5 &&
                             relatedListData.campaign.last_page > 4
-                          "
-                          (click)="chPageNumber(4)"
-                        >
+                          " (click)="chPageNumber(4)">
                           <a class="page-link">4</a>
                         </li>
-                        <li
-                          class="page-item"
-                          [ngClass]="{
+                        <li class="page-item" [ngClass]="{
                             'active bg-dark':
                               relatedListData.campaign.current_page == 5
-                          }"
-                          *ngIf="
+                          }" *ngIf="
                             relatedListData.campaign.current_page < 5 &&
                             relatedListData.campaign.last_page > 5
-                          "
-                          (click)="chPageNumber(5)"
-                        >
+                          " (click)="chPageNumber(5)">
                           <a class="page-link">5</a>
                         </li>
 
-                        <li
-                          class="page-item"
-                          *ngIf="
+                        <li class="page-item" *ngIf="
                             relatedListData.campaign.last_page -
                               relatedListData.campaign.current_page >
                               1 && relatedListData.campaign.last_page > 5
-                          "
-                        >
+                          ">
                           <a class="page-link">...</a>
                         </li>
 
-                        <li
-                          class="page-item"
-                          [ngClass]="{
+                        <li class="page-item" [ngClass]="{
                             'active bg-dark':
                               relatedListData.campaign.current_page ==
                               relatedListData.campaign.last_page
-                          }"
-                          (click)="
+                          }" (click)="
                             chPageNumber(relatedListData.campaign.last_page)
-                          "
-                        >
+                          ">
                           <a class="page-link">{{
                             relatedListData.campaign.last_page
                           }}</a>
                         </li>
-                        <li
-                          class="page-item"
-                          [ngClass]="{
+                        <li class="page-item" [ngClass]="{
                             disabled:
                               relatedListData.campaign.current_page ===
                               relatedListData.campaign.last_page
-                          }"
-                          (click)="
+                          }" (click)="
                             chPageNumber(
                               relatedListData.campaign.current_page + 1
                             )
-                          "
-                        >
+                          ">
                           <a class="page-link">Next</a>
                         </li>
                       </ul>
@@ -791,12 +636,7 @@
               Attachment
             </h4>
             <div class="btn-group pull-right">
-              <a
-                href="#"
-                class="btn btn-default btn-sm"
-                (click)="addAttachment()"
-                >Attachment</a
-              >
+              <a href="#" class="btn btn-default btn-sm" (click)="addAttachment()">Attachment</a>
             </div>
           </div>
           <div class="card-body"></div>
@@ -809,56 +649,35 @@
     <div class="row">
       <div class="col-sm-9">
         <div class="card card-default" style="margin-top: 10px;">
-          <div
-            class="card-heading"
-            style="background-color:#fff;border-bottom:1px  solid #ddd;"
-          >
+          <div class="card-heading" style="background-color:#fff;border-bottom:1px  solid #ddd;">
             Contact History( 0)
           </div>
           <div class="card-body">
-            <div
-              id="example3_wrapper"
-              class="dataTables_wrapper form-inline dt-bootstrap no-footer"
-            >
+            <div id="example3_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
               <div class="row mb-3">
                 <div class="col-6">
                   <div class="dataTables_length" id="example3_length">
-                    <label
-                      >Show
-                      <select
-                        name="example3_length"
-                        aria-controls="example3"
-                        class="form-control input-sm"
-                      >
+                    <label>Show
+                      <select name="example3_length" aria-controls="example3" class="form-control input-sm">
                         <option value="10">10</option>
                         <option value="25">25</option>
                         <option value="50">50</option>
                         <option value="100">100</option>
                       </select>
-                      entries</label
-                    >
+                      entries</label>
                   </div>
                 </div>
                 <div class="col-6">
                   <div id="example3_filter" class="dataTables_filter">
-                    <label
-                      >Search:<input
-                        type="search"
-                        class="form-control input-sm"
-                        placeholder=""
-                        aria-controls="example3"
-                    /></label>
+                    <label>Search:<input type="search" class="form-control input-sm" placeholder=""
+                        aria-controls="example3" /></label>
                   </div>
                 </div>
               </div>
               <div class="row table-desktop">
                 <div class="col-sm-12">
-                  <table
-                    class="table table-condensed dataTable no-footer"
-                    id="example3"
-                    role="grid"
-                    aria-describedby="example3_info"
-                  >
+                  <table class="table table-condensed dataTable no-footer" id="example3" role="grid"
+                    aria-describedby="example3_info">
                     <thead class=" text-primary pointer">
                       <th (click)="sortData('id')">
                         Date
@@ -891,51 +710,43 @@
                 </div>
               </div>
 
-              <div class="table-mobile" >
-                  
-                  <div class="table_row">
-                    <div class="table_small">
-                      <div class="table_cell"> Date</div>
-                      <div class="table_cell"></div>
-                    </div>
-                    <div class="table_small">
-                      <div class="table_cell">Field</div>
-                      <div class="table_cell"></div>
-                    </div>
-                    <div class="table_small">
-                      <div class="table_cell"> User</div>
-                      <div class="table_cell"></div>
-                    </div>
-                    <div class="table_small">
-                      <div class="table_cell">Original Value</div>
-                      <div class="table_cell"></div>
-                    </div>
-          
-                    <div class="table_small">
-                      <div class="table_cell">New Value</div>
-                      <div class="table_cell"> </div>
-                    </div>
-                    
+              <div class="table-mobile">
+
+                <div class="table_row">
+                  <div class="table_small">
+                    <div class="table_cell"> Date</div>
+                    <div class="table_cell"></div>
                   </div>
-                
+                  <div class="table_small">
+                    <div class="table_cell">Field</div>
+                    <div class="table_cell"></div>
+                  </div>
+                  <div class="table_small">
+                    <div class="table_cell"> User</div>
+                    <div class="table_cell"></div>
+                  </div>
+                  <div class="table_small">
+                    <div class="table_cell">Original Value</div>
+                    <div class="table_cell"></div>
+                  </div>
+
+                  <div class="table_small">
+                    <div class="table_cell">New Value</div>
+                    <div class="table_cell"> </div>
+                  </div>
+
+                </div>
+
               </div>
 
               <div class="row">
                 <div class="col-sm-5 mt-2">
-                  <div
-                    class="dataTables_info"
-                    id="example3_info"
-                    role="status"
-                    aria-live="polite"
-                  >
+                  <div class="dataTables_info" id="example3_info" role="status" aria-live="polite">
                     Showing 1 to 1 of 1 entries
                   </div>
                 </div>
                 <div class="col-sm-7">
-                  <div
-                    class="dataTables_paginate paging_simple_numbers"
-                    id="example3_paginate"
-                  >
+                  <div class="dataTables_paginate paging_simple_numbers" id="example3_paginate">
                     <ul class="pagination justify-content-end">
                       <li class="page-item">
                         <a class="page-link">Previous</a>
@@ -973,22 +784,12 @@
   </section>
 
   <section>
-    <div
-      class="modal modal-back full-size"
-      role="dialog"
-      [ngClass]="{ fade: !newcaseOpen, 'd-flex': newcaseOpen }"
-    >
+    <div class="modal modal-back full-size" role="dialog" [ngClass]="{ fade: !newcaseOpen, 'd-flex': newcaseOpen }">
       <div class="modal-dialog">
         <div class="h-auto modal-content">
           <div class="modal-header">
             <h5 class="w-100 text-center modal-title">New Case</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-              (click)="close()"
-            >
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -999,34 +800,32 @@
                   <div class="card-header">
                     Case Information
                   </div>
-                  <div
-                    class="card-body collapse show"
-                    id="card-lead-information"
-                  >
+                  <div class="card-body collapse show" id="card-lead-information">
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
-                          <label for="usr">Case Owner</label><br />
-                          <label><strong> XYZ Pty Ltd. </strong></label>
+                          <label for="usr">Case Owner</label>
+                          <label><strong> &nbsp; XYZ Pty Ltd. </strong></label>
                         </div>
                       </div>
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                       
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <input type="hidden" name="contact_id" id="contact_id" value="0017F00001l6sC7QAI" />
+                          <label for="usr">Case No</label><br />
+                          <label> &nbsp; </label>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">Status</label>
-                          <select
-                            class="form-control"
-                            name="case_status"
-                            id="case_status"
-                            style="
-                                   height: 35px;
-                               "
-                          >
+                          <select class="form-control" name="case_status" id="case_status" style="
+                                 height: 35px;
+                             ">
                             <option value="">-- None--</option>
                             <option value="New">New</option>
                             <option value="On Hold">On Hold</option>
@@ -1036,43 +835,14 @@
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
-                        <div class="form-group">
-                          <input
-                            type="hidden"
-                            name="contact_id"
-                            id="contact_id"
-                            value="0017F00001l6sC7QAI"
-                          />
-                          <label for="usr">Case No</label><br />
-                          <label> &nbsp; </label>
-                        </div>
-                      </div>
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      ></div>
-                    </div>
 
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">Priority</label>
-                          <select
-                            class="form-control"
-                            name="case_priority"
-                            id="campaignmemberstatus"
-                            style="
+                          <select class="form-control" name="case_priority" id="campaignmemberstatus" style="
                                      height: 35px;
-                                 "
-                            >>
+                                 ">>
                             <option value="">-- None--</option>
                             <option value="New">High</option>
                             <option value="On Hold">Medium</option>
@@ -1080,36 +850,21 @@
                           </select>
                         </div>
                       </div>
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">Contact Name</label>
 
-                          <input
-                            type="text"
-                            name="contact_name"
-                            class="form-control"
-                            id="contact_name"
-                            value="XYZ Pty Ltd."
-                          />
+                          <input type="text" name="contact_name" class="form-control" id="contact_name"
+                            value="XYZ Pty Ltd." />
                         </div>
                       </div>
                     </div>
 
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">Type</label>
-                          <select
-                            class="form-control"
-                            name="case_type"
-                            id="case_type"
-                          >
+                          <select class="form-control" name="case_type" id="case_type">
                             <option value="">-- None--</option>
                             <option value="New">Problem</option>
                             <option value="On Hold">Question</option>
@@ -1118,17 +873,10 @@
                           </select>
                         </div>
                       </div>
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">Case Origin</label>
-                          <select
-                            class="form-control"
-                            name="case_origin"
-                            id="case_origin"
-                          >
+                          <select class="form-control" name="case_origin" id="case_origin">
                             <option value="">-- None--</option>
                             <option value="email">email</option>
                             <option value="phone">phone</option>
@@ -1139,42 +887,23 @@
                     </div>
 
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">Case Reason</label>
-                          <select
-                            class="form-control"
-                            name="case_reason"
-                            id="case_reason"
-                          >
+                          <select class="form-control" name="case_reason" id="case_reason">
                             <option value="">-- None--</option>
-                            <option value="User didn't attend training"
-                              >User didn't attend training</option
-                            >
-                            <option value="Complex functionality"
-                              >Complex functionality</option
-                            >
-                            <option value="Existing Problem"
-                              >Existing Problem</option
-                            >
+                            <option value="User didn't attend training">User didn't attend training</option>
+                            <option value="Complex functionality">Complex functionality</option>
+                            <option value="Existing Problem">Existing Problem</option>
                             <option value="New Problem">New Problem</option>
                           </select>
                         </div>
                       </div>
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      ></div>
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;"></div>
                     </div>
 
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">SLA Violation</label>
                           <select class="form-control" name="sla" id="sla">
@@ -1184,17 +913,10 @@
                           </select>
                         </div>
                       </div>
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">Potential Liability</label>
-                          <select
-                            class="form-control"
-                            name="potential_liability"
-                            id="potential_liability"
-                          >
+                          <select class="form-control" name="potential_liability" id="potential_liability">
                             <option value="">-- None--</option>
                             <option value="No">No</option>
                             <option value="Yes">Yes</option>
@@ -1204,42 +926,22 @@
                     </div>
 
                     <div class="row">
-                      <div
-                        class="col-lg-12 col-md-12 col-sm-12"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 1px;">
                         <label for="usr">Subject</label>
-                        <textarea
-                          name="subject"
-                          id="subject"
-                          class="form-control"
-                        ></textarea>
+                        <textarea name="subject" id="subject" class="form-control"></textarea>
                       </div>
                     </div>
 
                     <div class="row">
-                      <div
-                        class="col-lg-12 col-md-12 col-sm-12"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 1px;">
                         <label for="usr">Description</label>
-                        <textarea
-                          name="case_description"
-                          class="form-control"
-                        ></textarea>
+                        <textarea name="case_description" class="form-control"></textarea>
                       </div>
                     </div>
                     <div class="row">
-                      <div
-                        class="col-lg-12 col-md-12 col-sm-12"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 1px;">
                         <label for="usr">Internal Comments</label>
-                        <textarea
-                          name="internal_comments"
-                          id="internal_comments"
-                          class="form-control"
-                        ></textarea>
+                        <textarea name="internal_comments" id="internal_comments" class="form-control"></textarea>
                       </div>
                     </div>
 
@@ -1248,12 +950,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                  (click)="close()"
-                >
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="close()">
                   Cancel
                 </button>
                 <button type="submit" class="btn btn-info">
@@ -1268,30 +965,18 @@
   </section>
 
   <section>
-    <div
-      class="modal modal-back full-size"
-      role="dialog"
-      [ngClass]="{ fade: !campaignOpen, 'd-flex': campaignOpen }"
-    >
+    <div class="modal modal-back full-size" role="dialog" [ngClass]="{ fade: !campaignOpen, 'd-flex': campaignOpen }">
       <div class="modal-dialog">
         <div class="h-auto modal-content">
           <div class="modal-header">
             <h5 class="w-100 text-center modal-title">New Campaign Member</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-              (click)="close()"
-            >
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div *ngIf="insertCampaignSuccess">
             <div class="alert alert-success alert-dismissible">
-              <a href="#" class="close" data-dismiss="alert" aria-label="close"
-                >&times;</a
-              >
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
               <strong>Success!</strong> Campaign inserted successfully.
             </div>
           </div>
@@ -1302,32 +987,16 @@
                   <div class="card-header">
                     Campaign Member Information
                   </div>
-                  <div
-                    class="card-body collapse show"
-                    id="card-lead-information"
-                  >
+                  <div class="card-body collapse show" id="card-lead-information">
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">Campaign</label>
-                          <input
-                            type="text"
-                            formControlName="name"
-                            class="form-control"
-                            required=""
-                          />
-                          <div
-                            *ngIf="
+                          <input type="text" formControlName="name" class="form-control" required="" />
+                          <div *ngIf="
                               submitted && campaignForm.controls.name.errors
-                            "
-                            class="error"
-                          >
-                            <div
-                              *ngIf="campaignForm.controls.name.errors.required"
-                            >
+                            " class="error">
+                            <div *ngIf="campaignForm.controls.name.errors.required">
                               <p class="error-box margin-top-0">
                                 Campaign is Required
                               </p>
@@ -1335,18 +1004,11 @@
                           </div>
                         </div>
                       </div>
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">Campaign Member Status </label>
-                          <select
-                            class="form-control"
-                            formControlName="campaignmemberstatus"
-                            id="campaignmemberstatus"
-                            style="height: 35px;"
-                          >
+                          <select class="form-control" formControlName="campaignmemberstatus" id="campaignmemberstatus"
+                            style="height: 35px;">
                             <option value="">-- None--</option>
                             <option value="New">New</option>
                             <option value="Working">Working</option>
@@ -1366,28 +1028,16 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">Campaign Name</label>
-                          <select
-                            class="form-control"
-                            formControlName="campaign_name__c"
-                            style="height: 35px;"
-                          >
+                          <select class="form-control" formControlName="campaign_name__c" style="height: 35px;">
                             <option value="">-- None--</option>
-                            <option value="AUDI A3 Sedan Test Drive"
-                              >AUDI A3 Sedan Test Drive</option
-                            >
+                            <option value="AUDI A3 Sedan Test Drive">AUDI A3 Sedan Test Drive</option>
                           </select>
                         </div>
                       </div>
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">Driver</label>
                           <p class="form-control-static">{{ driver.name }}</p>
@@ -1401,31 +1051,17 @@
                     </div>
 
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label>Lead</label>
-                          <input
-                            type="text"
-                            formControlName="lead"
-                            class="form-control"
-                          />
+                          <input type="text" formControlName="lead" class="form-control" />
                         </div>
                       </div>
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label>Lead Status</label>
 
-                          <select
-                            class="form-control"
-                            formControlName="status"
-                            style="height: 35px;"
-                          >
+                          <select class="form-control" formControlName="status" style="height: 35px;">
                             <option value="Sent">Sent</option>
                             <option value="Proposed">Proposed</option>
                           </select>
@@ -1434,165 +1070,65 @@
                     </div>
 
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">Request Type</label>
 
-                          <select
-                            class="form-control"
-                            formControlName="request_type__c"
-                            style="height: 35px;"
-                          >
-                            <option label="Contact Us" value="Contact Us"
-                              >Contact Us</option
-                            >
-                            <option
-                              label="Demo Vehicle Enquiry"
-                              value="Demo Vehicle Enquiry"
-                              >Demo Vehicle Enquiry</option
-                            >
-                            <option
-                              label="Digital Brochure Request"
-                              value="Digital Brochure Request"
-                              >Digital Brochure Request</option
-                            >
-                            <option
-                              label="General Enquiry"
-                              value="General Enquiry"
-                              >General Enquiry</option
-                            >
-                            <option
-                              label="New Vehicle Enquiry"
-                              value="New Vehicle Enquiry"
-                              >New Vehicle Enquiry</option
-                            >
-                            <option
-                              label="Print Brochure Request"
-                              value="Print Brochure Request"
-                              >Print Brochure Request</option
-                            >
+                          <select class="form-control" formControlName="request_type__c" style="height: 35px;">
+                            <option label="Contact Us" value="Contact Us">Contact Us</option>
+                            <option label="Demo Vehicle Enquiry" value="Demo Vehicle Enquiry">Demo Vehicle Enquiry
+                            </option>
+                            <option label="Digital Brochure Request" value="Digital Brochure Request">Digital Brochure
+                              Request</option>
+                            <option label="General Enquiry" value="General Enquiry">General Enquiry</option>
+                            <option label="New Vehicle Enquiry" value="New Vehicle Enquiry">New Vehicle Enquiry</option>
+                            <option label="Print Brochure Request" value="Print Brochure Request">Print Brochure Request
+                            </option>
                             <option label="Quote" value="Quote">Quote</option>
-                            <option
-                              label="Register Your Interest"
-                              value="Register Your Interest"
-                              >Register Your Interest</option
-                            >
-                            <option label="Test Drive" value="Test Drive"
-                              >Test Drive</option
-                            >
-                            <option
-                              label="Trade in your Vehicle"
-                              value="Trade in your Vehicle"
-                              >Trade in your Vehicle</option
-                            >
-                            <option
-                              label="Update Your Details"
-                              value="Update Your Details"
-                              >Update Your Details</option
-                            >
-                            <option
-                              label="Used Vehicle Enquiry"
-                              value="Used Vehicle Enquiry"
-                              >Used Vehicle Enquiry</option
-                            >
-                            <option
-                              label="Vehicle Enquiry"
-                              value="Vehicle Enquiry"
-                              >Vehicle Enquiry</option
-                            >
-                            <option
-                              label="Enquire About a Special"
-                              value="Enquire About a Special"
-                              >Enquire About a Special</option
-                            >
-                            <option label="Get in Touch" value="Get in Touch"
-                              >Get in Touch</option
-                            >
-                            <option
-                              label="Download a Brochure"
-                              value="Download a Brochure"
-                              >Download a Brochure</option
-                            >
-                            <option
-                              label="Finance Enquiry"
-                              value="Finance Enquiry"
-                              >Finance Enquiry</option
-                            >
-                            <option
-                              label="Special Event Enquiry"
-                              value="Special Event Enquiry"
-                              >Special Event Enquiry</option
-                            >
-                            <option
-                              label="Showroom enquiry"
-                              value="Showroom enquiry"
-                              >Showroom enquiry</option
-                            >
+                            <option label="Register Your Interest" value="Register Your Interest">Register Your Interest
+                            </option>
+                            <option label="Test Drive" value="Test Drive">Test Drive</option>
+                            <option label="Trade in your Vehicle" value="Trade in your Vehicle">Trade in your Vehicle
+                            </option>
+                            <option label="Update Your Details" value="Update Your Details">Update Your Details</option>
+                            <option label="Used Vehicle Enquiry" value="Used Vehicle Enquiry">Used Vehicle Enquiry
+                            </option>
+                            <option label="Vehicle Enquiry" value="Vehicle Enquiry">Vehicle Enquiry</option>
+                            <option label="Enquire About a Special" value="Enquire About a Special">Enquire About a
+                              Special</option>
+                            <option label="Get in Touch" value="Get in Touch">Get in Touch</option>
+                            <option label="Download a Brochure" value="Download a Brochure">Download a Brochure</option>
+                            <option label="Finance Enquiry" value="Finance Enquiry">Finance Enquiry</option>
+                            <option label="Special Event Enquiry" value="Special Event Enquiry">Special Event Enquiry
+                            </option>
+                            <option label="Showroom enquiry" value="Showroom enquiry">Showroom enquiry</option>
                             <option label="N/A" value="N/A">N/A</option>
-                            <option label="Fleet enquiry" value="Fleet enquiry"
-                              >Fleet enquiry</option
-                            >
-                            <option
-                              label="End of Contract"
-                              value="End of Contract"
-                              >End of Contract</option
-                            >
-                            <option
-                              label="trade in appraisal"
-                              value="trade in appraisal"
-                              >trade in appraisal</option
-                            >
-                            <option
-                              label="Careers Enquiry"
-                              value="Careers Enquiry"
-                              >Careers Enquiry</option
-                            >
+                            <option label="Fleet enquiry" value="Fleet enquiry">Fleet enquiry</option>
+                            <option label="End of Contract" value="End of Contract">End of Contract</option>
+                            <option label="trade in appraisal" value="trade in appraisal">trade in appraisal</option>
+                            <option label="Careers Enquiry" value="Careers Enquiry">Careers Enquiry</option>
                           </select>
                         </div>
                       </div>
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label>Comments</label>
-                          <input
-                            type="text"
-                            formControlName="comments__c"
-                            class="form-control"
-                          />
+                          <input type="text" formControlName="comments__c" class="form-control" />
                         </div>
                       </div>
                     </div>
 
                     <div class="row">
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label for="usr">VIN</label>
-                          <input
-                            type="text"
-                            formControlName="vin__c"
-                            class="form-control"
-                          />
+                          <input type="text" formControlName="vin__c" class="form-control" />
                         </div>
                       </div>
-                      <div
-                        class="col-lg-6 col-md-6 col-sm-6"
-                        style="padding-bottom: 1px;"
-                      >
+                      <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
                           <label>Comments_from_Stock__c</label>
-                          <input
-                            type="text"
-                            formControlName="comments_from_stock_c__c"
-                            class="form-control"
-                          />
+                          <input type="text" formControlName="comments_from_stock_c__c" class="form-control" />
                         </div>
                       </div>
                     </div>
@@ -1602,12 +1138,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                  (click)="close()"
-                >
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="close()">
                   Cancel
                 </button>
                 <button type="submit" class="btn btn-info">
@@ -1622,25 +1153,15 @@
   </section>
 
   <section>
-    <div
-      class="modal modal-back full-size"
-      tabindex="-1"
-      role="dialog"
-      [ngClass]="{ fade: !attachmentOpen, 'd-flex': attachmentOpen }"
-    >
+    <div class="modal modal-back full-size" tabindex="-1" role="dialog"
+      [ngClass]="{ fade: !attachmentOpen, 'd-flex': attachmentOpen }">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title text-center w-100">
               File Upload Attachment
             </h4>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-              (click)="close()"
-            >
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -1649,29 +1170,18 @@
               <div class="container-fluid">
                 <div class="card input-area mt-3">
                   <div class="card-header input-border">
-                    <a
-                      data-toggle="collapse"
-                      href="#card-lead-information"
-                      aria-expanded="true"
-                      aria-controls="card-lead-information"
-                    >
+                    <a data-toggle="collapse" href="#card-lead-information" aria-expanded="true"
+                      aria-controls="card-lead-information">
                     </a>
                   </div>
                   <div>
-                    <label class="pointer" for="file"
-                      >Drop files here to upload</label
-                    >
+                    <label class="pointer" for="file">Drop files here to upload</label>
                     <input type="file" id="file" />
                   </div>
                 </div>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                  (click)="close()"
-                >
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="close()">
                   Cancel
                 </button>
                 <button type="button" class="btn btn-info" (click)="onSubmit()">

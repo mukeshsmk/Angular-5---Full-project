@@ -43,7 +43,8 @@
 
             <div class="col">
               <button (click)="refresh()" type="button" class="btn btn-secondary pull-right mr-1 tooltip">
-                <i data-toggle="tooltip" data-original-title="Refresh" title="Edit Lead" class="fa fa-refresh" aria-hidden="true"></i>
+                <i data-toggle="tooltip" data-original-title="Refresh" title="Edit Lead" class="fa fa-refresh"
+                  aria-hidden="true"></i>
                 <span class="tooltiptext tooltiptext-top">Refresh</span>
               </button>
 
@@ -52,13 +53,13 @@
                 " (click)="openNewCustomerModal()">
                 <i data-toggle="tooltip" data-original-title="New Lead" class="fa fa-plus">
                 </i>
-                <span class="tooltiptext tooltiptext-top">Quick Lead</span>
+                <span class="tooltiptext tooltiptext-top">Create</span>
               </button>
               <button id="createNewLead" type="button" class="btn btn-secondary pull-right mr-1 tooltip"
                 *ngIf="module == 'drivers' && permission.create_permission == 1" (click)="openNewCustomerModal()">
                 <i data-toggle="tooltip" data-original-title="New Lead" class="fa fa-plus">
                 </i>
-                <span class="tooltiptext tooltiptext-top">Quick Lead</span>
+                <span class="tooltiptext tooltiptext-top">Create</span>
               </button>
               <button type="button" class="btn btn-secondary pull-right mr-1 tooltip" *ngIf="
                   module == 'opportunities' && permission.create_permission == 1
@@ -71,7 +72,7 @@
                 (click)="getSearchModal()">
                 <i class="fa fa-user"></i>
               </button>
-              
+
             </div>
           </div>
           <div class="row desktop-row">
