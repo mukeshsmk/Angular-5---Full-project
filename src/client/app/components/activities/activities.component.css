@@ -114,3 +114,6 @@ input[type="submit"] {
   text-decoration: none;
   color: red;
 }
+.notification-card:last-child div.card1::before {
+  display: none !important;
+}

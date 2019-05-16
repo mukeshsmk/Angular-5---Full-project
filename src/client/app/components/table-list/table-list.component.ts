@@ -55,6 +55,7 @@ export class TableListComponent {
   opp_Email: any;
   editId: any;
   editTag: any;
+  modal_title:any;
 
   searchTerm: string;
   constructor(private http: HttpClient, public generalService: GeneralService) {
@@ -257,12 +258,13 @@ export class TableListComponent {
 
   //opportunity modal
   openOpportunityModal(data: any) {
-    console.log(data);
+    this.modal_title = "Edit Opportunity";
     this.modalData = data;
     this.formType = "edit";
     this.opportunityOpen = false;
   }
   openNewOpportunityModal() {
+    this.modal_title = "Quick Opportunity";
     this.formType = "new";
     this.opportunityOpen = false;
   }
@@ -271,7 +273,6 @@ export class TableListComponent {
     this.modalData = [];
   }
   updateOpportunity(event: any) {
-    console.log(JSON.stringify(event));
     let endpoint: any;
     if (this.formType === "edit") {
       endpoint = "leadUpdate";
@@ -291,6 +292,7 @@ export class TableListComponent {
   }
   //vehicleStock Modal
   updatevehicleStockModal(data: any) {
+    this.modal_title = "Edit "+data.name;
     this.modalData = data;
     this.formType = "edit";
     this.opportunityOpen = false;
@@ -314,6 +316,7 @@ export class TableListComponent {
   }
   //Driver modal
   updateDriverModal(data: any) {
+    this.modal_title = "Edit "+data.name;
     this.modalData = data;
     this.formType = "edit";
     this.opportunityOpen = false;
@@ -337,10 +340,12 @@ export class TableListComponent {
   }
   //customer modal
   openNewCustomerModal() {
+    this.modal_title = "New "+this.module;
     this.formType = "new";
     this.opportunityOpen = false;
   }
   updateCustomerModal(data: any) {
+    this.modal_title = "Edit "+data.name;
     this.modalData = data;
     this.formType = "edit";
     this.opportunityOpen = false;

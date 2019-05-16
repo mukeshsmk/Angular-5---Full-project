@@ -569,7 +569,7 @@
     <div class="container-fluid">
       <div class="row">
         <div id="accordion">
-          <div *ngFor="let notification of notifications">
+          <div *ngFor="let notification of notifications" class="notification-card">
             <div class="card1" *ngIf="notification.type__c == 'Task'">
               <div class="card-head">
                 <a
