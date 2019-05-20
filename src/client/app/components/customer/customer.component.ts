@@ -22,6 +22,13 @@ export class CustomerComponent implements OnInit {
   visibleOne: Boolean = false;
   visibleTwo: Boolean = true;
 
+  visible_One: Boolean = true;
+  visible_Two: Boolean = true;
+  visible_Three: Boolean = true;
+  visible_Four: Boolean = true;
+  visible_Five: Boolean = true;
+
+
   visible1: Boolean = false;
   visible2: Boolean = false;
   visible3: Boolean = true;

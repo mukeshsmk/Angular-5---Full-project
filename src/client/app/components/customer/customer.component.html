@@ -938,7 +938,7 @@
             <form (ngSubmit)="onSubmit(customerForm)" [formGroup]="customerForm">
               <div class="container-fluid">
                 <div class="card mt-3">
-                  <div class="card-header pointer">
+                  <div class="card-header pointer pt-2 pb-2">
                     Driver Information
                   </div>
                   <div class="card-body collapse show" id="card-lead-information">
@@ -1234,13 +1234,13 @@
                   </div>
                 </div>
                 <div class="card mt-3">
-                  <div class="card-header pointer">
-                    <a>
-                      <!-- <i class="fa fa-angle-right" *ngIf="visible1"></i> -->
-                      <i class="fa fa-angle-down"></i>
+                  <div class="card-header pointer  pt-2 pb-2">
+                    <a (click)="visible_Three = !visible_Three">
+                      <i class="fa fa-angle-right" *ngIf="visible_Three"></i>
+                      <i class="fa fa-angle-down" *ngIf="!visible_Three"></i>
                       Address Information</a>
                   </div>
-                  <div id="address-information" class="card-body">
+                  <div id="address-information" class="card-body" *ngIf="visible_Three">
                     <div class="row"></div>
                     <div class="row">
                       <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -1320,15 +1320,14 @@
                 </div>
 
                 <div class="card mt-3">
-                  <div class="card-header pointer">
-                    <a>
-                      <!-- <i class="fa fa-angle-right" ></i> -->
-                      <i class="fa fa-angle-down"></i>
-
+                  <div class="card-header pointer  pt-2 pb-2">
+                    <a (click)="visible_Four = !visible_Four">
+                      <i class="fa fa-angle-right" *ngIf="visible_Four"></i>
+                      <i class="fa fa-angle-down" *ngIf="!visible_Four"></i>
                       Additional Information
                     </a>
                   </div>
-                  <div id="addtional-information" class="card-body">
+                  <div id="addtional-information" class="card-body" *ngIf="visible_Four">
                     <div class="row">
                       <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
@@ -1357,13 +1356,14 @@
                   </div>
                 </div>
                 <div class="card mt-3 mb-3">
-                  <div class="card-header pointer">
-                    <a>
-                      <!-- <i class="fa fa-angle-right"></i> -->
-                      <i class="fa fa-angle-down"></i>
-                      System Information</a>
+                  <div class="card-header pointer  pt-2 pb-2">
+                    <a (click)="visible_Five = !visible_Five">
+                      <i class="fa fa-angle-right" *ngIf="visible_Five"></i>
+                      <i class="fa fa-angle-down" *ngIf="!visible_Five"></i>System
+                      Information</a>
+            
                   </div>
-                  <div id="system-information" class="card-body">
+                  <div id="system-information" class="card-body" *ngIf="visible_Five">
                     <div class="row">
                       <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
                         <div class="form-group">
