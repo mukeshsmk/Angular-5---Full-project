@@ -110,18 +110,18 @@ body {
 
 
 .side-navbar-tooltip{   
-    visibility: hidden;
-    width: 85px !important;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 0px 0px !important;
-    font-size: 13px !important;
-    position: absolute;
-    z-index: 1;
-    top: auto !important;
-    left: 70% !important;
+  visibility: hidden;
+  width: 85px !important;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 3px 0px !important;
+  font-size: 13px !important;
+  position: fixed !important;
+  z-index: 1;
+  top: auto !important;
+  left: 10% !important;
 }
 
 .tooltip {
@@ -191,6 +191,21 @@ body {
     position: relative;
     margin-right: 0;
   }
+
+  .side-navbar-tooltip {
+    visibility: hidden;
+    width: 85px !important;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 3px 0px !important;
+    font-size: 13px !important;
+    position: fixed !important;
+    z-index: 1;
+    top: auto !important;
+    left: 3.5% !important;
+}
   
 }
 
