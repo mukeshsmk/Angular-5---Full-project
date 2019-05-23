@@ -1,5 +1,6 @@
 const Config: any = {
-  BASE_URL: "https://157.230.233.102/"
+  BASE_URL: "https://app-retail.jayspro.com/"
+  //BASE_URL: "http://localhost:8080/"
 };
 
 export default Config;

@@ -20,6 +20,8 @@ export class TableListComponent {
   @ViewChild("customerDetails") customerdetailsTemplate: any;
   @ViewChild("oppournityModal") oppournitymodalTemplate: any;
   @ViewChild("searchModal") searchModalTemplate: any;
+  @ViewChild("dashboardDetails") dashboardTemplate: any;
+
   @ViewChildren("checkedAll") checkedAll: QueryList<any>;
 
   loaderOne: Boolean = false;
@@ -55,7 +57,7 @@ export class TableListComponent {
   opp_Email: any;
   editId: any;
   editTag: any;
-  modal_title:any;
+  modal_title: any;
 
   searchTerm: string;
   constructor(private http: HttpClient, public generalService: GeneralService) {
@@ -71,10 +73,22 @@ export class TableListComponent {
       type: this.vsType,
       sort: this.sort
     };
+    this.generalService.dashboardEvent.subscribe((type: string) => {
+      this.tabsComponent.openTab(
+        type,
+        this.dashboardTemplate,
+        null,
+        true,
+        "dashboard"
+      );
+    });
+
     this.generalService.emitter.subscribe((response: string) => {
       this.module = response;
-      this.loadData(this.module, params);
-      console.log("Loading data", this.module);
+      if (this.module !== "Dashboard") {
+        this.loadData(this.module, params);
+        console.log("Loading data", this.module);
+      }
     });
     this.userData = JSON.parse(localStorage.getItem("user_data"));
     this.changeLead = false;
@@ -102,7 +116,7 @@ export class TableListComponent {
   loadData(type: string, params: any) {
     this.loaderOne = true;
     this.opportunityList = [];
-    this.opportunityListData=[];
+    this.opportunityListData = [];
     params.userData = JSON.parse(localStorage.getItem("user_data"));
     this.http
       .post<{ success: object }>(Config.BASE_URL + "api/" + type, params)
@@ -292,7 +306,7 @@ export class TableListComponent {
   }
   //vehicleStock Modal
   updatevehicleStockModal(data: any) {
-    this.modal_title = "Edit "+data.name;
+    this.modal_title = "Edit " + data.name;
     this.modalData = data;
     this.formType = "edit";
     this.opportunityOpen = false;
@@ -316,7 +330,7 @@ export class TableListComponent {
   }
   //Driver modal
   updateDriverModal(data: any) {
-    this.modal_title = "Edit "+data.name;
+    this.modal_title = "Edit " + data.name;
     this.modalData = data;
     this.formType = "edit";
     this.opportunityOpen = false;
@@ -328,7 +342,7 @@ export class TableListComponent {
       endpoint = "driverUpdate";
     }
     if (this.formType === "new") {
-      endpoint = 'createDriver';
+      endpoint = "createDriver";
     }
     this.http
       .post<{ success: object }>(Config.BASE_URL + "api/" + endpoint, event)
@@ -340,12 +354,12 @@ export class TableListComponent {
   }
   //customer modal
   openNewCustomerModal() {
-    this.modal_title = "New "+this.module;
+    this.modal_title = "New " + this.module;
     this.formType = "new";
     this.opportunityOpen = false;
   }
   updateCustomerModal(data: any) {
-    this.modal_title = "Edit "+data.name;
+    this.modal_title = "Edit " + data.name;
     this.modalData = data;
     this.formType = "edit";
     this.opportunityOpen = false;
@@ -461,20 +475,19 @@ export class TableListComponent {
     this.opp_Email = text.email__c;
     this.editId = text.id;
   }
-  updateLead(details:any){
-    this.loaderOne=true;
+  updateLead(details: any) {
+    this.loaderOne = true;
     details.company__c = this.opp_Company;
     details.phone__c = this.opp_Phone;
     details.email__c = this.opp_Email;
-    console.log(details)
+    console.log(details);
     this.http
-      .post<{ success: object }>(Config.BASE_URL + "api/inlineUpdate" , details)
+      .post<{ success: object }>(Config.BASE_URL + "api/inlineUpdate", details)
       .subscribe((response: any) => {
         console.log(response);
         this.editId = "";
-        this.loaderOne=false;
+        this.loaderOne = false;
       });
-    
   }
 
   //https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fpeople%2Fperson-edit.component.ts

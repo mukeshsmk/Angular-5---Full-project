@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 
 //dev
-//import { Chart } from "chart.js";
+import { Chart } from "chart.js";
 //prod
-import Chart from "chart.js";
+// import Chart from "chart.js";
 /**
  * This class represents the lazy loaded AboutComponent.
  */
