@@ -5,7 +5,11 @@
       <ng-template [ngSwitchCase]="1">
         <ul class="sidebar-nav">
           <li>
-            <a href="/dashboard" class="tooltip pointer">
+            <a
+              href="#dashboard"
+              (click)="godashboard($event)"
+              class="tooltip pointer"
+            >
               <i class="fa fa-tachometer"></i>
               <span class="tooltiptext side-navbar-tooltip mt-2"
                 >Dashboard</span
@@ -49,7 +53,11 @@
       <ng-template [ngSwitchCase]="2">
         <ul class="sidebar-nav">
           <li>
-            <a href="/dashboard" class="tooltip pointer">
+            <a
+              href="#dashboard"
+              (click)="godashboard($event)"
+              class="tooltip pointer"
+            >
               <i class="fa fa-tachometer"></i>
               <span class="tooltiptext side-navbar-tooltip mt-2"
                 >Dashboard</span
@@ -76,7 +84,7 @@
             >
           </li>
           <li>
-            <a class="tooltip pointer">
+            <a href="#dairy" (click)="goDairy($event)" class="tooltip pointer">
               <i class="fa fa-address-book-o"></i>
               <span class="tooltiptext side-navbar-tooltip"
                 >User Dairy
@@ -113,7 +121,7 @@
             >
           </li>
           <li>
-            <a class="tooltip pointer">
+            <a href="#dairy" (click)="goDairy($event)" class="tooltip pointer">
               <i class="fa fa-address-book-o"></i>
               <span class="tooltiptext side-navbar-tooltip"
                 >User Dairy
@@ -125,7 +133,11 @@
       <ng-template [ngSwitchCase]="4">
         <ul class="sidebar-nav">
           <li>
-            <a href="/dashboard" class="tooltip pointer">
+            <a
+              href="#dashboard"
+              (click)="godashboard($event)"
+              class="tooltip pointer"
+            >
               <i class="fa fa-tachometer"></i>
               <span class="tooltiptext side-navbar-tooltip mt-2"
                 >Dashboard</span
@@ -133,7 +145,7 @@
             >
           </li>
           <li>
-            <a class="tooltip pointer">
+            <a href="#dairy" (click)="goDairy($event)" class="tooltip pointer">
               <i class="fa fa-address-book-o"></i>
               <span class="tooltiptext side-navbar-tooltip"
                 >User Dairy
@@ -145,7 +157,11 @@
       <ng-template [ngSwitchCase]="5">
         <ul class="sidebar-nav">
           <li>
-            <a href="/dashboard" class="tooltip pointer">
+            <a
+              href="#dashboard"
+              (click)="godashboard($event)"
+              class="tooltip pointer"
+            >
               <i class="fa fa-tachometer"></i>
               <span class="tooltiptext side-navbar-tooltip mt-2"
                 >Dashboard</span
@@ -172,7 +188,7 @@
             <a href="#"><i class="fa fa-tree" aria-hidden="true"></i></a>
           </li>
           <li>
-            <a class="tooltip pointer">
+            <a href="#dairy" (click)="goDairy($event)" class="tooltip pointer">
               <i class="fa fa-address-book-o"></i>
               <span class="tooltiptext side-navbar-tooltip"
                 >User Dairy

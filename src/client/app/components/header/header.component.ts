@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { GeneralService } from "../../shared/services/GeneralService";
 /**
  * This class represents the lazy loaded AboutComponent.
  */
@@ -11,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   userData: any;
-  constructor(private router: Router) {
+  constructor(private router: Router, private generalService: GeneralService) {
     this.userData = JSON.parse(localStorage.getItem('user_data'));
   }
 
@@ -22,5 +23,9 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('access_token');
     localStorage.removeItem('user_data');
     this.router.navigate(['/login']);
+  }
+  goProfile(event: Event) {
+    event.preventDefault();
+    this.generalService.openProfile();
   }
 }

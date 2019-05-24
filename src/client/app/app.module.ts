@@ -19,7 +19,6 @@ import { SidebarModule } from "./components/sidebar/sidebar.module";
 import { TableListModule } from "./components/table-list/table-list.module";
 import { HeaderModule } from "./components/header/header.module";
 import { ModalModule } from "./components/modal/modal.module";
-import { ProfileModule } from "./components/profile/profile.module";
 
 import { GeneralService } from "./shared/services/GeneralService";
 import { AuthService } from "./shared/services/AuthService";
@@ -42,7 +41,6 @@ import { AuthGuardService } from "./shared/services/AuthGuardService";
     TableListModule,
     HeaderModule,
     ModalModule,
-    ProfileModule,
     SharedModule.forRoot()
     /**
      * In order to start the Service Worker in Production located at '/ngsw-worker.js'

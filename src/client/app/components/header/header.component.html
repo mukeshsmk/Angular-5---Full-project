@@ -2,10 +2,7 @@
   <div class="pull-left">
     <div class="navbar-header">
       <a class="navbar-brand" style="padding:7px 15px;" href="./"
-        ><img
-          src="/assets/images/logo.png"
-          height="40"
-          alt="Logo"
+        ><img src="/assets/images/logo.png" height="40" alt="Logo"
       /></a>
       <!-- <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a> -->
     </div>
@@ -54,9 +51,8 @@
           </div>
           <a
             class="nav-link nav-link-underline other_source_menu"
-            showtab="Profile"
-            ref="Login/profile"
-            href="/profile"
+            href="#profile"
+            (click)="goProfile($event)"
             ><i class="fas fa-user"></i>My Profile</a
           >
           <a class="nav-link nav-link-underline" href="" (click)="logout()"

@@ -19,17 +19,21 @@ import { NavFormComponent } from "./../nav-form/nav-form.component";
 import { ActivitiesComponent } from "./../activities/activities.component";
 import { NavigationBarComponent } from "./../navigation-bar/navigation-bar.component";
 import { DashboardComponent } from "./../dashboard/dashboard.component";
+import { ProfileComponent } from "../profile/profile.component";
 import { GeneralService } from "../../shared/services/GeneralService";
+import { CalendarModule } from "../calendar/calendar.module";
 
 @NgModule({
   imports: [
     TableListRoutingModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CalendarModule
   ],
   declarations: [
     DashboardComponent,
+    ProfileComponent,
     TableListComponent,
     TabsComponent,
     TabComponent,

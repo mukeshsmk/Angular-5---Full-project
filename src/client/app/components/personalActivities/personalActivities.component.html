@@ -1,0 +1,783 @@
+<div class="loader" *ngIf="loaderOne"></div>
+
+<div class="card">
+  <div class="card-body p-0">
+    <ul class="nav nav-tabs">
+      <li class="nav-item ml-4">
+        <a
+          class="nav-link active"
+          data-toggle="tab"
+          href="#task702"
+          aria-expanded="true"
+          >Task</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          data-toggle="tab"
+          href="#menu1702"
+          aria-expanded="false"
+          >Call Log</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          data-toggle="tab"
+          href="#menu2702"
+          aria-expanded="false"
+          >Event</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          data-toggle="tab"
+          href="#menu3702"
+          aria-expanded="false"
+          >Email</a
+        >
+      </li>
+    </ul>
+    <div class="panel-group">
+      <div class="panel panel-default ">
+        <div class="tab-content">
+          <div id="task702" class="tab-pane fade show active" role="tabpanel">
+            <div class="card-body p-0">
+              <h4 class="card-title p-3">
+                <i class="fa fa-tasks" aria-hidden="true"></i>&nbsp; Task
+              </h4>
+              <form (ngSubmit)="onSubmit(taskForm)" [formGroup]="taskForm">
+                <div class="p-3">
+                  <div>
+                    <div *ngIf="inserttasksuccess">
+                      <div class="alert alert-success alert-dismissible in">
+                        <a
+                          href="#"
+                          class="close"
+                          data-dismiss="alert"
+                          aria-label="close"
+                          >×</a
+                        >
+                        <strong>Success!</strong> New Task inserted
+                        successfully.
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label for="usr"><b>Name</b></label>
+                          <input
+                            type="text"
+                            name="name"
+                            class="form-control"
+                            formControlName="name"
+                          />
+                          <div
+                            *ngIf="submitted && taskForm.controls.name.errors"
+                            class="error"
+                          >
+                            <div *ngIf="taskForm.controls.name.errors.required">
+                              <p class="error-box margin-top-0">
+                                Name is Required
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="usr"><b>Subject</b></label>
+                          <input
+                            type="text"
+                            required=""
+                            name="subject"
+                            id="subject"
+                            class="form-control"
+                            formControlName="subject__c"
+                          />
+                          <div
+                            *ngIf="
+                              submitted && taskForm.controls.subject__c.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="
+                                taskForm.controls.subject__c.errors.required
+                              "
+                            >
+                              <p class="error-box margin-top-0">
+                                Subject is Required
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="usr"><b>Assigned To</b></label>
+                          <input
+                            type="text"
+                            name="assigned_to"
+                            id="assigned_to"
+                            class="form-control"
+                            formControlName="assigned_to"
+                          />
+                          <div
+                            *ngIf="
+                              submitted && taskForm.controls.assigned_to.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="
+                                taskForm.controls.assigned_to.errors.required
+                              "
+                            >
+                              <p class="error-box margin-top-0">
+                                Assigned To is Required
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-lg-8" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label><b>Due Date</b></label>
+                          <input
+                            type="date"
+                            required=""
+                            name="due_date"
+                            id="due_date"
+                            class="form-control"
+                            formControlName="end_date__c"
+                          />
+                          <div
+                            *ngIf="
+                              submitted && taskForm.controls.end_date__c.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="
+                                taskForm.controls.end_date__c.errors.required
+                              "
+                            >
+                              <p class="error-box margin-top-0">
+                                Due Date is Required
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-8" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label><b>Status</b></label>
+                          <select
+                            required=""
+                            class="form-control"
+                            id="status"
+                            formControlName="status__c"
+                          >
+                            <option value="">-- None--</option>
+                            <option value="Starred">Starred </option>
+                            <option value="Not starred">Not starred</option>
+                          </select>
+                          <div
+                            *ngIf="
+                              submitted && taskForm.controls.status__c.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="
+                                taskForm.controls.status__c.errors.required
+                              "
+                            >
+                              <p class="error-box margin-top-0">
+                                Status is Required
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer text-right">
+                  <button
+                    type="button"
+                    class="btn btn-default mr-2"
+                    (click)="onClose(taskForm)"
+                  >
+                    Cancel
+                  </button>
+                  <input
+                    type="submit"
+                    class="btn btn-info"
+                    id="submit"
+                    value="Save"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+          <div id="menu1702" class="tab-pane fade" role="tabpanel">
+            <div class="card-body p-0">
+              <form (ngSubmit)="onSubmit(callForm)" [formGroup]="callForm">
+                <h4 class="card-title p-3">
+                  <i class="fa fa-phone-square" aria-hidden="true"></i>&nbsp;
+                  Call Log
+                </h4>
+                <div class="p-3">
+                  <div class="row">
+                    <div *ngIf="insertcalllogsuccess">
+                      <div class="alert alert-success alert-dismissible in">
+                        <a
+                          href="#"
+                          class="close"
+                          data-dismiss="alert"
+                          aria-label="close"
+                          >×</a
+                        >
+                        <strong>Success!</strong> New Call Log inserted
+                        successfully.
+                      </div>
+                    </div>
+                    <div
+                      class="col-lg-6 col-md-6 col-sm-6"
+                      style="padding-bottom: 1px;"
+                    >
+                      <div class="form-group">
+                        <label for="usr"><b>Name</b></label>
+                        <input
+                          type="text"
+                          name="callname"
+                          id="name"
+                          formControlName="name"
+                          class="form-control"
+                        />
+                        <div
+                          *ngIf="submitted && callForm.controls.name.errors"
+                          class="error"
+                        >
+                          <div *ngIf="callForm.controls.name.errors.required">
+                            <p class="error-box margin-top-0">
+                              Name is Required
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="col-lg-6 col-md-6 col-sm-6"
+                      style="padding-bottom: 1px;"
+                    >
+                      <div class="form-group">
+                        <label for="usr"><b>Subject</b></label>
+                        <input
+                          type="text"
+                          name="callsubject"
+                          id="subject"
+                          formControlName="subject__c"
+                          class="form-control"
+                        />
+                        <div
+                          *ngIf="
+                            submitted && callForm.controls.subject__c.errors
+                          "
+                          class="error"
+                        >
+                          <div
+                            *ngIf="callForm.controls.subject__c.errors.required"
+                          >
+                            <p class="error-box margin-top-0">
+                              Subject is Required
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                  <div class="row">
+                    <div class="col-md-12" style="padding-bottom: 1px;">
+                      <div class="form-group">
+                        <label><b>Comments</b></label>
+                        <textarea
+                          class="form-control"
+                          rows="3"
+                          name="callcomment"
+                          formControlName="comments__c"
+                          id="comment"
+                        ></textarea>
+                        <div
+                          *ngIf="
+                            submitted && callForm.controls.comments__c.errors
+                          "
+                          class="error"
+                        >
+                          <div
+                            *ngIf="
+                              callForm.controls.comments__c.errors.required
+                            "
+                          >
+                            <p class="error-box margin-top-0">
+                              Comments is Required
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer text-right">
+                  <button
+                    type="button"
+                    class="btn btn-default"
+                    data-dismiss="modal"
+                    (click)="onClose(callForm)"
+                  >
+                    Cancel
+                  </button>
+                  <input
+                    type="submit"
+                    class="btn btn-default btn-info"
+                    id="submit"
+                    value="Save"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+          <div id="menu2702" class="tab-pane fade" role="tabpanel">
+            <div class="card-body p-0">
+              <h4 class="card-title p-3">
+                <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; Event
+              </h4>
+              <div class="p-3">
+                <form (ngSubmit)="onSubmit(eventForm)" [formGroup]="eventForm">
+                  <div
+                    class="panel-body"
+                    id="success_body"
+                    style="height:auto;"
+                  >
+                    <div *ngIf="inserteventsuccess">
+                      <div class="alert alert-success alert-dismissible in">
+                        <a
+                          href="#"
+                          class="close"
+                          data-dismiss="alert"
+                          aria-label="close"
+                          >×</a
+                        >
+                        <strong>Success!</strong> New Event inserted
+                        successfully.
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div
+                        class="col-lg-6 col-md-6 col-sm-6"
+                        style="padding-bottom: 1px;"
+                      >
+                        <div class="form-group">
+                          <label for="usr"><b>Name</b></label>
+                          <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            formControlName="name"
+                            class="form-control"
+                          />
+                          <div
+                            *ngIf="submitted && eventForm.controls.name.errors"
+                            class="error"
+                          >
+                            <div
+                              *ngIf="eventForm.controls.name.errors.required"
+                            >
+                              <p class="error-box margin-top-0">
+                                Name is Required
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="col-lg-6 col-md-6 col-sm-6"
+                        style="padding-bottom: 1px;"
+                      >
+                        <div class="form-group">
+                          <label for="usr"><b>Subject</b></label>
+                          <input
+                            type="text"
+                            name="subject"
+                            id="subject"
+                            formControlName="subject__c"
+                            class="form-control"
+                          />
+                          <div
+                            *ngIf="
+                              submitted && eventForm.controls.subject__c.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="
+                                eventForm.controls.subject__c.errors.required
+                              "
+                            >
+                              <p class="error-box margin-top-0">
+                                Subject is Required
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div
+                        class="col-lg-6 col-md-6 col-sm-6"
+                        style="padding-bottom: 1px;"
+                      >
+                        <div class="form-group">
+                          <label for="usr"><b>Start Date</b></label>
+                          <input
+                            type="date"
+                            name="start_date"
+                            id="start_date"
+                            formControlName="start_date__c"
+                            class="form-control"
+                          />
+                          <div
+                            *ngIf="
+                              submitted &&
+                              eventForm.controls.start_date__c.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="
+                                eventForm.controls.start_date__c.errors.required
+                              "
+                            >
+                              <p class="error-box margin-top-0">
+                                Start Date is Required
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="col-lg-6 col-md-6 col-sm-6"
+                        style="padding-bottom: 1px;"
+                      >
+                        <div class="form-group">
+                          <label for="usr"><b>End Date</b></label>
+                          <input
+                            type="date"
+                            name="end_date"
+                            id="end_date"
+                            formControlName="end_date__c"
+                            class="form-control"
+                          />
+                          <div
+                            *ngIf="
+                              submitted && eventForm.controls.end_date__c.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="
+                                eventForm.controls.end_date__c.errors.required
+                              "
+                            >
+                              <p class="error-box margin-top-0">
+                                End Date is Required
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div
+                        class="col-lg-6 col-md-6 col-sm-6"
+                        style="padding-bottom: 1px;"
+                      >
+                        <div class="form-group">
+                          <label for="usr"><b>Assigned To</b></label>
+                          <input
+                            type="text"
+                            name="assigned_to"
+                            id="assigned_to"
+                            formControlName="assigned_to"
+                            class="form-control"
+                          />
+                          <div
+                            *ngIf="
+                              submitted && eventForm.controls.assigned_to.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="
+                                eventForm.controls.assigned_to.errors.required
+                              "
+                            >
+                              <p class="error-box margin-top-0">
+                                Assigned To is Required
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="col-lg-6 col-md-6 col-sm-6"
+                        style="padding-bottom: 1px;"
+                      >
+                        <div class="form-group">
+                          <label><b>Location</b></label>
+                          <input
+                            type="text"
+                            name="location"
+                            id="location"
+                            formControlName="location__c"
+                            class="form-control"
+                          />
+                          <div
+                            *ngIf="
+                              submitted && eventForm.controls.location__c.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="
+                                eventForm.controls.location__c.errors.required
+                              "
+                            >
+                              <p class="error-box margin-top-0">
+                                Location is Required
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div
+                        class="col-lg-6 col-md-6 col-sm-6"
+                        style="padding-bottom: 1px;"
+                      >
+                        <div class="form-group">
+                          <label for="usr"><b>All-Day Event</b></label
+                          ><br />
+                          <input
+                            type="checkbox"
+                            name="all_day_event"
+                            id="all_day_event"
+                            formControlName="all_day_flag__c"
+                            data-parsley-multiple="all_day_event"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="col-lg-6 col-md-6 col-sm-6"
+                        style="padding-bottom: 1px;"
+                      >
+                        <div class="form-group"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer text-right" id="footer_close">
+                    <button
+                      type="button"
+                      class="btn btn-default"
+                      data-dismiss="modal"
+                      (click)="onClose(eventForm)"
+                    >
+                      Cancel
+                    </button>
+                    <input
+                      type="submit"
+                      class="btn btn-default btn-info"
+                      id="submit"
+                      value="Save"
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div id="menu3702" class="tab-pane fade" role="tabpanel">
+            <div class="card-body p-0">
+              <h4 class="card-title p-3">
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;Email
+              </h4>
+              <div class="p-3">
+                <form (ngSubmit)="onSubmit(emailForm)" [formGroup]="emailForm">
+                  <div>
+                    <div *ngIf="insertemailsuccess">
+                      <div class="alert alert-success alert-dismissible in">
+                        <a
+                          href="#"
+                          class="close"
+                          data-dismiss="alert"
+                          aria-label="close"
+                          >×</a
+                        >
+                        <strong>Success!</strong> Email inserted successfully.
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label for="usr"><b>*From</b></label>
+                          <input
+                            type="email"
+                            name="emailfrom"
+                            id="emailfrom"
+                            formControlName="from__c"
+                            class="form-control"
+                          />
+                          <div
+                            *ngIf="
+                              submitted && emailForm.controls.from__c.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="emailForm.controls.from__c.errors.required"
+                            >
+                              <p class="error-box margin-top-0">
+                                From is Required
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label><b>To</b></label>
+                          <input
+                            type="email"
+                            name="emailto"
+                            id="emailto"
+                            formControlName="to__c"
+                            class="form-control"
+                          />
+                          <div
+                            *ngIf="submitted && emailForm.controls.to__c.errors"
+                            class="error"
+                          >
+                            <div
+                              *ngIf="emailForm.controls.to__c.errors.required"
+                            >
+                              <p class="error-box margin-top-0">
+                                To is Required
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12" style="padding-bottom: 1px;">
+                        <div class="form-group">
+                          <label for="usr"><b>Bcc</b></label>
+                          <input
+                            type="email"
+                            name="emailbcc"
+                            id="emailbcc"
+                            formControlName="bcc__c"
+                            class="form-control"
+                          />
+                          <div
+                            *ngIf="
+                              submitted && emailForm.controls.bcc__c.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="emailForm.controls.bcc__c.errors.required"
+                            >
+                              <p class="error-box margin-top-0">
+                                Bcc is Required
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div
+                        class="col-lg-12 col-md-12 col-sm-12"
+                        style="padding-bottom: 1px;"
+                      >
+                        <div class="form-group">
+                          <label><b>Subject</b></label>
+                          <textarea
+                            name="emailsubject"
+                            id="emailsubject"
+                            rows="3"
+                            formControlName="subject__c"
+                            class="form-control"
+                            placeholder="Enter Subject"
+                          ></textarea>
+                          <div
+                            *ngIf="
+                              submitted && emailForm.controls.subject__c.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="
+                                emailForm.controls.subject__c.errors.required
+                              "
+                            >
+                              <p class="error-box margin-top-0">
+                                Subject is Required
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer text-right">
+                    <button
+                      type="button"
+                      class="btn btn-default"
+                      (click)="onClose(emailForm)"
+                    >
+                      Cancel
+                    </button>
+                    <input
+                      type="submit"
+                      class="btn btn-default btn-info"
+                      id="submit"
+                      value="Save"
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

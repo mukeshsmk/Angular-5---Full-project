@@ -21,6 +21,8 @@ export class TableListComponent {
   @ViewChild("oppournityModal") oppournitymodalTemplate: any;
   @ViewChild("searchModal") searchModalTemplate: any;
   @ViewChild("dashboardDetails") dashboardTemplate: any;
+  @ViewChild("profileDetails") profileTemplate: any;
+  @ViewChild("calendarDetails") calendarTemplate: any;
 
   @ViewChildren("checkedAll") checkedAll: QueryList<any>;
 
@@ -82,10 +84,28 @@ export class TableListComponent {
         "dashboard"
       );
     });
+    this.generalService.profileEvent.subscribe((type: string) => {
+      this.tabsComponent.openTab(
+        type,
+        this.profileTemplate,
+        null,
+        true,
+        "profile"
+      );
+    });
+    this.generalService.calendarEvent.subscribe((type: string) => {
+      this.tabsComponent.openTab(
+        type,
+        this.calendarTemplate,
+        null,
+        true,
+        "Dairy"
+      );
+    });
 
     this.generalService.emitter.subscribe((response: string) => {
       this.module = response;
-      if (this.module !== "Dashboard") {
+      if (this.module !== "Dashboard" && this.module !== "Profile" && this.module !== "Calendar") {
         this.loadData(this.module, params);
         console.log("Loading data", this.module);
       }

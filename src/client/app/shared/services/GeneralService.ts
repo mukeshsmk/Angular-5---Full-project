@@ -11,4 +11,14 @@ export class GeneralService {
   public openDashboard() {
     this.dashboardEvent.emit("Dashboard");
   }
+
+  profileEvent: EventEmitter<string> = new EventEmitter();
+  public openProfile() {
+    this.profileEvent.emit("Profile");
+  }
+
+  calendarEvent: EventEmitter<string> = new EventEmitter();
+  public openCalendar() {
+    this.calendarEvent.emit("Calendar");
+  }
 }

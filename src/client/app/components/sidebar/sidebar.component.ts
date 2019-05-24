@@ -25,4 +25,9 @@ export class SidebarComponent implements OnInit {
     event.preventDefault();
     this.generalService.openDashboard();
   }
+
+  goDairy(event: Event) {
+    event.preventDefault();
+    this.generalService.openCalendar();
+  }
 }
