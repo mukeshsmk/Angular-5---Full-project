@@ -1,19 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
 import {
   FormGroup,
   FormBuilder,
   Validators,
   FormControl
-} from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import Config from '../../shared/config';
+} from "@angular/forms";
+import { HttpClient } from "@angular/common/http";
+import { ApiService } from "../../shared/services/ApiServices";
 /**
  * This class represents the lazy loaded AboutComponent.
  */
 @Component({
-  selector: 'sd-customer',
-  templateUrl: 'customer.component.html',
-  styleUrls: [ 'customer.component.css' ]
+  selector: "sd-customer",
+  templateUrl: "customer.component.html",
+  styleUrls: ["customer.component.css"]
 })
 export class CustomerComponent implements OnInit {
   driver: any = {};
@@ -46,54 +46,58 @@ export class CustomerComponent implements OnInit {
 
   ddPage: number = 1;
   ddLimit: number = 10;
-  ddSearch: any = '';
-  ddSort: any = 'id';
+  ddSearch: any = "";
+  ddSort: any = "id";
 
   ahPage: number = 1;
   ahLimit: number = 10;
-  ahSearch: any = '';
-  ahSort: any = 'id';
+  ahSearch: any = "";
+  ahSort: any = "id";
 
   userData: any;
   @Input() customer: any;
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    public apiService: ApiService
+  ) {}
   ngOnInit() {
-    this.userData = JSON.parse(localStorage.getItem('user_data'));
+    this.userData = JSON.parse(localStorage.getItem("user_data"));
     this.customerForm = this.formBuilder.group({
-      name: [ this.driver.name, Validators.required ],
-      parent_account: [ this.driver.parent_account ],
-      accountid: [ this.driver.accountid ],
-      title: [ this.driver.title ],
-      birthdate: [ this.driver.birthdate ],
-      customer_type__c: [ this.driver.customer_type__c ],
-      record_type: [ this.driver.record_type ],
-      selling_dealer: [ this.driver.selling_dealer ],
-      service_dealer: [ this.driver.service_dealer ],
-      customer_type: [ this.driver.customer_type ],
-      do_not_contact__c: [ this.driver.do_not_contact__c ],
-      fax: [ this.driver.fax ],
-      business_phone__c: [ this.driver.business_phone__c ],
-      business_email__c: [ this.driver.business_email__c ],
+      name: [this.driver.name, Validators.required],
+      parent_account: [this.driver.parent_account],
+      accountid: [this.driver.accountid],
+      title: [this.driver.title],
+      birthdate: [this.driver.birthdate],
+      customer_type__c: [this.driver.customer_type__c],
+      record_type: [this.driver.record_type],
+      selling_dealer: [this.driver.selling_dealer],
+      service_dealer: [this.driver.service_dealer],
+      customer_type: [this.driver.customer_type],
+      do_not_contact__c: [this.driver.do_not_contact__c],
+      fax: [this.driver.fax],
+      business_phone__c: [this.driver.business_phone__c],
+      business_email__c: [this.driver.business_email__c],
       business_phone_service_type__c: [
         this.driver.business_phone_service_type__c
       ],
-      business_email_valid__c: [ this.driver.business_email_valid__c ],
-      business_phone_valid__c: [ this.driver.business_phone_valid__c ],
-      home_email__c: [ this.driver.home_email__c ],
-      homephone: [ this.driver.homephone ],
-      home_phone_service_type__c: [ this.driver.home_phone_service_type__c ],
-      home_phone_valid__c: [ this.driver.home_phone_valid__c ],
-      email: [ this.driver.email ],
-      mobilephone: [ this.driver.mobilephone ],
-      interest_of_make__c: [ this.driver.interest_of_make__c ],
-      billing_address__c: [ this.driver.billing_address__c ],
-      billing_suburb__c: [ this.driver.billing_suburb__c ],
-      billing_state__c: [ this.driver.billing_state__c ],
-      billing_post_code__c: [ this.driver.billing_post_code__c ],
-      billing_country__c: [ this.driver.billing_country__c ],
-      billingdpid__c: [ this.driver.billingdpid__c ],
-      billing_latitude__c: [ this.driver.billing_latitude__c ],
-      billing_longitude__c: [ this.driver.billing_longitude__c ]
+      business_email_valid__c: [this.driver.business_email_valid__c],
+      business_phone_valid__c: [this.driver.business_phone_valid__c],
+      home_email__c: [this.driver.home_email__c],
+      homephone: [this.driver.homephone],
+      home_phone_service_type__c: [this.driver.home_phone_service_type__c],
+      home_phone_valid__c: [this.driver.home_phone_valid__c],
+      email: [this.driver.email],
+      mobilephone: [this.driver.mobilephone],
+      interest_of_make__c: [this.driver.interest_of_make__c],
+      billing_address__c: [this.driver.billing_address__c],
+      billing_suburb__c: [this.driver.billing_suburb__c],
+      billing_state__c: [this.driver.billing_state__c],
+      billing_post_code__c: [this.driver.billing_post_code__c],
+      billing_country__c: [this.driver.billing_country__c],
+      billingdpid__c: [this.driver.billingdpid__c],
+      billing_latitude__c: [this.driver.billing_latitude__c],
+      billing_longitude__c: [this.driver.billing_longitude__c]
     });
     const params = {
       ddPage: this.ddPage,
@@ -113,7 +117,7 @@ export class CustomerComponent implements OnInit {
     params.page = params.ddPage;
     this.loaderOne = true;
     this.http
-      .post<{ success: object }>(Config.BASE_URL + 'api/driverDetails', params)
+      .post<{ success: object }>(this.apiService.driverDetailsUrl, params)
       .subscribe((response: any) => {
         this.relatedDriverData = response.driver;
         this.loaderOne = false;
@@ -123,7 +127,7 @@ export class CustomerComponent implements OnInit {
     params.page = params.ahPage;
     this.loaderOne = true;
     this.http
-      .post<{ success: object }>(Config.BASE_URL + 'api/accountHistory', params)
+      .post<{ success: object }>(this.apiService.accountHistoryUrl, params)
       .subscribe((response: any) => {
         this.relatedHistoryData = response.accounthistory;
         this.loaderOne = false;
@@ -285,10 +289,7 @@ export class CustomerComponent implements OnInit {
     }
 
     this.http
-      .post<{ success: object }>(
-        Config.BASE_URL + 'api/createDriver',
-        form.value
-      )
+      .post<{ success: object }>(this.apiService.createDriverUrl, form.value)
       .subscribe((response: any) => {
         console.log(response);
         this.close();

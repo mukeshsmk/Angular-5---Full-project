@@ -1,19 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
 import {
   FormGroup,
   FormBuilder,
   Validators,
   FormControl
-} from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import Config from '../../shared/config';
+} from "@angular/forms";
+import { HttpClient } from "@angular/common/http";
+import { ApiService } from "../../shared/services/ApiServices";
 /**
  * This class represents the lazy loaded AboutComponent.
  */
 @Component({
-  selector: 'sd-stock',
-  templateUrl: 'stock.component.html',
-  styleUrls: [ 'stock.component.css' ]
+  selector: "sd-stock",
+  templateUrl: "stock.component.html",
+  styleUrls: ["stock.component.css"]
 })
 export class StockComponent implements OnInit {
   visibleOne: Boolean = false;
@@ -31,34 +31,38 @@ export class StockComponent implements OnInit {
   loaderOne: Boolean = false;
   page: number = 1;
   limit: number = 10;
-  search: any = '';
-  sort: any = 'id';
+  search: any = "";
+  sort: any = "id";
 
   @Input() stock: any;
   vehicleStockForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    public apiService: ApiService
+  ) {}
 
   ngOnInit() {
     if (this.stock) {
       this.vehicleStockForm = this.formBuilder.group({
-        name: [ this.stock.name, Validators.required ],
-        selling_dealer__c: [ this.stock.selling_dealer__c ],
-        vin__c: [ this.stock.vin__c ],
-        vehicle_type__c: [ this.stock.vehicle_type__c ],
-        fuel_type__c: [ this.stock.fuel_type__c ],
-        rego_no__c: [ this.stock.rego_no__c ],
-        manufacture_year__c: [ this.stock.manufacture_year__c ],
-        body_type__c: [ this.stock.body_type__c ],
-        model__c: [ this.stock.model__c ],
-        body_colour__c: [ this.stock.body_colour__c ],
-        make__c: [ this.stock.make__c ],
-        first_image_name__c: [ this.stock.first_image_name__c ],
-        dealer_code__c: [ this.stock.dealer_code__c ],
-        vehicle_stock_days__c: [ this.stock.vehicle_stock_days__c ],
-        ownerid: [ this.stock.ownerid ],
-        egc_price__c: [ this.stock.egc_price__c ],
-        series_c__c: [ this.stock.series_c__c ],
-        stock_image__c: [ this.stock.stock_image__c ]
+        name: [this.stock.name, Validators.required],
+        selling_dealer__c: [this.stock.selling_dealer__c],
+        vin__c: [this.stock.vin__c],
+        vehicle_type__c: [this.stock.vehicle_type__c],
+        fuel_type__c: [this.stock.fuel_type__c],
+        rego_no__c: [this.stock.rego_no__c],
+        manufacture_year__c: [this.stock.manufacture_year__c],
+        body_type__c: [this.stock.body_type__c],
+        model__c: [this.stock.model__c],
+        body_colour__c: [this.stock.body_colour__c],
+        make__c: [this.stock.make__c],
+        first_image_name__c: [this.stock.first_image_name__c],
+        dealer_code__c: [this.stock.dealer_code__c],
+        vehicle_stock_days__c: [this.stock.vehicle_stock_days__c],
+        ownerid: [this.stock.ownerid],
+        egc_price__c: [this.stock.egc_price__c],
+        series_c__c: [this.stock.series_c__c],
+        stock_image__c: [this.stock.stock_image__c]
       });
     }
     const params = {
@@ -75,7 +79,7 @@ export class StockComponent implements OnInit {
     this.loaderOne = true;
     this.http
       .post<{ success: object }>(
-        Config.BASE_URL + 'api/relatedVehicle_stock',
+        this.apiService.relatedVehicle_stockUrl,
         params
       )
       .subscribe((response: any) => {
@@ -139,7 +143,7 @@ export class StockComponent implements OnInit {
     this.vehicleStockForm.value.id = this.stock.id;
     this.http
       .post<{ success: object }>(
-        Config.BASE_URL + 'api/vehicle_stockUpdate',
+        this.apiService.vehicle_stockUpdateUrl,
         this.vehicleStockForm.value
       )
       .subscribe((response: any) => {

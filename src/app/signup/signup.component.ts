@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Component } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { ApiService } from "./../shared/services/ApiServices";
 
 /**
  * This class represents the lazy loaded AboutComponent.
  */
 @Component({
-  selector: 'sd-signup',
-  templateUrl: 'signup.component.html',
-  styleUrls: [ 'signup.component.css' ]
+  selector: "sd-signup",
+  templateUrl: "signup.component.html",
+  styleUrls: ["signup.component.css"]
 })
 export class SignupComponent {
   public validationErr: any;
@@ -17,43 +18,43 @@ export class SignupComponent {
   public _token: any;
   public token: any;
   user = {
-    name: '',
-    email: '',
-    password: '',
-    confirm_password: ''
+    name: "",
+    email: "",
+    password: "",
+    confirm_password: ""
   };
   isSignupError: boolean = false;
-  infoMessage = '';
+  infoMessage = "";
   registerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    public apiService: ApiService
+  ) {}
 
   onSubmit() {
     if (this.user) {
       this.http
-        .post<{ success: object }>(
-          'http://10.0.0.3:8080/api/register',
-          this.user
-        )
+        .post<{ success: object }>(this.apiService.registerUrl, this.user)
         .subscribe(
-          (response) => {
-            console.log('Success ', JSON.stringify(response.success));
+          response => {
+            console.log("Success ", JSON.stringify(response.success));
             this._token = response.success;
             localStorage.setItem(
-              'access_token',
+              "access_token",
               JSON.stringify(this._token.token)
             );
-            this.infoMessage = 'Registered Successfully!';
+            this.infoMessage = "Registered Successfully!";
             setTimeout(() => {
-              console.log('hide');
-              this.infoMessage = '';
+              console.log("hide");
+              this.infoMessage = "";
             }, 5000);
           },
           (err: HttpErrorResponse) => {
             setTimeout(() => {
-              console.log('hide');
               this.isSignupError = false;
-              console.log('error', err.error.errors);
+              console.log("error", err.error.errors);
               this.validationErr = err.error.errors;
               this.duplicateEmail = err.error.errors.email[0];
               this.notSame = err.error.errors.confirm_password[0];

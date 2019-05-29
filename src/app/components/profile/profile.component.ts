@@ -1,20 +1,24 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import Config from '../../shared/config';
+import { Component, OnInit, Input } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { ApiService } from "../../shared/services/ApiServices";
 import {
   FormGroup,
   FormBuilder,
   Validators,
   FormControl
-} from '@angular/forms';
+} from "@angular/forms";
 
 @Component({
-  selector: 'sd-profile',
-  templateUrl: 'profile.component.html',
-  styleUrls: [ 'profile.component.css' ]
+  selector: "sd-profile",
+  templateUrl: "profile.component.html",
+  styleUrls: ["profile.component.css"]
 })
 export class ProfileComponent implements OnInit {
-  constructor(private http: HttpClient, private formBuilder: FormBuilder) {}
+  constructor(
+    private http: HttpClient,
+    private formBuilder: FormBuilder,
+    public apiService: ApiService
+  ) {}
   passwordForm: FormGroup;
   submitted: boolean = false;
   upperCaseErr: boolean = false;
@@ -25,14 +29,14 @@ export class ProfileComponent implements OnInit {
   userData: any;
 
   ngOnInit() {
-    this.userData = JSON.parse(localStorage.getItem('user_data'));
+    this.userData = JSON.parse(localStorage.getItem("user_data"));
     this.passwordForm = this.formBuilder.group({
-      password: [ '', Validators.required ],
+      password: ["", Validators.required],
       confirm_password: [
-        '',
-        [ Validators.required, this.passwordMatcher.bind(this) ]
+        "",
+        [Validators.required, this.passwordMatcher.bind(this)]
       ],
-      auth_id: [ this.userData.auth_id, Validators.required ]
+      auth_id: [this.userData.auth_id, Validators.required]
     });
   }
   // confirm new password validator
@@ -46,9 +50,9 @@ export class ProfileComponent implements OnInit {
     return null;
   }
   passwordData(data: any) {
-    let ucase = new RegExp('[A-Z]+');
-    let lcase = new RegExp('[a-z]+');
-    let num = new RegExp('[0-9]+');
+    let ucase = new RegExp("[A-Z]+");
+    let lcase = new RegExp("[a-z]+");
+    let num = new RegExp("[0-9]+");
     if (data.length >= 8) {
       this.lengthErr = true;
     } else {
@@ -88,7 +92,7 @@ export class ProfileComponent implements OnInit {
     }
     this.http
       .post<{ success: object }>(
-        Config.BASE_URL + 'api/updatePassword',
+        this.apiService.updatePasswordUrl,
         this.passwordForm.value
       )
       .subscribe((response: any) => {

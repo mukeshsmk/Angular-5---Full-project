@@ -1,37 +1,37 @@
-import { Component, ViewChild, QueryList, ViewChildren } from '@angular/core';
+import { Component, ViewChild, QueryList, ViewChildren } from "@angular/core";
 
-import { TabsComponent } from '../tab/tabs.component';
-import { HttpClient } from '@angular/common/http';
-import { GeneralService } from '../../shared/services/GeneralService';
-import Config from '../../shared/config';
+import { TabsComponent } from "../tab/tabs.component";
+import { HttpClient } from "@angular/common/http";
+import { GeneralService } from "../../shared/services/GeneralService";
+import { ApiService } from "../../shared/services/ApiServices";
 
 @Component({
-  selector: 'sd-table-list',
-  templateUrl: 'table-list.component.html',
-  styleUrls: [ 'table-list.component.css' ]
+  selector: "sd-table-list",
+  templateUrl: "table-list.component.html",
+  styleUrls: ["table-list.component.css"]
 })
 export class TableListComponent {
   p: number = 1;
   @ViewChild(TabsComponent) tabsComponent: any;
-  @ViewChild('personDetails') persondetailsTemplate: any;
-  @ViewChild('stockDetails') stockdetailsTemplate: any;
-  @ViewChild('driverDetails') driverdetailsTemplate: any;
-  @ViewChild('customerDetails') customerdetailsTemplate: any;
-  @ViewChild('oppournityModal') oppournitymodalTemplate: any;
-  @ViewChild('searchModal') searchModalTemplate: any;
-  @ViewChild('dashboardDetails') dashboardTemplate: any;
-  @ViewChild('profileDetails') profileTemplate: any;
-  @ViewChild('calendarDetails') calendarTemplate: any;
+  @ViewChild("personDetails") persondetailsTemplate: any;
+  @ViewChild("stockDetails") stockdetailsTemplate: any;
+  @ViewChild("driverDetails") driverdetailsTemplate: any;
+  @ViewChild("customerDetails") customerdetailsTemplate: any;
+  @ViewChild("oppournityModal") oppournitymodalTemplate: any;
+  @ViewChild("searchModal") searchModalTemplate: any;
+  @ViewChild("dashboardDetails") dashboardTemplate: any;
+  @ViewChild("profileDetails") profileTemplate: any;
+  @ViewChild("calendarDetails") calendarTemplate: any;
 
-  @ViewChildren('checkedAll') checkedAll: QueryList<any>;
+  @ViewChildren("checkedAll") checkedAll: QueryList<any>;
 
   loaderOne: Boolean = false;
   opportunityList: any = [];
-  module: string = 'opportunities';
+  module: string = "opportunities";
   opportunityListData: any = [];
   page: number = 1;
   limit: number = 10;
-  search: any = '';
+  search: any = "";
   showEdit: Boolean = false;
   opportunityOpen: Boolean = true;
   searchOpen: Boolean = false;
@@ -40,11 +40,11 @@ export class TableListComponent {
   formType: any;
   responseData: any;
   permission: any;
-  vsType: any = '';
+  vsType: any = "";
   userData: any;
-  sort: any = 'id';
-  allocated: any = '';
-  unallocated: any = '';
+  sort: any = "id";
+  allocated: any = "";
+  unallocated: any = "";
   changeLead: Boolean = false;
   aIds: any = [];
   Searchwait: Boolean = false;
@@ -61,7 +61,11 @@ export class TableListComponent {
   modal_title: any;
 
   searchTerm: string;
-  constructor(private http: HttpClient, public generalService: GeneralService) {
+  constructor(
+    private http: HttpClient,
+    public generalService: GeneralService,
+    public apiService: ApiService
+  ) {
     this.permission = {
       create_permission: 0,
       edit_permission: 0,
@@ -80,7 +84,7 @@ export class TableListComponent {
         this.dashboardTemplate,
         null,
         true,
-        'dashboard'
+        "dashboard"
       );
     });
     this.generalService.profileEvent.subscribe((type: string) => {
@@ -89,7 +93,7 @@ export class TableListComponent {
         this.profileTemplate,
         null,
         true,
-        'profile'
+        "profile"
       );
     });
     this.generalService.calendarEvent.subscribe((type: string) => {
@@ -98,22 +102,22 @@ export class TableListComponent {
         this.calendarTemplate,
         null,
         true,
-        'Dairy'
+        "Dairy"
       );
     });
 
     this.generalService.emitter.subscribe((response: string) => {
       this.module = response;
       if (
-        this.module !== 'Dashboard' &&
-        this.module !== 'Profile' &&
-        this.module !== 'Calendar'
+        this.module !== "Dashboard" &&
+        this.module !== "Profile" &&
+        this.module !== "Calendar"
       ) {
         this.loadData(this.module, params);
-        console.log('Loading data', this.module);
+        console.log("Loading data", this.module);
       }
     });
-    this.userData = JSON.parse(localStorage.getItem('user_data'));
+    this.userData = JSON.parse(localStorage.getItem("user_data"));
     this.changeLead = false;
     this.aIds = [];
     this.loadData(this.module, params);
@@ -140,13 +144,13 @@ export class TableListComponent {
     this.loaderOne = true;
     this.opportunityList = [];
     this.opportunityListData = [];
-    params.userData = JSON.parse(localStorage.getItem('user_data'));
+    params.userData = JSON.parse(localStorage.getItem("user_data"));
     this.http
-      .post<{ success: object }>(Config.BASE_URL + 'api/' + type, params)
+      .post<{ success: object }>(this.apiService.getModulesUrl(type), params)
       .subscribe((response: any) => {
         this.responseData = response;
         this.opportunityListData = response.list;
-        if (type === 'opportunities') {
+        if (type === "opportunities") {
           for (let i = 0; i < response.list.data.length; i++) {
             if (params.userData.roleid !== 5) {
               if (
@@ -158,7 +162,7 @@ export class TableListComponent {
                   this.opportunityListData.data[i].app_retail_user__c
                 ];
               } else {
-                response.list.data[i].lead_owner_data = '-';
+                response.list.data[i].lead_owner_data = "-";
               }
             }
           }
@@ -174,15 +178,15 @@ export class TableListComponent {
       });
   }
   allocate(arg: any) {
-    if (arg === 'allocated') {
-      this.allocated = 'allocated';
-      this.unallocated = '';
-    } else if (arg === 'unallocated') {
-      this.unallocated = 'unallocated';
-      this.allocated = '';
+    if (arg === "allocated") {
+      this.allocated = "allocated";
+      this.unallocated = "";
+    } else if (arg === "unallocated") {
+      this.unallocated = "unallocated";
+      this.allocated = "";
     } else {
-      this.unallocated = '';
-      this.allocated = '';
+      this.unallocated = "";
+      this.allocated = "";
     }
     this.changeLead = false;
     const params = {
@@ -269,16 +273,16 @@ export class TableListComponent {
     this.loaderOne = true;
     let template;
     switch (this.module) {
-      case 'opportunities':
+      case "opportunities":
         template = this.persondetailsTemplate;
         break;
-      case 'vehicle_stocks':
+      case "vehicle_stocks":
         template = this.stockdetailsTemplate;
         break;
-      case 'drivers':
+      case "drivers":
         template = this.driverdetailsTemplate;
         break;
-      case 'customers':
+      case "customers":
         template = this.customerdetailsTemplate;
         break;
     }
@@ -288,21 +292,21 @@ export class TableListComponent {
       template,
       data,
       true,
-      this.module + '-' + data.id
+      this.module + "-" + data.id
     );
     this.loaderOne = false;
   }
 
   //opportunity modal
   openOpportunityModal(data: any) {
-    this.modal_title = 'Edit Opportunity';
+    this.modal_title = "Edit Opportunity";
     this.modalData = data;
-    this.formType = 'edit';
+    this.formType = "edit";
     this.opportunityOpen = false;
   }
   openNewOpportunityModal() {
-    this.modal_title = 'Quick Opportunity';
-    this.formType = 'new';
+    this.modal_title = "Quick Opportunity";
+    this.formType = "new";
     this.opportunityOpen = false;
   }
   closeModal() {
@@ -311,16 +315,16 @@ export class TableListComponent {
   }
   updateOpportunity(event: any) {
     let endpoint: any;
-    if (this.formType === 'edit') {
-      endpoint = 'leadUpdate';
+    if (this.formType === "edit") {
+      endpoint = this.apiService.leadUpdateUrl;
     }
-    if (this.formType === 'new') {
-      endpoint = 'quickLeadInsert';
+    if (this.formType === "new") {
+      endpoint = this.apiService.quickLeadInsertUrl;
       //event = JSON.stringify(event)
     }
 
     this.http
-      .post<{ success: object }>(Config.BASE_URL + 'api/' + endpoint, event)
+      .post<{ success: object }>(endpoint, event)
       .subscribe((response: any) => {
         console.log(response);
         this.opportunityOpen = true;
@@ -329,22 +333,22 @@ export class TableListComponent {
   }
   //vehicleStock Modal
   updatevehicleStockModal(data: any) {
-    this.modal_title = 'Edit ' + data.name;
+    this.modal_title = "Edit " + data.name;
     this.modalData = data;
-    this.formType = 'edit';
+    this.formType = "edit";
     this.opportunityOpen = false;
   }
   updatevehicleStock(event: any) {
     console.log(event);
     let endpoint: any;
-    if (this.formType === 'edit') {
-      endpoint = 'vehicle_stockUpdate';
+    if (this.formType === "edit") {
+      endpoint = this.apiService.vehicle_stockUpdateUrl;
     }
-    if (this.formType === 'new') {
-      //endpoint = 'createCustomer';
+    if (this.formType === "new") {
+      //endpoint = this.apiService.createCustomerUrl;
     }
     this.http
-      .post<{ success: object }>(Config.BASE_URL + 'api/' + endpoint, event)
+      .post<{ success: object }>(endpoint, event)
       .subscribe((response: any) => {
         console.log(response);
         this.opportunityOpen = true;
@@ -353,22 +357,22 @@ export class TableListComponent {
   }
   //Driver modal
   updateDriverModal(data: any) {
-    this.modal_title = 'Edit ' + data.name;
+    this.modal_title = "Edit " + data.name;
     this.modalData = data;
-    this.formType = 'edit';
+    this.formType = "edit";
     this.opportunityOpen = false;
   }
   updateDriver(event: any) {
     console.log(event);
     let endpoint: any;
-    if (this.formType === 'edit') {
-      endpoint = 'driverUpdate';
+    if (this.formType === "edit") {
+      endpoint = this.apiService.driverUpdateUrl;
     }
-    if (this.formType === 'new') {
-      endpoint = 'createDriver';
+    if (this.formType === "new") {
+      endpoint = this.apiService.createDriverUrl;
     }
     this.http
-      .post<{ success: object }>(Config.BASE_URL + 'api/' + endpoint, event)
+      .post<{ success: object }>(endpoint, event)
       .subscribe((response: any) => {
         console.log(response);
         this.opportunityOpen = true;
@@ -377,26 +381,26 @@ export class TableListComponent {
   }
   //customer modal
   openNewCustomerModal() {
-    this.modal_title = 'New ' + this.module;
-    this.formType = 'new';
+    this.modal_title = "New " + this.module;
+    this.formType = "new";
     this.opportunityOpen = false;
   }
   updateCustomerModal(data: any) {
-    this.modal_title = 'Edit ' + data.name;
+    this.modal_title = "Edit " + data.name;
     this.modalData = data;
-    this.formType = 'edit';
+    this.formType = "edit";
     this.opportunityOpen = false;
   }
   updateCustomer(event: any) {
     let endpoint: any;
-    if (this.formType === 'edit') {
-      endpoint = 'customerUpdate';
+    if (this.formType === "edit") {
+      endpoint = this.apiService.customerUpdateUrl;
     }
-    if (this.formType === 'new') {
-      endpoint = 'createCustomer';
+    if (this.formType === "new") {
+      endpoint = this.apiService.createCustomerUrl;
     }
     this.http
-      .post<{ success: object }>(Config.BASE_URL + 'api/' + endpoint, event)
+      .post<{ success: object }>(endpoint, event)
       .subscribe((response: any) => {
         console.log(response);
         this.opportunityOpen = true;
@@ -450,7 +454,7 @@ export class TableListComponent {
       };
       this.http
         .post<{ success: object }>(
-          Config.BASE_URL + 'api/getSearchData',
+          this.apiService.getSearchDataUrl,
           assignSfidparams
         )
         .subscribe((response: any) => {
@@ -467,10 +471,10 @@ export class TableListComponent {
       editID: this.aIds
     };
     this.http
-      .post<{ success: object }>(Config.BASE_URL + 'api/assignSfid', assignSfid)
+      .post<{ success: object }>(this.apiService.assignSfidUrl, assignSfid)
       .subscribe((response: any) => {
         this.searchUserData = [];
-        this.sdname = '';
+        this.sdname = "";
         console.log(response);
         this.searchOpen = false;
         const params = {
@@ -489,7 +493,7 @@ export class TableListComponent {
   }
   closeSeacrch() {
     this.searchUserData = [];
-    this.sdname = '';
+    this.sdname = "";
     this.searchOpen = false;
   }
   inLineEdit(text: any) {
@@ -505,10 +509,10 @@ export class TableListComponent {
     details.email__c = this.opp_Email;
     console.log(details);
     this.http
-      .post<{ success: object }>(Config.BASE_URL + 'api/inlineUpdate', details)
+      .post<{ success: object }>(this.apiService.inlineUpdateUrl, details)
       .subscribe((response: any) => {
         console.log(response);
-        this.editId = '';
+        this.editId = "";
         this.loaderOne = false;
       });
   }

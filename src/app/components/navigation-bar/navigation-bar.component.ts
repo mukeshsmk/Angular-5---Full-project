@@ -1,20 +1,20 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import {
   FormGroup,
   FormBuilder,
   Validators,
   FormControl
-} from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { GeneralService } from '../../shared/services/GeneralService';
-import Config from '../../shared/config';
+} from "@angular/forms";
+import { HttpClient } from "@angular/common/http";
+import { GeneralService } from "../../shared/services/GeneralService";
+import { ApiService } from "../../shared/services/ApiServices";
 /**
  * This class represents the lazy loaded AboutComponent.
  */
 @Component({
-  selector: 'sd-navigation-bar',
-  templateUrl: 'navigation-bar.component.html',
-  styleUrls: [ 'navigation-bar.component.css' ]
+  selector: "sd-navigation-bar",
+  templateUrl: "navigation-bar.component.html",
+  styleUrls: ["navigation-bar.component.css"]
 })
 export class NavigationBarComponent implements OnInit {
   module: string;
@@ -37,23 +37,24 @@ export class NavigationBarComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    public generalService: GeneralService
+    public generalService: GeneralService,
+    public apiService: ApiService
   ) {}
 
   ngOnInit() {
     this.colorIndex = 0;
     this.submitted = false;
     this.stageName = [
-      'new',
-      'Working',
-      'Appointment',
-      'Quotation',
-      'Negotiation',
-      'Finalize',
-      'ClosedLost',
-      'ClosedWon',
-      'Duplicate',
-      'Converted'
+      "new",
+      "Working",
+      "Appointment",
+      "Quotation",
+      "Negotiation",
+      "Finalize",
+      "ClosedLost",
+      "ClosedWon",
+      "Duplicate",
+      "Converted"
     ];
     if (this.details) {
       for (let i = 0; i < this.stageName.length; i++) {
@@ -63,45 +64,45 @@ export class NavigationBarComponent implements OnInit {
       }
 
       this.newTaskForm = this.formBuilder.group({
-        first_name__c: [ this.details.first_name__c ],
-        last_name__c: [ this.details.last_name__c ],
-        mobile__c: [ this.details.mobile__c ],
-        email__c: [ this.details.email__c ],
-        zip_postal_code__c: [ this.details.zip_postal_code__c ],
-        stagename: [ 'Working' ]
+        first_name__c: [this.details.first_name__c],
+        last_name__c: [this.details.last_name__c],
+        mobile__c: [this.details.mobile__c],
+        email__c: [this.details.email__c],
+        zip_postal_code__c: [this.details.zip_postal_code__c],
+        stagename: ["Working"]
       });
       this.appointmentTaskForm = this.formBuilder.group({
-        license_number__c: [ this.details.license_number__c ],
-        stagename: [ 'Appointment' ]
+        license_number__c: [this.details.license_number__c],
+        stagename: ["Appointment"]
       });
       this.quotationTaskForm = this.formBuilder.group({
-        family_details__c: [ this.details.family_details__c ],
-        place_of_work__c: [ this.details.place_of_work__c ],
-        stagename: [ 'Quotation' ]
+        family_details__c: [this.details.family_details__c],
+        place_of_work__c: [this.details.place_of_work__c],
+        stagename: ["Quotation"]
       });
       this.negotiationTaskForm = this.formBuilder.group({
         introduction_to_finance_manager__c: [
           this.details.introduction_to_finance_manager__c
         ],
-        stagename: [ 'Negotiation' ]
+        stagename: ["Negotiation"]
       });
       this.closedLostTaskForm = this.formBuilder.group({
-        notes__c: [ this.details.notes__c ],
-        stagename: [ 'ClosedLost' ]
+        notes__c: [this.details.notes__c],
+        stagename: ["ClosedLost"]
       });
       this.closedWonTaskForm = this.formBuilder.group({
-        vin_number__c: [ this.details.vin_number__c ],
-        stock_number__c: [ this.details.stock_number__c ],
-        mobile__c: [ this.details.mobile__c ],
-        stagename: [ 'ClosedWon' ]
+        vin_number__c: [this.details.vin_number__c],
+        stock_number__c: [this.details.stock_number__c],
+        mobile__c: [this.details.mobile__c],
+        stagename: ["ClosedWon"]
       });
       this.duplicateTaskForm = this.formBuilder.group({
-        notes__c: [ this.details.notes__c ],
-        stagename: [ 'Duplicate' ]
+        notes__c: [this.details.notes__c],
+        stagename: ["Duplicate"]
       });
       this.convertesTaskForm = this.formBuilder.group({
-        notes__c: [ this.details.notes__c ],
-        stagename: [ 'Converted' ]
+        notes__c: [this.details.notes__c],
+        stagename: ["Converted"]
       });
     }
   }
@@ -122,12 +123,12 @@ export class NavigationBarComponent implements OnInit {
     }
     form.value.id = this.details.id;
     this.loaderOne = false;
-    this.updateData(form.value, 'updateStage');
+    this.updateData(form.value, this.apiService.updateStageUrl("updateStage"));
   }
   updateData(data: any, endpoint: any) {
     this.loaderOne = true;
     this.http
-      .post<{ success: object }>(Config.BASE_URL + 'api/' + endpoint, data)
+      .post<{ success: object }>(endpoint, data)
       .subscribe((response: any) => {
         console.log(response);
         this.details = response;
@@ -139,8 +140,11 @@ export class NavigationBarComponent implements OnInit {
   updateFinalize() {
     const finalizeData = {
       id: this.details.id,
-      stagename: 'Finalize'
+      stagename: "Finalize"
     };
-    this.updateData(finalizeData, 'updateStage');
+    this.updateData(
+      finalizeData,
+      this.apiService.updateStageUrl("updateStage")
+    );
   }
 }

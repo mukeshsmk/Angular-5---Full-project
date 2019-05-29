@@ -1,22 +1,26 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import Config from '../../shared/config';
+import { Component, OnInit, Input } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 import {
   FormGroup,
   FormBuilder,
   Validators,
   FormControl
-} from '@angular/forms';
+} from "@angular/forms";
+import { ApiService } from "../../shared/services/ApiServices";
 /**
  * This class represents the lazy loaded AboutComponent.
  */
 @Component({
-  selector: 'sd-driver',
-  templateUrl: 'driver.component.html',
-  styleUrls: [ 'driver.component.css' ]
+  selector: "sd-driver",
+  templateUrl: "driver.component.html",
+  styleUrls: ["driver.component.css"]
 })
 export class DriverComponent implements OnInit {
-  constructor(private http: HttpClient, private formBuilder: FormBuilder) {}
+  constructor(
+    private http: HttpClient,
+    private formBuilder: FormBuilder,
+    public apiService: ApiService
+  ) {}
   visibleOne: Boolean = false;
   visibleTwo: Boolean = true;
 
@@ -31,18 +35,18 @@ export class DriverComponent implements OnInit {
 
   casePage: number = 1;
   caseLimit: number = 10;
-  caseSearch: any = '';
-  caseSort: any = 'id';
+  caseSearch: any = "";
+  caseSort: any = "id";
 
   page: number = 1;
   chLimit: number = 10;
-  chSearch: any = '';
-  chSort: any = 'id';
+  chSearch: any = "";
+  chSort: any = "id";
 
   contactHisPage: number = 1;
   contactHisLimit: number = 10;
-  contactHisSearch: any = '';
-  contactHisSort: any = 'id';
+  contactHisSearch: any = "";
+  contactHisSort: any = "id";
 
   @Input() driver: any;
   userData: any;
@@ -51,19 +55,19 @@ export class DriverComponent implements OnInit {
   insertCampaignSuccess: Boolean = false;
 
   ngOnInit() {
-    this.userData = JSON.parse(localStorage.getItem('user_data'));
+    this.userData = JSON.parse(localStorage.getItem("user_data"));
     this.campaignForm = this.formBuilder.group({
-      contactid: [ this.driver.sfid ],
-      status: [ '' ],
-      name: [ '' ],
-      campaignmemberstatus: [ '' ],
-      campaign_name__c: [ '' ],
-      lead: [ '' ],
-      type: [ 'Lead' ],
-      comments__c: [ '' ],
-      request_type__c: [ '' ],
-      vin__c: [ '' ],
-      comments_from_stock_c__c: [ '' ]
+      contactid: [this.driver.sfid],
+      status: [""],
+      name: [""],
+      campaignmemberstatus: [""],
+      campaign_name__c: [""],
+      lead: [""],
+      type: ["Lead"],
+      comments__c: [""],
+      request_type__c: [""],
+      vin__c: [""],
+      comments_from_stock_c__c: [""]
     });
     const params = {
       casePage: this.casePage,
@@ -86,7 +90,7 @@ export class DriverComponent implements OnInit {
   relatedDriver(params: any) {
     this.loaderOne = true;
     this.http
-      .post<{ success: object }>(Config.BASE_URL + 'api/relatedDriver', params)
+      .post<{ success: object }>(this.apiService.relatedDriverUrl, params)
       .subscribe((response: any) => {
         this.relatedListData = response;
         this.loaderOne = false;
@@ -206,7 +210,7 @@ export class DriverComponent implements OnInit {
     this.loaderOne = true;
     this.http
       .post<{ success: object }>(
-        Config.BASE_URL + 'api/createCampaign',
+        this.apiService.createCampaignUrl,
         this.campaignForm.value
       )
       .subscribe((response: any) => {

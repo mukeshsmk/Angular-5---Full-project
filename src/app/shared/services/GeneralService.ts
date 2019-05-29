@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter } from "@angular/core";
 
 @Injectable()
 export class GeneralService {
@@ -9,16 +9,20 @@ export class GeneralService {
 
   dashboardEvent: EventEmitter<string> = new EventEmitter();
   public openDashboard() {
-    this.dashboardEvent.emit('Dashboard');
+    this.dashboardEvent.emit("Dashboard");
   }
 
   profileEvent: EventEmitter<string> = new EventEmitter();
   public openProfile() {
-    this.profileEvent.emit('Profile');
+    this.profileEvent.emit("Profile");
   }
 
   calendarEvent: EventEmitter<string> = new EventEmitter();
   public openCalendar() {
-    this.calendarEvent.emit('Calendar');
+    this.calendarEvent.emit("Calendar");
+  }
+  refreshCalendarEvent: EventEmitter<string> = new EventEmitter();
+  public refreshCalendar() {
+    this.refreshCalendarEvent.emit("refreshCalendarEvent");
   }
 }

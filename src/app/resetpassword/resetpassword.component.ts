@@ -1,20 +1,21 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Component } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { HttpClient } from "@angular/common/http";
+import { HttpErrorResponse } from "@angular/common/http";
+import { ApiService } from "./../shared/services/ApiServices";
 /**
  * This class represents the lazy loaded AboutComponent.
  */
 @Component({
-  selector: 'sd-resetpassword',
-  templateUrl: 'resetpassword.component.html',
-  styleUrls: [ 'resetpassword.component.css' ]
+  selector: "sd-resetpassword",
+  templateUrl: "resetpassword.component.html",
+  styleUrls: ["resetpassword.component.css"]
 })
 export class ResetPasswordComponent {
   user = {
-    password: '',
-    password_confirmation: '',
-    token: ''
+    password: "",
+    password_confirmation: "",
+    token: ""
   };
   public validationErr: any;
 
@@ -22,22 +23,23 @@ export class ResetPasswordComponent {
   public _token: any;
   resetpasswordForm: FormGroup;
   isEmailError: Boolean = false;
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    public apiService: ApiService
+  ) {}
 
   onSubmit() {
     if (this.user) {
-      this.user.token = localStorage.getItem('reset_password_token');
+      this.user.token = localStorage.getItem("reset_password_token");
       this.http
-        .post<{ success: object }>(
-          'http://10.0.0.3:8080/api/password/reset',
-          this.user
-        )
+        .post<{ success: object }>(this.apiService.resetPasswordUrl, this.user)
         .subscribe(
-          (response) => {
-            console.log('Success ', JSON.stringify(response));
+          response => {
+            console.log("Success ", JSON.stringify(response));
             this._token = response.success;
             localStorage.setItem(
-              'reset_password_token',
+              "reset_password_token",
               JSON.stringify(this._token.token)
             );
           },
@@ -45,7 +47,7 @@ export class ResetPasswordComponent {
             this.isEmailError = true;
 
             setTimeout(() => {
-              console.log('hide');
+              console.log("hide");
               this.isEmailError = false;
             }, 5000);
           }

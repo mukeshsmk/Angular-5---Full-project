@@ -11,37 +11,37 @@ import {
   AfterContentInit,
   ViewChild,
   ComponentFactoryResolver
-} from '@angular/core';
+} from "@angular/core";
 
-import { TabComponent } from './tab.component';
-import { DynamicTabsDirective } from './dynamic-tabs.directive';
+import { TabComponent } from "./tab.component";
+import { DynamicTabsDirective } from "./dynamic-tabs.directive";
 
-import { GeneralService } from '../../shared/services/GeneralService';
-import { HttpClient } from '@angular/common/http';
-import Config from '../../shared/config';
+import { GeneralService } from "../../shared/services/GeneralService";
+import { HttpClient } from "@angular/common/http";
+import { ApiService } from "../../shared/services/ApiServices";
 
 @Component({
-  selector: 'sd-tabs',
-  templateUrl: 'tabs.component.html',
-  styleUrls: [ 'tabs.component.css' ]
+  selector: "sd-tabs",
+  templateUrl: "tabs.component.html",
+  styleUrls: ["tabs.component.css"]
 })
 export class TabsComponent implements OnInit, AfterContentInit {
   listModules: any[] = [
     {
-      id: 'opportunities',
-      title: 'Opportunity'
+      id: "opportunities",
+      title: "Opportunity"
     },
     {
-      id: 'vehicle_stocks',
-      title: 'Vehicle Stocks'
+      id: "vehicle_stocks",
+      title: "Vehicle Stocks"
     },
     {
-      id: 'drivers',
-      title: 'Drivers'
+      id: "drivers",
+      title: "Drivers"
     },
     {
-      id: 'customers',
-      title: 'Customers'
+      id: "customers",
+      title: "Customers"
     }
   ];
   dynamicTabs: TabComponent[] = [];
@@ -62,20 +62,18 @@ export class TabsComponent implements OnInit, AfterContentInit {
   constructor(
     private _componentFactoryResolver: ComponentFactoryResolver,
     public generalService: GeneralService,
-    private http: HttpClient
+    private http: HttpClient,
+    public apiService: ApiService
   ) {}
 
   ngOnInit() {
-    this.userData = JSON.parse(localStorage.getItem('user_data'));
+    this.userData = JSON.parse(localStorage.getItem("user_data"));
     const params = {
       group_id: this.userData.group_id,
       company_id: this.userData.company_id
     };
     this.http
-      .post<{ success: object }>(
-        Config.BASE_URL + 'api/home-getDropdownData',
-        params
-      )
+      .post<{ success: object }>(this.apiService.homeGetDropdownDataUrl, params)
       .subscribe((response: any) => {
         response = response.reduce(
           (acc: any, cur: any) => [
@@ -85,18 +83,18 @@ export class TabsComponent implements OnInit, AfterContentInit {
           []
         );
         for (var i = 0; i < response.length; i++) {
-          if (response[i].lable_name == 'Lead') {
-            response[i].title = 'Opportunity';
-            response[i].id = 'opportunities';
-          } else if (response[i].lable_name == 'Stock') {
-            response[i].title = 'Vehicle Stock';
-            response[i].id = 'vehicle_stocks';
-          } else if (response[i].lable_name == 'Driver') {
-            response[i].title = 'Driver';
-            response[i].id = 'drivers';
-          } else if (response[i].lable_name == 'Customer') {
-            response[i].title = 'Customer';
-            response[i].id = 'customers';
+          if (response[i].lable_name == "Lead") {
+            response[i].title = "Opportunity";
+            response[i].id = "opportunities";
+          } else if (response[i].lable_name == "Stock") {
+            response[i].title = "Vehicle Stock";
+            response[i].id = "vehicle_stocks";
+          } else if (response[i].lable_name == "Driver") {
+            response[i].title = "Driver";
+            response[i].id = "drivers";
+          } else if (response[i].lable_name == "Customer") {
+            response[i].title = "Customer";
+            response[i].id = "customers";
           } else {
             response[i].title = response[i].modulename;
             response[i].id = response[i].modulename;
@@ -111,7 +109,7 @@ export class TabsComponent implements OnInit, AfterContentInit {
   // contentChildren are set
   ngAfterContentInit() {
     // get all active tabs
-    const activeTabs = this.tabs.filter((tab) => tab.active);
+    const activeTabs = this.tabs.filter(tab => tab.active);
 
     // if there is no active tab set, activate the first
     if (activeTabs.length === 0) {
@@ -127,10 +125,8 @@ export class TabsComponent implements OnInit, AfterContentInit {
     tabId: string
   ) {
     // Before pushing it into the tabs, find whether same tab exists
-    const foundInDynamicTab = this.dynamicTabs.find(
-      (obj) => obj.tabId === tabId
-    );
-    const foundInHiddenTab = this.hiddenTabs.find((obj) => obj.tabId === tabId);
+    const foundInDynamicTab = this.dynamicTabs.find(obj => obj.tabId === tabId);
+    const foundInHiddenTab = this.hiddenTabs.find(obj => obj.tabId === tabId);
 
     if (foundInDynamicTab || foundInHiddenTab) {
       if (foundInDynamicTab) {
@@ -190,9 +186,9 @@ export class TabsComponent implements OnInit, AfterContentInit {
 
     this.dynamicTabs.push(hiddenTab);
 
-    this.tabs.toArray().forEach((tab) => (tab.active = false));
-    this.hiddenTabs.forEach((tab) => (tab.active = false));
-    this.dynamicTabs.forEach((tab) => (tab.active = false));
+    this.tabs.toArray().forEach(tab => (tab.active = false));
+    this.hiddenTabs.forEach(tab => (tab.active = false));
+    this.dynamicTabs.forEach(tab => (tab.active = false));
 
     // activate the tab the user has clicked on.
     hiddenTab.active = true;
@@ -203,8 +199,8 @@ export class TabsComponent implements OnInit, AfterContentInit {
 
   selectTab(tab: TabComponent) {
     // deactivate all tabs
-    this.tabs.toArray().forEach((tab) => (tab.active = false));
-    this.dynamicTabs.forEach((tab) => (tab.active = false));
+    this.tabs.toArray().forEach(tab => (tab.active = false));
+    this.dynamicTabs.forEach(tab => (tab.active = false));
 
     // activate the tab the user has clicked on.
     tab.active = true;
@@ -234,7 +230,7 @@ export class TabsComponent implements OnInit, AfterContentInit {
   }
 
   closeActiveTab() {
-    const activeTabs = this.dynamicTabs.filter((tab) => tab.active);
+    const activeTabs = this.dynamicTabs.filter(tab => tab.active);
     if (activeTabs.length > 0) {
       // close the 1st active tab (should only be one at a time)
       this.closeTab(activeTabs[0]);

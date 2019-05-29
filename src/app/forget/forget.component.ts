@@ -1,38 +1,43 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Component } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { HttpClient } from "@angular/common/http";
+import { HttpErrorResponse } from "@angular/common/http";
+import { ApiService } from "./../shared/services/ApiServices";
 /**
  * This class represents the lazy loaded AboutComponent.
  */
 @Component({
-  selector: 'sd-forget',
-  templateUrl: 'forget.component.html',
-  styleUrls: [ 'forget.component.css' ]
+  selector: "sd-forget",
+  templateUrl: "forget.component.html",
+  styleUrls: ["forget.component.css"]
 })
 export class ForgetComponent {
   public _token: any;
   user = {
-    email: ''
+    email: ""
   };
 
   forgetForm: FormGroup;
   isEmailError: Boolean = false;
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    public apiService: ApiService
+  ) {}
 
   onSubmit() {
     if (this.user) {
       this.http
         .post<{ success: object }>(
-          'http://10.0.0.3:8080/api/password/email',
+          "http://10.0.0.3:8080/api/password/email",
           this.user
         )
         .subscribe(
-          (response) => {
-            console.log('Success ', JSON.stringify(response));
+          response => {
+            console.log("Success ", JSON.stringify(response));
             this._token = response.success;
             localStorage.setItem(
-              'reset_password_token',
+              "reset_password_token",
               JSON.stringify(this._token.token)
             );
           },
@@ -40,7 +45,7 @@ export class ForgetComponent {
             this.isEmailError = true;
 
             setTimeout(() => {
-              console.log('hide');
+              console.log("hide");
               this.isEmailError = false;
             }, 5000);
           }
