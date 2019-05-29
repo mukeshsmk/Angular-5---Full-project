@@ -2,6 +2,9 @@
 logs
 *.log
 
+# vs code files
+*code-workspace
+
 # Runtime data
 pids
 *.pid
@@ -50,6 +53,7 @@ lib
 test
 tmp
 cypress/videos
+.vscode
 
 gulpfile.js
 gulpfile.js.map

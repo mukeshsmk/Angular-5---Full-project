@@ -1,0 +1,38 @@
+.btn-default {
+  color: #333;
+  border-color: #8c8c8c;
+}
+
+.btn-default:hover {
+  background-color: #d4d4d4;
+  border-color: #8c8c8c;
+}
+
+.card-header a {
+  color: #3e3f44;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.fa {
+  float: left;
+  font-size: 25px;
+  margin: 0px 6px 0px 0px;
+  color: #0747a6 !important;
+}
+
+.btn-info {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+
+.btn-info:hover {
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #269abc;
+}
+
+.pointer {
+  cursor: pointer;
+}

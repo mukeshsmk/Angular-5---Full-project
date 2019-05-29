@@ -1,0 +1,49 @@
+.small-box {
+  border-radius: 2px;
+  position: relative;
+  display: block;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid red;
+  text-align: center;
+}
+
+.small-box > .inner {
+  padding: 10px;
+}
+
+.text-primary {
+  color: #337ab7;
+  background-color: #f4f7f9;
+}
+
+.small-box h3,
+.small-box p {
+  z-index: 5;
+}
+
+.small-box h3 {
+  font-size: 38px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  white-space: nowrap;
+  padding: 0;
+  color: #337ab7;
+}
+
+.small-box p {
+  font-size: 15px;
+  font-weight: 200;
+  color: #337ab7;
+}
+
+.canvas {
+  color: #dddddd;
+  border: 2px solid #e9e7e7;
+  padding: 15px;
+  background-color: #f9f9f9;
+  margin-bottom: 30px;
+  width: 832px;
+  height: 416px;
+}

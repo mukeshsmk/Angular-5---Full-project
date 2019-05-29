@@ -1,0 +1,918 @@
+<sd-tabs>
+  <sd-tab>
+    <div class="loader" *ngIf="loaderOne"></div>
+
+    <div class="main-content">
+      <div class="container-fluid">
+        <div class="card">
+          <div class="row mb-2">
+            <div [ngSwitch]="module">
+              <ng-template [ngSwitchCase]="'opportunities'">
+                <img class="module_logo_book" src="/assets/images/book.png" /><span
+                  style="font-size:18px;">Opportunity</span>
+                <div class="col-3">
+                  <select class="form-control form-list" (change)="allocate($event.target.value)"
+                    *ngIf="userData.roleid == 3">
+                    <option value="allLeads" selected="">All</option>
+                    <option value="allocated">Allocated Leads</option>
+                    <option value="unallocated">Un Allocated Leads</option>
+                  </select>
+                </div>
+              </ng-template>
+              <ng-template [ngSwitchCase]="'vehicle_stocks'">
+                <img class="module_logo" src="/assets/images/stock.png" /><span style="font-size:18px;">Vehicle
+                  Stock</span>
+                <div class="col-3">
+                  <select class="form-control form-list" (change)="vehicleStockType($event.target.value)"
+                    name="vehicleType">
+                    <option value="" selected="">All</option>
+                    <option value="New">New Vehicle</option>
+                    <option value="Used">Used Vehicle</option>
+                    <option value="Demo">Demo</option>
+                  </select>
+                </div>
+              </ng-template>
+              <ng-template [ngSwitchCase]="'drivers'">
+                <img class="module_logo" src="/assets/images/driver.png" /><span style="font-size:18px;">Driver</span>
+              </ng-template>
+              <ng-template [ngSwitchCase]="'customers'">
+                <img class="module_logo" src="/assets/images/customer.png" /><span
+                  style="font-size:18px;">Customer</span>
+              </ng-template>
+            </div>
+
+            <div class="col">
+              <button (click)="refresh()" type="button" class="btn btn-secondary pull-right mr-1 tooltip">
+                <i data-toggle="tooltip" data-original-title="Refresh" title="Edit Lead" class="fa fa-refresh"
+                  aria-hidden="true"></i>
+                <span class="tooltiptext tooltiptext-top">Refresh</span>
+              </button>
+
+              <button id="createNewLead" type="button" class="btn btn-secondary pull-right mr-1 tooltip" *ngIf="
+                  module == 'customers' && permission.create_permission == 1
+                " (click)="openNewCustomerModal()">
+                <i data-toggle="tooltip" data-original-title="New Lead" class="fa fa-plus">
+                </i>
+                <span class="tooltiptext tooltiptext-top">Create</span>
+              </button>
+              <button id="createNewLead" type="button" class="btn btn-secondary pull-right mr-1 tooltip"
+                *ngIf="module == 'drivers' && permission.create_permission == 1" (click)="openNewCustomerModal()">
+                <i data-toggle="tooltip" data-original-title="New Lead" class="fa fa-plus">
+                </i>
+                <span class="tooltiptext tooltiptext-top">Create</span>
+              </button>
+              <button type="button" class="btn btn-secondary pull-right mr-1 tooltip" *ngIf="
+                  module == 'opportunities' && permission.create_permission == 1
+                " (click)="openNewOpportunityModal()">
+                <i data-toggle="tooltip" data-original-title="Quick Lead" class="fa fa-bolt">
+                </i>
+                <span class="tooltiptext tooltiptext-top">Quick Lead</span>
+              </button>
+              <button type="button" class="btn btn-secondary pull-right mr-1" *ngIf="changeLead"
+                (click)="getSearchModal()">
+                <i class="fa fa-user"></i>
+              </button>
+
+            </div>
+          </div>
+          <div class="row desktop-row">
+            <div class="col-6">
+              <div class="dataTables_length mt-4 mb-2" id="example_length">
+                <label class="d-flex align-top">Show
+                  <select (change)="pageCount($event.target.value)" name="example_length" aria-controls="example"
+                    class="form-control w-auto-select input-sm">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                  entries</label>
+              </div>
+            </div>
+            <div class="col-6" style="padding: 0;">
+              <div id="example_filter" class="dataTables_filter">
+                <label class="d-flex mt-4 float-right">Search:<input type="search"
+                    (keyup)="searchList($event.target.value)" class="form-control  w-auto input-sm" placeholder=""
+                    aria-controls="example" />
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row table-desktop">
+            <div class="col-md-12">
+              <div class="card-body" [ngSwitch]="module">
+                <ng-template [ngSwitchCase]="'opportunities'">
+                  <div class="table-responsive">
+                    <table class="table table-1">
+                      <thead class=" text-primary pointer">
+                        <th class="checkbox">
+                          <input type="checkbox" (change)="checkedall($event)" id="blahA" value="all" />
+                        </th>
+                        <th (click)="sortData('id')">
+                          Id
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('name')"></i>
+                          </a>
+                          Name
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('company__c')"></i>
+                          </a>
+                          Company
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('phone__c')"></i>
+                          </a>
+                          Phone
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('email__c')"></i>
+                          </a>
+                          Email
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('name')"></i>
+                          </a>
+                          LeadOwner
+                        </th>
+                        <th *ngIf="permission.edit_permission == 1">
+                          <a href="#"> </a>
+                          Edit
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let opportunity of opportunityList">
+                          <td>
+                            <input type="checkbox" id="blahB" name="selected" value="{{ opportunity.id }}"
+                              (change)="checked()" class="checkBox" #checkedAll />
+                          </td>
+                          <td>
+                            {{ opportunity.id }}
+                          </td>
+                          <td>
+                            <a href="#" (click)="viewPersondetails(opportunity)">
+                              <div class="tooltip">
+                                {{ opportunity.name }}
+                                <span class="tooltiptext">Requested Type: Test Drive <br />
+                                  Model of interest: A10
+                                </span>
+                              </div>
+                            </a>
+                          </td>
+                          <td (dblclick)="inLineEdit(opportunity)">
+                            <span *ngIf="editId != opportunity.id">
+                              {{ opportunity.company__c }}
+                            </span>
+                            <input type="text" [(ngModel)]="opp_Company" class="form-control"
+                              *ngIf="editId == opportunity.id" />
+                          </td>
+                          <td (dblclick)="inLineEdit(opportunity)">
+                            <span *ngIf="editId != opportunity.id">
+                              {{ opportunity.phone__c }}
+                            </span>
+                            <input type="number" [(ngModel)]="opp_Phone" class="form-control"
+                              *ngIf="editId == opportunity.id" />
+                          </td>
+                          <td (dblclick)="inLineEdit(opportunity)">
+                            <span *ngIf="editId != opportunity.id">
+                              {{ opportunity.email__c }}
+                            </span>
+                            <input type="text" [(ngModel)]="opp_Email" class="form-control"
+                              *ngIf="editId == opportunity.id" />
+                          </td>
+                          <td>
+                            {{ opportunity.lead_owner_data }}
+                          </td>
+                          <td *ngIf="permission.edit_permission == 1">
+                            <span class="fas fa-edit pointer" (click)="openOpportunityModal(opportunity)"
+                              title="Edit Lead"></span>
+                            <span class="fas fa-check pointer" (click)="updateLead(opportunity)" *ngIf="
+                                permission.edit_permission == 1 &&
+                                editId == opportunity.id
+                              "></span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+
+                <ng-template [ngSwitchCase]="'vehicle_stocks'">
+                  <div class="table-responsive">
+                    <table class="table table-2 mt-4">
+                      <thead class=" text-primary pointer">
+                        <!-- <th>
+                          <input type="checkbox" id="blahA" value="1" />
+                        </th> -->
+                        <th (click)="sortData('id')">
+                          id
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('name')"></i>
+                          </a>
+                          StockNumber
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('vin__c')"></i>
+                          </a>
+                          VIN
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('rego_no__c')"></i>
+                          </a>
+                          REG No.
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('vehicle_type__c')"></i>
+                          </a>
+                          VehicleType
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('fuel_type__c')"></i>
+                          </a>
+                          FuelType
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('make__c')"></i>
+                          </a>
+                          Make
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('model_name__c')"></i>
+                          </a>
+                          Model
+                        </th>
+                        <th *ngIf="permission.edit_permission == 1">
+                          <a href="#"> </a>
+                          Edit
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let opportunity of opportunityList">
+                          <!-- <td>
+                            <input type="checkbox" id="blahA" value="1" />
+                          </td> -->
+                          <td>
+                            {{ opportunity.id }}
+                          </td>
+                          <td>
+                            <a href="#" (click)="viewPersondetails(opportunity)">{{ opportunity.name }}</a>
+                          </td>
+                          <td>
+                            {{ opportunity.vin__c }}
+                          </td>
+                          <td>
+                            {{ opportunity.rego_no__c }}
+                          </td>
+                          <td>
+                            {{ opportunity.vehicle_type__c }}
+                          </td>
+                          <td>
+                            {{ opportunity.fuel_type__c }}
+                          </td>
+                          <td>
+                            {{ opportunity.make__c }}
+                          </td>
+                          <td>
+                            {{ opportunity.model_name__c }}
+                          </td>
+                          <td *ngIf="permission.edit_permission == 1">
+                            <span class="fas fa-edit pointer" (click)="updatevehicleStockModal(opportunity)"></span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+
+                <ng-template [ngSwitchCase]="'drivers'">
+                  <div class="table-responsive">
+                    <table class="table mt-4">
+                      <thead class=" text-primary pointer">
+                        <!-- <th>
+                          <input type="checkbox" id="blahA" value="1" />
+                        </th> -->
+                        <th (click)="sortData('id')">
+                          ID
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('name')"></i>
+                          </a>
+                          Name
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('customer_type__c')"></i>
+                          </a>
+                          CustomerType
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('email')"></i>
+                          </a>
+                          Email
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('phone')"></i>
+                          </a>
+                          Mobile
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('accountid')"></i>
+                          </a>
+                          AccountNumber
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('createddate')"></i>
+                          </a>
+                          Created Date
+                        </th>
+                        <th *ngIf="permission.edit_permission == 1">
+                          <a href="#"> </a>
+                          Edit
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let opportunity of opportunityList">
+                          <!-- <td>
+                            <input type="checkbox" id="blahA" value="1" />
+                          </td> -->
+                          <td>
+                            {{ opportunity.id }}
+                          </td>
+                          <td>
+                            <a href="#" (click)="viewPersondetails(opportunity)">{{ opportunity.name }}</a>
+                          </td>
+                          <td>
+                            {{ opportunity.customer_type__c }}
+                          </td>
+                          <td>
+                            {{ opportunity.email }}
+                          </td>
+                          <td>
+                            {{ opportunity.phone }}
+                          </td>
+                          <td>
+                            {{ opportunity.accountid }}
+                          </td>
+                          <td>
+                            {{ opportunity.createddate }}
+                          </td>
+                          <td *ngIf="permission.edit_permission == 1">
+                            <span class="fas fa-edit pointer" (click)="updateDriverModal(opportunity)"></span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+
+                <ng-template [ngSwitchCase]="'customers'">
+                  <div class="table-responsive">
+                    <table class="table mt-4">
+                      <thead class=" text-primary pointer">
+                        <!-- <th>
+                          <input type="checkbox" id="blahA" value="1" />
+                        </th> -->
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('name')"></i>
+                          </a>
+                          Name
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('business_email__c')"></i>
+                          </a>
+                          Email
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('mobile__c')"></i>
+                          </a>
+                          MobilePhone
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('account__c')"></i>
+                          </a>
+                          Account
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('accountnumber')"></i>
+                          </a>
+                          AccountNumber
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('phone')"></i>
+                          </a>
+                          Phone
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('state__c')"></i>
+                          </a>
+                          State
+                        </th>
+                        <th>
+                          <a href="#">
+                            <i class="fas fa-sort-amount-down" (click)="sortData('billing_postcode__c')"></i>
+                          </a>
+                          PostalCode
+                        </th>
+                        <th *ngIf="permission.edit_permission == 1">
+                          <a href="#"> </a>
+                          Edit
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let opportunity of opportunityList">
+                          <!--<td>
+                            <input type="checkbox" id="blahA" value="1" />
+                          </td>-->
+                          <td>
+                            {{ opportunity.id }}
+                          </td>
+                          <td>
+                            <a href="#" (click)="viewPersondetails(opportunity)">{{ opportunity.name }}</a>
+                          </td>
+                          <td>
+                            {{ opportunity.business_email__c }}
+                          </td>
+                          <td>
+                            {{ opportunity.mobile__c }}
+                          </td>
+                          <td>
+                            {{ opportunity.account__c }}
+                          </td>
+                          <td>
+                            {{ opportunity.accountnumber }}
+                          </td>
+                          <td>
+                            {{ opportunity.phone }}
+                          </td>
+                          <td>
+                            {{ opportunity.state__c }}
+                          </td>
+                          <td>
+                            {{ opportunity.billing_postcode__c }}
+                          </td>
+                          <td *ngIf="permission.edit_permission == 1">
+                            <span class="fas fa-edit pointer" (click)="updateCustomerModal(opportunity)"></span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile View responsive tables-->
+
+    <div class="table-mobile" [ngSwitch]="module">
+      <ng-template [ngSwitchCase]="'opportunities'">
+        <div class="table_row" *ngFor="let opportunity of opportunityList">
+          <div class="table_small">
+            <div class="table_cell">Id</div>
+            <div class="table_cell">{{ opportunity.id }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">Name</div>
+            <div class="table_cell">
+              <a href="#" (click)="viewPersondetails(opportunity)">{{
+                opportunity.name
+              }}</a>
+            </div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">Company</div>
+            <div class="table_cell">{{ opportunity.company__c }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">Phone</div>
+            <div class="table_cell">{{ opportunity.phone__c }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">Email</div>
+            <div class="table_cell">{{ opportunity.email__c }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">LeadOwner</div>
+            <div class="table_cell">{{ opportunity.lead_owner_data }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">Edit</div>
+            <div class="table_cell">
+              <span class="fas fa-edit pointer" (click)="openOpportunityModal(opportunity)" title="Edit Lead"></span>
+              <span class="fas fa-check pointer" (click)="updateLead(opportunity)" *ngIf="
+                  permission.edit_permission == 1 && editId == opportunity.id
+                "></span>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+
+
+
+    <div class="table-mobile" [ngSwitch]="module">
+      <ng-template [ngSwitchCase]="'vehicle_stocks'">
+        <div class="table_row" *ngFor="let opportunity of opportunityList">
+          <div class="table_small">
+            <div class="table_cell">Id</div>
+            <div class="table_cell">{{ opportunity.id }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">StockNumber</div>
+            <div class="table_cell">
+              <a href="#" (click)="viewPersondetails(opportunity)">{{ opportunity.name }}</a>
+            </div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">VIN</div>
+            <div class="table_cell"> {{ opportunity.vin__c }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">REG No.</div>
+            <div class="table_cell"> {{ opportunity.rego_no__c }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">VehicleType</div>
+            <div class="table_cell">{{ opportunity.vehicle_type__c }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell"> FuelType</div>
+            <div class="table_cell"> {{ opportunity.fuel_type__c }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">Make</div>
+            <div class="table_cell"> {{ opportunity.make__c }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">Model</div>
+            <div class="table_cell">{{ opportunity.model_name__c }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">Edit</div>
+            <div class="table_cell">
+              <span class="fas fa-edit pointer" (click)="openOpportunityModal(opportunity)" title="Edit Lead"></span>
+              <span class="fas fa-check pointer" (click)="updateLead(opportunity)" *ngIf="
+                    permission.edit_permission == 1 && editId == opportunity.id
+                  "></span>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+
+
+
+    <div class="table-mobile" [ngSwitch]="module">
+      <ng-template [ngSwitchCase]="'drivers'">
+        <div class="table_row" *ngFor="let opportunity of opportunityList">
+          <div class="table_small">
+            <div class="table_cell">Id</div>
+            <div class="table_cell">{{ opportunity.id }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell"> Name</div>
+            <div class="table_cell">
+              <a href="#" (click)="viewPersondetails(opportunity)">{{ opportunity.name }}</a>
+            </div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">CustomerType</div>
+            <div class="table_cell">{{ opportunity.customer_type__c }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">Email</div>
+            <div class="table_cell"> {{ opportunity.email }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">Mobile</div>
+            <div class="table_cell">{{ opportunity.phone }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">Account</div>
+            <div class="table_cell">{{ opportunity.phone }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell"> AccountNumber</div>
+            <div class="table_cell"> {{ opportunity.accountid }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">Created Date</div>
+            <div class="table_cell"> {{ opportunity.createddate }}</div>
+          </div>
+
+          <div class="table_small">
+            <div class="table_cell">Edit</div>
+            <div class="table_cell">
+              <span class="fas fa-edit pointer" (click)="openOpportunityModal(opportunity)" title="Edit Lead"></span>
+              <span class="fas fa-check pointer" (click)="updateLead(opportunity)" *ngIf="
+                      permission.edit_permission == 1 && editId == opportunity.id
+                    "></span>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+
+
+    <div class="table-mobile" [ngSwitch]="module">
+      <ng-template [ngSwitchCase]="'customers'">
+        <div class="table_row" *ngFor="let opportunity of opportunityList">
+          <div class="table_small">
+            <div class="table_cell">Id</div>
+            <div class="table_cell">{{ opportunity.id }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell"> Name</div>
+            <div class="table_cell">
+              <a href="#" (click)="viewPersondetails(opportunity)">{{ opportunity.name }}</a>
+            </div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">Email</div>
+            <div class="table_cell"> {{ opportunity.business_email__c }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell"> Mobile</div>
+            <div class="table_cell">{{ opportunity.mobile__c }}</div>
+          </div>
+
+          <div class="table_small">
+            <div class="table_cell">Account</div>
+            <div class="table_cell"> {{ opportunity.account__c }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell"> AccountNumber</div>
+            <div class="table_cell"> {{ opportunity.accountnumber }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">Phone</div>
+            <div class="table_cell"> {{ opportunity.phone }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">State</div>
+            <div class="table_cell"> {{ opportunity.state__c }}</div>
+          </div>
+          <div class="table_small">
+            <div class="table_cell">PostalCode</div>
+            <div class="table_cell"> {{ opportunity.billing_postcode__c }}</div>
+          </div>
+
+          <div class="table_small">
+            <div class="table_cell">Edit</div>
+            <div class="table_cell">
+              <span class="fas fa-edit pointer" (click)="openOpportunityModal(opportunity)" title="Edit Lead"></span>
+              <span class="fas fa-check pointer" (click)="updateLead(opportunity)" *ngIf="
+                      permission.edit_permission == 1 && editId == opportunity.id
+                    "></span>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+
+
+
+    <div class="row w-auto">
+      <div class="col-sm-5 p-0">
+        <div class="dataTables_info mt-4" id="example_info" role="status" aria-live="polite">
+          Showing {{ opportunityListData.from }} to
+          {{ opportunityListData.to }} of
+          {{ opportunityListData.total }} entries
+        </div>
+      </div>
+      <div class="col-sm-7">
+        <div class="dataTables_paginate paging_simple_numbers d-flex float-right pointer" id="example_paginate">
+          <ul class="pagination">
+            <ul class="pagination justify-content-end">
+              <li class="page-item" [ngClass]="{ disabled: opportunityListData.current_page === 1 }"
+                (click)="pageNumber(opportunityListData.current_page - 1)">
+                <a class="page-link">Previous</a>
+              </li>
+              <li class="page-item" [ngClass]="{
+                  'active bg-dark': opportunityListData.current_page == 1
+                }" *ngIf="
+                  opportunityListData.current_page !=
+                  opportunityListData.last_page
+                " (click)="pageNumber(1)">
+                <a class="page-link">1</a>
+              </li>
+              <li class="page-item" *ngIf="opportunityListData.current_page >= 5">
+                <a class="page-link">...</a>
+              </li>
+              <li class="page-item" *ngIf="opportunityListData.current_page >= 5"
+                (click)="pageNumber(opportunityListData.current_page - 1)">
+                <a class="page-link">{{
+                  opportunityListData.current_page - 1
+                }}</a>
+              </li>
+              <li class="page-item active bg-dark" *ngIf="
+                  opportunityListData.current_page >= 5 &&
+                  opportunityListData.last_page !=
+                    opportunityListData.current_page
+                " (click)="pageNumber(opportunityListData.current_page)">
+                <a class="page-link">{{ opportunityListData.current_page }}</a>
+              </li>
+              <li class="page-item" *ngIf="
+                  opportunityListData.current_page >= 5 &&
+                  opportunityListData.current_page !=
+                    opportunityListData.last_page &&
+                  opportunityListData.current_page + 1 !=
+                    opportunityListData.last_page
+                " (click)="pageNumber(opportunityListData.current_page + 1)">
+                <a class="page-link">{{
+                  opportunityListData.current_page + 1
+                }}</a>
+              </li>
+              <li class="page-item" [ngClass]="{
+                  'active bg-dark': opportunityListData.current_page == 2
+                }" *ngIf="
+                  opportunityListData.current_page < 5 &&
+                  opportunityListData.last_page > 2
+                " (click)="pageNumber(2)">
+                <a class="page-link">2</a>
+              </li>
+              <li class="page-item" [ngClass]="{
+                  'active bg-dark': opportunityListData.current_page == 3
+                }" *ngIf="
+                  opportunityListData.current_page < 5 &&
+                  opportunityListData.last_page > 3
+                " (click)="pageNumber(3)">
+                <a class="page-link">3</a>
+              </li>
+              <li class="page-item" [ngClass]="{
+                  'active bg-dark': opportunityListData.current_page == 4
+                }" *ngIf="
+                  opportunityListData.current_page < 5 &&
+                  opportunityListData.last_page > 4
+                " (click)="pageNumber(4)">
+                <a class="page-link">4</a>
+              </li>
+              <li class="page-item" [ngClass]="{
+                  'active bg-dark': opportunityListData.current_page == 5
+                }" *ngIf="
+                  opportunityListData.current_page < 5 &&
+                  opportunityListData.last_page > 5
+                " (click)="pageNumber(5)">
+                <a class="page-link">5</a>
+              </li>
+
+              <li class="page-item" *ngIf="
+                  opportunityListData.last_page -
+                    opportunityListData.current_page >
+                    1 && opportunityListData.last_page > 5
+                ">
+                <a class="page-link">...</a>
+              </li>
+
+              <li class="page-item" [ngClass]="{
+                  'active bg-dark':
+                    opportunityListData.current_page ==
+                    opportunityListData.last_page
+                }" (click)="pageNumber(opportunityListData.last_page)">
+                <a class="page-link">{{ opportunityListData.last_page }}</a>
+              </li>
+              <li class="page-item" [ngClass]="{
+                  disabled:
+                    opportunityListData.current_page ===
+                    opportunityListData.last_page
+                }" (click)="pageNumber(opportunityListData.current_page + 1)">
+                <a class="page-link">Next</a>
+              </li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!--<ng-template let-oppournityModal="data" #oppournityModal>-->
+    <div class="modal modal-back full-size" tabindex="-1" role="dialog"
+      [ngClass]="{ fade: opportunityOpen, 'd-flex': !opportunityOpen }">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="w-100 text-center modal-title">{{modal_title}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" [ngSwitch]="module">
+            <ng-template [ngSwitchCase]="'opportunities'">
+              <div *ngIf="!opportunityOpen">
+                <sd-opportunity-form (closeModalEvent)="onClose($event)" [opportunity]="modalData" [type]="formType"
+                  (updateOpportunity)="updateOpportunity($event)"></sd-opportunity-form>
+              </div>
+            </ng-template>
+            <ng-template [ngSwitchCase]="'vehicle_stocks'">
+              <div *ngIf="!opportunityOpen">
+                <sd-vehiclestock-form (closeModalEvent)="onClose($event)" [vehicleStock]="modalData" [type]="formType"
+                  (updatevehicleStock)="updatevehicleStock($event)"></sd-vehiclestock-form>
+              </div>
+            </ng-template>
+            <ng-template [ngSwitchCase]="'drivers'">
+              <div *ngIf="!opportunityOpen">
+                <sd-driver-form (closeModalEvent)="onClose($event)" [driver]="modalData" [type]="formType"
+                  (updateDriver)="updateDriver($event)"></sd-driver-form>
+              </div>
+            </ng-template>
+            <ng-template [ngSwitchCase]="'customers'">
+              <div *ngIf="!opportunityOpen">
+                <sd-customer-form (closeModalEvent)="onClose($event)" [customer]="modalData" [type]="formType"
+                  (updateCustomer)="updateCustomer($event)"></sd-customer-form>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal modal-back full-size" tabindex="-1" role="dialog"
+      [ngClass]="{ fade: !searchOpen, 'd-flex': searchOpen }">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title text-center w-100">Lead Search</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeSeacrch()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input [(ngModel)]="sdname" class="form-control w-75 float-left" type="search" />
+            <span style="padding: 10px 30px;" class="searchSD fa fa-search w-25 text-right pointer"
+              (click)="searchUserdetails()"></span>
+            <hr />
+            <div class="text-center" *ngIf="Searchwait">
+              <p>Loading...</p>
+            </div>
+            <table *ngIf="searchUserData" class="table table-bordered">
+              <tbody>
+                <tr *ngFor="let data of searchUserData">
+                  <td align="center">
+                    <a class="fillFirstName" href="#" (click)="assign(data.id)">{{ data.firstname }}</a>
+                  </td>
+                  <td align="center">{{ data.lastname }}</td>
+                  <td>{{ data.email }}</td>
+                  <td>{{ data.createdate }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--</ng-template> -->
+  </sd-tab>
+</sd-tabs>
+
+<ng-template let-opportunity="data" #personDetails>
+  <sd-opportunity [opportunity]="opportunity"></sd-opportunity>
+</ng-template>
+<ng-template let-stock="data" #stockDetails>
+  <sd-stock [stock]="stock"></sd-stock>
+</ng-template>
+<ng-template let-driver="data" #driverDetails>
+  <sd-driver [driver]="driver"></sd-driver>
+</ng-template>
+<ng-template let-customer="data" #customerDetails>
+  <sd-customer [customer]="customer"></sd-customer>
+</ng-template>
+<ng-template let-data="data" #dashboardDetails>
+  <sd-dashboard></sd-dashboard>
+</ng-template>
+<ng-template let-data="data" #profileDetails>
+  <sd-profile></sd-profile>
+</ng-template>
+<ng-template let-data="data" #calendarDetails>
+  <sd-user-dairy></sd-user-dairy>
+</ng-template>
