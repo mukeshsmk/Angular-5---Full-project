@@ -1,7 +1,30 @@
 <sd-tabs>
   <sd-tab>
     <div class="loader" *ngIf="loaderOne"></div>
-
+    <div *ngIf="errAlert">
+      <div class="alert alert-danger alert-dismissible in">
+        <a
+          href="#"
+          class="close"
+          data-dismiss="alert"
+          aria-label="close"
+          >×</a
+        >
+        <strong>Faliure!</strong> Something went wrong! Please try after sometime..
+      </div>
+    </div>
+    <div *ngIf="successAlert">
+      <div class="alert alert-success alert-dismissible in">
+        <a
+          href="#"
+          class="close"
+          data-dismiss="alert"
+          aria-label="close"
+          >×</a
+        >
+        <strong>Success!</strong> Inserted succesfully!
+      </div>
+    </div>
     <div class="main-content">
       <div class="container-fluid">
         <div class="card">

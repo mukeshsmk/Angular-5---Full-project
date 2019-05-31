@@ -59,6 +59,8 @@ export class TableListComponent {
   editId: any;
   editTag: any;
   modal_title: any;
+  errAlert: Boolean = false;
+  successAlert: Boolean = false;
 
   searchTerm: string;
   constructor(
@@ -327,8 +329,15 @@ export class TableListComponent {
       .post<{ success: object }>(endpoint, event)
       .subscribe((response: any) => {
         console.log(response);
+        //this.opportunityOpen = true;
+        if (response.StatusCode == 200) {
+          this.successAlert = true;
+        } else {
+          this.errAlert = true;
+        }
         this.opportunityOpen = true;
         this.modalData = [];
+        this.loadData(this.module, {});
       });
   }
   //vehicleStock Modal
@@ -351,6 +360,11 @@ export class TableListComponent {
       .post<{ success: object }>(endpoint, event)
       .subscribe((response: any) => {
         console.log(response);
+        if (response.StatusCode == 200) {
+          this.successAlert = true;
+        } else {
+          this.errAlert = true;
+        }
         this.opportunityOpen = true;
         this.modalData = [];
       });

@@ -57,8 +57,7 @@
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;" *ngIf="type == 'edit'">
             <div class="form-group">
               <label>Lead Record Type</label>
-              <input type="text" class="form-control" name="record_type_name__c" id="record_type_name__c_lead"
-                formControlName="record_type_name__c_lead" value=" {{ opportunity.record_type_name__c_lead }}" />
+              <input type="text" class="form-control"  />
             </div>
           </div>
         </div>
@@ -247,8 +246,8 @@
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label>Comments From Stock</label>
-              <textarea name="comments_from_stock_c__c" id="comments_from_stock_c__c_lead" class="form-control" cols="5"
-                row="20" formControlName="comments_from_stock_c__c"
+              <textarea name="comments_from_stock__c" class="form-control" cols="5"
+                row="20" formControlName="comments_from_stock__c"
                 value=" {{ opportunity.comments_from_stock_c__c }}"></textarea>
             </div>
           </div>
@@ -339,8 +338,8 @@
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label>Activity Score</label>
-              <input id="activity_score__c_lead" name="activity_score__c" type="number" class="form-control"
-                formControlName="activity_score__c_lead" value=" {{ opportunity.activity_score__c_lead }}" />
+              <input name="activity_score__c" type="number" class="form-control"
+                formControlName="activity_score__c" value=" {{ opportunity.activity_score__c }}" />
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
