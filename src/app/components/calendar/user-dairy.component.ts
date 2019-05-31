@@ -74,6 +74,7 @@ export class UserDairyComponent implements OnInit {
                   },
                   draggable: false
                 };
+                tempEvents.push(temparray);
               } else if (this.personal_events[i].type__c == "Task") {
                 temparray = {
                   start: new Date(this.personal_events[i].end_date__c),
@@ -86,6 +87,7 @@ export class UserDairyComponent implements OnInit {
                   },
                   draggable: false
                 };
+                tempEvents.push(temparray);
               } else if (this.personal_events[i].type__c == "Log a Call") {
                 temparray = {
                   start: new Date(this.personal_events[i].start_date__c),
@@ -98,8 +100,8 @@ export class UserDairyComponent implements OnInit {
                   },
                   draggable: false
                 };
+                tempEvents.push(temparray);
               }
-              tempEvents.push(temparray);
             }
             this.events = tempEvents;
             this.loaderOne = false;
