@@ -76,10 +76,10 @@
                             formControlName="name"
                           />
                           <div
-                            *ngIf="submitted && taskForm.controls.name.errors"
+                            *ngIf="submitted && ptaskForm.controls.name.errors"
                             class="error"
                           >
-                            <div *ngIf="taskForm.controls.name.errors.required">
+                            <div *ngIf="ptaskForm.controls.name.errors.required">
                               <p class="error-box margin-top-0">
                                 Name is Required
                               </p>
@@ -103,13 +103,13 @@
                           />
                           <div
                             *ngIf="
-                              submitted && taskForm.controls.subject__c.errors
+                              submitted && ptaskForm.controls.subject__c.errors
                             "
                             class="error"
                           >
                             <div
                               *ngIf="
-                                taskForm.controls.subject__c.errors.required
+                                ptaskForm.controls.subject__c.errors.required
                               "
                             >
                               <p class="error-box margin-top-0">
@@ -131,13 +131,13 @@
                           />
                           <div
                             *ngIf="
-                              submitted && taskForm.controls.assigned_to.errors
+                              submitted && ptaskForm.controls.assigned_to.errors
                             "
                             class="error"
                           >
                             <div
                               *ngIf="
-                                taskForm.controls.assigned_to.errors.required
+                                ptaskForm.controls.assigned_to.errors.required
                               "
                             >
                               <p class="error-box margin-top-0">
@@ -163,13 +163,13 @@
                           />
                           <div
                             *ngIf="
-                              submitted && taskForm.controls.end_date__c.errors
+                              submitted && ptaskForm.controls.end_date__c.errors
                             "
                             class="error"
                           >
                             <div
                               *ngIf="
-                                taskForm.controls.end_date__c.errors.required
+                                ptaskForm.controls.end_date__c.errors.required
                               "
                             >
                               <p class="error-box margin-top-0">
@@ -196,13 +196,13 @@
                           </select>
                           <div
                             *ngIf="
-                              submitted && taskForm.controls.status__c.errors
+                              submitted && ptaskForm.controls.status__c.errors
                             "
                             class="error"
                           >
                             <div
                               *ngIf="
-                                taskForm.controls.status__c.errors.required
+                                ptaskForm.controls.status__c.errors.required
                               "
                             >
                               <p class="error-box margin-top-0">
@@ -219,7 +219,7 @@
                   <button
                     type="button"
                     class="btn btn-default mr-2"
-                    (click)="onClose(taskForm)"
+                    (click)="onClose(ptaskForm)"
                   >
                     Cancel
                   </button>
@@ -269,7 +269,7 @@
                           class="form-control"
                         />
                         <div
-                          *ngIf="submitted && callForm.controls.name.errors"
+                          *ngIf="submitted && pcallForm.controls.name.errors"
                           class="error"
                         >
                           <div *ngIf="callForm.controls.name.errors.required">
@@ -295,12 +295,12 @@
                         />
                         <div
                           *ngIf="
-                            submitted && callForm.controls.subject__c.errors
+                            submitted && pcallForm.controls.subject__c.errors
                           "
                           class="error"
                         >
                           <div
-                            *ngIf="callForm.controls.subject__c.errors.required"
+                            *ngIf="pcallForm.controls.subject__c.errors.required"
                           >
                             <p class="error-box margin-top-0">
                               Subject is Required
@@ -324,13 +324,13 @@
                         ></textarea>
                         <div
                           *ngIf="
-                            submitted && callForm.controls.comments__c.errors
+                            submitted && pcallForm.controls.comments__c.errors
                           "
                           class="error"
                         >
                           <div
                             *ngIf="
-                              callForm.controls.comments__c.errors.required
+                              pcallForm.controls.comments__c.errors.required
                             "
                           >
                             <p class="error-box margin-top-0">
@@ -347,7 +347,7 @@
                     type="button"
                     class="btn btn-default"
                     data-dismiss="modal"
-                    (click)="onClose(callForm)"
+                    (click)="onClose(pcallForm)"
                   >
                     Cancel
                   </button>
@@ -401,11 +401,11 @@
                             class="form-control"
                           />
                           <div
-                            *ngIf="submitted && eventForm.controls.name.errors"
+                            *ngIf="submitted && peventForm.controls.name.errors"
                             class="error"
                           >
                             <div
-                              *ngIf="eventForm.controls.name.errors.required"
+                              *ngIf="peventForm.controls.name.errors.required"
                             >
                               <p class="error-box margin-top-0">
                                 Name is Required
@@ -429,13 +429,13 @@
                           />
                           <div
                             *ngIf="
-                              submitted && eventForm.controls.subject__c.errors
+                              submitted && peventForm.controls.subject__c.errors
                             "
                             class="error"
                           >
                             <div
                               *ngIf="
-                                eventForm.controls.subject__c.errors.required
+                              peventForm.controls.subject__c.errors.required
                               "
                             >
                               <p class="error-box margin-top-0">
@@ -463,13 +463,13 @@
                           <div
                             *ngIf="
                               submitted &&
-                              eventForm.controls.start_date__c.errors
+                              peventForm.controls.start_date__c.errors
                             "
                             class="error"
                           >
                             <div
                               *ngIf="
-                                eventForm.controls.start_date__c.errors.required
+                              peventForm.controls.start_date__c.errors.required
                               "
                             >
                               <p class="error-box margin-top-0">
@@ -494,13 +494,13 @@
                           />
                           <div
                             *ngIf="
-                              submitted && eventForm.controls.end_date__c.errors
+                              submitted && peventForm.controls.end_date__c.errors
                             "
                             class="error"
                           >
                             <div
                               *ngIf="
-                                eventForm.controls.end_date__c.errors.required
+                              peventForm.controls.end_date__c.errors.required
                               "
                             >
                               <p class="error-box margin-top-0">
@@ -527,13 +527,13 @@
                           />
                           <div
                             *ngIf="
-                              submitted && eventForm.controls.assigned_to.errors
+                              submitted && peventForm.controls.assigned_to.errors
                             "
                             class="error"
                           >
                             <div
                               *ngIf="
-                                eventForm.controls.assigned_to.errors.required
+                              peventForm.controls.assigned_to.errors.required
                               "
                             >
                               <p class="error-box margin-top-0">
@@ -558,13 +558,13 @@
                           />
                           <div
                             *ngIf="
-                              submitted && eventForm.controls.location__c.errors
+                              submitted && peventForm.controls.location__c.errors
                             "
                             class="error"
                           >
                             <div
                               *ngIf="
-                                eventForm.controls.location__c.errors.required
+                              peventForm.controls.location__c.errors.required
                               "
                             >
                               <p class="error-box margin-top-0">
@@ -605,7 +605,7 @@
                       type="button"
                       class="btn btn-default"
                       data-dismiss="modal"
-                      (click)="onClose(eventForm)"
+                      (click)="onClose(peventForm)"
                     >
                       Cancel
                     </button>
@@ -653,12 +653,12 @@
                           />
                           <div
                             *ngIf="
-                              submitted && emailForm.controls.from__c.errors
+                              submitted && pemailForm.controls.from__c.errors
                             "
                             class="error"
                           >
                             <div
-                              *ngIf="emailForm.controls.from__c.errors.required"
+                              *ngIf="pemailForm.controls.from__c.errors.required"
                             >
                               <p class="error-box margin-top-0">
                                 From is Required
@@ -680,11 +680,11 @@
                             class="form-control"
                           />
                           <div
-                            *ngIf="submitted && emailForm.controls.to__c.errors"
+                            *ngIf="submitted && pemailForm.controls.to__c.errors"
                             class="error"
                           >
                             <div
-                              *ngIf="emailForm.controls.to__c.errors.required"
+                              *ngIf="pemailForm.controls.to__c.errors.required"
                             >
                               <p class="error-box margin-top-0">
                                 To is Required
@@ -707,12 +707,12 @@
                           />
                           <div
                             *ngIf="
-                              submitted && emailForm.controls.bcc__c.errors
+                              submitted && pemailForm.controls.bcc__c.errors
                             "
                             class="error"
                           >
                             <div
-                              *ngIf="emailForm.controls.bcc__c.errors.required"
+                              *ngIf="pemailForm.controls.bcc__c.errors.required"
                             >
                               <p class="error-box margin-top-0">
                                 Bcc is Required
@@ -739,13 +739,13 @@
                           ></textarea>
                           <div
                             *ngIf="
-                              submitted && emailForm.controls.subject__c.errors
+                              submitted && pemailForm.controls.subject__c.errors
                             "
                             class="error"
                           >
                             <div
                               *ngIf="
-                                emailForm.controls.subject__c.errors.required
+                              pemailForm.controls.subject__c.errors.required
                               "
                             >
                               <p class="error-box margin-top-0">
@@ -761,7 +761,7 @@
                     <button
                       type="button"
                       class="btn btn-default"
-                      (click)="onClose(emailForm)"
+                      (click)="onClose(pemailForm)"
                     >
                       Cancel
                     </button>
