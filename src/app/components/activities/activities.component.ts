@@ -79,9 +79,11 @@ export class ActivitiesComponent implements OnInit {
 
   onSubmit(form: any) {
     this.loaderOne = true;
-
+    this.submitted = true;
+    console.log(form)
     // stop here if form is invalid
     if (form.invalid) {
+      this.loaderOne = false;
       return;
     }
 

@@ -76,6 +76,22 @@
                             class="form-control"
                             formControlName="name"
                           />
+                          <div
+                            *ngIf="
+                              submitted && taskForm.controls.name.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="
+                              taskForm.controls.name.errors.required
+                              "
+                            >
+                              <p class="error-box margin-top-0">
+                                Name is Required
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -92,6 +108,22 @@
                             class="form-control"
                             formControlName="subject__c"
                           />
+                          <div
+                            *ngIf="
+                              submitted && taskForm.controls.subject__c.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="
+                              taskForm.controls.subject__c.errors.required
+                              "
+                            >
+                              <p class="error-box margin-top-0">
+                                Subject is Required
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -105,6 +137,22 @@
                             class="form-control"
                             formControlName="assigned_to"
                           />
+                          <div
+                            *ngIf="
+                              submitted && taskForm.controls.assigned_to.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="
+                              taskForm.controls.assigned_to.errors.required
+                              "
+                            >
+                              <p class="error-box margin-top-0">
+                                Assigned To is Required
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -121,6 +169,22 @@
                             class="form-control"
                             formControlName="end_date__c"
                           />
+                          <div
+                            *ngIf="
+                              submitted && taskForm.controls.end_date__c.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="
+                              taskForm.controls.end_date__c.errors.required
+                              "
+                            >
+                              <p class="error-box margin-top-0">
+                                Due Date is Required
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -138,6 +202,22 @@
                             <option value="Starred">Starred </option>
                             <option value="Not starred">Not starred</option>
                           </select>
+                          <div
+                            *ngIf="
+                              submitted && taskForm.controls.status__c.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="
+                              taskForm.controls.status__c.errors.required
+                              "
+                            >
+                              <p class="error-box margin-top-0">
+                                Status is Required
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -197,6 +277,22 @@
                           readonly=""
                           class="form-control"
                         />
+                        <div
+                            *ngIf="
+                              submitted && callForm.controls.name.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="
+                              callForm.controls.name.errors.required
+                              "
+                            >
+                              <p class="error-box margin-top-0">
+                                Name is Required
+                              </p>
+                            </div>
+                          </div>
                       </div>
                     </div>
                     <div
@@ -212,6 +308,22 @@
                           formControlName="subject__c"
                           class="form-control"
                         />
+                        <div
+                            *ngIf="
+                              submitted && callForm.controls.subject__c.errors
+                            "
+                            class="error"
+                          >
+                            <div
+                              *ngIf="
+                              callForm.controls.subject__c.errors.required
+                              "
+                            >
+                              <p class="error-box margin-top-0">
+                                Subject is Required
+                              </p>
+                            </div>
+                          </div>
                       </div>
                     </div>
                   </div>
@@ -227,6 +339,22 @@
                           formControlName="comments__c"
                           id="comment"
                         ></textarea>
+                        <div
+                        *ngIf="
+                          submitted && callForm.controls.comments__c.errors
+                        "
+                        class="error"
+                      >
+                        <div
+                          *ngIf="
+                          callForm.controls.comments__c.errors.required
+                          "
+                        >
+                          <p class="error-box margin-top-0">
+                            Comments is Required
+                          </p>
+                        </div>
+                      </div>
                       </div>
                     </div>
                   </div>
@@ -290,6 +418,22 @@
                             readonly=""
                             class="form-control"
                           />
+                          <div
+                        *ngIf="
+                          submitted && eventForm.controls.name.errors
+                        "
+                        class="error"
+                      >
+                        <div
+                          *ngIf="
+                          eventForm.controls.name.errors.required
+                          "
+                        >
+                          <p class="error-box margin-top-0">
+                            Name is Required
+                          </p>
+                        </div>
+                      </div>
                         </div>
                       </div>
                       <div
@@ -305,6 +449,22 @@
                             formControlName="subject__c"
                             class="form-control"
                           />
+                          <div
+                        *ngIf="
+                          submitted && eventForm.controls.subject__c.errors
+                        "
+                        class="error"
+                      >
+                        <div
+                          *ngIf="
+                          eventForm.controls.subject__c.errors.required
+                          "
+                        >
+                          <p class="error-box margin-top-0">
+                            Subject is Required
+                          </p>
+                        </div>
+                      </div>
                         </div>
                       </div>
                     </div>
@@ -322,6 +482,22 @@
                             formControlName="start_date__c"
                             class="form-control"
                           />
+                          <div
+                        *ngIf="
+                          submitted && eventForm.controls.start_date__c.errors
+                        "
+                        class="error"
+                      >
+                        <div
+                          *ngIf="
+                          eventForm.controls.start_date__c.errors.required
+                          "
+                        >
+                          <p class="error-box margin-top-0">
+                            Start Date is Required
+                          </p>
+                        </div>
+                      </div>
                         </div>
                       </div>
                       <div
@@ -337,6 +513,22 @@
                             formControlName="end_date__c"
                             class="form-control"
                           />
+                          <div
+                        *ngIf="
+                          submitted && eventForm.controls.end_date__c.errors
+                        "
+                        class="error"
+                      >
+                        <div
+                          *ngIf="
+                          eventForm.controls.end_date__c.errors.required
+                          "
+                        >
+                          <p class="error-box margin-top-0">
+                            End Date is Required
+                          </p>
+                        </div>
+                      </div>
                         </div>
                       </div>
                     </div>
@@ -353,6 +545,7 @@
                             id="related_to"
                             class="form-control"
                           />
+                          
                         </div>
                       </div>
                     </div>
@@ -371,6 +564,22 @@
                             readonly=""
                             class="form-control"
                           />
+                          <div
+                          *ngIf="
+                            submitted && eventForm.controls.assigned_to.errors
+                          "
+                          class="error"
+                        >
+                          <div
+                            *ngIf="
+                            eventForm.controls.assigned_to.errors.required
+                            "
+                          >
+                            <p class="error-box margin-top-0">
+                              Assigned To is Required
+                            </p>
+                          </div>
+                        </div>
                         </div>
                       </div>
                       <div
@@ -386,6 +595,22 @@
                             formControlName="location__c"
                             class="form-control"
                           />
+                          <div
+                          *ngIf="
+                            submitted && eventForm.controls.location__c.errors
+                          "
+                          class="error"
+                        >
+                          <div
+                            *ngIf="
+                            eventForm.controls.location__c.errors.required
+                            "
+                          >
+                            <p class="error-box margin-top-0">
+                              Location is Required
+                            </p>
+                          </div>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -466,6 +691,22 @@
                             formControlName="from__c"
                             class="form-control"
                           />
+                          <div
+                          *ngIf="
+                            submitted && emailForm.controls.from__c.errors
+                          "
+                          class="error"
+                        >
+                          <div
+                            *ngIf="
+                            emailForm.controls.from__c.errors.required
+                            "
+                          >
+                            <p class="error-box margin-top-0">
+                              From is Required
+                            </p>
+                          </div>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -480,6 +721,22 @@
                             formControlName="to__c"
                             class="form-control"
                           />
+                          <div
+                          *ngIf="
+                            submitted && emailForm.controls.to__c.errors
+                          "
+                          class="error"
+                        >
+                          <div
+                            *ngIf="
+                            emailForm.controls.to__c.errors.required
+                            "
+                          >
+                            <p class="error-box margin-top-0">
+                              To is Required
+                            </p>
+                          </div>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -494,6 +751,22 @@
                             formControlName="bcc__c"
                             class="form-control"
                           />
+                          <div
+                          *ngIf="
+                            submitted && emailForm.controls.bcc__c.errors
+                          "
+                          class="error"
+                        >
+                          <div
+                            *ngIf="
+                            emailForm.controls.bcc__c.errors.required
+                            "
+                          >
+                            <p class="error-box margin-top-0">
+                              Bcc is Required
+                            </p>
+                          </div>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -527,6 +800,22 @@
                             class="form-control"
                             placeholder="Enter Subject"
                           ></textarea>
+                          <div
+                          *ngIf="
+                            submitted && emailForm.controls.subject__c.errors
+                          "
+                          class="error"
+                        >
+                          <div
+                            *ngIf="
+                            emailForm.controls.subject__c.errors.required
+                            "
+                          >
+                            <p class="error-box margin-top-0">
+                              Subject is Required
+                            </p>
+                          </div>
+                        </div>
                         </div>
                       </div>
                     </div>
