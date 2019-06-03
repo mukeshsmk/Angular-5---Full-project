@@ -2,8 +2,6 @@ import { Component, OnInit, Input } from "@angular/core";
 
 import {
   CalendarEvent,
-  CalendarEventAction,
-  CalendarEventTimesChangedEvent,
   CalendarView
 } from "angular-calendar";
 import { HttpClient } from "@angular/common/http";

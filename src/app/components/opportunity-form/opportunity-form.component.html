@@ -101,7 +101,6 @@
                 <option value="">-- SELECT --</option>
                 <option value="Phone"> Phone </option>
                 <option value="Walk-In"> Walk-In </option>
-                <option value="Internet"> Internet</option>
               </select>
               <div *ngIf="
                   submitted && opportunityForm.controls.lead_source__c.errors
@@ -132,9 +131,6 @@
               <select class="selcet form-control" id="lead_type__c_lead" name="lead_type__c" required=""
                 formControlName="lead_type__c" value=" {{ opportunity.lead_type__c }}">
                 <option value="">-- SELECT --</option>
-                <option value="Gumtree">Gumtree</option>
-                <option value="Carsales">Carsales</option>
-                <option value="Facebook">Facebook</option>
                 <option value="Online">Online</option>
                 <option value="Edm">Edm</option>
                 <option value="Radio">Radio</option>
