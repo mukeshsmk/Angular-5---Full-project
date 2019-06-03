@@ -7,7 +7,7 @@
         <a
           class="nav-link active"
           data-toggle="tab"
-          href="#task702"
+          href="#ptask"
           aria-expanded="true"
           >Task</a
         >
@@ -16,7 +16,7 @@
         <a
           class="nav-link"
           data-toggle="tab"
-          href="#menu1702"
+          href="#pcall"
           aria-expanded="false"
           >Call Log</a
         >
@@ -25,7 +25,7 @@
         <a
           class="nav-link"
           data-toggle="tab"
-          href="#menu2702"
+          href="#pevent"
           aria-expanded="false"
           >Event</a
         >
@@ -34,7 +34,7 @@
         <a
           class="nav-link"
           data-toggle="tab"
-          href="#menu3702"
+          href="#pemail"
           aria-expanded="false"
           >Email</a
         >
@@ -43,12 +43,12 @@
     <div class="panel-group">
       <div class="panel panel-default ">
         <div class="tab-content">
-          <div id="task702" class="tab-pane fade show active" role="tabpanel">
+          <div id="ptask" class="tab-pane fade show active" role="tabpanel">
             <div class="card-body p-0">
               <h4 class="card-title p-3">
                 <i class="fa fa-tasks" aria-hidden="true"></i>&nbsp; Task
               </h4>
-              <form (ngSubmit)="onSubmit(taskForm)" [formGroup]="taskForm">
+              <form (ngSubmit)="onSubmit(ptaskForm)" [formGroup]="ptaskForm">
                 <div class="p-3">
                   <div>
                     <div *ngIf="inserttasksuccess">
@@ -233,9 +233,9 @@
               </form>
             </div>
           </div>
-          <div id="menu1702" class="tab-pane fade" role="tabpanel">
+          <div id="pcall" class="tab-pane fade" role="tabpanel">
             <div class="card-body p-0">
-              <form (ngSubmit)="onSubmit(callForm)" [formGroup]="callForm">
+              <form (ngSubmit)="onSubmit(pcallForm)" [formGroup]="pcallForm">
                 <h4 class="card-title p-3">
                   <i class="fa fa-phone-square" aria-hidden="true"></i>&nbsp;
                   Call Log
@@ -361,13 +361,13 @@
               </form>
             </div>
           </div>
-          <div id="menu2702" class="tab-pane fade" role="tabpanel">
+          <div id="pevent" class="tab-pane fade" role="tabpanel">
             <div class="card-body p-0">
               <h4 class="card-title p-3">
                 <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; Event
               </h4>
               <div class="p-3">
-                <form (ngSubmit)="onSubmit(eventForm)" [formGroup]="eventForm">
+                <form (ngSubmit)="onSubmit(peventForm)" [formGroup]="peventForm">
                   <div
                     class="panel-body"
                     id="success_body"
@@ -620,13 +620,13 @@
               </div>
             </div>
           </div>
-          <div id="menu3702" class="tab-pane fade" role="tabpanel">
+          <div id="pemail" class="tab-pane fade" role="tabpanel">
             <div class="card-body p-0">
               <h4 class="card-title p-3">
                 <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;Email
               </h4>
               <div class="p-3">
-                <form (ngSubmit)="onSubmit(emailForm)" [formGroup]="emailForm">
+                <form (ngSubmit)="onSubmit(pemailForm)" [formGroup]="pemailForm">
                   <div>
                     <div *ngIf="insertemailsuccess">
                       <div class="alert alert-success alert-dismissible in">

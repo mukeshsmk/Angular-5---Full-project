@@ -17,10 +17,10 @@ import { ApiService } from "../../shared/services/ApiServices";
   styleUrls: ["personalActivities.component.css"]
 })
 export class PersonalActivitiesComponent implements OnInit {
-  taskForm: FormGroup;
-  callForm: FormGroup;
-  eventForm: FormGroup;
-  emailForm: FormGroup;
+  ptaskForm: FormGroup;
+  pcallForm: FormGroup;
+  peventForm: FormGroup;
+  pemailForm: FormGroup;
   submitted = false;
   userData: any;
   notifications: any;
@@ -40,7 +40,7 @@ export class PersonalActivitiesComponent implements OnInit {
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem("user_data"));
-    this.taskForm = this.formBuilder.group({
+    this.ptaskForm = this.formBuilder.group({
       name: ["", Validators.required],
       assigned_to: ["", Validators.required],
       subject__c: ["", Validators.required],
@@ -49,14 +49,14 @@ export class PersonalActivitiesComponent implements OnInit {
       assigned_to_user__c: [this.userData.user_sfid],
       type__c: ["Task"]
     });
-    this.callForm = this.formBuilder.group({
+    this.pcallForm = this.formBuilder.group({
       name: ["", Validators.required],
       subject__c: ["", Validators.required],
       comments__c: ["", Validators.required],
       assigned_to_user__c: [this.userData.user_sfid],
       type__c: ["Log a Call"]
     });
-    this.eventForm = this.formBuilder.group({
+    this.peventForm = this.formBuilder.group({
       name: ["", Validators.required],
       subject__c: ["", Validators.required],
       start_date__c: ["", Validators.required],
@@ -67,7 +67,7 @@ export class PersonalActivitiesComponent implements OnInit {
       assigned_to_user__c: [this.userData.user_sfid],
       type__c: ["Event"]
     });
-    this.emailForm = this.formBuilder.group({
+    this.pemailForm = this.formBuilder.group({
       from__c: ["", Validators.required],
       subject__c: ["", Validators.required],
       to__c: ["", Validators.required],
@@ -77,9 +77,9 @@ export class PersonalActivitiesComponent implements OnInit {
     });
   }
 
-  get f() {
-    return this.taskForm.controls;
-  }
+  // get f() {
+  //   return this.ptaskForm.controls;
+  // }
 
   onSubmit(form: any) {
     this.loaderOne = true;

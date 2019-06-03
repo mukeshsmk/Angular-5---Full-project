@@ -104,8 +104,8 @@ export class UserDairyComponent implements OnInit {
               }
             }
             this.events = tempEvents;
-            this.loaderOne = false;
           }
+          this.loaderOne = false;
         });
     }
   }
