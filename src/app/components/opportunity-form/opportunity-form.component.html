@@ -89,17 +89,6 @@
               <input type="text" pattern="\d{1,15}" name="phone__c" id="phone__c_lead"
                 class="form-control" formControlName="phone__c" value=" {{ opportunity.phone__c }}" />
             </div>
-            <div *ngIf="
-                  submitted && opportunityForm.controls.phone__c.errors
-                " class="error">
-                <div *ngIf="
-                    opportunityForm.controls.phone__c.errors.required
-                  ">
-                  <p class="error-box margin-top-0">
-                    Phone number is Required
-                  </p>
-                </div>
-              </div>
           </div>
         </div>
 
@@ -130,20 +119,9 @@
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label>Mobile</label>
-              <input type="text" pattern="\d{1,15}" maxlength="10" class="form-control" name="mobile__c_lead"
+              <input type="text" pattern="\d{1,15}" class="form-control" name="mobile__c_lead"
                 id="mobile__c_lead" formControlName="mobile__c" value=" {{ opportunity.mobile__c }}" />
             </div>
-            <div *ngIf="
-                  submitted && opportunityForm.controls.mobile__c.errors
-                " class="error">
-                <div *ngIf="
-                    opportunityForm.controls.mobile__c.errors.required
-                  ">
-                  <p class="error-box margin-top-0">
-                    10 digit Mobile number is Required
-                  </p>
-                </div>
-              </div>
           </div>
         </div>
 
