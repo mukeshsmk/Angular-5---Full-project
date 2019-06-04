@@ -73,6 +73,18 @@ export class OpportunityFormComponent implements OnInit {
       country__c: [this.opportunity.company__c],
       app_retail_user__c: [this.userData.user_sfid]
     });
+    this.opportunity.createdbyid = this.opportunity.createdbyid
+      ? this.opportunity.createdbyid
+      : this.userData.user_sfid;
+    this.opportunity.createddate = this.opportunity.createddate
+      ? this.opportunity.createddate
+      : "";
+    this.opportunity.lastmodifiedbyid = this.opportunity.lastmodifiedbyid
+      ? this.opportunity.lastmodifiedbyid
+      : "";
+    this.opportunity.lastmodifieddate = this.opportunity.lastmodifieddate
+      ? this.opportunity.lastmodifieddate
+      : "";
   }
 
   onCloseModal(event: any) {

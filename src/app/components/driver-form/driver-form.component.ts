@@ -1,17 +1,17 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import {
   FormGroup,
   FormBuilder,
   Validators,
   FormControl
-} from '@angular/forms';
+} from "@angular/forms";
 /**
  * This class represents the lazy loaded AboutComponent.
  */
 @Component({
-  selector: 'sd-driver-form',
-  templateUrl: 'driver-form.component.html',
-  styleUrls: [ 'driver-form.component.css' ]
+  selector: "sd-driver-form",
+  templateUrl: "driver-form.component.html",
+  styleUrls: ["driver-form.component.css"]
 })
 export class DriverFormComponent implements OnInit {
   visibleOne: Boolean = true;
@@ -26,7 +26,7 @@ export class DriverFormComponent implements OnInit {
 
   @Input() driver: any;
   @Input() type: any;
-  @Output('updateDriver') send = new EventEmitter<any>();
+  @Output("updateDriver") send = new EventEmitter<any>();
 
   driverForm: FormGroup;
   submitted: Boolean = false;
@@ -34,44 +34,56 @@ export class DriverFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.userData = JSON.parse(localStorage.getItem('user_data'));
+    this.userData = JSON.parse(localStorage.getItem("user_data"));
     this.driverForm = this.formBuilder.group({
-      name: [ this.driver.name, Validators.required ],
-      parent_account: [ this.driver.parent_account ],
-      accountid: [ this.driver.accountid ],
-      title: [ this.driver.title ],
-      birthdate: [ this.driver.birthdate ],
-      customer_type__c: [ this.driver.customer_type__c ],
-      record_type: [ this.driver.record_type ],
-      selling_dealer: [ this.driver.selling_dealer ],
-      service_dealer: [ this.driver.service_dealer ],
-      customer_type: [ this.driver.customer_type ],
-      do_not_contact__c: [ this.driver.do_not_contact__c ],
-      fax: [ this.driver.fax ],
-      business_phone__c: [ this.driver.business_phone__c ],
-      business_email__c: [ this.driver.business_email__c ],
+      name: [this.driver.name, Validators.required],
+      parent_account: [this.driver.parent_account],
+      accountid: [this.driver.accountid],
+      title: [this.driver.title],
+      birthdate: [this.driver.birthdate],
+      customer_type__c: [this.driver.customer_type__c],
+      record_type: [this.driver.record_type],
+      selling_dealer: [this.driver.selling_dealer],
+      service_dealer: [this.driver.service_dealer],
+      customer_type: [this.driver.customer_type],
+      do_not_contact__c: [this.driver.do_not_contact__c],
+      fax: [this.driver.fax],
+      business_phone__c: [this.driver.business_phone__c],
+      business_email__c: [this.driver.business_email__c],
       business_phone_service_type__c: [
         this.driver.business_phone_service_type__c
       ],
-      business_email_valid__c: [ this.driver.business_email_valid__c ],
-      business_phone_valid__c: [ this.driver.business_phone_valid__c ],
-      home_email__c: [ this.driver.home_email__c ],
-      homephone: [ this.driver.homephone ],
-      home_phone_service_type__c: [ this.driver.home_phone_service_type__c ],
-      home_phone_valid__c: [ this.driver.home_phone_valid__c ],
-      email: [ this.driver.email ],
-      mobilephone: [ this.driver.mobilephone ],
-      interest_of_make__c: [ this.driver.interest_of_make__c ],
-      billing_address__c: [ this.driver.billing_address__c ],
-      billing_suburb__c: [ this.driver.billing_suburb__c ],
-      billing_state__c: [ this.driver.billing_state__c ],
-      billing_post_code__c: [ this.driver.billing_post_code__c ],
-      billing_country__c: [ this.driver.billing_country__c ],
-      billingdpid__c: [ this.driver.billingdpid__c ],
-      billing_latitude__c: [ this.driver.billing_latitude__c ],
-      billing_longitude__c: [ this.driver.billing_longitude__c ]
+      business_email_valid__c: [this.driver.business_email_valid__c],
+      business_phone_valid__c: [this.driver.business_phone_valid__c],
+      home_email__c: [this.driver.home_email__c],
+      homephone: [this.driver.homephone],
+      home_phone_service_type__c: [this.driver.home_phone_service_type__c],
+      home_phone_valid__c: [this.driver.home_phone_valid__c],
+      email: [this.driver.email],
+      mobilephone: [this.driver.mobilephone],
+      interest_of_make__c: [this.driver.interest_of_make__c],
+      billing_address__c: [this.driver.billing_address__c],
+      billing_suburb__c: [this.driver.billing_suburb__c],
+      billing_state__c: [this.driver.billing_state__c],
+      billing_post_code__c: [this.driver.billing_post_code__c],
+      billing_country__c: [this.driver.billing_country__c],
+      billingdpid__c: [this.driver.billingdpid__c],
+      billing_latitude__c: [this.driver.billing_latitude__c],
+      billing_longitude__c: [this.driver.billing_longitude__c]
     });
     console.log(this.driver);
+    this.driver.createdbyid = this.driver.createdbyid
+      ? this.driver.createdbyid
+      : this.userData.user_sfid;
+    this.driver.createddate = this.driver.createddate
+      ? this.driver.createddate
+      : "";
+    this.driver.lastmodifiedbyid = this.driver.lastmodifiedbyid
+      ? this.driver.lastmodifiedbyid
+      : "";
+    this.driver.lastmodifieddate = this.driver.lastmodifieddate
+      ? this.driver.lastmodifieddate
+      : "";
   }
 
   onCloseModal(event: any) {
@@ -85,7 +97,7 @@ export class DriverFormComponent implements OnInit {
     if (this.driverForm.invalid) {
       return;
     }
-    if (this.type === 'edit') {
+    if (this.type === "edit") {
       this.driverForm.value.id = this.driver.id;
     }
 

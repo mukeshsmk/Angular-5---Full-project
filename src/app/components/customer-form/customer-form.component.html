@@ -691,13 +691,13 @@
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label>Created by</label>
-              <div id="createdby_lead"><b>0057F000004MCYXQA4</b></div>
+              <div id="createdby_lead"><b>{{ customer.createdbyid }} </b></div>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label>Last modified by</label>
-              <div id="lastmodifiedby_lead"></div>
+              <div id="lastmodifiedby_lead">{{ customer.lastmodifiedbyid }}</div>
             </div>
           </div>
         </div>
@@ -705,13 +705,13 @@
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label>Created Date</label>
-              <div id="createddate_lead"></div>
+              <div id="createddate_lead">{{ customer.createddate }}</div>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label>Last modified date</label>
-              <div id="lastmodifiedbyid_lead"></div>
+              <div id="lastmodifiedbyid_lead">{{ customer.lastmodifieddate }}</div>
             </div>
           </div>
         </div>

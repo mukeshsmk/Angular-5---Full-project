@@ -73,13 +73,7 @@ export class TableListComponent {
       edit_permission: 0,
       delete_permission: 0
     };
-    const params = {
-      page: this.page,
-      limit: this.limit,
-      search: this.search,
-      type: this.vsType,
-      sort: this.sort
-    };
+    const params = this.getParams();
     this.generalService.dashboardEvent.subscribe((type: string) => {
       this.tabsComponent.openTab(
         type,
@@ -115,6 +109,8 @@ export class TableListComponent {
         this.module !== "Profile" &&
         this.module !== "Calendar"
       ) {
+        this.sort = params.sort = "id";
+        this.search = params.search = "";
         this.loadData(this.module, params);
         console.log("Loading data", this.module);
       }
@@ -131,15 +127,7 @@ export class TableListComponent {
   }
 
   refresh() {
-    const params = {
-      page: this.page,
-      limit: this.limit,
-      search: this.search,
-      type: this.vsType,
-      sort: this.sort,
-      allocated: this.allocated,
-      unallocated: this.unallocated
-    };
+    const params = this.getParams();
     this.loadData(this.module, params);
   }
   loadData(type: string, params: any) {
@@ -191,68 +179,35 @@ export class TableListComponent {
       this.allocated = "";
     }
     this.changeLead = false;
-    const params = {
-      page: 1,
-      limit: this.limit,
-      search: this.search,
-      type: this.vsType,
-      sort: this.sort,
-      allocated: this.allocated,
-      unallocated: this.unallocated
-    };
+    const params = this.getParams();
+    params.page = 1;
     this.loadData(this.module, params);
   }
   searchList(searchData: any) {
     if (searchData.length >= 3 || searchData.length === 0) {
       this.search = searchData;
-      const params = {
-        page: 1,
-        limit: this.limit,
-        search: this.search,
-        type: this.vsType,
-        sort: this.sort
-      };
+      const params = this.getParams();
+      params.page = 1;
       this.loadData(this.module, params);
     }
   }
   pageCount(limit: any) {
     this.limit = limit;
-    const params = {
-      page: 1,
-      limit: this.limit,
-      search: this.search,
-      type: this.vsType,
-      sort: this.sort,
-      allocated: this.allocated,
-      unallocated: this.unallocated
-    };
-
+    const params = this.getParams();
+    params.page = 1;
     this.loadData(this.module, params);
   }
   pageNumber(page: any) {
     if (page >= 1 && page <= this.opportunityListData.last_page) {
       this.page = page;
-      const params = {
-        page: this.page,
-        limit: this.limit,
-        search: this.search,
-        type: this.vsType,
-        sort: this.sort,
-        allocated: this.allocated,
-        unallocated: this.unallocated
-      };
+      const params = this.getParams();
       this.loadData(this.module, params);
     }
   }
   vehicleStockType(type: any) {
     this.vsType = type;
-    const params = {
-      page: 1,
-      limit: this.limit,
-      search: this.search,
-      type: this.vsType,
-      sort: this.sort
-    };
+    const params = this.getParams();
+    params.page = 1;
     this.loadData(this.module, params);
   }
   activateClass(i: any) {
@@ -260,15 +215,8 @@ export class TableListComponent {
   }
   sortData(sort: any) {
     this.sort = sort;
-    const params = {
-      page: 1,
-      limit: this.limit,
-      search: this.search,
-      type: this.vsType,
-      sort: this.sort,
-      allocated: this.allocated,
-      unallocated: this.unallocated
-    };
+    const params = this.getParams();
+    params.page = 1;
     this.loadData(this.module, params);
   }
   viewPersondetails(data: any) {
@@ -491,15 +439,7 @@ export class TableListComponent {
         this.sdname = "";
         console.log(response);
         this.searchOpen = false;
-        const params = {
-          page: this.page,
-          limit: this.limit,
-          search: this.search,
-          type: this.vsType,
-          sort: this.sort,
-          allocated: this.allocated,
-          unallocated: this.unallocated
-        };
+        const params = this.getParams();
         this.loaderOne = false;
         this.changeLead = false;
         this.loadData(this.module, params);
@@ -528,8 +468,21 @@ export class TableListComponent {
         console.log(response);
         this.editId = "";
         this.loaderOne = false;
+
+        this.loadData(this.module, this.getParams());
       });
   }
-
+  getParams() {
+    const params = {
+      page: this.page,
+      limit: this.limit,
+      search: this.search,
+      type: this.vsType,
+      sort: this.sort,
+      allocated: this.allocated,
+      unallocated: this.unallocated
+    };
+    return params;
+  }
   //https://stackblitz.com/edit/angular-dynamic-tabs?file=app%2Fpeople%2Fperson-edit.component.ts
 }
