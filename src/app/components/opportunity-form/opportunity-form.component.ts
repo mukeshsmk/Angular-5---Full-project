@@ -100,6 +100,7 @@ export class OpportunityFormComponent implements OnInit {
     }
     if (this.type === "edit") {
       this.opportunityForm.value.id = this.opportunity.id;
+      this.opportunityForm.value.lastmodifiedbyid = this.userData.user_sfid;
     }
     this.send.emit(this.opportunityForm.value);
   }

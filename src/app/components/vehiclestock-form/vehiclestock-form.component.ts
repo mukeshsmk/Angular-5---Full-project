@@ -30,10 +30,12 @@ export class VehicleStockFormComponent implements OnInit {
 
   vehicleStockForm: FormGroup;
   submitted: Boolean = false;
+  userData: any;
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem("user_data"));
     this.vehicleStockForm = this.formBuilder.group({
       name: [this.vehicleStock.name, Validators.required],
       selling_dealer__c: [this.vehicleStock.selling_dealer__c],
@@ -68,6 +70,7 @@ export class VehicleStockFormComponent implements OnInit {
     }
     if (this.type === "edit") {
       this.vehicleStockForm.value.id = this.vehicleStock.id;
+      //this.vehicleStockForm.value.lastmodifiedbyid = this.userData.user_sfid;
     }
 
     this.send.emit(this.vehicleStockForm.value);

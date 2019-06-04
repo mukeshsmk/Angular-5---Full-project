@@ -461,6 +461,7 @@ export class TableListComponent {
     details.company__c = this.opp_Company;
     details.phone__c = this.opp_Phone;
     details.email__c = this.opp_Email;
+    details.lastmodifiedbyid = this.userData.user_sfid;
     console.log(details);
     this.http
       .post<{ success: object }>(this.apiService.inlineUpdateUrl, details)

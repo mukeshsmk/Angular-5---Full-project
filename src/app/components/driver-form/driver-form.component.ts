@@ -99,6 +99,7 @@ export class DriverFormComponent implements OnInit {
     }
     if (this.type === "edit") {
       this.driverForm.value.id = this.driver.id;
+      this.driverForm.value.lastmodifiedbyid = this.userData.user_sfid;
     }
 
     this.send.emit(this.driverForm.value);

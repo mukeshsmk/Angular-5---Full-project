@@ -101,6 +101,7 @@ export class CustomerFormComponent implements OnInit {
     }
     if (this.type === "edit") {
       this.customerForm.value.id = this.customer.id;
+      this.customerForm.value.lastmodifiedbyid = this.userData.user_sfid;
     }
 
     this.send.emit(this.customerForm.value);
