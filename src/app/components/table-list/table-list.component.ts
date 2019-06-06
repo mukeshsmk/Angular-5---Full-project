@@ -328,6 +328,7 @@ export class TableListComponent {
     this.opportunityOpen = false;
   }
   updateDriver(event: any) {
+    this.loaderOne = true;
     console.log(event);
     let endpoint: any;
     if (this.formType === "edit") {
@@ -342,6 +343,8 @@ export class TableListComponent {
         console.log(response);
         this.opportunityOpen = true;
         this.modalData = [];
+        this.loaderOne = false;
+        this.refresh();
       });
   }
   //customer modal
@@ -357,6 +360,7 @@ export class TableListComponent {
     this.opportunityOpen = false;
   }
   updateCustomer(event: any) {
+    this.loaderOne = true;
     let endpoint: any;
     if (this.formType === "edit") {
       endpoint = this.apiService.customerUpdateUrl;
@@ -370,6 +374,8 @@ export class TableListComponent {
         console.log(response);
         this.opportunityOpen = true;
         this.modalData = [];
+        this.loaderOne = false;
+        this.refresh();
       });
   }
 

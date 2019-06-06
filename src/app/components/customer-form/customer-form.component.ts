@@ -95,6 +95,7 @@ export class CustomerFormComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     console.log(this.customerForm);
+    delete this.customerForm.value.email;
 
     if (this.customerForm.invalid) {
       return;

@@ -76,8 +76,7 @@
                 type="text"
                 name="accountnumber"
                 id="accountnumber"
-                class="form-control"
-                required=""
+                class="form-control"                
                 formControlName="accountnumber"
               />
               <div
@@ -164,7 +163,7 @@
               <input
                 type="radio"
                 value="f"
-                checked
+                [checked]="!customer.do_not_contact__c"
                 name="do_not_contact__c"
                 formControlName="do_not_contact__c"
               />
@@ -173,6 +172,7 @@
                 type="radio"
                 value="t"
                 name="do_not_contact__c"
+                [checked]="customer.do_not_contact__c"
                 formControlName="do_not_contact__c"
               />
               yes
@@ -214,8 +214,7 @@
                 type="email"
                 name="business_email__c"
                 id="business_email__c"
-                class="form-control"
-                required=""
+                class="form-control"                
                 formControlName="business_email__c"
               />
               <div
@@ -256,18 +255,11 @@
               <input
                 type="radio"
                 value="f"
-                name="phone1_valid__c"
-                checked
-                data-parsley-multiple="phone1_valid__c"
-                formControlName="phone1_valid__c"
               />
               no
               <input
                 type="radio"
                 value="t"
-                name="phone1_valid__c"
-                data-parsley-multiple="phone1_valid__c"
-                formControlName="phone1_valid__c"
               />
               yes
             </div>
@@ -279,8 +271,7 @@
                 type="radio"
                 value="f"
                 name="phone1_valid__c"
-                checked
-                data-parsley-multiple="phone1_valid__c"
+                [checked]="!customer.phone1_valid__c"
                 formControlName="phone1_valid__c"
               />
               no
@@ -288,7 +279,7 @@
                 type="radio"
                 value="t"
                 name="phone1_valid__c"
-                data-parsley-multiple="phone1_valid__c"
+                [checked]="customer.phone1_valid__c"
                 formControlName="phone1_valid__c"
               />
               yes
@@ -302,7 +293,6 @@
               <input
                 type="email"
                 class="form-control"
-                required=""
                 name="email"
                 formControlName="email"
               />
@@ -353,8 +343,7 @@
                 type="radio"
                 name="phone2_valid__c"
                 value="f"
-                checked
-                data-parsley-multiple="phone2_valid__c"
+                [checked]="!customer.phone2_valid__c"
                 formControlName="phone2_valid__c"
               />
               no
@@ -362,7 +351,7 @@
                 type="radio"
                 name="phone2_valid__c"
                 value="t"
-                data-parsley-multiple="phone2_valid__c"
+                [checked]="customer.phone2_valid__c"
                 formControlName="phone2_valid__c"
               />
               yes
@@ -388,8 +377,6 @@
               <label>Phone:</label>
               <input
                 type="number"
-                pattern="\d{1,15}"
-                id="phone"
                 name="phone"
                 class="form-control"
                 formControlName="phone"
