@@ -80,4 +80,7 @@ export class ApiService {
   public getUrlByParams(endpoint) {
     return this.apiUrl + endpoint;
   }
+
+  //vehicle model data
+  getModelUrl = this.apiUrl + "getModel";
 }

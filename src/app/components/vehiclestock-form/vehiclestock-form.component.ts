@@ -6,13 +6,17 @@ import {
   FormControl
 } from "@angular/forms";
 
+import { VehicleModelService } from "../../shared/services/VehicleModelService";
+import { ApiService } from "../../shared/services/ApiServices";
+
 /**
  * This class represents the lazy loaded AboutComponent.
  */
 @Component({
   selector: "sd-vehiclestock-form",
   templateUrl: "vehiclestock-form.component.html",
-  styleUrls: ["vehiclestock-form.component.css"]
+  styleUrls: ["vehiclestock-form.component.css"],
+  providers: [VehicleModelService]
 })
 export class VehicleStockFormComponent implements OnInit {
   visibleOne: Boolean = false;
@@ -21,6 +25,9 @@ export class VehicleStockFormComponent implements OnInit {
   visibleFour: Boolean = true;
   visibleFive: Boolean = true;
   visibleSix: Boolean = true;
+
+  modelResult: Boolean = false;
+  searchLoading: Boolean = false;
 
   @Output() closeModalEvent = new EventEmitter<Boolean>();
 
@@ -31,11 +38,17 @@ export class VehicleStockFormComponent implements OnInit {
   vehicleStockForm: FormGroup;
   submitted: Boolean = false;
   userData: any;
+  searchTerm: any;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private vehicleService: VehicleModelService,
+    private apiSerivice: ApiService
+  ) {}
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem("user_data"));
+
     this.vehicleStockForm = this.formBuilder.group({
       name: [this.vehicleStock.name, Validators.required],
       selling_dealer__c: [this.vehicleStock.selling_dealer__c],
@@ -45,7 +58,7 @@ export class VehicleStockFormComponent implements OnInit {
       rego_no__c: [this.vehicleStock.rego_no__c],
       manufacture_year__c: [this.vehicleStock.manufacture_year__c],
       body_type__c: [this.vehicleStock.body_type__c],
-      model__c: [this.vehicleStock.model__c],
+      model__c: [this.vehicleStock.model_name, Validators.required],
       body_colour__c: [this.vehicleStock.body_colour__c],
       make__c: [this.vehicleStock.make__c],
       first_image_name__c: [this.vehicleStock.first_image_name__c],
@@ -54,17 +67,36 @@ export class VehicleStockFormComponent implements OnInit {
       ownerid: [this.vehicleStock.ownerid],
       egc_price__c: [this.vehicleStock.egc_price__c],
       series_c__c: [this.vehicleStock.series_c__c],
-      stock_image__c: [this.vehicleStock.stock_image__c]
+      stock_image__c: [this.vehicleStock.stock_image__c],
+      model_name__c: [this.vehicleStock.model_name__c, Validators.required]
     });
   }
   onCloseModal(event: any) {
     this.closeModalEvent.emit(event);
   }
-
+  modelSearch(term) {
+    if (term != "") {
+      this.modelResult = true;
+      this.searchLoading = true;
+      this.vehicleService
+        .search(this.apiSerivice.getModelUrl, term)
+        .subscribe(data => {
+          this.searchTerm = data.model;
+          this.searchLoading = false;
+        });
+    }
+  }
+  selectedModel(data) {
+    this.vehicleStockForm.controls["model__c"].setValue(data.name);
+    this.vehicleStockForm.controls["make__c"].setValue(data.make__c);
+    this.vehicleStockForm.controls["model_name__c"].setValue(data.sfid);
+    console.log(data);
+    this.modelResult = false;
+  }
   onSubmit() {
     this.submitted = true;
     console.log(this.vehicleStockForm);
-
+    delete this.vehicleStockForm.value.model__c;
     if (this.vehicleStockForm.invalid) {
       return;
     }

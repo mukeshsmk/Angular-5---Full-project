@@ -296,6 +296,7 @@ export class TableListComponent {
     this.opportunityOpen = false;
   }
   updatevehicleStock(event: any) {
+    this.loaderOne = true;
     console.log(event);
     let endpoint: any;
     if (this.formType === "edit") {
@@ -308,13 +309,15 @@ export class TableListComponent {
       .post<{ success: object }>(endpoint, event)
       .subscribe((response: any) => {
         console.log(response);
-        if (response.StatusCode == 200) {
+        if (response == 1) {
           this.successAlert = true;
         } else {
           this.errAlert = true;
         }
         this.opportunityOpen = true;
         this.modalData = [];
+        this.loaderOne = false;
+        this.refresh();
       });
   }
   //Driver modal

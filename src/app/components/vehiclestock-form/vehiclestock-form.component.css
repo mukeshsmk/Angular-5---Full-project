@@ -51,3 +51,23 @@
   background-color: #31b0d5;
   border-color: #269abc;
 }
+
+.modelDropdown {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  width: 92%;
+}
+
+.modelDropdownData {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.modelDropdownData:hover {
+  background-color: #d4d4d4;
+}

@@ -41,7 +41,10 @@
                 formControlName="selling_dealer__c"
                 id="selling_dealer__c"
               >
-                <option value="">---Select---</option>
+                <option value="">-- SELECT --</option>
+                <option value="{{ vehicleStock.selling_dealer__c }} ">{{
+                  vehicleStock.selling_dealer__c
+                }}</option>
               </select>
             </div>
           </div>
@@ -157,9 +160,38 @@
                 autocomplete="off"
                 name="model__c"
                 formControlName="model__c"
+                (keyup)="modelSearch($event.target.value)"
               /><span onclick="" class="fa fa-search"></span>
               <div style="display:none;" id="model__c_error"></div>
               <input type="hidden" id="in_model__c" name="model_name__c" />
+              <div
+                *ngIf="submitted && (vehicleStockForm.controls.model__c.errors || vehicleStockForm.controls.model_name__c.errors) "
+                class="error"
+              >
+                <div *ngIf="vehicleStockForm.controls.model__c.errors.required || vehicleStockForm.controls.model_name__c.errors.required">
+                  <p class="error-box margin-top-0">
+                    Model is Required
+                  </p>
+                </div>
+              </div>
+              <ng-template [ngIf]="modelResult">
+                <div class="modelDropdown" *ngIf="!searchLoading">
+                  <div *ngFor="let data of searchTerm">
+                    <div
+                      class="modelDropdownData"
+                      (click)="selectedModel(data)"
+                    >
+                      {{ data.name }}
+                      <input type="hidden" value="{{ data.name }}" />
+                    </div>
+                  </div>
+                </div>
+                <div class="modelDropdown" *ngIf="searchLoading">
+                  <div class="modelDropdownData">
+                    Loading ..
+                  </div>
+                </div>
+              </ng-template>
             </div>
           </div>
         </div>
@@ -314,28 +346,28 @@
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
-              <label for="usr">Creaed by</label>
-              <div>{{ vehicleStock.ownerid }}</div>
+              <label for="usr">Creaed by: </label>
+              <span>{{ vehicleStock.ownerid }}</span>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
-              <label for="usr">Created date</label>
-              <div>{{ vehicleStockForm.createddate }}</div>
+              <label for="usr">Created date: </label>
+              <span>{{ vehicleStockForm.createddate }}</span>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
-              <label for="usr">Last Modified by</label>
+              <label for="usr">Last Modified by: </label>
               <div></div>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
-              <label for="usr">Last modified date</label>
-              <div>{{ vehicleStock.systemmodstamp }}</div>
+              <label for="usr">Last modified date: </label>
+              <span>{{ vehicleStock.systemmodstamp }}</span>
             </div>
           </div>
         </div>
