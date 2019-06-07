@@ -570,6 +570,9 @@
         <!--- end of row -->
       </div>
     </div>
+    <div *ngIf="opportunityForm.invalid && submitted" class="alert-danger text-center">
+        Please fill all the details...
+      </div>
     <div class="modal-footer">
       <button
         type="button"
