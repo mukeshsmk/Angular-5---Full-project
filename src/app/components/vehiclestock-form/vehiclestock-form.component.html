@@ -42,7 +42,7 @@
                 id="selling_dealer__c"
               >
                 <option value="">-- SELECT --</option>
-                <option value="{{ vehicleStock.selling_dealer__c }} ">{{
+                <option value="{{ vehicleStock.selling_dealer__c }}">{{
                   vehicleStock.selling_dealer__c
                 }}</option>
               </select>
@@ -165,10 +165,19 @@
               <div style="display:none;" id="model__c_error"></div>
               <input type="hidden" id="in_model__c" name="model_name__c" />
               <div
-                *ngIf="submitted && (vehicleStockForm.controls.model__c.errors || vehicleStockForm.controls.model_name__c.errors) "
+                *ngIf="
+                  submitted &&
+                  (vehicleStockForm.controls.model__c.errors ||
+                    vehicleStockForm.controls.model_name__c.errors)
+                "
                 class="error"
               >
-                <div *ngIf="vehicleStockForm.controls.model__c.errors.required || vehicleStockForm.controls.model_name__c.errors.required">
+                <div
+                  *ngIf="
+                    vehicleStockForm.controls.model__c.errors.required ||
+                    vehicleStockForm.controls.model_name__c.errors.required
+                  "
+                >
                   <p class="error-box margin-top-0">
                     Model is Required
                   </p>

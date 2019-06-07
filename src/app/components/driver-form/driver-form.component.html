@@ -9,7 +9,9 @@
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label
-                >Lead Owner<b class="mx-2"> &nbsp;{{ userData.dealer }}</b></label
+                >Lead Owner<b class="mx-2">
+                  &nbsp;{{ userData.dealer }}</b
+                ></label
               >
             </div>
           </div>
@@ -48,7 +50,12 @@
                 name="parent_account"
                 formControlName="parent_account"
               >
-                <option value="">-- SELECT --</option> 
+                <option value="">-- SELECT --</option>
+                <option
+                  *ngIf="driver.selling_dealer__c"
+                  value="{{ driver.selling_dealer__c }}"
+                  >{{ driver.selling_dealer__c }}</option
+                >
               </select>
             </div>
           </div>
@@ -86,9 +93,13 @@
                 name="title"
                 formControlName="title"
               >
+                <option value="">-- Select --</option>
                 <option value="Mr">Mr</option>
                 <option value="Miss">Miss</option>
                 <option value="Mrs">Mrs</option>
+                <option *ngIf="driver.title" value="{{ driver.title }}">{{
+                  driver.title
+                }}</option>
               </select>
             </div>
           </div>
@@ -133,6 +144,11 @@
               >
                 <option value="">-- SELECT --</option>
                 <option value="">Primary</option>
+                <option
+                  *ngIf="driver.record_type"
+                  value="{{ driver.record_type }}"
+                  >{{ driver.record_type }}</option
+                >
               </select>
             </div>
           </div>
@@ -141,25 +157,27 @@
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label>Selling Dealer </label>
-              <select
-                class="selcet form-control"
-                id="selling_dealer"
-                
-              >
-              <option value="">-- SELECT --</option>
-                <option value="{{ userData.dealer }}">{{ userData.dealer }}</option>
+              <select class="selcet form-control" id="selling_dealer">
+                <option value="">-- SELECT --</option>
+                <option value="{{ userData.dealer }}">{{
+                  userData.dealer
+                }}</option>
+                <option
+                  *ngIf="driver.selling_dealer"
+                  value="{{ driver.selling_dealer }}"
+                  >{{ driver.selling_dealer }}</option
+                >
               </select>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label>Service Dealer Name</label>
-              <select
-                class="selcet form-control"
-                
-              >
-              <option value="">-- SELECT --</option>
-              <option value="{{ userData.dealer }}">{{ userData.dealer }}</option>
+              <select class="selcet form-control">
+                <option value="">-- SELECT --</option>
+                <option value="{{ userData.dealer }}">{{
+                  userData.dealer
+                }}</option>
               </select>
             </div>
           </div>
@@ -187,8 +205,7 @@
                 value="f"
                 name="do_not_contact__c"
                 formControlName="do_not_contact__c"
-                checked
-                data-parsley-multiple="do_not_contact__c"
+                [checked]="!driver.do_not_contact__c"
               />
               no
               <input
@@ -196,7 +213,7 @@
                 value="t"
                 name="do_not_contact__c"
                 formControlName="do_not_contact__c"
-                data-parsley-multiple="do_not_contact__c"
+                [checked]="driver.do_not_contact__c"
               />
               yes
             </div>
@@ -279,8 +296,7 @@
                 value="f"
                 name="business_email_valid__c"
                 formControlName="business_email_valid__c"
-                checked
-                data-parsley-multiple="business_email_valid__c"
+                [checked]="!driver.business_email_valid__c"
               />
               no
               <input
@@ -288,7 +304,7 @@
                 value="t"
                 name="business_email_valid__c"
                 formControlName="business_email_valid__c"
-                data-parsley-multiple="business_email_valid__c"
+                [checked]="driver.business_email_valid__c"
               />
               yes
             </div>
@@ -301,8 +317,7 @@
                 value="f"
                 name="business_phone_valid__c"
                 formControlName="business_phone_valid__c"
-                checked
-                data-parsley-multiple="business_phone_valid__c"
+                [checked]="!driver.business_phone_valid__c"
               />
               no
               <input
@@ -310,7 +325,7 @@
                 value="t"
                 name="business_phone_valid__c"
                 formControlName="business_phone_valid__c"
-                data-parsley-multiple="business_phone_valid__c"
+                [checked]="driver.business_phone_valid__c"
               />
               yes
             </div>
@@ -376,8 +391,7 @@
                 name="home_phone_valid__c"
                 formControlName="home_phone_valid__c"
                 value="f"
-                checked
-                data-parsley-multiple="home_phone_valid__c"
+                [checked]="!driver.home_phone_valid__c"
               />
               no
               <input
@@ -385,7 +399,7 @@
                 name="home_phone_valid__c"
                 formControlName="home_phone_valid__c"
                 value="t"
-                data-parsley-multiple="home_phone_valid__c"
+                [checked]="driver.home_phone_valid__c"
               />
               yes
             </div>

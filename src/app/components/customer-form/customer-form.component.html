@@ -65,7 +65,9 @@
                 name="parent_account"
                 formControlName="parent_account"
               >
-                <option value="{{ userData.dealer}} ">{{ userData.dealer}}</option>
+                <option value="{{ userData.dealer }}">{{
+                  userData.dealer
+                }}</option>
               </select>
             </div>
           </div>
@@ -76,7 +78,7 @@
                 type="text"
                 name="accountnumber"
                 id="accountnumber"
-                class="form-control"                
+                class="form-control"
                 formControlName="accountnumber"
               />
               <div
@@ -111,6 +113,11 @@
                 formControlName="account_record"
               >
                 <option value="">-- SELECT --</option>
+                <option
+                  *ngIf="customer.account_record"
+                  value="customer.account_record"
+                  >{{ customer.account_record }}</option
+                >
               </select>
             </div>
           </div>
@@ -125,7 +132,14 @@
                 name="selling_dealer"
                 formControlName="selling_dealer"
               >
-              <option value="{{ userData.dealer}} ">{{ userData.dealer}}</option>
+                <option value="{{ userData.dealer }}">{{
+                  userData.dealer
+                }}</option>
+                <option
+                  *ngIf="customer.selling_dealer__c"
+                  value="{{ customer.selling_dealer__c }}"
+                  >{{ customer.selling_dealer__c }}</option
+                >
               </select>
             </div>
           </div>
@@ -139,6 +153,11 @@
                 formControlName="service_dealer"
               >
                 <option value="">-- SELECT --</option>
+                <option
+                  *ngIf="customer.service_dealer"
+                  value="{{ customer.service_dealer }}"
+                  >{{ customer.service_dealer }}</option
+                >
               </select>
             </div>
           </div>
@@ -154,6 +173,11 @@
                 formControlName="customer_type"
               >
                 <option value="">-- SELECT --</option>
+                <option
+                  *ngIf="customer.customer_type"
+                  value="{{ customer.customer_type }}"
+                  >{{ customer.customer_type }}</option
+                >
               </select>
             </div>
           </div>
@@ -214,7 +238,7 @@
                 type="email"
                 name="business_email__c"
                 id="business_email__c"
-                class="form-control"                
+                class="form-control"
                 formControlName="business_email__c"
               />
               <div
@@ -252,15 +276,9 @@
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label for="usr">Business Email Valid</label><br />
-              <input
-                type="radio"
-                value="f"
-              />
+              <input type="radio" value="f" />
               no
-              <input
-                type="radio"
-                value="t"
-              />
+              <input type="radio" value="t" />
               yes
             </div>
           </div>
@@ -678,13 +696,17 @@
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label>Created by</label>
-              <div id="createdby_lead"><b>{{ customer.createdbyid }} </b></div>
+              <div id="createdby_lead">
+                <b>{{ customer.createdbyid }} </b>
+              </div>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label>Last modified by</label>
-              <div id="lastmodifiedby_lead">{{ customer.lastmodifiedbyid }}</div>
+              <div id="lastmodifiedby_lead">
+                {{ customer.lastmodifiedbyid }}
+              </div>
             </div>
           </div>
         </div>
@@ -698,7 +720,9 @@
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label>Last modified date</label>
-              <div id="lastmodifiedbyid_lead">{{ customer.lastmodifieddate }}</div>
+              <div id="lastmodifiedbyid_lead">
+                {{ customer.lastmodifieddate }}
+              </div>
             </div>
           </div>
         </div>

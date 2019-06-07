@@ -264,6 +264,7 @@ export class TableListComponent {
     this.modalData = [];
   }
   updateOpportunity(event: any) {
+    this.loaderOne = true;
     let endpoint: any;
     if (this.formType === "edit") {
       endpoint = this.apiService.leadUpdateUrl;
@@ -286,6 +287,8 @@ export class TableListComponent {
         this.opportunityOpen = true;
         this.modalData = [];
         this.loadData(this.module, {});
+        this.loaderOne = false;
+        this.refresh();
       });
   }
   //vehicleStock Modal
