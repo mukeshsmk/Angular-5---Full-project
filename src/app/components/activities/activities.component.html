@@ -199,8 +199,8 @@
                             formControlName="status__c"
                           >
                             <option value="">-- None--</option>
-                            <option value="Starred">Starred </option>
-                            <option value="Not starred">Not starred</option>
+                            <option value="Open">Open </option>
+                            <option value="Close">Close</option>
                           </select>
                           <div
                             *ngIf="
@@ -854,7 +854,7 @@
   <div class="card-header">
     Notifications
   </div>
-  <div class="card-body">
+  <div class="card-body cardScroll">
     <div class="container-fluid">
       <div class="row">
         <div id="accordion">
@@ -884,10 +884,10 @@
                 data-parent="#accordion"
               >
                 <div class="card-body">
-                  <p *ngIf="notification.comments__c">
+                  <!--<p *ngIf="notification.comments__c">
                     Comment : {{ notification.comments__c }}
                   </p>
-                  <p *ngIf="!notification.comments__c">Comment : -</p>
+                  <p *ngIf="!notification.comments__c">Comment : -</p>-->
                   <p>Date : {{ notification.createddate }}</p>
                 </div>
               </div>

@@ -116,7 +116,7 @@
               <div id="example_filter" class="dataTables_filter">
                 <label class="d-flex mt-4 float-right">Search:<input type="text"
                     (keyup)="searchList($event.target.value)" class="form-control  w-auto input-sm" placeholder=""
-                    aria-controls="example" />
+                    aria-controls="example" [(ngModel)]="search" />
                 </label>
               </div>
             </div>

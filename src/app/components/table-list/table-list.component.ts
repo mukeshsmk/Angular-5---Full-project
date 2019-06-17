@@ -128,6 +128,8 @@ export class TableListComponent {
 
   refresh() {
     const params = this.getParams();
+    params.search = "";
+    this.search = "";
     this.loadData(this.module, params);
   }
   loadData(type: string, params: any) {
