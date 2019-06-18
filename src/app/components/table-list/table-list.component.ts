@@ -270,6 +270,7 @@ export class TableListComponent {
     let endpoint: any;
     if (this.formType === "edit") {
       endpoint = this.apiService.leadUpdateUrl;
+      event.lastmodifiedbyid = this.userData.user_sfid;
     }
     if (this.formType === "new") {
       endpoint = this.apiService.quickLeadInsertUrl;
@@ -338,6 +339,7 @@ export class TableListComponent {
     let endpoint: any;
     if (this.formType === "edit") {
       endpoint = this.apiService.driverUpdateUrl;
+      event.lastmodifiedbyid = this.userData.user_sfid;
     }
     if (this.formType === "new") {
       endpoint = this.apiService.createDriverUrl;
@@ -369,6 +371,7 @@ export class TableListComponent {
     let endpoint: any;
     if (this.formType === "edit") {
       endpoint = this.apiService.customerUpdateUrl;
+      event.lastmodifiedbyid = this.userData.user_sfid;
     }
     if (this.formType === "new") {
       endpoint = this.apiService.createCustomerUrl;
