@@ -23,6 +23,7 @@ body {
 .toggled-mobile {
   display: none;
 }
+
 .toggled-desktop {
   display: grid;
 }
@@ -91,17 +92,17 @@ body {
   color: #03a9f3 !important;
 }
 
-.sidebar-nav > .sidebar-brand {
+.sidebar-nav>.sidebar-brand {
   height: 65px;
   font-size: 18px;
   line-height: 60px;
 }
 
-.sidebar-nav > .sidebar-brand a {
+.sidebar-nav>.sidebar-brand a {
   color: #fff;
 }
 
-.sidebar-nav > .sidebar-brand a:hover {
+.sidebar-nav>.sidebar-brand a:hover {
   color: #337ab7;
   background: none;
 }
@@ -122,7 +123,7 @@ body {
 }
 
 .tooltip {
-  position: relative !important;
+  position: relative;
   display: inline-block;
   border-bottom: 1px dotted black;
 }
@@ -151,6 +152,7 @@ body {
   border-style: solid;
   border-color: transparent black transparent transparent;
 }
+
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
@@ -176,6 +178,7 @@ body {
     padding: 20px;
     position: relative;
   }
+
   .sidebar-nav li a {
     display: contents;
     text-decoration: none;
