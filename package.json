@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o",
     "prod.build": "ng build --prod --aot",
     "prod.clean.s3": "aws s3 rm s3://appretail.io --recursive",
     "prod.cp.to.s3": "aws s3 cp ./dist/app-retail s3://appretail.io --recursive --cache-control max-age=31556926",
@@ -23,6 +23,7 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "@ng-bootstrap/ng-bootstrap": "^4.2.1",
     "@types/jest": "^24.0.13",
     "angular-calendar": "^0.27.8",
     "bootstrap": "4.3.1",

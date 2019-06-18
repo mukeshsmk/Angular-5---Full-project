@@ -65,31 +65,28 @@
             </div>
 
             <div class="col">
-              <button (click)="refresh()" type="button" class="btn btn-secondary pull-right mr-1 tooltip">
+              <button (click)="refresh()" type="button" class="btn btn-secondary pull-right mr-1" ngbTooltip="Refresh">
                 <i data-toggle="tooltip" data-original-title="Refresh" title="Edit Lead" class="fa fa-refresh"
-                  aria-hidden="true"></i>
-                <span class="tooltiptext tooltiptext-top">Refresh</span>
+                  aria-hidden="true" ></i>
               </button>
 
-              <button id="createNewLead" type="button" class="btn btn-secondary pull-right mr-1 tooltip" *ngIf="
+              <button id="createNewLead" type="button" class="btn btn-secondary pull-right mr-1" *ngIf="
                   module == 'customers' && permission.create_permission == 1
-                " (click)="openNewCustomerModal()">
+                " (click)="openNewCustomerModal()" ngbTooltip="Create">
                 <i data-toggle="tooltip" data-original-title="New Lead" class="fa fa-plus">
                 </i>
-                <span class="tooltiptext tooltiptext-top">Create</span>
               </button>
-              <button id="createNewLead" type="button" class="btn btn-secondary pull-right mr-1 tooltip"
-                *ngIf="module == 'drivers' && permission.create_permission == 1" (click)="openNewCustomerModal()">
+              <button id="createNewLead" type="button" class="btn btn-secondary pull-right mr-1"
+                *ngIf="module == 'drivers' && permission.create_permission == 1" (click)="openNewCustomerModal()" ngbTooltip="Create">
                 <i data-toggle="tooltip" data-original-title="New Lead" class="fa fa-plus">
                 </i>
-                <span class="tooltiptext tooltiptext-top">Create</span>
               </button>
-              <button type="button" class="btn btn-secondary pull-right mr-1 tooltip" *ngIf="
+              <button type="button" class="btn btn-secondary pull-right mr-1" *ngIf="
                   module == 'opportunities' && permission.create_permission == 1
-                " (click)="openNewOpportunityModal()">
+                " (click)="openNewOpportunityModal()" ngbTooltip="Quick Lead">
                 <i data-toggle="tooltip" data-original-title="Quick Lead" class="fa fa-bolt">
                 </i>
-                <span class="tooltiptext tooltiptext-top">Quick Lead</span>
+                
               </button>
               <button type="button" class="btn btn-secondary pull-right mr-1" *ngIf="changeLead"
                 (click)="getSearchModal()">
