@@ -22,7 +22,7 @@
 .fas {
   color: #0747a6;
   font-size: 15px;
-  margin: 0 12px;
+  margin: 0 0px;
 }
 
 .fa-sort-amount-down {
@@ -190,7 +190,7 @@ input[type="checkbox"] {
   display: block;
   width: 200px;
   border: none;
-  height: calc(1.5em + .75rem + 2px);
+  height: calc(1.5em + 0.75rem + 2px);
   font-weight: 400;
   font-size: 14px;
   line-height: 1.5;
@@ -199,7 +199,7 @@ input[type="checkbox"] {
   background-clip: padding-box;
   background: #dddddd;
   border-radius: 0;
-  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .table-button {
