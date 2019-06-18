@@ -201,7 +201,7 @@ input[type="checkbox"] {
 }
 
 .tooltip {
-  position: relative;
+  position: relative !important;
   display: inline-block;
   z-index: 998 !important;
   opacity: inherit;

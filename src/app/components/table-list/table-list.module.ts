@@ -23,15 +23,13 @@ import { ProfileComponent } from "../profile/profile.component";
 import { GeneralService } from "../../shared/services/GeneralService";
 import { UserDairyModule } from "../calendar/user-dairy.module";
 
-import { NgbTooltipModule } from "@ng-bootstrap/ng-bootstrap";
 @NgModule({
   imports: [
     TableListRoutingModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    UserDairyModule,
-    NgbTooltipModule
+    UserDairyModule
   ],
   declarations: [
     DashboardComponent,

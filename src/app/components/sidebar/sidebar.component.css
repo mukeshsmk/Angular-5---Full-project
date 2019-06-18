@@ -122,7 +122,7 @@ body {
 }
 
 .tooltip {
-  position: relative;
+  position: relative !important;
   display: inline-block;
   border-bottom: 1px dotted black;
 }
