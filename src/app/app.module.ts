@@ -5,6 +5,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from "./app.component";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 // import { RegistrationService } from './service/registration.service';
 import { LoginModule } from "./login/login.module";
@@ -30,6 +31,7 @@ import { ApiService } from "./shared/services/ApiServices";
     CoreModule,
     HttpClientModule,
     AppRoutingModule,
+    NgbModule,
     HomeModule,
     SignupModule,
     LoginModule,

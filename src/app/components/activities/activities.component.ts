@@ -80,8 +80,7 @@ export class ActivitiesComponent implements OnInit {
   onSubmit(form: any, formDirective: FormGroupDirective) {
     this.loaderOne = true;
     this.submitted = true;
-    console.log(form)
-    
+    console.log(form);
     // stop here if form is invalid
     if (form.invalid) {
       this.loaderOne = false;
@@ -91,7 +90,7 @@ export class ActivitiesComponent implements OnInit {
     this.http
       .post<{ success: object }>(this.apiService.activitiesUrl, form.value)
       .subscribe((response: any) => {
-        this.submitted = true;
+        this.submitted = false;
         if (form.value.type__c === "Task") {
           this.inserttasksuccess = true;
         }
