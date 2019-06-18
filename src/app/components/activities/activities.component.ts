@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormGroupDirective } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
 import { ApiService } from "../../shared/services/ApiServices";
 @Component({
@@ -77,10 +77,11 @@ export class ActivitiesComponent implements OnInit {
     return this.taskForm.controls;
   }
 
-  onSubmit(form: any) {
+  onSubmit(form: any, formDirective: FormGroupDirective) {
     this.loaderOne = true;
     this.submitted = true;
     console.log(form)
+    
     // stop here if form is invalid
     if (form.invalid) {
       this.loaderOne = false;
@@ -105,6 +106,9 @@ export class ActivitiesComponent implements OnInit {
         }
 
         form.reset();
+        formDirective.resetForm();
+        this.submitted = false;
+
         this.ngOnInit();
         this.loaderOne = false;
         this.getNotificationdata();

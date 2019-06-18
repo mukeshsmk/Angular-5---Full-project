@@ -8,69 +8,48 @@
   <strong>Failed! </strong> Operation Failed.
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 </div>
-<div class="card-head" style="width: 75%;">
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="pt-1 pl-2">
-        <img class="mr-2" src="/assets/images/warehouse.png" />
-        <span style="font-size:18px;">{{ stock.name }}</span>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class=" row pull-right">
-        <button
-          type="button"
-          title="Edit"
-          class="btn btn-default inlineEditBtn170"
-          (click)="viewEdit()"
-          *ngIf="!visibleEdit"
-        >
-          Edit
-        </button>
-        <button
-          type="button"
-          title="Edit"
-          class="btn btn-default inlineEditBtn170"
-          (click)="onSubmitUpdate()"
-          *ngIf="visibleEdit"
-        >
-          Save
-        </button>
-        <!-- <button type="button" edit_id="btn1170" title="Edit" class="btn btn-default inlineEditBtn170" *ngIf="visible1" (click)="visible2 = !visible1">
-            Save
-          </button> -->
-        <button
-          type="button"
-          title="Details"
-          id="btn1170"
-          class="btn btn-md btn-default mr-2 ml-2"
-          [ngClass]="{
-            'btn-primary': visibleDetail
-          }"
-          (click)="viewDetail()"
-        >
-          <i class="fas fa-th"></i> Details
-        </button>
-        <button
-          title="Activity"
-          type="button"
-          id="btn2170"
-          class="btn btn-default btn-md mr-1"
-          (click)="viewRelated()"
-          [ngClass]="{
-            'btn-primary': visibleRelated
-          }"
-        >
-          <i class="fas fa-th-list"></i> Related
-        </button>
-      </div>
-    </div>
+<div class="row">
+  <div class="col-md-8">
+      <div class="card-head">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="pt-1 pl-2">
+                <img class="mr-2" src="/assets/images/warehouse.png" />
+                <span style="font-size:18px;">{{ stock.name }}</span>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class=" row pull-right">
+                <button
+                  type="button"
+                  title="Edit"
+                  class="btn btn-default inlineEditBtn170"
+                  (click)="viewEdit()"
+                  *ngIf="!visibleEdit"
+                >
+                  Edit
+                </button>
+                <button
+                  type="button"
+                  title="Edit"
+                  class="btn btn-default inlineEditBtn170"
+                  (click)="onSubmitUpdate()"
+                  *ngIf="visibleEdit"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      
   </div>
 </div>
 
+
 <section *ngIf="visibleDetail">
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-8">
       <div class="card">
         <div class="card-header pointer">
           <a (click)="visibleOne = !visibleOne">
@@ -81,11 +60,11 @@
         </div>
         <div class="card-block" *ngIf="!visibleOne">
           <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
               <div class="row">
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label>Stock No :</label>
+                    <label><b>Stock No :</b></label>
                     <!-- $details[0]->sfid-->
                     <span
                       name="name"
@@ -99,7 +78,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label>Selling Dealer :</label>
+                    <label><b>Selling Dealer :</b></label>
                     <span
                       pattern="[a-zA-Z\sàèéìòù]+"
                       name="selling_dealer__c"
@@ -115,7 +94,7 @@
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label>Vin :</label>
+                    <label><b>Vin :</b></label>
                     <span
                       name="vin__c"
                       dropname="text"
@@ -127,7 +106,7 @@
                     >
                   </div>
                   <div class="form-group">
-                    <label>Reg No : </label>
+                    <label><b>Reg No :</b></label>
                     <span
                       name="rego_no__c"
                       dropname="text"
@@ -142,7 +121,7 @@
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label>Manafacture Year :</label>
+                    <label><b>Manafacture Year :</b></label>
                     <span
                       name="manufacture_year__c"
                       dropname="text"
@@ -154,7 +133,7 @@
                     >
                   </div>
                   <div class="form-group">
-                    <label>Body type :</label>
+                    <label><b>Body type :</b></label>
                     <span
                       name="body_type__c"
                       dropname="text"
@@ -169,7 +148,7 @@
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label>Body Color :</label>
+                    <label><b>Body Color :</b></label>
                     <span
                       name="body_colour__c"
                       dropname="text"
@@ -181,7 +160,7 @@
                     >
                   </div>
                   <div class="form-group">
-                    <label>Price :</label>
+                    <label><b>Price :</b></label>
                     <span
                       name="egc_price__c"
                       dropname="text"
@@ -196,7 +175,7 @@
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label>Series :</label>
+                    <label><b>Series :</b></label>
                     <span
                       name="series_c__c"
                       dropname="text"
@@ -211,7 +190,7 @@
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label>Vehicle Type :</label>
+                    <label><b>Vehicle Type :</b></label>
                     <span
                       name="vehicle_type__c"
                       dropname="text"
@@ -227,7 +206,7 @@
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label>Fuel Type :</label>
+                    <label><b>Fuel Type :</b></label>
                     <span
                       name="fuel_type__c"
                       dropname="text"
@@ -242,7 +221,7 @@
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label>Make :</label>
+                    <label><b>Make :</b></label>
                     <span
                       name="make__c"
                       dropname="text"
@@ -257,7 +236,7 @@
 
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <label>Model :</label>
+                    <label><b>Model :</b></label>
 
                     <span
                       name="model__c"
@@ -269,6 +248,12 @@
                       {{ stock.model__c }}</span
                     >
                   </div>
+                </div>
+
+                <div class="col-md-12">
+                    <img [src]="'https://images.qrsolutions.com.au/' + stock.first_image_name__c"
+                      class="rounded"
+                      width="250px" height="150px">
                 </div>
               </div>
             </div>
@@ -309,21 +294,21 @@
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <label>Created by :</label>
+                <label><b>Created by :</b></label>
                 <span class="form-control-static">{{ stock.ownerid }}</span>
               </div>
               <div class="form-group">
-                <label>Created Date :</label>
+                <label><b>Created Date :</b></label>
                 <span class="form-control-static">{{ stock.createddate }}</span>
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <label>Last modified by :</label>
+                <label><b>Last modified by :</b></label>
                 <span class="form-control-static"></span>
               </div>
               <div class="form-group">
-                <label>Last modified date :</label>
+                <label><b>Last modified date :</b></label>
                 <span class="form-control-static">{{ stock.systemmodstamp }}</span>
               </div>
             </div>
@@ -337,7 +322,7 @@
 <section *ngIf="visibleEdit">
   <form (ngSubmit)="onSubmitUpdate()" [formGroup]="vehicleStockForm">
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-8">
         <div class="card">
           <div class="card-header pointer">
             <a (click)="visibleOne = !visibleOne">
@@ -561,7 +546,7 @@
 
 <section *ngIf="visibleRelated">
   <div class="row">
-    <div class="col-sm-9">
+    <div class="col-sm-8">
       <div class="card">
         <div class="card-header padding-head pointer">
           <h4 class="card-title pull-left" style="padding-top: 7.5px;">

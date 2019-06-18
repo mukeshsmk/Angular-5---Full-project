@@ -61,6 +61,7 @@ export class TableListComponent {
   modal_title: any;
   errAlert: Boolean = false;
   successAlert: Boolean = false;
+  sortDirection: string = "ASC";
 
   searchTerm: string;
   constructor(
@@ -193,8 +194,8 @@ export class TableListComponent {
   }
   pageCount(limit: any) {
     this.limit = limit;
+    this.page = 1;
     const params = this.getParams();
-    params.page = 1;
     this.loadData(this.module, params);
   }
   pageNumber(page: any) {
@@ -214,6 +215,8 @@ export class TableListComponent {
     i.active = !i.current_page;
   }
   sortData(sort: any) {
+    this.sortDirection = this.sort == sort ? this.sortDirection == "DESC" ? "ASC" : "DESC" : "ASC";
+
     this.sort = sort;
     const params = this.getParams();
     params.page = 1;
@@ -492,6 +495,7 @@ export class TableListComponent {
       search: this.search,
       type: this.vsType,
       sort: this.sort,
+      sortDirection: this.sortDirection,
       allocated: this.allocated,
       unallocated: this.unallocated
     };

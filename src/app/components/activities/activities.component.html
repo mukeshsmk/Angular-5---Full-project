@@ -48,7 +48,8 @@
               <h4 class="card-title p-3">
                 <i class="fa fa-tasks" aria-hidden="true"></i>&nbsp; Task
               </h4>
-              <form (ngSubmit)="onSubmit(taskForm)" [formGroup]="taskForm">
+              <form [formGroup]="taskForm" #taskFormDirective="ngForm"
+                (ngSubmit)="onSubmit(taskForm, taskFormDirective)" >
                 <div class="p-3">
                   <div>
                     <div *ngIf="inserttasksuccess">
@@ -243,7 +244,7 @@
           </div>
           <div id="menu1702" class="tab-pane fade" role="tabpanel">
             <div class="card-body p-0">
-              <form (ngSubmit)="onSubmit(callForm)" [formGroup]="callForm">
+              <form (ngSubmit)="onSubmit(callForm, callFormDirective)" [formGroup]="callForm" #callFormDirective="ngForm">
                 <h4 class="card-title p-3">
                   <i class="fa fa-phone-square" aria-hidden="true"></i>&nbsp;
                   Call Log
@@ -384,7 +385,7 @@
                 <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; Event
               </h4>
               <div class="p-3">
-                <form (ngSubmit)="onSubmit(eventForm)" [formGroup]="eventForm">
+                <form (ngSubmit)="onSubmit(eventForm, eventFormDirective)" [formGroup]="eventForm" #eventFormDirective="ngForm">
                   <div
                     class="panel-body"
                     id="success_body"
@@ -666,7 +667,7 @@
                 <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;Email
               </h4>
               <div class="p-3">
-                <form (ngSubmit)="onSubmit(emailForm)" [formGroup]="emailForm">
+                <form (ngSubmit)="onSubmit(emailForm, emailFormDirective)" [formGroup]="emailForm" #emailFormDirective="ngForm">
                   <div>
                     <div *ngIf="insertemailsuccess">
                       <div class="alert alert-success alert-dismissible in">
