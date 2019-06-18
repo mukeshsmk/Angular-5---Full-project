@@ -7,7 +7,7 @@
         <a
           class="nav-link active"
           data-toggle="tab"
-          href="#task702"
+          href="#task{{opportunity.id}}"
           aria-expanded="true"
           >Task</a
         >
@@ -16,7 +16,7 @@
         <a
           class="nav-link"
           data-toggle="tab"
-          href="#menu1702"
+          href="#menu1{{opportunity.id}}"
           aria-expanded="false"
           >Call Log</a
         >
@@ -25,7 +25,7 @@
         <a
           class="nav-link"
           data-toggle="tab"
-          href="#menu2702"
+          href="#menu2{{opportunity.id}}"
           aria-expanded="false"
           >Event</a
         >
@@ -34,7 +34,7 @@
         <a
           class="nav-link"
           data-toggle="tab"
-          href="#menu3702"
+          href="#menu3{{opportunity.id}}"
           aria-expanded="false"
           >Email</a
         >
@@ -43,7 +43,7 @@
     <div class="panel-group">
       <div class="panel panel-default ">
         <div class="tab-content">
-          <div id="task702" class="tab-pane fade show active" role="tabpanel">
+          <div id="task{{opportunity.id}}" class="tab-pane fade show active" role="tabpanel">
             <div class="card-body p-0">
               <h4 class="card-title p-3">
                 <i class="fa fa-tasks" aria-hidden="true"></i>&nbsp; Task
@@ -241,7 +241,7 @@
               </form>
             </div>
           </div>
-          <div id="menu1702" class="tab-pane fade" role="tabpanel">
+          <div id="menu1{{opportunity.id}}" class="tab-pane fade" role="tabpanel">
             <div class="card-body p-0">
               <form (ngSubmit)="onSubmit(callForm)" [formGroup]="callForm">
                 <h4 class="card-title p-3">
@@ -378,7 +378,7 @@
               </form>
             </div>
           </div>
-          <div id="menu2702" class="tab-pane fade" role="tabpanel">
+          <div id="menu2{{opportunity.id}}" class="tab-pane fade" role="tabpanel">
             <div class="card-body p-0">
               <h4 class="card-title p-3">
                 <i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; Event
@@ -660,7 +660,7 @@
               </div>
             </div>
           </div>
-          <div id="menu3702" class="tab-pane fade" role="tabpanel">
+          <div id="menu3{{opportunity.id}}" class="tab-pane fade" role="tabpanel">
             <div class="card-body p-0">
               <h4 class="card-title p-3">
                 <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;Email

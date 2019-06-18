@@ -29,6 +29,8 @@ export class ApiService {
   public getModulesUrl(type) {
     return this.apiUrl + type;
   }
+  //leadEditFetch
+  leadEditFetchUrl = this.apiUrl + "leadEditFetch";
   //leadUpdate
   leadUpdateUrl = this.apiUrl + "leadUpdate";
   //quickLeadInsert

@@ -42,7 +42,6 @@ export class NavigationBarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.colorIndex = 0;
     this.submitted = false;
     this.stageName = [
       "new",
@@ -57,12 +56,6 @@ export class NavigationBarComponent implements OnInit {
       "Converted"
     ];
     if (this.details) {
-      for (let i = 0; i < this.stageName.length; i++) {
-        if (this.details.stagename === this.stageName[i]) {
-          this.colorIndex = i;
-        }
-      }
-
       this.newTaskForm = this.formBuilder.group({
         first_name__c: [this.details.first_name__c],
         last_name__c: [this.details.last_name__c],
@@ -104,9 +97,32 @@ export class NavigationBarComponent implements OnInit {
         notes__c: [this.details.notes__c],
         stagename: ["Converted"]
       });
+      this.navCompleted();
     }
   }
 
+  navCompleted() {
+    this.loaderOne = true;
+    let data = {
+      lead_id: this.details.id
+    };
+    this.http
+      .post<{ success: object }>(this.apiService.leadEditFetchUrl, data)
+      .subscribe((response: any) => {
+        if (!response.error) {
+          this.details = response;
+          this.navStatusChange();
+        }
+        this.loaderOne = false;
+      });
+  }
+  navStatusChange() {
+    for (let i = 0; i < this.stageName.length; i++) {
+      if (this.details.stagename === this.stageName[i]) {
+        this.colorIndex = i;
+      }
+    }
+  }
   openNavModal(arg: string) {
     this.module = arg;
     this.navigtionOpen = true;
@@ -133,7 +149,7 @@ export class NavigationBarComponent implements OnInit {
         console.log(response);
         this.details = response;
         this.loaderOne = false;
-        this.ngOnInit();
+        this.navStatusChange();
         this.closeModal();
       });
   }
