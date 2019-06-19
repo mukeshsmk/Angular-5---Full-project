@@ -221,6 +221,13 @@ export class TableListComponent {
     params.page = 1;
     this.loadData(this.module, params);
   }
+  stockModelsort() {
+    this.opportunityListData.data.sort((a, b) => {
+      if (a.model_name < b.model_name) return -1;
+      else if (a.model_name > b.model_name) return 1;
+      else return 0;
+    });
+  }
   viewPersondetails(data: any) {
     this.loaderOne = true;
     let template;
