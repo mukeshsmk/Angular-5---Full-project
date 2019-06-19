@@ -169,6 +169,13 @@ export class TableListComponent {
         this.loaderOne = false;
       });
   }
+  leadSort() {
+    this.opportunityListData.data.sort((a, b) => {
+      if (a.lead_owner_data < b.lead_owner_data) return -1;
+      else if (a.lead_owner_data > b.lead_owner_data) return 1;
+      else return 0;
+    });
+  }
   allocate(arg: any) {
     if (arg === "allocated") {
       this.allocated = "allocated";
