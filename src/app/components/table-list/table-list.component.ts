@@ -317,8 +317,6 @@ export class TableListComponent {
         console.log(response);
         if (response == 1) {
           this.successAlert = true;
-        } else {
-          this.errAlert = true;
         }
         this.opportunityOpen = true;
         this.modalData = [];
