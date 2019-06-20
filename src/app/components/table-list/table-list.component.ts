@@ -158,8 +158,8 @@ export class TableListComponent {
               }
             }
           }
-          this.permission = response.permission[0];
         }
+        this.permission = response.permission[0];
         this.opportunityListData.lastPage = Array(
           this.opportunityListData.last_page
         )
