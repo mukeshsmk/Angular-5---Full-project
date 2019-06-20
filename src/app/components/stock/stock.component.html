@@ -62,7 +62,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-6">
                   <div class="form-group">
                     <label><b>Stock No :</b></label>
                     <!-- $details[0]->sfid-->
@@ -90,36 +90,33 @@
                       {{ stock.selling_dealer__c }}</span
                     >
                   </div>
-                </div>
 
-                <div class="col-sm-3">
                   <div class="form-group">
-                    <label><b>Vin :</b></label>
+                    <label><b>Series :</b></label>
                     <span
-                      name="vin__c"
-                      dropname="text"
-                      type="text"
-                      inlinetext="1234"
-                      class=" form-control-static inlineEditEnb"
-                    >
-                      {{ stock.vin__c }}</span
-                    >
-                  </div>
-                  <div class="form-group">
-                    <label><b>Reg No :</b></label>
-                    <span
-                      name="rego_no__c"
+                      name="series_c__c"
                       dropname="text"
                       type="text"
                       inlinetext=""
                       class=" form-control-static inlineEditEnb"
                     >
-                      {{ stock.rego_no__c }}</span
+                      {{ stock.series_c__c }}</span
                     >
                   </div>
-                </div>
 
-                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label><b>Model :</b></label>
+                    <span
+                      name="model__c"
+                      dropname="text"
+                      type="text"
+                      inlinetext=""
+                      class=" form-control-static inlineEditEnb"
+                    >
+                      {{ stock.model__c }}</span
+                    >
+                  </div>
+
                   <div class="form-group">
                     <label><b>Manafacture Year :</b></label>
                     <span
@@ -144,9 +141,62 @@
                       {{ stock.body_type__c }}</span
                     >
                   </div>
+
+                  <div class="form-group">
+                    <label><b>Fuel Type :</b></label>
+                    <span
+                      name="fuel_type__c"
+                      dropname="text"
+                      type="text"
+                      inlinetext=""
+                      class=" form-control-static inlineEditEnb"
+                    >
+                      {{ stock.fuel_type__c }}</span
+                    >
+                  </div>
+
                 </div>
 
-                <div class="col-sm-3">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label><b>Vin :</b></label>
+                    <span
+                      name="vin__c"
+                      dropname="text"
+                      type="text"
+                      inlinetext="1234"
+                      class=" form-control-static inlineEditEnb"
+                    >
+                      {{ stock.vin__c }}</span
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label><b>Reg No :</b></label>
+                    <span
+                      name="rego_no__c"
+                      dropname="text"
+                      type="text"
+                      inlinetext=""
+                      class=" form-control-static inlineEditEnb"
+                    >
+                      {{ stock.rego_no__c }}</span
+                    >
+                  </div>
+
+                  <div class="form-group">
+                    <label><b>Vehicle Type :</b></label>
+                    <span
+                      name="vehicle_type__c"
+                      dropname="text"
+                      type="text"
+                      inlinetext="New"
+                      class=" form-control-static inlineEditEnb"
+                    >
+                      {{ stock.vehicle_type__c }}</span
+                    >
+                    <!-- <span class="form-control-static">New</span> -->
+                  </div>
+
                   <div class="form-group">
                     <label><b>Body Color :</b></label>
                     <span
@@ -171,55 +221,7 @@
                       {{ stock.egc_price__c }}</span
                     >
                   </div>
-                </div>
 
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label><b>Series :</b></label>
-                    <span
-                      name="series_c__c"
-                      dropname="text"
-                      type="text"
-                      inlinetext=""
-                      class=" form-control-static inlineEditEnb"
-                    >
-                      {{ stock.series_c__c }}</span
-                    >
-                  </div>
-                </div>
-
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label><b>Vehicle Type :</b></label>
-                    <span
-                      name="vehicle_type__c"
-                      dropname="text"
-                      type="text"
-                      inlinetext="New"
-                      class=" form-control-static inlineEditEnb"
-                    >
-                      {{ stock.vehicle_type__c }}</span
-                    >
-                    <!-- <span class="form-control-static">New</span> -->
-                  </div>
-                </div>
-
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label><b>Fuel Type :</b></label>
-                    <span
-                      name="fuel_type__c"
-                      dropname="text"
-                      type="text"
-                      inlinetext=""
-                      class=" form-control-static inlineEditEnb"
-                    >
-                      {{ stock.fuel_type__c }}</span
-                    >
-                  </div>
-                </div>
-
-                <div class="col-sm-3">
                   <div class="form-group">
                     <label><b>Make :</b></label>
                     <span
@@ -232,25 +234,14 @@
                       {{ stock.make__c }}</span
                     >
                   </div>
+                  
                 </div>
 
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label><b>Model :</b></label>
+               
 
-                    <span
-                      name="model__c"
-                      dropname="text"
-                      type="text"
-                      inlinetext=""
-                      class=" form-control-static inlineEditEnb"
-                    >
-                      {{ stock.model__c }}</span
-                    >
-                  </div>
-                </div>
+              
 
-                <div class="col-md-12">
+                <div class="col-sm-6">
                     <img [src]="'https://images.qrsolutions.com.au/' + stock.first_image_name__c"
                       class="rounded"
                       width="250px" height="150px">

@@ -29,7 +29,7 @@
         </div>
         <div class="card-block" *ngIf="!visibleOne">
           <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-6">
               <div class="form-group">
                 <label><b>Name :</b></label>
                 <span class="form-control-static"> {{ customer.name }}</span>
@@ -49,9 +49,19 @@
                 <span class="form-control-static">
                   {{ customer.business_email__c }}</span>
               </div>
+              <div class="form-group">
+                <label><b>Billing postcode :</b></label>
+                <span class="form-control-static">
+                  {{ customer.billing_postcode__c }}</span>
+              </div>
+              <div class="form-group">
+                <label><b>Account :</b></label>
+                <span class="form-control-static">
+                  {{ customer.account__c }}</span>
+              </div>
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-sm-6">
               <div class="form-group">
                 <label><b>Mobile :</b></label>
                 <span class="form-control-static">
@@ -66,23 +76,10 @@
                 <span class="form-control-static">
                   {{ customer.state__c }}</span>
               </div>
-            </div>
-
-            <div class="col-sm-3">
-              <div class="form-group">
-                <label><b>Billing postcode :</b></label>
-                <span class="form-control-static">
-                  {{ customer.billing_postcode__c }}</span>
-              </div>
               <div class="form-group">
                 <label><b>Billing state :</b></label>
                 <span class="form-control-static">
                   {{ customer.billing_state__c }}</span>
-              </div>
-              <div class="form-group">
-                <label><b>Account :</b></label>
-                <span class="form-control-static">
-                  {{ customer.account__c }}</span>
               </div>
               <div class="form-group">
                 <label><b>Account Number :</b></label>
@@ -90,6 +87,7 @@
                   {{ customer.accountnumber }}</span>
               </div>
             </div>
+
           </div>
         </div>
       </div>

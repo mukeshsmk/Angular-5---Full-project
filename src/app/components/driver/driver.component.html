@@ -42,7 +42,7 @@
         </div>
         <div class="card-block" *ngIf="!visibleOne">
           <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-6">
               <div class="form-group">
                 <label><b>Name :</b></label>
                 <span class="form-control-static"> {{ driver.name }}</span>
@@ -62,9 +62,40 @@
                 <span class="form-control-static">
                   {{ driver.customer_id__c }}</span>
               </div>
+
+              <div class="form-group">
+                <label><b>Billing Address :</b></label>
+                <span class="form-control-static">
+                  {{ driver.billing_address__c }}</span>
+              </div>
+              <div class="form-group">
+                <label><b>Billing Suburb :</b></label>
+                <span class="form-control-static">
+                  {{ driver.billing_suburb__c }}</span>
+              </div>
+              <div class="form-group">
+                <label><b>Billing postcode :</b></label>
+                <span class="form-control-static">
+                  {{ driver.billing_post_code__c }}</span>
+              </div>
+              <div class="form-group">
+                <label><b>Billing state :</b></label>
+                <span class="form-control-static">
+                  {{ driver.billing_state__c }}</span>
+              </div>
+
+              <div class="form-group">
+                <label><b>Model :</b></label>
+                <span class="form-control-static"> {{ driver.model__c }}</span>
+              </div>
+              <div class="form-group">
+                <label><b>Make :</b></label>
+                <span class="form-control-static"> {{ driver.make }} </span>
+              </div>
+
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-sm-6">
               <div class="form-group">
                 <label><b>Homephone :</b></label>
                 <span class="form-control-static"> {{ driver.homephone }}</span>
@@ -86,32 +117,7 @@
                   {{ driver.mobilephone }}
                 </span>
               </div>
-            </div>
 
-            <div class="col-sm-3">
-              <div class="form-group">
-                <label><b>Billing Address :</b></label>
-                <span class="form-control-static">
-                  {{ driver.billing_address__c }}</span>
-              </div>
-              <div class="form-group">
-                <label><b>Billing Suburb :</b></label>
-                <span class="form-control-static">
-                  {{ driver.billing_suburb__c }}</span>
-              </div>
-              <div class="form-group">
-                <label><b>Billing postcode :</b></label>
-                <span class="form-control-static">
-                  {{ driver.billing_post_code__c }}</span>
-              </div>
-              <div class="form-group">
-                <label><b>Billing state :</b></label>
-                <span class="form-control-static">
-                  {{ driver.billing_state__c }}</span>
-              </div>
-            </div>
-
-            <div class="col-sm-3">
               <div class="form-group">
                 <label><b>Billing Country :</b></label>
                 <span class="form-control-static">
@@ -132,17 +138,6 @@
                 <span class="form-control-static">
                   {{ driver.billing_address_valid__c }}</span>
               </div>
-            </div>
-
-            <div class="col-sm-3">
-              <div class="form-group">
-                <label><b>Model :</b></label>
-                <span class="form-control-static"> {{ driver.model__c }}</span>
-              </div>
-              <div class="form-group">
-                <label><b>Make :</b></label>
-                <span class="form-control-static"> {{ driver.make }} </span>
-              </div>
 
               <div class="form-group">
                 <label><b>Languages :</b></label>
@@ -154,7 +149,9 @@
                 <label><b>Level :</b></label>
                 <span class="form-control-static"> {{ driver.level }}</span>
               </div>
+
             </div>
+
           </div>
         </div>
       </div>
@@ -370,7 +367,7 @@
 
   <section>
     <div class="row">
-      <div class="col-sm-9">
+      <div class="col-sm-8">
         <div class="card card-default" style="margin-top: 10px;">
           <div class="card-header padding-head pointer">
             <h4 class="card-title pull-left" style="padding-top: 7.5px;">
@@ -634,7 +631,7 @@
 
   <section>
     <div class="row">
-      <div class="col-sm-9">
+      <div class="col-sm-8">
         <div class="card">
           <div class="card-header padding-head pointer">
             <h4 class="card-title pull-left" style="padding-top: 7.5px;">
@@ -652,7 +649,7 @@
 
   <section>
     <div class="row">
-      <div class="col-sm-9">
+      <div class="col-sm-8">
         <div class="card card-default" style="margin-top: 10px;">
           <div class="card-heading" style="background-color:#fff;border-bottom:1px  solid #ddd;">
             Contact History( 0)
@@ -772,7 +769,7 @@
 
   <section>
     <div class="row">
-      <div class="col-sm-9">
+      <div class="col-sm-8">
         <div class="card">
           <div class="card-header padding-head pointer">
             <h4 class="card-title pull-left" style="padding-top: 7.5px;">
