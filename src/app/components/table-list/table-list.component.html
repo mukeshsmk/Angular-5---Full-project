@@ -146,7 +146,7 @@
                         </th>
                         <th>
                           <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sortData('name')"></i>
+                            <i class="fas fa-sort-amount-down" (click)="leadSort()"></i>
                           </a>
                           LeadOwner
                         </th>
@@ -168,7 +168,16 @@
                             <a href="#" (click)="viewPersondetails(opportunity)">
                               <div class="tooltip">
                                 {{ opportunity.name }}
-                                <span class="tooltiptext">Requested Type: Test Drive <br />
+                                <span class="tooltiptext" *ngIf="opportunity.request_type__c && opportunity.interest_of_model__c">Requested Type: {{ opportunity.request_type__c }} <br />
+                                  Model of interest: {{ opportunity.interest_of_model__c }}
+                                </span>ß
+                                <span class="tooltiptext" *ngIf="!opportunity.request_type__c && opportunity.interest_of_model__c">Requested Type: Test Drive <br />
+                                  Model of interest: {{ opportunity.interest_of_model__c }}
+                                </span>
+                                <span class="tooltiptext" *ngIf="opportunity.request_type__c && !opportunity.interest_of_model__c">Requested Type: {{ opportunity.request_type__c }} <br />
+                                  Model of interest: A10
+                                </span>
+                                <span class="tooltiptext" *ngIf="!opportunity.request_type__c && !opportunity.interest_of_model__c">Requested Type: Test Drive <br />
                                   Model of interest: A10
                                 </span>
                               </div>
@@ -260,7 +269,7 @@
                         </th>
                         <th>
                           <a href="#">
-                            <i class="fas fa-sort-amount-down" (click)="sortData('model_name__c')"></i>
+                            <i class="fas fa-sort-amount-down" (click)="stockModelsort()"></i>
                           </a>
                           Model
                         </th>
