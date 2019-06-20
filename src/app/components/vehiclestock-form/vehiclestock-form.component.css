@@ -71,3 +71,20 @@
 .modelDropdownData:hover {
   background-color: #d4d4d4;
 }
+
+.modal.full-size .modal-body {
+  overflow: auto;
+  height: calc(100vh - 200px);
+}
+
+.modal.full-size .modal-dialog {
+  width: calc(100vw - 100px);
+  max-width: 800px;
+}
+
+.modal-title {
+  color: #ec1c24;
+}
+.modal.full-size .modal-dialog {
+  width: 100%;
+}

@@ -26,6 +26,8 @@ export class VehicleStockFormComponent implements OnInit {
   visibleFive: Boolean = true;
   visibleSix: Boolean = true;
 
+  searchOpen: Boolean = false;
+
   modelResult: Boolean = false;
   searchLoading: Boolean = false;
 
@@ -39,6 +41,8 @@ export class VehicleStockFormComponent implements OnInit {
   submitted: Boolean = false;
   userData: any;
   searchTerm: any;
+
+  sdname: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -74,7 +78,18 @@ export class VehicleStockFormComponent implements OnInit {
   onCloseModal(event: any) {
     this.closeModalEvent.emit(event);
   }
+
+  getSearchModal() {
+    this.searchOpen = true;
+    this.sdname = "";
+  }
+
+  closeSeacrch() {
+    this.searchOpen = false;
+  }
+
   modelSearch(term) {
+    console.log("term", term);
     if (term != "") {
       this.modelResult = true;
       this.searchLoading = true;
@@ -92,6 +107,8 @@ export class VehicleStockFormComponent implements OnInit {
     this.vehicleStockForm.controls["model_name__c"].setValue(data.sfid);
     console.log(data);
     this.modelResult = false;
+    this.searchOpen = false;
+    this.sdname = "";
   }
   onSubmit() {
     this.submitted = true;
