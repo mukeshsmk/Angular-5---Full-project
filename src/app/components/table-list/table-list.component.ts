@@ -134,6 +134,7 @@ export class TableListComponent {
   }
   loadData(type: string, params: any) {
     this.loaderOne = true;
+    this.changeLead = false;
     this.opportunityList = [];
     this.opportunityListData = [];
     params.userData = JSON.parse(localStorage.getItem("user_data"));
