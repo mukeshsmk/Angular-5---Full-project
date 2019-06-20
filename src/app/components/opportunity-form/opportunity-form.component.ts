@@ -36,6 +36,9 @@ export class OpportunityFormComponent implements OnInit {
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem("user_data"));
+    this.opportunity.selling_dealer__c = this.opportunity.selling_dealer__c
+      ? this.opportunity.selling_dealer__c
+      : this.userData.dealership_name;
     this.opportunityForm = this.formBuilder.group({
       first_name__c: [this.opportunity.first_name__c],
       last_name__c: [this.opportunity.last_name__c, Validators.required],

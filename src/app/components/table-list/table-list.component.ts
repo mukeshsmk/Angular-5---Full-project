@@ -135,6 +135,7 @@ export class TableListComponent {
   }
   loadData(type: string, params: any) {
     this.loaderOne = true;
+    this.changeLead = false;
     this.opportunityList = [];
     this.opportunityListData = [];
     params.userData = JSON.parse(localStorage.getItem("user_data"));
@@ -146,21 +147,17 @@ export class TableListComponent {
         if (type === "opportunities") {
           for (let i = 0; i < response.list.data.length; i++) {
             if (params.userData.roleid !== 5) {
-              if (
-                this.responseData.sfid[
-                  this.opportunityListData.data[i].app_retail_user__c
-                ] !== undefined
-              ) {
-                response.list.data[i].lead_owner_data = this.responseData.sfid[
-                  this.opportunityListData.data[i].app_retail_user__c
-                ];
-              } else {
-                response.list.data[i].lead_owner_data = "-";
-              }
+              response.list.data[i].lead_owner_data = response.list.data[i]
+                .lead_owner_data
+                ? response.list.data[i].lead_owner_data
+                : "-";
             }
           }
-          this.permission = response.permission[0];
         }
+        let permission = response.permission[0]
+          ? response.permission[0]
+          : this.permission;
+        this.permission = permission;
         this.opportunityListData.lastPage = Array(
           this.opportunityListData.last_page
         )
@@ -334,8 +331,6 @@ export class TableListComponent {
         console.log(response);
         if (response == 1) {
           this.successAlert = true;
-        } else {
-          this.errAlert = true;
         }
         this.opportunityOpen = true;
         this.modalData = [];

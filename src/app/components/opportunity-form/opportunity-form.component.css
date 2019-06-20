@@ -45,6 +45,12 @@ label {
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: #e9ecef !important;
+  opacity: 1;
+}
+
 .form-group {
   margin-bottom: 5px;
 }
