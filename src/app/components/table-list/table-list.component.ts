@@ -159,7 +159,10 @@ export class TableListComponent {
             }
           }
         }
-        this.permission = response.permission[0];
+        let permission = response.permission[0]
+          ? response.permission[0]
+          : this.permission;
+        this.permission = permission;
         this.opportunityListData.lastPage = Array(
           this.opportunityListData.last_page
         )
