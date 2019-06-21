@@ -167,13 +167,6 @@ export class TableListComponent {
         this.loaderOne = false;
       });
   }
-  leadSort() {
-    this.opportunityListData.data.sort((a, b) => {
-      if (a.lead_owner_data < b.lead_owner_data) return -1;
-      else if (a.lead_owner_data > b.lead_owner_data) return 1;
-      else return 0;
-    });
-  }
   allocate(arg: any) {
     if (arg === "allocated") {
       this.allocated = "allocated";
@@ -221,7 +214,12 @@ export class TableListComponent {
     i.active = !i.current_page;
   }
   sortData(sort: any) {
-    this.sortDirection = this.sort == sort ? this.sortDirection == "DESC" ? "ASC" : "DESC" : "ASC";
+    this.sortDirection =
+      this.sort == sort
+        ? this.sortDirection == "DESC"
+          ? "ASC"
+          : "DESC"
+        : "ASC";
 
     this.sort = sort;
     const params = this.getParams();
