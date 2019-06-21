@@ -217,6 +217,9 @@
                             </span>
                             <input type="text" [(ngModel)]="opp_Email" class="form-control"
                               *ngIf="editId == opportunity.id" />
+                            <div *ngIf="opp_EmailErr && editId == opportunity.id" class="error">
+                              <p class="error-box margin-top-0">Email is not valid</p>
+                            </div>
                           </td>
                           <td>
                             {{ opportunity.lead_owner_data }}

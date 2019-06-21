@@ -29,7 +29,7 @@ export class TabsComponent implements OnInit, AfterContentInit {
   listModules: any[] = [
     {
       id: "opportunities",
-      title: "Opportunity -1" 
+      title: "Opportunity -1"
     },
     {
       id: "vehicle_stocks",
@@ -86,7 +86,10 @@ export class TabsComponent implements OnInit, AfterContentInit {
           if (response[i].lable_name == "Lead") {
             response[i].title = "Opportunity";
             response[i].id = "opportunities";
-          } else if (response[i].lable_name == "Vehicle Stock") {
+          } else if (
+            response[i].lable_name == "Vehicle Stock" ||
+            response[i].lable_name == "Stock"
+          ) {
             response[i].title = "Vehicle Stock";
             response[i].id = "vehicle_stocks";
           } else if (response[i].lable_name == "Driver") {

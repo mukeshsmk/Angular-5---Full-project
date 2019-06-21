@@ -62,6 +62,7 @@ export class TableListComponent {
   errAlert: Boolean = false;
   successAlert: Boolean = false;
   sortDirection: string = "ASC";
+  opp_EmailErr: Boolean = false;
 
   searchTerm: string;
   constructor(
@@ -69,11 +70,6 @@ export class TableListComponent {
     public generalService: GeneralService,
     public apiService: ApiService
   ) {
-    this.permission = {
-      create_permission: 0,
-      edit_permission: 0,
-      delete_permission: 0
-    };
     const params = this.getParams();
     this.generalService.dashboardEvent.subscribe((type: string) => {
       this.tabsComponent.openTab(
@@ -123,7 +119,6 @@ export class TableListComponent {
   }
 
   onClose(event: any) {
-    console.log(event);
     this.closeModal();
   }
 
@@ -133,11 +128,21 @@ export class TableListComponent {
     this.search = "";
     this.loadData(this.module, params);
   }
+
+  setPermission() {
+    this.permission = {
+      group_id: this.userData.group_id,
+      create_permission: 0,
+      edit_permission: 0,
+      delete_permission: 0
+    };
+  }
   loadData(type: string, params: any) {
     this.loaderOne = true;
     this.changeLead = false;
     this.opportunityList = [];
     this.opportunityListData = [];
+    this.setPermission();
     params.userData = JSON.parse(localStorage.getItem("user_data"));
     this.http
       .post<{ success: object }>(this.apiService.getModulesUrl(type), params)
@@ -221,7 +226,12 @@ export class TableListComponent {
     i.active = !i.current_page;
   }
   sortData(sort: any) {
-    this.sortDirection = this.sort == sort ? this.sortDirection == "DESC" ? "ASC" : "DESC" : "ASC";
+    this.sortDirection =
+      this.sort == sort
+        ? this.sortDirection == "DESC"
+          ? "ASC"
+          : "DESC"
+        : "ASC";
 
     this.sort = sort;
     const params = this.getParams();
@@ -487,20 +497,26 @@ export class TableListComponent {
   }
   updateLead(details: any) {
     this.loaderOne = true;
+    this.opp_EmailErr = false;
     details.company__c = this.opp_Company;
     details.phone__c = this.opp_Phone;
     details.email__c = this.opp_Email;
     details.lastmodifiedbyid = this.userData.user_sfid;
     console.log(details);
-    this.http
-      .post<{ success: object }>(this.apiService.inlineUpdateUrl, details)
-      .subscribe((response: any) => {
-        console.log(response);
-        this.editId = "";
-        this.loaderOne = false;
+    if (/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/g.test(this.opp_Email)) {
+      this.http
+        .post<{ success: object }>(this.apiService.inlineUpdateUrl, details)
+        .subscribe((response: any) => {
+          console.log(response);
+          this.editId = "";
+          this.loaderOne = false;
 
-        this.loadData(this.module, this.getParams());
-      });
+          this.loadData(this.module, this.getParams());
+        });
+    } else {
+      this.loaderOne = false;
+      this.opp_EmailErr = true;
+    }
   }
   getParams() {
     const params = {
