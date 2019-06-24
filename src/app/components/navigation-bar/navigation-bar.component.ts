@@ -55,6 +55,9 @@ export class NavigationBarComponent implements OnInit {
       "Duplicate",
       "Converted"
     ];
+    this.formData();
+  }
+  formData(){
     if (this.details) {
       this.newTaskForm = this.formBuilder.group({
         first_name__c: [this.details.first_name__c],
@@ -112,6 +115,7 @@ export class NavigationBarComponent implements OnInit {
         if (!response.error) {
           this.details = response;
           this.navStatusChange();
+          this.formData();
         }
         this.loaderOne = false;
       });
