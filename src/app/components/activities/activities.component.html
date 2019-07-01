@@ -862,7 +862,7 @@
                   <p *ngIf="notification.comments__c && notification.type__c!='Task'">
                     <!-- Comment : {{ notification.comments__c }} -->
                   </p>
-                  <p *ngIf="!notification.comments__c && notification.type__c!='Task'">Comment : -</p>
+                  <!-- <p *ngIf="!notification.comments__c && notification.type__c!='Task'">Comment : -</p> -->
                   <span> Date : {{notification.end_date__c ? notification.end_date__c : notification.createddate  | date : 'yyyy-MM-dd' }} </span>
                   <p > </p>
                 </div>
@@ -896,10 +896,10 @@
                   <p *ngIf="notification.comments__c">
                     <!-- Comment : {{ notification.comments__c }} -->
                   </p>
-                  <p *ngIf="!notification.comments__c">Comment : -</p>
+                  <!-- <p *ngIf="!notification.comments__c">Comment : -</p> -->
                   <span> Date : {{notification.end_date__c ? notification.end_date__c : notification.createddate  | date:  'yyyy-MM-dd'  }} </span>
                 </div>
-              </div>
+              </div> 
             </div>
             <div class="card1" *ngIf="notification.type__c == 'Event'">
               <div class="card-head">
@@ -929,7 +929,7 @@
                   <p *ngIf="notification.comments__c">
                     <!-- Comment : {{ notification.comments__c }} -->
                   </p>
-                  <p *ngIf="!notification.comments__c">Comment : -</p>
+                  <!-- <p *ngIf="!notification.comments__c">Comment : -</p> -->
                   <p> Date : {{notification.end_date__c ? notification.end_date__c : notification.createddate  | date:  'yyyy-MM-dd' }} </p>
                 </div>
               </div>
