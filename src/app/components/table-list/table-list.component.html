@@ -290,7 +290,8 @@
                           </a>
                           Model
                         </th>
-                        <th *ngIf="permission.edit_permission == 1">
+                        <!-- <th *ngIf="permission.edit_permission == 1"> -->
+                        <th>
                           <a href="#"> </a>
                           Edit
                         </th>
@@ -324,7 +325,8 @@
                           <td>
                             {{ opportunity.model_name }}
                           </td>
-                          <td *ngIf="permission.edit_permission == 1">
+                          <!-- <td *ngIf="permission.edit_permission == 1"> -->
+                          <td>
                             <span class="fas fa-edit pointer" (click)="updatevehicleStockModal(opportunity)"></span>
                           </td>
                         </tr>
