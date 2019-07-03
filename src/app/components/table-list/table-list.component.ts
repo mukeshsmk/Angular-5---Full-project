@@ -318,6 +318,7 @@ export class TableListComponent {
     console.log(event);
     let endpoint: any;
     if (this.formType === "edit") {
+      event.lastmodifiedbyid = this.userData.user_sfid;
       endpoint = this.apiService.vehicle_stockUpdateUrl;
     }
     if (this.formType === "new") {
