@@ -123,7 +123,6 @@ export class TableListComponent {
   }
 
   refresh() {
-    this.editId = "";
     const params = this.getParams();
     params.search = "";
     this.search = "";
@@ -139,6 +138,7 @@ export class TableListComponent {
     };
   }
   loadData(type: string, params: any) {
+    this.editId = " ";
     this.loaderOne = true;
     this.changeLead = false;
     this.opportunityList = [];
