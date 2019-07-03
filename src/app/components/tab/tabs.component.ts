@@ -29,7 +29,7 @@ export class TabsComponent implements OnInit, AfterContentInit {
   listModules: any[] = [
     {
       id: "opportunities",
-      title: "Opportunity -1"
+      title: "Opportunity"
     },
     {
       id: "vehicle_stocks",
@@ -82,6 +82,7 @@ export class TabsComponent implements OnInit, AfterContentInit {
           ],
           []
         );
+        response.sort(function(a, b){return a.id - b.id});
         for (var i = 0; i < response.length; i++) {
           if (response[i].lable_name == "Lead") {
             response[i].title = "Opportunity";
