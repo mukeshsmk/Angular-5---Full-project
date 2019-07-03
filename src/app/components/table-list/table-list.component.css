@@ -15,13 +15,13 @@
   background-color: #f5f5f5 !important;
 }
 
-.table>tbody>tr:hover {
+.table > tbody > tr:hover {
   background-color: #f5f5f5 !important;
 }
 
 .fas {
   color: #0747a6;
-  font-size: 15px;
+  font-size: 14px;
   margin: 0 0px;
 }
 
@@ -69,26 +69,26 @@ table thead th .glyphicon-sort {
 
 .glyphicon-sort {
   color: #dadada;
-  font-size: 14px;
+  font-size: 12px;
   margin: 0 5px 5px 0px;
 }
 
 .glyphicon-sort-by-attributes {
   color: #dadada;
-  font-size: 14px;
+  font-size: 12px;
   margin: 0 5px 5px 0px;
 }
 
 .table thead th {
   vertical-align: bottom;
   color: #333340;
-  font-size: 14px;
+  font-size: 12px;
   border-bottom: 3px solid #dee2e6;
 }
 
 input[type="checkbox"] {
   border: 1px solid #106cc8;
-  font-size: 14px;
+  font-size: 12px;
   height: 12px;
   outline: none;
   padding: 8px;
@@ -116,7 +116,7 @@ input[type="checkbox"] {
 .table th {
   padding: 8px 8px;
   vertical-align: top;
-  font-size: 14px;
+  font-size: 12px;
   border-top: 1px solid #dee2e6;
 }
 
@@ -192,7 +192,7 @@ input[type="checkbox"] {
   border: none;
   height: calc(1.5em + 0.75rem + 2px);
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.5;
   color: #495057;
   background-color: #fff;
@@ -220,7 +220,7 @@ input[type="checkbox"] {
   text-align: center;
   border-radius: 6px;
   padding: 5px 0px;
-  font-size: 12px !important;
+  font-size: 10px !important;
   position: absolute;
   line-height: 24px;
   z-index: 1;
@@ -263,12 +263,12 @@ input[type="checkbox"] {
 }
 
 .dataTables_info {
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 0.5px;
 }
 
 .align-top {
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 0.5px;
 }
 
@@ -341,7 +341,7 @@ li.page-item.disabled {
   text-align: center;
   border-radius: 6px;
   padding: 5px 10px !important;
-  font-size: 12px !important;
+  font-size: 10px !important;
   position: absolute;
   line-height: 24px;
   z-index: 1;
@@ -400,37 +400,37 @@ li.page-item.disabled {
     text-align: left;
   }
 
-  .table_row>.table_small:first-child>.table_cell:first-child {
+  .table_row > .table_small:first-child > .table_cell:first-child {
     border-top: #ccc 1px solid;
   }
 
-  .table_row>.table_small>.table_cell:first-child {
+  .table_row > .table_small > .table_cell:first-child {
     border-left: #ccc 1px solid;
   }
 
-  .table_row>.table_small>.table_cell:nth-child(odd) {
+  .table_row > .table_small > .table_cell:nth-child(odd) {
     display: table-cell;
     width: 40%;
   }
 
-  .table_row>.table_small>.table_cell:nth-child(odd) {
+  .table_row > .table_small > .table_cell:nth-child(odd) {
     color: #000;
     padding: 8px 8px;
   }
 
-  .table_row>.table_small:first-child>.table_cell:last-child {
+  .table_row > .table_small:first-child > .table_cell:last-child {
     border-top: #ccc 1px solid;
   }
 
-  .table_row>.table_small:first-child>.table_cell:last-child {
+  .table_row > .table_small:first-child > .table_cell:last-child {
     border-left: none;
   }
 
-  .table_row>.table_small>.table_cell:last-child {
+  .table_row > .table_small > .table_cell:last-child {
     border-right: #ccc 1px solid;
   }
 
-  .table_row>.table_small>.table_cell {
+  .table_row > .table_small > .table_cell {
     padding-top: 3px;
     padding-bottom: 3px;
     color: #5b5b5b;
@@ -453,7 +453,6 @@ li.page-item.disabled {
 }
 
 @media (max-width: 768px) {
-
   .table td,
   .table th {
     padding-left: 50%;
@@ -476,12 +475,12 @@ li.page-item.disabled {
     width: 100% !important;
     margin: -5px 2px;
     height: 27px;
-    font-size: 12px;
+    font-size: 10px;
     padding: 0px 0;
   }
 
   #example_filter label {
-    font-size: 14px;
+    font-size: 10px;
   }
 
   .table_row:nth-child(odd) {

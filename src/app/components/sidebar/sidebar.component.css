@@ -78,7 +78,7 @@ body {
   display: contents;
   text-decoration: none;
   color: #fff;
-  font-size: 16px !important;
+  font-size: 14px !important;
 }
 
 .sidebar-nav li a:hover {
@@ -92,17 +92,17 @@ body {
   color: #03a9f3 !important;
 }
 
-.sidebar-nav>.sidebar-brand {
+.sidebar-nav > .sidebar-brand {
   height: 65px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 60px;
 }
 
-.sidebar-nav>.sidebar-brand a {
+.sidebar-nav > .sidebar-brand a {
   color: #fff;
 }
 
-.sidebar-nav>.sidebar-brand a:hover {
+.sidebar-nav > .sidebar-brand a:hover {
   color: #337ab7;
   background: none;
 }
@@ -115,7 +115,7 @@ body {
   text-align: center;
   border-radius: 6px;
   padding: 3px 0px !important;
-  font-size: 13px !important;
+  font-size: 12px !important;
   position: fixed !important;
   z-index: 1;
   top: auto !important;
@@ -183,7 +183,7 @@ body {
     display: contents;
     text-decoration: none;
     color: #ffffff;
-    font-size: 20px !important;
+    font-size: 18px !important;
   }
 
   #wrapper.toggled #page-content-wrapper {
@@ -199,7 +199,7 @@ body {
     text-align: center;
     border-radius: 6px;
     padding: 3px 0px !important;
-    font-size: 13px !important;
+    font-size: 12px !important;
     position: fixed !important;
     z-index: 1;
     top: auto !important;
@@ -209,13 +209,13 @@ body {
 
 .fa-tachometer .fa-envelope-open-o {
   margin: 0px -10px;
-  font-size: 20px;
+  font-size: 18px;
   color: #fff;
 }
 
 .animated {
-  -webkit-animation-duration: .5s;
-  animation-duration: .5s;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   animation: mymove 1s;

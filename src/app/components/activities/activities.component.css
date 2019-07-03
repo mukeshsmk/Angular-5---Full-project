@@ -24,7 +24,7 @@
 
 .card-title {
   margin-bottom: 0.75rem;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .btn-default {
@@ -65,7 +65,7 @@ input[type="submit"] {
   font-weight: 900;
   width: 40px;
   line-height: 40px;
-  font-size: 17px;
+  font-size: 15px;
   color: #fff;
   text-align: center;
   background: #0747a6;
@@ -82,7 +82,7 @@ input[type="submit"] {
   border-top: none;
   background: #eee;
   width: 100%;
-  font-size: 15px;
+  font-size: 13px;
   color: #1b1414;
   line-height: 28px;
   letter-spacing: 1px;

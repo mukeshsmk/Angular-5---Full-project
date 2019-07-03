@@ -32,7 +32,7 @@
             <div [ngSwitch]="module">
               <ng-template [ngSwitchCase]="'opportunities'">
                 <img class="module_logo_book" src="/assets/images/book.png" /><span
-                  style="font-size:18px;">Opportunity</span>
+                  style="font-size:16px;">Opportunity</span>
                 <div class="col-3">
                   <select class="form-control form-list" (change)="allocate($event.target.value)"
                     *ngIf="userData.roleid == 3">
@@ -60,7 +60,7 @@
               </ng-template>
               <ng-template [ngSwitchCase]="'customers'">
                 <img class="module_logo" src="/assets/images/customer.png" /><span
-                  style="font-size:18px;">Customer</span>
+                  style="font-size:16px;">Customer</span>
               </ng-template>
             </div>
 
@@ -131,8 +131,8 @@
                         <th class="checkbox">
                           <input type="checkbox" (change)="checkedall($event)" id="blahA" value="all" />
                         </th>
-                        <th (click)="sortData('id')" class="w-5">
-                          Id
+                        <th class="w-5">
+                         S.No
                         </th>
                         <th class="w-20">
                           <a href="#">
@@ -170,13 +170,13 @@
                         </th>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let opportunity of opportunityList">
+                        <tr *ngFor="let opportunity of opportunityList; let i=index">
                           <td>
                             <input type="checkbox" id="blahB" name="selected" value="{{ opportunity.id }}"
                               (change)="checked()" class="checkBox" #checkedAll />
                           </td>
                           <td>
-                            {{ opportunity.id }}
+                            {{ (opportunityListData.current_page - 1 ) * limit + i + 1  }}
                           </td>
                           <td>
                             <a href="#" (click)="viewPersondetails(opportunity)">
@@ -245,8 +245,8 @@
                         <!-- <th>
                           <input type="checkbox" id="blahA" value="1" />
                         </th> -->
-                        <th (click)="sortData('id')" class="w-5">
-                          id
+                        <th class="w-5">
+                          S.No
                         </th>
                         <th class="w-15">
                           <a href="#">
@@ -297,12 +297,12 @@
                         </th>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let opportunity of opportunityList">
+                        <tr *ngFor="let opportunity of opportunityList; let i=index">
                           <!-- <td>
                             <input type="checkbox" id="blahA" value="1" />
                           </td> -->
                           <td>
-                            {{ opportunity.id }}
+                            {{ (opportunityListData.current_page - 1 ) * limit + i + 1  }}
                           </td>
                           <td>
                             <a href="#" (click)="viewPersondetails(opportunity)">{{ opportunity.name }}</a>
@@ -342,8 +342,8 @@
                         <!-- <th>
                           <input type="checkbox" id="blahA" value="1" />
                         </th> -->
-                        <th (click)="sortData('id')" class="w-5">
-                          ID
+                        <th class="w-5">
+                          S.No
                         </th>
                         <th class="w-20">
                           <a href="#">
@@ -387,12 +387,12 @@
                         </th>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let opportunity of opportunityList">
+                        <tr *ngFor="let opportunity of opportunityList; let i=index">
                           <!-- <td>
                             <input type="checkbox" id="blahA" value="1" />
                           </td> -->
                           <td>
-                            {{ opportunity.id }}
+                            {{ (opportunityListData.current_page - 1 ) * limit + i + 1  }}
                           </td>
                           <td>
                             <a href="#" (click)="viewPersondetails(opportunity)">{{ opportunity.name }}</a>
@@ -428,8 +428,8 @@
                         <!-- <th>
                           <input type="checkbox" id="blahA" value="1" />
                         </th> -->
-                        <th (click)="sortData('id')" class="w-5">
-                          ID
+                        <th class="w-5">
+                         S.No
                         </th>
                         <th class="w-15">
                           <a href="#">
@@ -485,12 +485,12 @@
                         </th>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let opportunity of opportunityList">
+                        <tr *ngFor="let opportunity of opportunityList; let i=index">
                           <!--<td>
                             <input type="checkbox" id="blahA" value="1" />
                           </td>-->
                           <td>
-                            {{ opportunity.id }}
+                            {{ (opportunityListData.current_page - 1 ) * limit + i + 1  }} 
                           </td>
                           <td>
                             <a href="#" (click)="viewPersondetails(opportunity)">{{ opportunity.name }}</a>

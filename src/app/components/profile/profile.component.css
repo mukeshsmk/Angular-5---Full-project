@@ -6,8 +6,8 @@
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 4px;
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 .card-default > .card-heading {
   border: 1px solid #efefef;
@@ -39,10 +39,10 @@ strong {
 }
 .form-control {
   width: 80%;
-  font-size: 12px;
+  font-size: 10px;
   height: 28px;
 }
-input[type=submit] {
+input[type="submit"] {
   background-color: DodgerBlue;
   color: #fff;
   cursor: pointer;
@@ -51,7 +51,7 @@ input[type=submit] {
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
   line-height: 1.42857143;
   text-align: center;
