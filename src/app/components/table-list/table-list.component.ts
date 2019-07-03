@@ -138,6 +138,7 @@ export class TableListComponent {
     };
   }
   loadData(type: string, params: any) {
+    this.editId = " "; 
     this.loaderOne = true;
     this.changeLead = false;
     this.opportunityList = [];
