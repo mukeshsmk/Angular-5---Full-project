@@ -123,6 +123,7 @@ export class TableListComponent {
   }
 
   refresh() {
+    this.editId = "";
     const params = this.getParams();
     params.search = "";
     this.search = "";
