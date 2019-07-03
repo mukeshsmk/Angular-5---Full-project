@@ -286,7 +286,7 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label><b>Created by :</b></label>
-                <span class="form-control-static">{{ stock.ownerid }}</span>
+                <span class="form-control-static">{{ stock.createdbyname }}</span>
               </div>
               <div class="form-group">
                 <label><b>Created Date :</b></label>
@@ -296,11 +296,11 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label><b>Last modified by :</b></label>
-                <span class="form-control-static"></span>
+                <span class="form-control-static">{{ vehicleStockForm.lastmodifiedbyname }}</span>
               </div>
               <div class="form-group">
                 <label><b>Last modified date :</b></label>
-                <span class="form-control-static">{{ stock.systemmodstamp }}</span>
+                <span class="form-control-static">{{ stock.lastmodifieddate }}</span>
               </div>
             </div>
           </div>
@@ -510,7 +510,7 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Created by :</label>
-                  <span class="form-control-static">{{ stock.ownerid }}</span>
+                  <span class="form-control-static">{{ stock.createdbyname }}</span>
                 </div>
                 <div class="form-group">
                   <label>Created Date :</label>
@@ -520,11 +520,11 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Last modified by :</label>
-                  <span class="form-control-static"></span>
+                  <span class="form-control-static">{{ vehicleStockForm.lastmodifiedbyname }}</span>
                 </div>
                 <div class="form-group">
                   <label>Last modified date :</label>
-                  <span class="form-control-static">{{ stock.systemmodstamp }}</span>
+                  <span class="form-control-static">{{ stock.lastmodifieddate }}</span>
                 </div>
               </div>
             </div>

@@ -72,8 +72,24 @@ export class VehicleStockFormComponent implements OnInit {
       egc_price__c: [this.vehicleStock.egc_price__c],
       series_c__c: [this.vehicleStock.series_c__c],
       stock_image__c: [this.vehicleStock.stock_image__c],
-      model_name__c: [this.vehicleStock.model_name__c, Validators.required]
+      model_name__c: [this.vehicleStock.model_name__c, Validators.required],
+      createdbyid: [this.vehicleStock.createdbyid],
+      lastmodifiedbyid: [this.vehicleStock.lastmodifiedbyid],
+      createddate: [this.vehicleStock.createddate],
+      lastmodifieddate: [this.vehicleStock.lastmodifieddate]
     });
+    this.vehicleStock.createdbyid = this.vehicleStock.createdbyid
+      ? this.vehicleStock.createdbyid
+      : this.userData.user_sfid;
+    this.vehicleStock.createddate = this.vehicleStock.createddate
+      ? this.vehicleStock.createddate
+      : "";
+    this.vehicleStock.lastmodifiedbyid = this.vehicleStock.lastmodifiedbyid
+      ? this.vehicleStock.lastmodifiedbyid
+      : "";
+    this.vehicleStock.lastmodifieddate = this.vehicleStock.lastmodifieddate
+      ? this.vehicleStock.lastmodifieddate
+      : "";
   }
   onCloseModal(event: any) {
     this.closeModalEvent.emit(event);
