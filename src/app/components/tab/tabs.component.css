@@ -15,7 +15,7 @@ nav-tabs ul {
 .tab-close {
   color: gray;
   text-align: right;
-  font-size: 12px;
+  font-size: 10px;
   margin: 0 5px;
   font-weight: bold;
 }
@@ -29,7 +29,7 @@ nav-tabs ul {
   word-wrap: normal;
   font-family: inherit;
   padding: 10px 35px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .nav-tabs {

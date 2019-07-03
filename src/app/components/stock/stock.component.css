@@ -14,13 +14,13 @@ h2 {
   width: 100%;
   color: #fff;
   margin-bottom: 30px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 h2 span {
   font-family: "Libre Baskerville", serif;
   display: block;
-  font-size: 45px;
+  font-size: 44px;
   text-transform: none;
   margin-bottom: 20px;
   margin-top: 30px;
@@ -76,7 +76,7 @@ section {
 
 .card-header a i {
   float: left;
-  font-size: 25px;
+  font-size: 24px;
   padding-top: 3px;
   margin: 0px 25px 0 0px;
   color: #0747a6 !important;
@@ -84,7 +84,7 @@ section {
 
 .card-header i {
   float: right;
-  font-size: 30px;
+  font-size: 28px;
   width: 1%;
   margin-top: 8px;
   margin-right: 10px;
@@ -103,7 +103,7 @@ section {
 
 .card-header h3 {
   margin: 0 0 0px;
-  font-size: 20px;
+  font-size: 18px;
   font-family: "Slabo 27px", serif;
   font-weight: bold;
   color: #3fc199;
@@ -185,7 +185,7 @@ select.form-control:not([size]):not([multiple]) {
   color: #333;
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 14px;
   color: inherit;
 }
 .card-body {
@@ -219,7 +219,7 @@ div.dataTables_wrapper div.dataTables_filter input {
   width: auto !important;
   margin: 0px 15px 0px 15px;
   height: 27px;
-  font-size: 12px;
+  font-size: 10px;
   padding: 15px 25px;
 }
 div.dataTables_wrapper div.dataTables_length select {
@@ -228,7 +228,7 @@ div.dataTables_wrapper div.dataTables_length select {
   width: auto !important;
   margin: -4px 12px;
   height: 27px;
-  font-size: 12px;
+  font-size: 10px;
 }
 select.input-sm {
   height: 30px;
@@ -245,7 +245,7 @@ select.input-sm {
   border-bottom: 2px solid #dee2e6;
   color: #333;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;
 }
 .page-link {
   position: relative;
@@ -275,7 +275,7 @@ select.input-sm {
   margin: 0;
 }
 
-input[type=file] {
+input[type="file"] {
   display: none;
 }
 
@@ -297,7 +297,7 @@ input[type=file] {
   width: 600px;
   margin: 30px auto;
 }
-input[type=button] {
+input[type="button"] {
   background-color: DodgerBlue;
 }
 .btn-info {
@@ -387,7 +387,7 @@ input[type=button] {
     width: auto !important;
     margin: -4px 6px;
     height: 28px !important;
-    font-size: 12px;
+    font-size: 10px;
   }
 
   div.dataTables_wrapper div.dataTables_filter input {
@@ -396,7 +396,12 @@ input[type=button] {
     width: 100% !important;
     margin: 0px 10px 0px 10px;
     height: 27px !important;
-    font-size: 12px;
+    font-size: 10px;
     padding: 0px 0px;
   }
+}
+
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
 }

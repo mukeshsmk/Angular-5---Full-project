@@ -48,7 +48,7 @@ aside.left-panel:hover {
   color: #41434d;
   clear: both;
   display: block;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   line-height: 50px;
   padding: 0;
@@ -89,7 +89,7 @@ aside.left-panel:hover {
 
   color: white;
   display: inline-block;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 26px;
   padding: 10px 0;
   position: relative;
@@ -111,7 +111,7 @@ aside.left-panel:hover {
 }
 
 .navbar .navbar-nav li > a .menu-title-text {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .navbar .navbar-nav li > a .badge {
@@ -169,7 +169,7 @@ aside.left-panel:hover {
   padding: 0;
   position: absolute;
   left: 0;
-  font-size: 14px;
+  font-size: 12px;
   top: 9px;
 }
 
@@ -230,7 +230,7 @@ aside.left-panel:hover {
 
 .open .sub-menu .subtitle {
   display: block;
-  font-size: 15px;
+  font-size: 13px;
   line-height: 35px;
   color: #607d8b;
   border-bottom: 1px solid rgba(96, 125, 139, 0.15);
@@ -297,7 +297,7 @@ aside.left-panel:hover {
 }
 
 .open aside.left-panel .navbar .navbar-nav li a .menu-icon {
-  font-size: 20px;
+  font-size: 18px;
   z-index: -1;
   text-align: center;
   width: inherit;
@@ -339,7 +339,7 @@ aside.left-panel:hover {
   li
   a {
   display: block;
-  font-size: 14px;
+  font-size: 12px;
   max-width: inherit;
   padding: 2px 15px 2px 25px;
   width: 100%;
@@ -438,7 +438,7 @@ aside.left-panel:hover {
 }
 
 .right-panel .page-header h1 {
-  font-size: 18px;
+  font-size: 16px;
   padding: 15px 0;
 }
 
@@ -536,7 +536,7 @@ header.fixed-top {
   background-color: transparent;
   color: #40626b !important;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 14px;
   height: 40px;
   line-height: 40px;
   width: 40px;
@@ -549,7 +549,7 @@ header.fixed-top {
   border: none;
   color: #99abb4;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 55px;
   padding: 0;
   width: 43px;
@@ -581,7 +581,7 @@ header .form-inline .search-form input[type="text"] {
   -webkit-box-shadow: none;
   box-shadow: none;
   color: #d3d3d3;
-  font-size: 16px;
+  font-size: 14px;
   height: inherit;
   margin-right: 0 !important;
   padding: 10px 36px 10px 15px;
@@ -598,7 +598,7 @@ header .form-inline .search-form button {
   background: transparent;
   border: none;
   color: #fff;
-  font-size: 16px;
+  font-size: 14px;
   position: absolute;
   right: 15px;
   top: 50%;
@@ -636,7 +636,7 @@ header .form-inline .search-form.close {
   background: transparent;
   border: none;
   color: #99abb4;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 55px;
   padding-top: 0;
   padding-bottom: 0;
@@ -649,7 +649,7 @@ header .form-inline .search-form.close {
 .header-left .dropdown .dropdown-toggle .count {
   border-radius: 50%;
   color: #fff;
-  font-size: 11px;
+  font-size: 10px;
   height: 15px;
   width: 15px;
   line-height: 15px;
@@ -681,14 +681,14 @@ header .form-inline .search-form.close {
 }
 
 .header-left .dropdown .dropdown-menu p {
-  font-size: 15px;
+  font-size: 14px;
   margin: 0;
   padding: 5px 15px;
 }
 
 .header-left .dropdown .dropdown-menu .dropdown-item {
   color: #99abb4;
-  font-size: 13px;
+  font-size: 12px;
   padding: 10px 15px 3px;
   text-overflow: ellipsis;
   -webkit-transition: all .25s;
@@ -710,12 +710,12 @@ header .form-inline .search-form.close {
 }
 
 .header-left .dropdown .dropdown-menu .dropdown-item .message .time {
-  font-size: 11px;
+  font-size: 10px;
 }
 
 .header-left .dropdown .dropdown-menu .dropdown-item .message p {
   clear: both;
-  font-size: 14px;
+  font-size: 10px;
   margin: 0;
   padding: 0;
   text-overflow: ellipsis;
@@ -774,7 +774,7 @@ header .form-inline .search-form.close {
 
 .for-notification .dropdown-menu .dropdown-item i {
   float: left;
-  font-size: 14px;
+  font-size: 12px;
   margin: 5px 5px 0 0;
   text-align: left;
   width: 20px;
@@ -812,7 +812,7 @@ header .form-inline .search-form.close {
 .user-area .user-menu .nav-link {
   color: #607d8b;
   display: block;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 22px;
   padding: 5px 0;
 }
@@ -828,7 +828,7 @@ header .form-inline .search-form.close {
 
 .user-area .user-info .name {
   color: #8c8c8c;
-  font-size: 14px;
+  font-size: 12px;
   position: relative;
   text-transform: uppercase;
 }

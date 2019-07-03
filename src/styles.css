@@ -32,7 +32,7 @@ body {
 /* Set up a default font and some padding to provide breathing room */
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -57,7 +57,7 @@ li {
 
 input {
   border: 1px solid #106cc8;
-  font-size: 14px;
+  font-size: 12px;
   outline: none;
   padding: 8px;
 }
@@ -68,17 +68,14 @@ button {
   color: rgba(255, 255, 255, 0.87);
   cursor: pointer;
   display: inline-block;
-  font-size: 14px;
+  font-size: 12px;
   height: 40px;
   padding: 8px 18px;
   text-decoration: none;
 }
 
-
-
-
 .close {
-  opacity: .2;
+  opacity: 0.2;
 }
 
 .close:hover {
@@ -98,11 +95,11 @@ button {
   width: 100%;
   height: 100%;
   z-index: 9999;
-  background: url('/assets/images/loader.gif') 50% 50% no-repeat rgb(249, 249, 249);
+  background: url("/assets/images/loader.gif") 50% 50% no-repeat
+    rgb(249, 249, 249);
   background-size: 100px 100px;
-  opacity: .8;
+  opacity: 0.8;
 }
-
 
 .modal-back {
   background-color: rgba(0, 0, 0, 0.7);
@@ -111,14 +108,17 @@ button {
   cursor: pointer;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0; 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
 }
 
-input[type=number] {
-  -moz-appearance:textfield;
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.form-control {
+  font-size: 12px !important;
 }
