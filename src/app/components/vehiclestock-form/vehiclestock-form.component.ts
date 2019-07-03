@@ -51,29 +51,47 @@ export class VehicleStockFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.userData = JSON.parse(localStorage.getItem("user_data"));
+    if (this.vehicleStock) {
+      this.userData = JSON.parse(localStorage.getItem("user_data"));
 
-    this.vehicleStockForm = this.formBuilder.group({
-      name: [this.vehicleStock.name, Validators.required],
-      selling_dealer__c: [this.vehicleStock.selling_dealer__c],
-      vin__c: [this.vehicleStock.vin__c],
-      vehicle_type__c: [this.vehicleStock.vehicle_type__c],
-      fuel_type__c: [this.vehicleStock.fuel_type__c],
-      rego_no__c: [this.vehicleStock.rego_no__c],
-      manufacture_year__c: [this.vehicleStock.manufacture_year__c],
-      body_type__c: [this.vehicleStock.body_type__c],
-      model__c: [this.vehicleStock.model_name, Validators.required],
-      body_colour__c: [this.vehicleStock.body_colour__c],
-      make__c: [this.vehicleStock.make__c],
-      first_image_name__c: [this.vehicleStock.first_image_name__c],
-      dealer_code__c: [this.vehicleStock.dealer_code__c],
-      vehicle_stock_days__c: [this.vehicleStock.vehicle_stock_days__c],
-      ownerid: [this.vehicleStock.ownerid],
-      egc_price__c: [this.vehicleStock.egc_price__c],
-      series_c__c: [this.vehicleStock.series_c__c],
-      stock_image__c: [this.vehicleStock.stock_image__c],
-      model_name__c: [this.vehicleStock.model_name__c, Validators.required]
-    });
+      this.vehicleStockForm = this.formBuilder.group({
+        name: [this.vehicleStock.name, Validators.required],
+        selling_dealer__c: [this.vehicleStock.selling_dealer__c],
+        vin__c: [this.vehicleStock.vin__c],
+        vehicle_type__c: [this.vehicleStock.vehicle_type__c],
+        fuel_type__c: [this.vehicleStock.fuel_type__c],
+        rego_no__c: [this.vehicleStock.rego_no__c],
+        manufacture_year__c: [this.vehicleStock.manufacture_year__c],
+        body_type__c: [this.vehicleStock.body_type__c],
+        model__c: [this.vehicleStock.model_name, Validators.required],
+        body_colour__c: [this.vehicleStock.body_colour__c],
+        make__c: [this.vehicleStock.make__c],
+        first_image_name__c: [this.vehicleStock.first_image_name__c],
+        dealer_code__c: [this.vehicleStock.dealer_code__c],
+        vehicle_stock_days__c: [this.vehicleStock.vehicle_stock_days__c],
+        ownerid: [this.vehicleStock.ownerid],
+        egc_price__c: [this.vehicleStock.egc_price__c],
+        series_c__c: [this.vehicleStock.series_c__c],
+        stock_image__c: [this.vehicleStock.stock_image__c],
+        model_name__c: [this.vehicleStock.model_name__c, Validators.required],
+        createdbyid: [this.vehicleStock.createdbyid],
+        lastmodifiedbyid: [this.vehicleStock.lastmodifiedbyid],
+        createddate: [this.vehicleStock.createddate],
+        lastmodifieddate: [this.vehicleStock.lastmodifieddate]
+      });
+      this.vehicleStock.createdbyid = this.vehicleStock.createdbyid
+        ? this.vehicleStock.createdbyid
+        : this.userData.user_sfid;
+      this.vehicleStock.createddate = this.vehicleStock.createddate
+        ? this.vehicleStock.createddate
+        : "";
+      this.vehicleStock.lastmodifiedbyid = this.vehicleStock.lastmodifiedbyid
+        ? this.vehicleStock.lastmodifiedbyid
+        : "";
+      this.vehicleStock.lastmodifieddate = this.vehicleStock.lastmodifieddate
+        ? this.vehicleStock.lastmodifieddate
+        : "";
+    }
   }
   onCloseModal(event: any) {
     this.closeModalEvent.emit(event);

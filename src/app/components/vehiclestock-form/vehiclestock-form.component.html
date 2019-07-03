@@ -328,20 +328,15 @@
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label for="usr">Stock Image</label>
-              <input
+              <!-- <input
               type="text"
               name="stock_image__c"
               formControlName="stock_image__c"
               class="form-control"
               id="stock_image__c"
-            />
+            /> -->
 
-              <!-- <img [src]="https://images.qrsolutions.com.au/5817378635ac7417201dcb566761812_0_0.jpg"
-                class="rounded"
-                
-                width="250px"
-                height="150px"
-              /> -->
+              <img src = "https://images.qrsolutions.com.au/{{vehicleStock.first_image_name__c}} "  class="rounded" width="330px" height="200px"/>
 
               <!-- <div id="demo" class="carousel slide" data-ride="carousel">
 
@@ -398,7 +393,7 @@
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label for="usr">Creaed by: </label>
-              <span>{{ vehicleStock.ownerid }}</span>
+              <span>{{ vehicleStock.createdbyname }}</span>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -412,13 +407,13 @@
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label for="usr">Last Modified by: </label>
-              <div></div>
+              <span>{{ vehicleStockForm.lastmodifiedbyname }}</span>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
             <div class="form-group">
               <label for="usr">Last modified date: </label>
-              <span>{{ vehicleStock.systemmodstamp }}</span>
+              <span>{{ vehicleStock.lastmodifieddate }}</span>
             </div>
           </div>
         </div>
