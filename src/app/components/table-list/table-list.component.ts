@@ -27,7 +27,7 @@ export class TableListComponent {
 
   loaderOne: Boolean = false;
   opportunityList: any = [];
-  module: string = "opportunities";
+  module: string = "";
   opportunityListData: any = [];
   page: number = 1;
   limit: number = 10;
@@ -123,6 +123,7 @@ export class TableListComponent {
   }
 
   refresh() {
+    this.editId = "";
     const params = this.getParams();
     params.search = "";
     this.search = "";
@@ -138,40 +139,41 @@ export class TableListComponent {
     };
   }
   loadData(type: string, params: any) {
-    this.editId = " "; 
-    this.loaderOne = true;
-    this.changeLead = false;
-    this.opportunityList = [];
-    this.opportunityListData = [];
-    this.setPermission();
-    params.userData = JSON.parse(localStorage.getItem("user_data"));
-    this.http
-      .post<{ success: object }>(this.apiService.getModulesUrl(type), params)
-      .subscribe((response: any) => {
-        this.responseData = response;
-        this.opportunityListData = response.list;
-        if (type === "opportunities") {
-          for (let i = 0; i < response.list.data.length; i++) {
-            if (params.userData.roleid !== 5) {
-              response.list.data[i].lead_owner_data = response.list.data[i]
-                .lead_owner_data
-                ? response.list.data[i].lead_owner_data
-                : "-";
+    if (this.module != "") {
+      this.loaderOne = true;
+      this.changeLead = false;
+      this.opportunityList = [];
+      this.opportunityListData = [];
+      this.setPermission();
+      params.userData = JSON.parse(localStorage.getItem("user_data"));
+      this.http
+        .post<{ success: object }>(this.apiService.getModulesUrl(type), params)
+        .subscribe((response: any) => {
+          this.responseData = response;
+          this.opportunityListData = response.list;
+          if (type === "opportunities") {
+            for (let i = 0; i < response.list.data.length; i++) {
+              if (params.userData.roleid !== 5) {
+                response.list.data[i].lead_owner_data = response.list.data[i]
+                  .lead_owner_data
+                  ? response.list.data[i].lead_owner_data
+                  : "-";
+              }
             }
           }
-        }
-        let permission = response.permission[0]
-          ? response.permission[0]
-          : this.permission;
-        this.permission = permission;
-        this.opportunityListData.lastPage = Array(
-          this.opportunityListData.last_page
-        )
-          .fill(1)
-          .map((x, i) => i);
-        this.opportunityList = response.list.data;
-        this.loaderOne = false;
-      });
+          let permission = response.permission[0]
+            ? response.permission[0]
+            : this.permission;
+          this.permission = permission;
+          this.opportunityListData.lastPage = Array(
+            this.opportunityListData.last_page
+          )
+            .fill(1)
+            .map((x, i) => i);
+          this.opportunityList = response.list.data;
+          this.loaderOne = false;
+        });
+    }
   }
   allocate(arg: any) {
     if (arg === "allocated") {
@@ -291,7 +293,6 @@ export class TableListComponent {
     this.http
       .post<{ success: object }>(endpoint, event)
       .subscribe((response: any) => {
-        console.log(response);
         //this.opportunityOpen = true;
         if (response.StatusCode == 200) {
           this.successAlert = true;
@@ -317,6 +318,7 @@ export class TableListComponent {
     console.log(event);
     let endpoint: any;
     if (this.formType === "edit") {
+      event.lastmodifiedbyid = this.userData.user_sfid;
       endpoint = this.apiService.vehicle_stockUpdateUrl;
     }
     if (this.formType === "new") {
@@ -325,10 +327,10 @@ export class TableListComponent {
     this.http
       .post<{ success: object }>(endpoint, event)
       .subscribe((response: any) => {
-        console.log(response);
         if (response == 1) {
           this.successAlert = true;
         }
+
         this.opportunityOpen = true;
         this.modalData = [];
         this.loaderOne = false;
@@ -356,7 +358,6 @@ export class TableListComponent {
     this.http
       .post<{ success: object }>(endpoint, event)
       .subscribe((response: any) => {
-        console.log(response);
         this.opportunityOpen = true;
         this.modalData = [];
         this.loaderOne = false;
@@ -388,7 +389,6 @@ export class TableListComponent {
     this.http
       .post<{ success: object }>(endpoint, event)
       .subscribe((response: any) => {
-        console.log(response);
         this.opportunityOpen = true;
         this.modalData = [];
         this.loaderOne = false;
