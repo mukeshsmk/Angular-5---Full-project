@@ -107,6 +107,7 @@ export class TableListComponent {
         this.module !== "Calendar"
       ) {
         this.sort = params.sort = "id";
+        params.limit = this.limit;
         this.search = params.search = "";
         this.loadData(this.module, params);
         console.log("Loading data", this.module);
