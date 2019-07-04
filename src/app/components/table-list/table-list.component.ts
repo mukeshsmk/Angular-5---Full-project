@@ -107,6 +107,7 @@ export class TableListComponent {
         this.module !== "Calendar"
       ) {
         this.sort = params.sort = "id";
+        params.limit = this.limit;
         this.search = params.search = "";
         this.loadData(this.module, params);
         console.log("Loading data", this.module);
@@ -123,7 +124,6 @@ export class TableListComponent {
   }
 
   refresh() {
-    this.editId = "";
     const params = this.getParams();
     params.search = "";
     this.search = "";
@@ -140,6 +140,7 @@ export class TableListComponent {
   }
   loadData(type: string, params: any) {
     if (this.module != "") {
+    this.editId = " ";
       this.loaderOne = true;
       this.changeLead = false;
       this.opportunityList = [];

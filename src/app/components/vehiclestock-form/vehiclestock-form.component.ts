@@ -78,6 +78,18 @@ export class VehicleStockFormComponent implements OnInit {
       .first_image_name__c
       ? this.vehicleStock.first_image_name__c
       : "Default_Image.jpg";
+    this.vehicleStock.createdbyid = this.vehicleStock.createdbyid
+      ? this.vehicleStock.createdbyid
+      : this.userData.user_sfid;
+    this.vehicleStock.createddate = this.vehicleStock.createddate
+      ? this.vehicleStock.createddate
+      : "";
+    this.vehicleStock.lastmodifiedbyid = this.vehicleStock.lastmodifiedbyid
+      ? this.vehicleStock.lastmodifiedbyid
+      : "";
+    this.vehicleStock.lastmodifieddate = this.vehicleStock.lastmodifieddate
+      ? this.vehicleStock.lastmodifieddate
+      : "";
   }
 
   onCloseModal(event: any) {

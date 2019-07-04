@@ -1,322 +1,337 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="vehicleStockForm">
-  <div class="container-fluid">
-    <div class="card mt-3">
-      <div class="card-header pointer">
-        Stock Information
-      </div>
-      <div class="card-body" id="card-lead-information">
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label><span class="red_star">*</span>Stock Number</label>
-              <input
-                type="text"
-                pattern="[a-zA-Z0-9\sàèéìòù]+"
-                formControlName="name"
-                name="name"
-                class="form-control"
-                id="name"
-                required=""
-              />
-              <div
-                *ngIf="submitted && vehicleStockForm.controls.name.errors"
-                class="error"
-              >
-                <div *ngIf="vehicleStockForm.controls.name.errors.required">
-                  <p class="error-box margin-top-0">
-                    Stock Number is Required
-                  </p>
+    <div class="container-fluid">
+      <div class="card mt-3">
+        <div class="card-header pointer">
+          Stock Information
+        </div>
+        <div class="card-body" id="card-lead-information">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label><span class="red_star">*</span>Stock Number</label>
+                <input
+                  type="text"
+                  pattern="[a-zA-Z0-9\sàèéìòù]+"
+                  formControlName="name"
+                  name="name"
+                  class="form-control"
+                  id="name"
+                  required=""
+                />
+                <div
+                  *ngIf="submitted && vehicleStockForm.controls.name.errors"
+                  class="error"
+                >
+                  <div *ngIf="vehicleStockForm.controls.name.errors.required">
+                    <p class="error-box margin-top-0">
+                      Stock Number is Required
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label>Selling Dealer</label>
-              <select
-                class="form-control"
-                name="selling_dealer__c"
-                formControlName="selling_dealer__c"
-                id="selling_dealer__c"
-              >
-                <option value="">-- SELECT --</option>
-                <option value="{{ vehicleStock.selling_dealer__c }}">{{
-                  vehicleStock.selling_dealer__c
-                }}</option>
-              </select>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label>Selling Dealer</label>
+                <select
+                  class="form-control"
+                  name="selling_dealer__c"
+                  formControlName="selling_dealer__c"
+                  id="selling_dealer__c"
+                >
+                  <option value="">-- SELECT --</option>
+                  <option value="{{ vehicleStock.selling_dealer__c }}">{{
+                    vehicleStock.selling_dealer__c
+                  }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label for="usr">VIN</label>
+                <input
+                  type="text"
+                  name="vin__c"
+                  formControlName="vin__c"
+                  pattern="[a-zA-Z0-9\sàèéìòù]+"
+                  class="form-control"
+                  id="vin__c"
+                />
+              </div>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label for="usr">VIN</label>
-              <input
-                type="text"
-                name="vin__c"
-                formControlName="vin__c"
-                pattern="[a-zA-Z0-9\sàèéìòù]+"
-                class="form-control"
-                id="vin__c"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label for="usr"
-                ><span class="red_star">*</span>Vehicle Type</label
-              >
-              <select
-                class="form-control"
-                name="vehicle_type__c"
-                formControlName="vehicle_type__c"
-                id="vehicle_type__c"
-                required=""
-              >
-                <option value="">-- SELECT --</option>
-                <option value="New"> New </option>
-                <option value="Demo"> Demo </option>
-                <option value="Used"> Used </option>
-              </select>
-              <div
-                *ngIf="
-                  submitted && vehicleStockForm.controls.vehicle_type__c.errors
-                "
-                class="error"
-              >
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label for="usr"
+                  ><span class="red_star">*</span>Vehicle Type</label
+                >
+                <select
+                  class="form-control"
+                  name="vehicle_type__c"
+                  formControlName="vehicle_type__c"
+                  id="vehicle_type__c"
+                  required=""
+                >
+                  <option value="">-- SELECT --</option>
+                  <option value="New"> New </option>
+                  <option value="Demo"> Demo </option>
+                  <option value="Used"> Used </option>
+                </select>
                 <div
                   *ngIf="
-                    vehicleStockForm.controls.vehicle_type__c.errors.required
+                    submitted && vehicleStockForm.controls.vehicle_type__c.errors
                   "
+                  class="error"
                 >
-                  <p class="error-box margin-top-0">
-                    Vehicle type is Required
-                  </p>
+                  <div
+                    *ngIf="
+                      vehicleStockForm.controls.vehicle_type__c.errors.required
+                    "
+                  >
+                    <p class="error-box margin-top-0">
+                      Vehicle type is Required
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label>Fuel Type</label>
-              <input
-                type="text"
-                name="fuel_type__c"
-                formControlName="fuel_type__c"
-                id="fuel_type__c"
-                class="form-control"
-              />
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label>Fuel Type</label>
+                <input
+                  type="text"
+                  name="fuel_type__c"
+                  formControlName="fuel_type__c"
+                  id="fuel_type__c"
+                  class="form-control"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label for="usr">Reg No</label>
-              <input
-                type="text"
-                name="rego_no__c"
-                formControlName="rego_no__c"
-                class="form-control"
-                id="rego_no__c"
-              />
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label for="usr">Reg No</label>
+                <input
+                  type="text"
+                  name="rego_no__c"
+                  formControlName="rego_no__c"
+                  class="form-control"
+                  id="rego_no__c"
+                />
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label>Manufacture Year</label>
+                <input
+                  type="text"
+                  name="manufacture_year__c"
+                  formControlName="manufacture_year__c"
+                  id="manufacture_year__c"
+                  class="form-control"
+                />
+              </div>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label>Manufacture Year</label>
-              <input
-                type="text"
-                name="manufacture_year__c"
-                formControlName="manufacture_year__c"
-                id="manufacture_year__c"
-                class="form-control"
-              />
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label for="usr">Body Type</label>
+                <input
+                  type="text"
+                  name="body_type__c"
+                  formControlName="body_type__c"
+                  class="form-control"
+                  id="body_type__c"
+                />
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label for="usr">Body Type</label>
-              <input
-                type="text"
-                name="body_type__c"
-                formControlName="body_type__c"
-                class="form-control"
-                id="body_type__c"
-              />
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label><span class="red_star">*</span>Model</label>
-              <input
-                type="text"
-                class="form-control"
-                id="model__c"
-                autocomplete="off"
-                name="model__c"
-                formControlName="model__c"
-                (keyup)="modelSearch($event.target.value)"
-              /><span
-                onclick=""
-                class="fa fa-search"
-                (click)="getSearchModal()"
-              ></span>
-              <div style="display:none;" id="model__c_error"></div>
-              <input type="hidden" id="in_model__c" name="model_name__c" />
-              <div
-                *ngIf="
-                  submitted &&
-                  (vehicleStockForm.controls.model__c.errors ||
-                    vehicleStockForm.controls.model_name__c.errors)
-                "
-                class="error"
-              >
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label><span class="red_star">*</span>Model</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="model__c"
+                  autocomplete="off"
+                  name="model__c"
+                  formControlName="model__c"
+                  (keyup)="modelSearch($event.target.value)"
+                /><span
+                  onclick=""
+                  class="fa fa-search"
+                  (click)="getSearchModal()"
+                ></span>
+                <div style="display:none;" id="model__c_error"></div>
+                <input type="hidden" id="in_model__c" name="model_name__c" />
                 <div
                   *ngIf="
-                    vehicleStockForm.controls.model__c.errors.required ||
-                    vehicleStockForm.controls.model_name__c.errors.required
+                    submitted &&
+                    (vehicleStockForm.controls.model__c.errors ||
+                      vehicleStockForm.controls.model_name__c.errors)
                   "
+                  class="error"
                 >
-                  <p class="error-box margin-top-0">
-                    Model is Required
-                  </p>
+                  <div
+                    *ngIf="
+                      vehicleStockForm.controls.model__c.errors.required ||
+                      vehicleStockForm.controls.model_name__c.errors.required
+                    "
+                  >
+                    <p class="error-box margin-top-0">
+                      Model is Required
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <ng-template [ngIf]="modelResult">
-                <div class="modelDropdown" *ngIf="!searchLoading">
-                  <div *ngFor="let data of searchTerm">
-                    <div
-                      class="modelDropdownData"
-                      (click)="selectedModel(data)"
-                    >
-                      {{ data.name }}
-                      <input type="hidden" value="{{ data.name }}" />
+                <ng-template [ngIf]="modelResult">
+                  <div class="modelDropdown" *ngIf="!searchLoading">
+                    <div *ngFor="let data of searchTerm">
+                      <div
+                        class="modelDropdownData"
+                        (click)="selectedModel(data)"
+                      >
+                        {{ data.name }}
+                        <input type="hidden" value="{{ data.name }}" />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="modelDropdown" *ngIf="searchLoading">
-                  <div class="modelDropdownData">
-                    Loading ..
+                  <div class="modelDropdown" *ngIf="searchLoading">
+                    <div class="modelDropdownData">
+                      Loading ..
+                    </div>
                   </div>
-                </div>
-              </ng-template>
+                </ng-template>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label for="usr">Body Color</label>
-              <input
-                type="text"
-                name="body_colour__c"
-                formControlName="body_colour__c"
-                class="form-control"
-                id="body_colour__c"
-              />
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label for="usr">Body Color</label>
+                <input
+                  type="text"
+                  name="body_colour__c"
+                  formControlName="body_colour__c"
+                  class="form-control"
+                  id="body_colour__c"
+                />
+              </div>
             </div>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label><span class="red_star">*</span>Make</label>
-              <input
-                type="text"
-                name="make__c"
-                formControlName="make__c"
-                class="form-control"
-                id="make__c"
-                required=""
-              />
-              <div
-                *ngIf="submitted && vehicleStockForm.controls.make__c.errors"
-                class="error"
-              >
-                <div *ngIf="vehicleStockForm.controls.make__c.errors.required">
-                  <p class="error-box margin-top-0">
-                    Make is Required
-                  </p>
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label><span class="red_star">*</span>Make</label>
+                <input
+                  type="text"
+                  name="make__c"
+                  formControlName="make__c"
+                  class="form-control"
+                  id="make__c"
+                  required=""
+                />
+                <div
+                  *ngIf="submitted && vehicleStockForm.controls.make__c.errors"
+                  class="error"
+                >
+                  <div *ngIf="vehicleStockForm.controls.make__c.errors.required">
+                    <p class="error-box margin-top-0">
+                      Make is Required
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label>First Image Name</label>
-              <input
-                type="text"
-                name="first_image_name__c"
-                formControlName="first_image_name__c"
-                class="form-control"
-                id="first_image_name__c"
-              />
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label>First Image Name</label>
+                <input
+                  type="text"
+                  name="first_image_name__c"
+                  formControlName="first_image_name__c"
+                  class="form-control"
+                  id="first_image_name__c"
+                />
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label>Dealer Code</label>
+                <input
+                  type="text"
+                  name="dealer_code__c"
+                  formControlName="dealer_code__c"
+                  class="form-control"
+                  id="dealer_code__c"
+                />
+              </div>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label>Dealer Code</label>
-              <input
-                type="text"
-                name="dealer_code__c"
-                formControlName="dealer_code__c"
-                class="form-control"
-                id="dealer_code__c"
-              />
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label>Vehicle Stock Days</label>
+                <input
+                  type="text"
+                  name="vehicle_stock_days__c"
+                  formControlName="vehicle_stock_days__c"
+                  class="form-control"
+                  id="vehicle_stock_days__c"
+                />
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label>Owner</label>
+                <input
+                  type="text"
+                  name="ownerid"
+                  formControlName="ownerid"
+                  class="form-control"
+                  id="ownerid"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label>Vehicle Stock Days</label>
-              <input
-                type="text"
-                name="vehicle_stock_days__c"
-                formControlName="vehicle_stock_days__c"
-                class="form-control"
-                id="vehicle_stock_days__c"
-              />
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label for="usr">Price</label>
+                <input
+                  type="text"
+                  name="egc_price__c"
+                  formControlName="egc_price__c"
+                  class="form-control"
+                  id="egc_price__c"
+                />
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label for="usr">Series</label>
+                <input
+                  type="text"
+                  name="series_c__c"
+                  formControlName="series_c__c"
+                  class="form-control"
+                  id="series_c__c"
+                />
+              </div>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label>Owner</label>
-              <input
+  
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label for="usr">Stock Image</label>
+                <!-- <input
                 type="text"
-                name="ownerid"
-                formControlName="ownerid"
-                class="form-control"
-                id="ownerid"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label for="usr">Price</label>
-              <input
-                type="text"
-                name="egc_price__c"
-                formControlName="egc_price__c"
-                class="form-control"
-                id="egc_price__c"
-              />
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label for="usr">Series</label>
-              <input
-                type="text"
-                name="series_c__c"
-                formControlName="series_c__c"
+                name="stock_image__c"
+                formControlName="stock_image__c"
                 class="form-control"
                 id="series_c__c"
               />
@@ -367,7 +382,11 @@
                   <a class="carousel-control-next" href="#demo" data-slide="next">
                     <span class="carousel-control-next-icon"></span>
                   </a>
+<<<<<<< HEAD
                 </div> -->
+=======
+                </div>
+>>>>>>> 7611e4d9c6c6718c95d030909fd4c989ecd6c2e5
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
@@ -379,6 +398,7 @@
           </div>
         </div>
       </div>
+<<<<<<< HEAD
 
     <div class="card mt-3 mb-3">
       <div class="card-header pointer">
@@ -394,101 +414,119 @@
             <div class="form-group">
               <label for="usr">Creaed by: </label>
               <span>{{ vehicleStock.ownerid }}</span>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label for="usr">Created date: </label>
-              <span>{{ vehicleStockForm.createddate }}</span>
-            </div>
-          </div>
+=======
+  
+      <div class="card mt-3 mb-3">
+        <div class="card-header pointer">
+          <a (click)="visibleOne = !visibleOne">
+            <i class="fa fa-angle-down" *ngIf="!visibleOne"></i>
+            <i class="fa fa-angle-right" *ngIf="visibleOne"></i>
+            System Information</a
+          >
         </div>
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label for="usr">Last Modified by: </label>
-              <div></div>
+        <div id="system-information" class="card-body" *ngIf="!visibleOne">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label for="usr">Creaed by: </label>
+                <span>{{ vehicleStock.createdbyname }}</span>
+              </div>
+>>>>>>> 7611e4d9c6c6718c95d030909fd4c989ecd6c2e5
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label for="usr">Created date: </label>
+                <span>{{ vehicleStockForm.createddate }}</span>
+              </div>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
-            <div class="form-group">
-              <label for="usr">Last modified date: </label>
-              <span>{{ vehicleStock.systemmodstamp }}</span>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label for="usr">Last Modified by: </label>
+                <span>{{ vehicleStockForm.lastmodifiedbyname }}</span>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 1px;">
+              <div class="form-group">
+                <label for="usr">Last modified date: </label>
+                <span>{{ vehicleStock.lastmodifieddate }}</span>
+              </div>
             </div>
           </div>
+          <!--- end of row -->
         </div>
-        <!--- end of row -->
+      </div>
+    </div>
+  
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-default"
+        data-dismiss="modal"
+        (click)="onCloseModal($event)"
+      >
+        Cancel
+      </button>
+      <button type="button" class="btn btn-info" (click)="onSubmit()">
+        Save
+      </button>
+    </div>
+  </form>
+  <div
+    class="modal modal-back full-size"
+    tabindex="-1"
+    role="dialog"
+    [ngClass]="{ fade: !searchOpen, 'd-flex': searchOpen }"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title text-center w-100">Model Search</h4>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+            (click)="closeSeacrch()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input
+            [(ngModel)]="sdname"
+            class="form-control w-75 float-left"
+            type="search"
+          />
+          <span
+            style="padding: 10px 30px;"
+            class="searchSD fa fa-search w-25 text-right pointer"
+            (click)="modelSearch(sdname)"
+          ></span>
+          <hr class="mt-5" />
+          <div class="text-center" *ngIf="searchLoading">
+            <p>Loading...</p>
+          </div>
+          <table *ngIf="!searchLoading" class="table table-bordered">
+            <tbody>
+              <tr *ngFor="let data of searchTerm">
+                <td align="center">
+                  <a
+                    class="fillFirstName"
+                    href="#"
+                    (click)="selectedModel(data)"
+                    >{{ data.name }}</a
+                  >
+                </td>
+                <td align="center">{{ data.make__c }}</td>
+                <!-- <td>{{ data.email }}</td>
+                      <td>{{ data.createdate }}</td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-
-  <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-default"
-      data-dismiss="modal"
-      (click)="onCloseModal($event)"
-    >
-      Cancel
-    </button>
-    <button type="button" class="btn btn-info" (click)="onSubmit()">
-      Save
-    </button>
-  </div>
-</form>
-<div
-  class="modal modal-back full-size"
-  tabindex="-1"
-  role="dialog"
-  [ngClass]="{ fade: !searchOpen, 'd-flex': searchOpen }"
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title text-center w-100">Model Search</h4>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-          (click)="closeSeacrch()"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <input
-          [(ngModel)]="sdname"
-          class="form-control w-75 float-left"
-          type="search"
-        />
-        <span
-          style="padding: 10px 30px;"
-          class="searchSD fa fa-search w-25 text-right pointer"
-          (click)="modelSearch(sdname)"
-        ></span>
-        <hr class="mt-5" />
-        <div class="text-center" *ngIf="searchLoading">
-          <p>Loading...</p>
-        </div>
-        <table *ngIf="!searchLoading" class="table table-bordered">
-          <tbody>
-            <tr *ngFor="let data of searchTerm">
-              <td align="center">
-                <a
-                  class="fillFirstName"
-                  href="#"
-                  (click)="selectedModel(data)"
-                  >{{ data.name }}</a
-                >
-              </td>
-              <td align="center">{{ data.make__c }}</td>
-              <!-- <td>{{ data.email }}</td>
-                    <td>{{ data.createdate }}</td> -->
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+  
