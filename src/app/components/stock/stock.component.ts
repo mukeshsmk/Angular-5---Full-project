@@ -65,6 +65,9 @@ export class StockComponent implements OnInit {
         stock_image__c: [this.stock.stock_image__c]
       });
     }
+    this.stock.first_image_name__c = this.stock.first_image_name__c
+      ? this.stock.first_image_name__c
+      : "Default_Image.jpg";
     const params = {
       page: this.page,
       limit: this.limit,

@@ -74,7 +74,12 @@ export class VehicleStockFormComponent implements OnInit {
       stock_image__c: [this.vehicleStock.stock_image__c],
       model_name__c: [this.vehicleStock.model_name__c, Validators.required]
     });
+    this.vehicleStock.first_image_name__c = this.vehicleStock
+      .first_image_name__c
+      ? this.vehicleStock.first_image_name__c
+      : "Default_Image.jpg";
   }
+
   onCloseModal(event: any) {
     this.closeModalEvent.emit(event);
   }
